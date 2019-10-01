@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Antad.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace Antad
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new MisEventosPage();
         }
 
         protected override void OnStart()
