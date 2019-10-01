@@ -32,7 +32,6 @@ namespace AntadApi.Controllers
             return servicio.getEventosDisponibles(usuario.idUsuario);
         }
 
-
         // PUT: api/EventoOperacion/5
         public void Put(int id, [FromBody]string value)
         {

@@ -7,13 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antad.Android", "Antad\Anta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antad.iOS", "Antad\Antad.iOS\Antad.iOS.csproj", "{A327DDAB-6B79-426F-B20D-7D94E85DD352}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antad", "Antad\Antad\Antad.csproj", "{AD72DAC5-5769-497C-B1BA-97B186808163}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntadApi", "AntadApi\AntadApi.csproj", "{33D908E9-4D2C-481A-93A9-D65CE26F8EF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Antad", "Antad\Antad\Antad.csproj", "{AD72DAC5-5769-497C-B1BA-97B186808163}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntadBiblioteca", "AntadBiblioteca\AntadBiblioteca.csproj", "{2FDB3678-A70E-4CD3-97CE-06CBE74F6790}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntadComun", "AntadComun\AntadComun.csproj", "{2CBE5AC4-15C5-4864-B392-42CDA9559F7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntadApi", "AntadApi\AntadApi.csproj", "{38E5CDD9-51DF-4CD8-8566-3A6FFA6B3AC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,18 +79,6 @@ Global
 		{AD72DAC5-5769-497C-B1BA-97B186808163}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{AD72DAC5-5769-497C-B1BA-97B186808163}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{AD72DAC5-5769-497C-B1BA-97B186808163}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
-		{33D908E9-4D2C-481A-93A9-D65CE26F8EF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{33D908E9-4D2C-481A-93A9-D65CE26F8EF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{33D908E9-4D2C-481A-93A9-D65CE26F8EF2}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{33D908E9-4D2C-481A-93A9-D65CE26F8EF2}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{33D908E9-4D2C-481A-93A9-D65CE26F8EF2}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{33D908E9-4D2C-481A-93A9-D65CE26F8EF2}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{33D908E9-4D2C-481A-93A9-D65CE26F8EF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{33D908E9-4D2C-481A-93A9-D65CE26F8EF2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{33D908E9-4D2C-481A-93A9-D65CE26F8EF2}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{33D908E9-4D2C-481A-93A9-D65CE26F8EF2}.Release|iPhone.Build.0 = Release|Any CPU
-		{33D908E9-4D2C-481A-93A9-D65CE26F8EF2}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{33D908E9-4D2C-481A-93A9-D65CE26F8EF2}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{2FDB3678-A70E-4CD3-97CE-06CBE74F6790}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2FDB3678-A70E-4CD3-97CE-06CBE74F6790}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FDB3678-A70E-4CD3-97CE-06CBE74F6790}.Debug|iPhone.ActiveCfg = Debug|Any CPU
@@ -115,6 +103,18 @@ Global
 		{2CBE5AC4-15C5-4864-B392-42CDA9559F7F}.Release|iPhone.Build.0 = Release|Any CPU
 		{2CBE5AC4-15C5-4864-B392-42CDA9559F7F}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{2CBE5AC4-15C5-4864-B392-42CDA9559F7F}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{38E5CDD9-51DF-4CD8-8566-3A6FFA6B3AC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38E5CDD9-51DF-4CD8-8566-3A6FFA6B3AC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38E5CDD9-51DF-4CD8-8566-3A6FFA6B3AC1}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{38E5CDD9-51DF-4CD8-8566-3A6FFA6B3AC1}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{38E5CDD9-51DF-4CD8-8566-3A6FFA6B3AC1}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{38E5CDD9-51DF-4CD8-8566-3A6FFA6B3AC1}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{38E5CDD9-51DF-4CD8-8566-3A6FFA6B3AC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38E5CDD9-51DF-4CD8-8566-3A6FFA6B3AC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38E5CDD9-51DF-4CD8-8566-3A6FFA6B3AC1}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{38E5CDD9-51DF-4CD8-8566-3A6FFA6B3AC1}.Release|iPhone.Build.0 = Release|Any CPU
+		{38E5CDD9-51DF-4CD8-8566-3A6FFA6B3AC1}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{38E5CDD9-51DF-4CD8-8566-3A6FFA6B3AC1}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
