@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AntadBiblioteca.DAO
 {
-    class MiEventoDAO
+    public class MiEventoDAO
     {
         public ConexionDB conexion;
         public MiEventoDAO(string cadena)

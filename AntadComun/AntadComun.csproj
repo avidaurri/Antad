@@ -51,6 +51,7 @@
     <Compile Include="Models\ParamValidarEvento.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Models\SucursalOperacion.cs" />
+    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\ValidacionEvento.cs" />
     <Compile Include="Models\ValidaIntramuro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

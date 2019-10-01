@@ -10,12 +10,14 @@ namespace Antad.ViewModels
 {
     public class MainViewModel
     {
+        public UsuariosViewModel Usuarios { get; set; }
         public MisEventosViewModel MisEventos { get; set; }
         public AddProductViewModel AddProduct { get; set; }
 
         public MainViewModel()
         {
-            this.MisEventos = new MisEventosViewModel();
+           // this.MisEventos = new MisEventosViewModel();
+            this.Usuarios = new UsuariosViewModel();
         }
         public ICommand AddProductoCommand {
             get

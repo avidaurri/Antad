@@ -49,6 +49,7 @@
     <Compile Include="DAO\LoginAntadDAO.cs" />
     <Compile Include="DAO\MiEventoDAO.cs" />
     <Compile Include="DAO\SucursalOperacionDAO.cs" />
+    <Compile Include="DAO\UsuarioDAO.cs" />
     <Compile Include="DAO\ValidacionEventoDAO.cs" />
     <Compile Include="DAO\ValidaIntramuroDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Services\LoginAntadService.cs" />
     <Compile Include="Services\MiEventoService.cs" />
     <Compile Include="Services\SucursalOperacionService.cs" />
+    <Compile Include="Services\UsuarioService.cs" />
     <Compile Include="Services\ValidacionEventoService.cs" />
     <Compile Include="Services\ValidaIntramuroService.cs" />
     <Compile Include="Util\ConexionDB.cs" />

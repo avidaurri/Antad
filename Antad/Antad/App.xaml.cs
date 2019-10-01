@@ -11,7 +11,8 @@ namespace Antad
         {
             InitializeComponent();
 
-            MainPage =new NavigationPage( new MisEventosPage());
+            //MainPage =new NavigationPage( new MisEventosPage());
+            MainPage = new NavigationPage(new UsuariosPage());
         }
 
         protected override void OnStart()
