@@ -12,6 +12,8 @@
             <infra:InstanceLocator x:Key="Locator"/>
             <!-- Parameters -->
             <x:String x:Key="UrlAPI">https://apiantaddemo.trademetrix.online</x:String>
+            <x:String x:Key="UrlPrefix">/api</x:String>
+            <x:String x:Key="UrlMisEventosController">/MisEventos</x:String>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

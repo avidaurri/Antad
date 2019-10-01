@@ -2,6 +2,7 @@
 using AntadComun.Models;
 namespace Antad.ViewModels
 {
+    using Antad.Helpers;
     using GalaSoft.MvvmLight.Command;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
@@ -45,15 +46,17 @@ namespace Antad.ViewModels
             if (!connection.IsSuccess)
             {
                 this.IsRefreshing = false;
-                await Application.Current.MainPage.DisplayAlert("error", connection.Message, "ok");
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
                 return;
             }
             var url = Application.Current.Resources["UrlAPI"].ToString();
-            var response = await this.apiService.GetList<MiEvento>(url, "/api", "/MisEventos");
+            var prefix = Application.Current.Resources["UrlPrefix"].ToString();
+            var controller = Application.Current.Resources["UrlMisEventosController"].ToString();
+            var response = await this.apiService.GetList<MiEvento>(url, prefix, controller);
             if (!response.IsSuccess)
             {
                 this.IsRefreshing = false;
-                await Application.Current.MainPage.DisplayAlert("error", response.Message, "ok");
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
                 return;
             }
             this.IsRefreshing = false;

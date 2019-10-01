@@ -1,4 +1,5 @@
-﻿using AntadComun.Models;
+﻿using Antad.Helpers;
+using AntadComun.Models;
 using Newtonsoft.Json;
 using Plugin.Connectivity;
 using System;
@@ -18,8 +19,8 @@ namespace Antad.Services
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = "Please turn on your internet settings",
-                    //Message = Languages.TurnOnInternet,
+                   // Message = "Please turn on your internet settings",
+                    Message = Languages.TurnOnInternet,
                 };
             }
 
@@ -29,8 +30,8 @@ namespace Antad.Services
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = "No internet connection",
-                    //Message = Languages.NoInternet,
+                   // Message = "No internet connection",
+                    Message = Languages.NoInternet,
                 };
             }
 

@@ -44,9 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Models\CheckIn.cs" />
+    <Compile Include="Models\EventoOperacion.cs" />
+    <Compile Include="Models\LoginAntad.cs" />
     <Compile Include="Models\MiEvento.cs" />
+    <Compile Include="Models\ParamValidarEvento.cs" />
     <Compile Include="Models\Response.cs" />
+    <Compile Include="Models\SucursalOperacion.cs" />
+    <Compile Include="Models\ValidacionEvento.cs" />
+    <Compile Include="Models\ValidaIntramuro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

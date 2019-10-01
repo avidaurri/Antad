@@ -59,5 +59,41 @@ namespace Antad.Resources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Accept.
+        /// </summary>
+        internal static string Accept {
+            get {
+                return ResourceManager.GetString("Accept", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error.
+        /// </summary>
+        internal static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No internet Connection.
+        /// </summary>
+        internal static string NoInternet {
+            get {
+                return ResourceManager.GetString("NoInternet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Please Turn On your Internet Settings.
+        /// </summary>
+        internal static string MyEvents {
+            get {
+                return ResourceManager.GetString("TurnOnInternet", resourceCulture);
+            }
+        }
     }
 }

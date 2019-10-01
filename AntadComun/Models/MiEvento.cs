@@ -10,6 +10,7 @@ namespace AntadComun.Models
     {
         public int idEvento { get; set; }
         public string fecha { get; set; }
+        public string fotoSucursal { get; set; }
         public override string ToString()
         {
             return this.fecha;
