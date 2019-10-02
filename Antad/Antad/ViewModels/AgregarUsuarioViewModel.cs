@@ -123,6 +123,13 @@ namespace Antad.ViewModels
                 this.isEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
             }
+
+           /* var newUser = (Usuario)response.Result;
+            var viewModel = UsuariosViewModel.GetInstance();
+            viewModel.Usuarios.Add(newUser);*/
+
+
+
             this.IsRunning = false;
             this.isEnabled = true;
             //back por codigo

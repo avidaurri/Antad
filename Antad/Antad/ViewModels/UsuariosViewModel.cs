@@ -10,8 +10,12 @@ namespace Antad.ViewModels
     using Xamarin.Forms;
     public class UsuariosViewModel : BaseViewModel
     {
+        #region Attributes
         private ApiService apiService;
         private bool isRefreshing;
+        #endregion
+
+        #region Properties
         private ObservableCollection<Usuario> usuarios { get; set; }
         public ObservableCollection<Usuario> Usuarios
         {
@@ -32,12 +36,31 @@ namespace Antad.ViewModels
                 OnPropertyChanged();
             }
         }
+        #endregion
+
+        #region Constructors
         public UsuariosViewModel()
         {
+            instance = this;
             this.apiService = new ApiService();
             this.LoadUsuarios();
         }
+        #endregion
 
+        #region Singleton
+        public static UsuariosViewModel instance;
+
+        public static UsuariosViewModel GetInstance()
+        {
+            if (instance == null)
+            {
+                return new UsuariosViewModel();
+            }
+            return instance;
+        }
+        #endregion
+
+        #region Methods
         private async void LoadUsuarios()
         {
             this.IsRefreshing = true;
@@ -64,6 +87,9 @@ namespace Antad.ViewModels
             this.Usuarios = new ObservableCollection<Usuario>(list);
            
         }
+        #endregion
+
+        #region Commands
         public ICommand RefreshCommand
         {
             get
@@ -71,5 +97,6 @@ namespace Antad.ViewModels
                 return new RelayCommand(LoadUsuarios);
             }
         }
+        #endregion
     }
 }

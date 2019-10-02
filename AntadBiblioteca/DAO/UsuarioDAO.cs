@@ -61,13 +61,13 @@ namespace AntadBiblioteca.DAO
         public int PostUsuario(Usuario user)
         {
             
-            string sql = "insert into usuarios(usuario,nombre,clave,curp,rfc)values(@usuario,@nombre,@password,@curp,@rfc)";
+            string sql = "insert into usuarios(numero_empleado,usuario,nombre,clave,curp,id_rol,activo,rfc)values(1,@usuario,@nombre,@password,@curp,1,1,@rfc)";
 
             List<Parametro> parametros = new List<Parametro>();
 
             Parametro paramNombre = new Parametro();
             paramNombre.Nombre = "@nombre";
-            paramNombre.Valor = user.usuario.ToString();
+            paramNombre.Valor = user.nombre.ToString();
             parametros.Add(paramNombre);
 
             Parametro paramUsuario = new Parametro();
@@ -77,17 +77,17 @@ namespace AntadBiblioteca.DAO
 
             Parametro paramPassword = new Parametro();
             paramPassword.Nombre = "@password";
-            paramPassword.Valor = user.usuario.ToString();
+            paramPassword.Valor = user.password.ToString();
             parametros.Add(paramPassword);
 
             Parametro paramCurp = new Parametro();
             paramCurp.Nombre = "@curp";
-            paramCurp.Valor = user.usuario.ToString();
+            paramCurp.Valor = user.curp.ToString();
             parametros.Add(paramCurp);
 
             Parametro paramRfc = new Parametro();
             paramRfc.Nombre = "@rfc";
-            paramRfc.Valor = user.usuario.ToString();
+            paramRfc.Valor = user.rfc.ToString();
             parametros.Add(paramRfc);
 
             int registro = conexion.ActualizarParametro(sql, parametros);

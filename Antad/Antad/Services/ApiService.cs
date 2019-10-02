@@ -91,6 +91,7 @@ namespace Antad.Services
                 var url = $"{prefix}{controller}";
                 var response = await client.PostAsync(url,content);
                 var answer = await response.Content.ReadAsStringAsync();
+
                 if (!response.IsSuccessStatusCode)
                 {
                     return new Response
@@ -100,13 +101,27 @@ namespace Antad.Services
                     };
                 }
 
-                var obj = JsonConvert.DeserializeObject<T>(answer);
+                /*var obj = JsonConvert.DeserializeObject<T>(answer);
                 return new Response
                 {
                     IsSuccess = true,
                     Result = obj,
-                };
+                };*/
 
+                if (answer.Equals("1"))
+                {
+                    return new Response
+                    {
+                        IsSuccess = true,
+
+                    };
+                }
+               
+                return new Response
+                {
+                    IsSuccess = false,
+                  
+                };
             }
             catch (Exception ex)
             {

@@ -15,6 +15,7 @@
             <x:String x:Key="UrlPrefix">/api</x:String>
             <x:String x:Key="UrlMisEventosController">/MisEventos</x:String>
             <x:String x:Key="UrlUsuarios">/Usuarios</x:String>
+         
         </ResourceDictionary>
     </Application.Resources>
 </Application>
