@@ -33,12 +33,16 @@ namespace Antad.Helpers
 
         public static string TurnOnInternet
         {
-            get { return Resource.MyEvents; }
+            get { return Resource.TurnOnInternet; }
         }
 
-        public static string MyEvents
+        public static string Users
         {
-            get { return Resource.MyEvents; }
+            get { return Resource.Users; }
+        }
+        public static string AddUsers
+        {
+            get { return Resource.Users; }
         }
     }
 }

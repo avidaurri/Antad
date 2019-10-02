@@ -57,5 +57,42 @@ namespace AntadBiblioteca.DAO
             return usuarios;
             
         }
+
+        public int PostUsuario(Usuario user)
+        {
+            
+            string sql = "insert into usuarios(usuario,nombre,clave,curp,rfc)values(@usuario,@nombre,@password,@curp,@rfc)";
+
+            List<Parametro> parametros = new List<Parametro>();
+
+            Parametro paramNombre = new Parametro();
+            paramNombre.Nombre = "@nombre";
+            paramNombre.Valor = user.usuario.ToString();
+            parametros.Add(paramNombre);
+
+            Parametro paramUsuario = new Parametro();
+            paramUsuario.Nombre = "@usuario";
+            paramUsuario.Valor = user.usuario.ToString();
+            parametros.Add(paramUsuario);
+
+            Parametro paramPassword = new Parametro();
+            paramPassword.Nombre = "@password";
+            paramPassword.Valor = user.usuario.ToString();
+            parametros.Add(paramPassword);
+
+            Parametro paramCurp = new Parametro();
+            paramCurp.Nombre = "@curp";
+            paramCurp.Valor = user.usuario.ToString();
+            parametros.Add(paramCurp);
+
+            Parametro paramRfc = new Parametro();
+            paramRfc.Nombre = "@rfc";
+            paramRfc.Valor = user.usuario.ToString();
+            parametros.Add(paramRfc);
+
+            int registro = conexion.ActualizarParametro(sql, parametros);
+            conexion.Cerrar();
+            return registro;
+        }
     }
 }

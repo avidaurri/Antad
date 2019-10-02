@@ -90,9 +90,17 @@ namespace Antad.Resources {
         /// <summary>
         ///   Busca una cadena traducida similar a Please Turn On your Internet Settings.
         /// </summary>
-        internal static string MyEvents {
+        internal static string TurnOnInternet
+        {
             get {
                 return ResourceManager.GetString("TurnOnInternet", resourceCulture);
+            }
+        }
+        internal static string Users
+        {
+            get
+            {
+                return ResourceManager.GetString("Users", resourceCulture);
             }
         }
     }

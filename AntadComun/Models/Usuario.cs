@@ -15,9 +15,9 @@ namespace AntadComun.Models
 
         public string genero { get; set; }
         public string nombre { get; set; }
-
+        public string usuario { get; set; }
         public string clave { get; set; }
-
+        public string password { get; set; }
         public string curp { get; set; }
 
         public string rfc { get; set; }
@@ -29,5 +29,9 @@ namespace AntadComun.Models
         public string rol { get; set; }
 
         public bool estatus { get; set; }
+        public override string ToString()
+        {
+            return this.rol;
+        }
     }
 }

@@ -22,5 +22,10 @@ namespace AntadBiblioteca.Services
             //return loginAccesoDatos.ValidarUsuario(usuario, password);
 
         }
+
+        public int PostUsuario(Usuario user)
+        {
+            return loginAccesoDatos.PostUsuario(user);
+        }
     }
 }

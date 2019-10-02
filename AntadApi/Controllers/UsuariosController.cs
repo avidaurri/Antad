@@ -1,15 +1,12 @@
-﻿using AntadBiblioteca.Services;
-using AntadComun.Models;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿
 
 namespace AntadApi.Controllers
 {
+    using AntadBiblioteca.Services;
+    using AntadComun.Models;
+    using System.Collections.Generic;
+    using System.Configuration;
+    using System.Web.Http;
     public class UsuariosController : ApiController
     {
         public string cadenaConexion = ConfigurationManager.ConnectionStrings["ConexionAntad"].ConnectionString;
@@ -27,8 +24,10 @@ namespace AntadApi.Controllers
         }
 
         // POST: api/Usuarios
-        public void Post([FromBody]string value)
+        public int Post([FromBody]Usuario value)
         {
+            UsuarioService servicio = new UsuarioService(cadenaConexion);
+            return servicio.PostUsuario(value);
         }
 
         // PUT: api/Usuarios/5

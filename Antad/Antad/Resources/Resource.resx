@@ -109,7 +109,10 @@
   <data name="NoInternet" xml:space="preserve">
     <value>No internet Connection</value>
   </data>
-  <data name="MyEvents" xml:space="preserve">
-    <value>MyEvents</value>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="AddUsers" xml:space="preserve">
+    <value>Add User</value>
   </data>
 </root>

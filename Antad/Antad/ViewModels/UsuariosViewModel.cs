@@ -1,16 +1,13 @@
-﻿using Antad.Helpers;
-using Antad.Services;
+﻿using Antad.Services;
 using AntadComun.Models;
-using GalaSoft.MvvmLight.Command;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
-using System.Windows.Input;
-using Xamarin.Forms;
-
 namespace Antad.ViewModels
 {
+    using Antad.Helpers;
+    using GalaSoft.MvvmLight.Command;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Windows.Input;
+    using Xamarin.Forms;
     public class UsuariosViewModel : BaseViewModel
     {
         private ApiService apiService;
@@ -24,7 +21,7 @@ namespace Antad.ViewModels
                 usuarios = value;
                 OnPropertyChanged();
             }
-            // set => this.SetValue(ref this.miseventos, value);
+            // set => this.SetValue(ref this.usuarios, value);
         }
         public bool IsRefreshing
         {
@@ -65,7 +62,7 @@ namespace Antad.ViewModels
             this.IsRefreshing = false;
             var list = (List<Usuario>)response.Result;
             this.Usuarios = new ObservableCollection<Usuario>(list);
-
+           
         }
         public ICommand RefreshCommand
         {

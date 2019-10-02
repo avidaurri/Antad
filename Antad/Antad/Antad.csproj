@@ -22,16 +22,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\AgregarUsuarioPage.xaml.cs">
+      <DependentUpon>AgregarUsuarioPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\UsuariosPage.xaml.cs">
+      <DependentUpon>UsuariosPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="Resources\Resource.es.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Resource.resx">
       <Generator></Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\AddProductPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\MisEventosPage.xaml">
+    <EmbeddedResource Update="Views\AgregarUsuarioPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\UsuariosPage.xaml">

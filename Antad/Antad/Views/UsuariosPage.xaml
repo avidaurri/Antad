@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-              xmlns:i18n="clr-namespace:Antad.Helpers"
+             xmlns:i18n="clr-namespace:Antad.Helpers"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Antad.Views.UsuariosPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="{i18n:Translate MyEvents}">
-    <!--<ContentPage.ToolbarItems>
+             Title="{i18n:Translate Users}">
+    <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="ic_action_add_circle_outline.png" Command="{Binding AddProductoCommand}"/>
-    </ContentPage.ToolbarItems>-->
+    </ContentPage.ToolbarItems> 
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Usuarios}"
@@ -23,7 +23,7 @@
                 IsPullToRefreshEnabled="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-
+                      
                         <ViewCell>
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -34,15 +34,15 @@
                                 <Image Grid.Column="0"
                                        WidthRequest="100"
                                        Source="{Binding foto}">
-
+                                    
                                 </Image>
                                 <StackLayout Grid.Column="1"
                                              VerticalOptions="Center" >
-                                    <Label                                     
+                                     <Label                                     
                                         Text="{Binding nombre}" >
-                                    </Label>
+                                     </Label>
                                     <Label                                     
-                                        Text="{Binding edad}" >
+                                        Text="{Binding rol}" >
                                     </Label>
                                 </StackLayout>
 
@@ -52,7 +52,7 @@
                                 </Label>
                             </Grid>
 
-                        </ViewCell>
+                        </ViewCell>  
                     </DataTemplate>
                 </ListView.ItemTemplate>
 

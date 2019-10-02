@@ -10,28 +10,28 @@ namespace Antad.ViewModels
 {
     public class MainViewModel
     {
+      
         public UsuariosViewModel Usuarios { get; set; }
-        public MisEventosViewModel MisEventos { get; set; }
-        public AddProductViewModel AddProduct { get; set; }
+        public AgregarUsuarioViewModel AgregarUsuario { get; set; }
 
         public MainViewModel()
         {
-           // this.MisEventos = new MisEventosViewModel();
-            this.Usuarios = new UsuariosViewModel();
+              this.Usuarios = new UsuariosViewModel();
+        
         }
         public ICommand AddProductoCommand {
             get
             {
 
-                return new  RelayCommand(GoToAddProduct);
+                return new  RelayCommand(IrAgregarUsuario);
 
             }
         }
 
-        private async void GoToAddProduct()
+        private async void IrAgregarUsuario()
         {
-            this.AddProduct = new AddProductViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new AddProductPage());
+            this.AgregarUsuario = new AgregarUsuarioViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new AgregarUsuarioPage());
 
         }
     }

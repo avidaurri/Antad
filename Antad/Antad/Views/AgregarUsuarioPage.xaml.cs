@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace Antad.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AddProductPage : ContentPage
+    public partial class AgregarUsuarioPage : ContentPage
     {
-        public AddProductPage()
+        public AgregarUsuarioPage()
         {
             InitializeComponent();
         }
