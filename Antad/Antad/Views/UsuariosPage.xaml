@@ -25,6 +25,10 @@
                     <DataTemplate>
                       
                         <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Editar" Command="{Binding EditarUsuarioCommand}"/>
+                                <MenuItem Text="Eliminar" Command="{Binding EliminarUsuarioCommand}" IsDestructive="True"/>
+                            </ViewCell.ContextActions>
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>

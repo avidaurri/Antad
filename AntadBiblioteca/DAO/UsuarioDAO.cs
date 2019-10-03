@@ -22,7 +22,7 @@ namespace AntadBiblioteca.DAO
             string urlServidor = ser.getUrlServidor(conexion);
 
 
-            string select = "select u.numero_empleado as numeroEmpleado, CONCAT(u.nombre,' ',u.apellido_paterno,' ',u.apellido_materno) as nombre, " +
+            string select = "select u.id as idUsuario, u.numero_empleado as numeroEmpleado, CONCAT(u.nombre,' ',u.apellido_paterno,' ',u.apellido_materno) as nombre, " +
                 "DATEDIFF(year, CONCAT(IIF(SUBSTRING(U.CURP, 5, 2) < 40, CONCAT('20', SUBSTRING(U.CURP, 5, 2)), CONCAT('19', SUBSTRING(U.CURP, 5, 2))), " +
                 "'-', SUBSTRING(U.CURP, 7, 2), '-', SUBSTRING(U.CURP, 9, 2)),     getdate()) as edad, SUBSTRING(U.CURP, 11, 1) as genero, u.id_rol as idRol, " +
                 "cr.rol as rol, u.activo as estatus, u.foto as foto     from usuarios u left     join cat_roles cr on cr.id = u.id_rol";
@@ -41,6 +41,7 @@ namespace AntadBiblioteca.DAO
             while (readerSuc.Read())
             {
                 Usuario usuario = new Usuario();
+                usuario.idUsuario = Convert.ToInt32(readerSuc["idUsuario"].ToString());
                 usuario.numeroEmpleado = Convert.ToInt32(readerSuc["numeroEmpleado"].ToString());
                 usuario.nombre = readerSuc["nombre"].ToString();
                 usuario.edad = Convert.ToInt32(readerSuc["edad"].ToString());
@@ -60,8 +61,10 @@ namespace AntadBiblioteca.DAO
 
         public int PostUsuario(Usuario user)
         {
-            
-            string sql = "insert into usuarios(numero_empleado,usuario,nombre,clave,curp,id_rol,activo,rfc)values(1,@usuario,@nombre,@password,@curp,1,1,@rfc)";
+           /* Utilidades ser = new Utilidades();
+            string urlServidor = ser.getUrlServidor(conexion);*/
+
+            string sql = "insert into usuarios(numero_empleado,usuario,nombre,clave,curp,id_rol,activo,foto,rfc)values(1,@usuario,@nombre,@password,@curp,1,1,@imagePath,@rfc)";
 
             List<Parametro> parametros = new List<Parametro>();
 
@@ -90,6 +93,32 @@ namespace AntadBiblioteca.DAO
             paramRfc.Valor = user.rfc.ToString();
             parametros.Add(paramRfc);
 
+            Parametro paramImagePath = new Parametro();
+            paramImagePath.Nombre = "@imagePath";
+            paramImagePath.Valor = "Content/Usuarios/" +user.ImagePath.ToString();
+            parametros.Add(paramImagePath);
+
+            //ImagePath
+            int registro = conexion.ActualizarParametro(sql, parametros);
+            conexion.Cerrar();
+            return registro;
+        }
+        public int BorrartUsuario(int id)
+        {
+
+
+            string sql = "delete from usuarios where id=@id";
+
+            List<Parametro> parametros = new List<Parametro>();
+
+            Parametro paramNombre = new Parametro();
+            paramNombre.Nombre = "@id";
+            paramNombre.Valor = id.ToString();
+            parametros.Add(paramNombre);
+
+
+
+            //ImagePath
             int registro = conexion.ActualizarParametro(sql, parametros);
             conexion.Cerrar();
             return registro;

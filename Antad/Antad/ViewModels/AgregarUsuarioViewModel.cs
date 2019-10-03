@@ -6,11 +6,16 @@ namespace Antad.ViewModels
     using Antad.Services;
     using AntadComun.Models;
     using GalaSoft.MvvmLight.Command;
+    using Plugin.Media;
+    using Plugin.Media.Abstractions;
+    using System;
     using System.Windows.Input;
     using Xamarin.Forms;
     public class AgregarUsuarioViewModel : BaseViewModel
     {
         #region Attributes
+        private MediaFile file;
+        private ImageSource imageSource;
         private ApiService apiService;
         private bool isRunning;
         private bool isEnabled;
@@ -41,6 +46,15 @@ namespace Antad.ViewModels
             }
         }
 
+        public ImageSource ImageSource
+        {
+            get { return this.imageSource; }
+            set
+            {
+                imageSource = value;
+                OnPropertyChanged();
+            }
+        }
         #endregion
 
         #region Contructors
@@ -48,10 +62,63 @@ namespace Antad.ViewModels
         {
             this.apiService = new ApiService();
             this.isEnabled = true;
+            this.ImageSource = "avatar";
         }
         #endregion
 
         #region Commands
+
+        public ICommand ChangeImageCommand
+        {
+            get
+            {
+                return new RelayCommand(ChangeImage);
+            }
+        }
+
+        private async void ChangeImage()
+        {
+            await CrossMedia.Current.Initialize();
+
+            var source = await Application.Current.MainPage.DisplayActionSheet(
+                Languages.ImageSource,
+                Languages.Cancel,
+                null,
+                Languages.FromGallery,
+                Languages.NewPicture);
+
+            if (source == Languages.Cancel)
+            {
+                this.file = null;
+                return;
+            }
+
+            if (source == Languages.NewPicture)
+            {
+                this.file = await CrossMedia.Current.TakePhotoAsync(
+                    new StoreCameraMediaOptions
+                    {
+                        Directory = "Sample",
+                        Name = "test.jpg",
+                        PhotoSize = PhotoSize.Small,
+                    }
+                );
+            }
+            else
+            {
+                this.file = await CrossMedia.Current.PickPhotoAsync();
+            }
+
+            if (this.file != null)
+            {
+                this.ImageSource = ImageSource.FromStream(() =>
+                {
+                    var stream = this.file.GetStream();
+                    return stream;
+                });
+            }
+        }
+
         public ICommand SaveCommand
         {
             get
@@ -96,10 +163,16 @@ namespace Antad.ViewModels
             if (!connection.IsSuccess)
             {
                 this.IsRunning = false;
-                this.isEnabled = true;
+                this.IsEnabled = true;
                 
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
                 return;
+            }
+
+            byte[] imageArray = null;
+            if(this.file != null)
+            {
+                imageArray = FilesHelper.ReadFully(this.file.GetStream());
             }
 
             var usuario = new Usuario
@@ -109,6 +182,7 @@ namespace Antad.ViewModels
                 password=this.password,
                 curp=this.curp,
                 rfc=this.rfc,
+                ImageArray=imageArray,
 
             };
 
@@ -120,18 +194,23 @@ namespace Antad.ViewModels
             if (!response.IsSuccess)
             {
                 this.IsRunning = false;
-                this.isEnabled = true;
+                this.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
             }
 
            /* var newUser = (Usuario)response.Result;
             var viewModel = UsuariosViewModel.GetInstance();
-            viewModel.Usuarios.Add(newUser);*/
+            viewModel.Usuarios.Add(new UsuarioItemViewModel
+            {
+                foto = newUser.foto,
+                nombre = newUser.nombre,
+                rol = newUser.rol,
+            });*/
 
 
 
             this.IsRunning = false;
-            this.isEnabled = true;
+            this.IsEnabled = true;
             //back por codigo
             await Application.Current.MainPage.Navigation.PopAsync();
 

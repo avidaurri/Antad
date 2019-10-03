@@ -6,6 +6,7 @@ namespace Antad.ViewModels
     using GalaSoft.MvvmLight.Command;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Linq;
     using System.Windows.Input;
     using Xamarin.Forms;
     public class UsuariosViewModel : BaseViewModel
@@ -13,11 +14,12 @@ namespace Antad.ViewModels
         #region Attributes
         private ApiService apiService;
         private bool isRefreshing;
+        private ObservableCollection<UsuarioItemViewModel> usuarios { get; set; }
         #endregion
 
         #region Properties
-        private ObservableCollection<Usuario> usuarios { get; set; }
-        public ObservableCollection<Usuario> Usuarios
+ 
+        public ObservableCollection<UsuarioItemViewModel> Usuarios
         {
             get { return this.usuarios; }
             set
@@ -84,7 +86,15 @@ namespace Antad.ViewModels
             }
             this.IsRefreshing = false;
             var list = (List<Usuario>)response.Result;
-            this.Usuarios = new ObservableCollection<Usuario>(list);
+            var mylist = list.Select(p => new UsuarioItemViewModel
+            {
+                foto=p.foto,
+                nombre = p.nombre,
+                rol = p.rol,
+                idUsuario = p.idUsuario,
+            });
+            this.Usuarios = new ObservableCollection<UsuarioItemViewModel>(mylist);
+            this.IsRefreshing = false;
            
         }
         #endregion

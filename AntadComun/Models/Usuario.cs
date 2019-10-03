@@ -25,7 +25,7 @@ namespace AntadComun.Models
         public string foto { get; set; }
 
         public int idRol { get; set; }
-
+        public int idUsuario { get; set; }
         public string rol { get; set; }
 
         public bool estatus { get; set; }
@@ -33,5 +33,9 @@ namespace AntadComun.Models
         {
             return this.rol;
         }
+
+        public byte[] ImageArray { get; set; }
+
+        public string ImagePath { get; set; }
     }
 }

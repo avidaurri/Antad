@@ -44,5 +44,24 @@ namespace Antad.Helpers
         {
             get { return Resource.Users; }
         }
+        public static string ImageSource
+        {
+            get { return "de donde quieres tomar la imagen?"; }
+        }
+
+        public static string FromGallery
+        {
+            get { return "de la galería"; }
+        }
+
+        public static string NewPicture
+        {
+            get { return "Tomar nueva imagen"; }
+        }
+
+        public static string Cancel
+        {
+            get { return "cancelar"; }
+        }
     }
 }

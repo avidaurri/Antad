@@ -3,9 +3,11 @@ using AntadComun.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace AntadApi.Controllers
@@ -28,6 +30,7 @@ namespace AntadApi.Controllers
         // POST: api/SucursalOperacion
         public SucursalOperacion Post([FromBody]SucursalOperacion usuario)
         {
+  
             SucursalOperacionService servicio = new SucursalOperacionService(cadenaConexion);
             return servicio.getSucursalOperacion(usuario.idUsuario, usuario.latitud, usuario.longitud);
         }
