@@ -4,6 +4,7 @@ namespace Antad.ViewModels
 {
     using Antad.Helpers;
     using GalaSoft.MvvmLight.Command;
+    using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
@@ -14,6 +15,7 @@ namespace Antad.ViewModels
         #region Attributes
         private ApiService apiService;
         private bool isRefreshing;
+        public List<Usuario> MyUsuarios { get; set; }
         private ObservableCollection<UsuarioItemViewModel> usuarios { get; set; }
         #endregion
 
@@ -85,17 +87,23 @@ namespace Antad.ViewModels
                 return;
             }
             this.IsRefreshing = false;
-            var list = (List<Usuario>)response.Result;
-            var mylist = list.Select(p => new UsuarioItemViewModel
+            this.MyUsuarios = (List<Usuario>)response.Result;
+            this.RefreshList();
+
+            this.IsRefreshing = false;
+           
+        }
+
+        public void RefreshList()
+        {
+            var mylistUsuarioItemViewModel = MyUsuarios.Select(p => new UsuarioItemViewModel
             {
-                foto=p.foto,
+                foto = p.foto,
                 nombre = p.nombre,
                 rol = p.rol,
                 idUsuario = p.idUsuario,
             });
-            this.Usuarios = new ObservableCollection<UsuarioItemViewModel>(mylist);
-            this.IsRefreshing = false;
-           
+            this.Usuarios = new ObservableCollection<UsuarioItemViewModel>(mylistUsuarioItemViewModel.OrderBy(p => p.idUsuario));
         }
         #endregion
 

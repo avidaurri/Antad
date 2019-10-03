@@ -198,14 +198,14 @@ namespace Antad.ViewModels
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
             }
 
-           /* var newUser = (Usuario)response.Result;
-            var viewModel = UsuariosViewModel.GetInstance();
-            viewModel.Usuarios.Add(new UsuarioItemViewModel
-            {
-                foto = newUser.foto,
-                nombre = newUser.nombre,
-                rol = newUser.rol,
-            });*/
+
+            /*
+            var newUser = (Usuario)response.Result;
+            var usuariosViewModel = UsuariosViewModel.GetInstance();
+            usuariosViewModel.MyUsuarios.Add(newUser);
+            usuariosViewModel.RefreshList();*/
+
+
 
 
 
