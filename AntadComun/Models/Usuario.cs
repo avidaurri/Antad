@@ -28,6 +28,7 @@ namespace AntadComun.Models
         public int idUsuario { get; set; }
         public string rol { get; set; }
 
+        public bool EsIntramuro { get; set; }
         public bool estatus { get; set; }
         public override string ToString()
         {

@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:i18n="clr-namespace:Antad.Helpers"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Antad.Views.EditarUsuarioPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Editar Usuario">
+    <ContentPage.Content>
+        <ScrollView
+            BindingContext="{Binding EditarUsuario}">
+            <StackLayout
+            
+            Padding="5">
+                <Image Source="{Binding ImageSource}" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Cargar Imagen" HorizontalOptions="Center" FontSize="Small"/>
+                <Label
+                Text="Nombre">
+
+                </Label>
+                <Entry 
+                Text="{Binding Usuario.nombre}"
+                Placeholder="Escribe el nombre">
+                </Entry>
+                <Label
+                Text="Usuario">
+
+                </Label>
+                <Entry 
+                Text="{Binding Usuario.usuario}"
+                Placeholder="Usuario">
+                </Entry>
+                <Label
+                Text="Password">
+
+                </Label>
+                <Entry
+                Text="{Binding Usuario.password}"
+                IsPassword="True"
+                Placeholder="Password">
+                </Entry>
+
+                <Label
+                Text="CURP">
+
+                </Label>
+                <Entry 
+                Text="{Binding Usuario.curp}"
+                Placeholder="CURP">
+                </Entry>
+                <Label
+                Text="RFC">
+
+                </Label>
+                <Entry 
+                Text="{Binding Usuario.rfc}"
+                Placeholder="RFC">
+                </Entry>
+                <ActivityIndicator
+                VerticalOptions="CenterAndExpand"
+                IsRunning="{Binding IsRunning}">
+
+                </ActivityIndicator>
+                <StackLayout Orientation="Horizontal">
+                <Button
+                    HorizontalOptions="FillAndExpand"
+                CornerRadius="15"
+                Text="Guardar"
+                IsEnabled="{Binding IsEnabled}"
+                Command="{Binding SaveCommand}">
+
+                </Button>
+                    <Button
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="Red"
+                CornerRadius="15"
+                Text="Eliminar"
+                IsEnabled="{Binding IsEnabled}"
+                Command="{Binding DeleteCommand}">
+
+                    </Button>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

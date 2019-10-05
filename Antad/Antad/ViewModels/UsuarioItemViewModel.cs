@@ -4,8 +4,10 @@ namespace Antad.ViewModels
 {
     using Antad.Helpers;
     using Antad.Services;
+    using Antad.Views;
     using AntadComun.Models;
     using GalaSoft.MvvmLight.Command;
+    using System;
     using System.Linq;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -24,6 +26,25 @@ namespace Antad.ViewModels
         #endregion
 
         #region Command
+
+        public ICommand EditarUsuarioCommand
+        {
+            get
+            {
+                return new RelayCommand(EditarUsuario);
+            }
+        }
+
+        private async void EditarUsuario()
+        {
+            //antes de lanzar la pagina debemos instaciar la view model que gobierna esa pagina
+            //pondremos un singletos para reutilizar la view model y no instanciarla de nuevo
+            //crear la istancia y ligarlo a la viewmodel
+
+            MainViewModel.GetInstance().EditarUsuario = new EditarUsuarioViewModel(this);
+            await Application.Current.MainPage.Navigation.PushAsync(new EditarUsuarioPage());
+        }
+
         public ICommand EliminarUsuarioCommand {
             get
             {
@@ -60,12 +81,12 @@ namespace Antad.ViewModels
 
             var usuarioViewModel = UsuariosViewModel.GetInstance();
             //buscar el producto y borrarlode lalsita
-            var borrarUsuario = usuarioViewModel.Usuarios.Where(p => p.idUsuario == this.idUsuario).FirstOrDefault();
+            var borrarUsuario = usuarioViewModel.MyUsuarios.Where(p => p.idUsuario == this.idUsuario).FirstOrDefault();
             if (borrarUsuario != null)
             {
-                usuarioViewModel.Usuarios.Remove(borrarUsuario);
+                usuarioViewModel.MyUsuarios.Remove(borrarUsuario);
             }
-
+            usuarioViewModel.RefreshList();
 
         }
         #endregion

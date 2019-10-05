@@ -146,4 +146,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\avatar.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_action_chevron_right.png" />
+  </ItemGroup>
 </Project>

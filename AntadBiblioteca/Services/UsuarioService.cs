@@ -27,6 +27,10 @@ namespace AntadBiblioteca.Services
         {
             return loginAccesoDatos.PostUsuario(user);
         }
+        public Usuario PutUsuario(int id,Usuario user)
+        {
+            return loginAccesoDatos.PustUsuario(id,user);
+        }
         public int BorrarUsuario(int id)
         {
             return loginAccesoDatos.BorrartUsuario(id);

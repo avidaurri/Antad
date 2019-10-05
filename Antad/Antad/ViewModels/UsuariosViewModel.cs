@@ -102,6 +102,9 @@ namespace Antad.ViewModels
                 nombre = p.nombre,
                 rol = p.rol,
                 idUsuario = p.idUsuario,
+                usuario = p.usuario,
+                rfc = p.rfc,
+                curp = p.curp,
             });
             this.Usuarios = new ObservableCollection<UsuarioItemViewModel>(mylistUsuarioItemViewModel.OrderBy(p => p.idUsuario));
         }

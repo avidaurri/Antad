@@ -54,8 +54,28 @@ namespace AntadApi.Controllers
         }
 
         // PUT: api/Usuarios/5
-        public void Put(int id, [FromBody]string value)
+        public Usuario Put(int id, [FromBody]Usuario value)
         {
+            //var path = Path.Combine(HttpContext.Current.Server.MapPath("foede"), "name");
+            UsuarioService servicio = new UsuarioService(cadenaConexion);
+
+            //subir iagen
+            if (value.ImageArray != null && value.ImageArray.Length > 0)
+            {
+                var stream = new MemoryStream(value.ImageArray);
+                var guid = Guid.NewGuid().ToString();
+                var file = $"{guid}.jpg";
+                var folder = "~/Content/Usuarios";
+                var fullPath = $"{folder}/{file}";
+                var response = FilesHelper.UploadPhoto(stream, folder, file);
+
+                if (response)
+                {
+                    value.ImagePath = file;
+                }
+            }
+
+            return servicio.PutUsuario(id,value);
         }
 
         // DELETE: api/Usuarios/5

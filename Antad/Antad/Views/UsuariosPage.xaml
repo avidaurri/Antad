@@ -30,9 +30,13 @@
                                 <MenuItem Text="Eliminar" Command="{Binding EliminarUsuarioCommand}" IsDestructive="True"/>
                             </ViewCell.ContextActions>
                             <Grid>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding EditarUsuarioCommand}"/>
+                                </Grid.GestureRecognizers>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0"
@@ -54,6 +58,11 @@
                                     Grid.Column="2"
                                     Text="{Binding rol}">
                                 </Label>
+                                <StackLayout Grid.Column="3"
+                                             VerticalOptions="Center">
+                                     <Image Source="ic_action_chevron_right.png"/>
+                                </StackLayout>
+                                   
                             </Grid>
 
                         </ViewCell>  
