@@ -13,6 +13,7 @@ namespace Antad.ViewModels
     public class UsuariosViewModel : BaseViewModel
     {
         #region Attributes
+        public string filtro { get; set; }
         private ApiService apiService;
         private bool isRefreshing;
         public List<Usuario> MyUsuarios { get; set; }
@@ -20,7 +21,13 @@ namespace Antad.ViewModels
         #endregion
 
         #region Properties
- 
+        public string Filtro {
+            get { return this.filtro; }
+            set {
+                this.filtro = value;
+                this.RefreshList();
+            }
+        }
         public ObservableCollection<UsuarioItemViewModel> Usuarios
         {
             get { return this.usuarios; }
@@ -96,21 +103,47 @@ namespace Antad.ViewModels
 
         public void RefreshList()
         {
-            var mylistUsuarioItemViewModel = MyUsuarios.Select(p => new UsuarioItemViewModel
+            if (string.IsNullOrEmpty(this.Filtro))
             {
-                foto = p.foto,
-                nombre = p.nombre,
-                rol = p.rol,
-                idUsuario = p.idUsuario,
-                usuario = p.usuario,
-                rfc = p.rfc,
-                curp = p.curp,
-            });
-            this.Usuarios = new ObservableCollection<UsuarioItemViewModel>(mylistUsuarioItemViewModel.OrderBy(p => p.idUsuario));
+                var mylistUsuarioItemViewModel = this.MyUsuarios.Select(p => new UsuarioItemViewModel
+                {
+                    foto = p.foto,
+                    nombre = p.nombre,
+                    rol = p.rol,
+                    idUsuario = p.idUsuario,
+                    usuario = p.usuario,
+                    rfc = p.rfc,
+                    curp = p.curp,
+                });
+                this.Usuarios = new ObservableCollection<UsuarioItemViewModel>(mylistUsuarioItemViewModel.OrderBy(p => p.idUsuario));
+            }
+            else
+            {
+                var mylistUsuarioItemViewModel = this.MyUsuarios.Select(p => new UsuarioItemViewModel
+                {
+                    foto = p.foto,
+                    nombre = p.nombre,
+                    rol = p.rol,
+                    idUsuario = p.idUsuario,
+                    usuario = p.usuario,
+                    rfc = p.rfc,
+                    curp = p.curp,
+                }).Where(p=>p.usuario.ToLower().Contains(this.Filtro.ToLower())).ToList();
+                this.Usuarios = new ObservableCollection<UsuarioItemViewModel>(mylistUsuarioItemViewModel.OrderBy(p => p.idUsuario));
+            }
+
         }
         #endregion
 
         #region Commands
+
+        public ICommand SearchCommand
+        {
+            get
+            {
+                return new RelayCommand(RefreshList);
+            }
+        }
         public ICommand RefreshCommand
         {
             get

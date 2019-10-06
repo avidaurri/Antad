@@ -1,4 +1,6 @@
-﻿using Antad.Views;
+﻿using Antad.Helpers;
+using Antad.ViewModels;
+using Antad.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -7,11 +9,24 @@ namespace Antad
 {
     public partial class App : Application
     {
+        public static NavigationPage Navigator { get; internal set; }
+
         public App()
         {
             InitializeComponent();
 
-              MainPage =new NavigationPage( new UsuariosPage());
+            if(Settings.IsRemembered && !string.IsNullOrEmpty(Settings.Usuario))
+            {
+                MainViewModel.GetInstance().Usuarios = new UsuariosViewModel();
+                MainPage = new Master();
+            }
+            else
+            {
+             MainViewModel.GetInstance().Login = new LoginViewModel();
+             MainPage =new NavigationPage(new LoginPage());
+            }
+
+
          
         }
 

@@ -42,7 +42,8 @@ namespace Antad.ViewModels
             //crear la istancia y ligarlo a la viewmodel
 
             MainViewModel.GetInstance().EditarUsuario = new EditarUsuarioViewModel(this);
-            await Application.Current.MainPage.Navigation.PushAsync(new EditarUsuarioPage());
+            //await Application.Current.MainPage.Navigation.PushAsync(new EditarUsuarioPage());
+            await App.Navigator.PushAsync(new EditarUsuarioPage());
         }
 
         public ICommand EliminarUsuarioCommand {

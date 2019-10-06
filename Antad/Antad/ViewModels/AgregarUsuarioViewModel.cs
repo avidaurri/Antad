@@ -212,7 +212,8 @@ namespace Antad.ViewModels
             this.IsRunning = false;
             this.IsEnabled = true;
             //back por codigo
-            await Application.Current.MainPage.Navigation.PopAsync();
+            //await Application.Current.MainPage.Navigation.PopAsync();
+            await App.Navigator.PopAsync();
 
         }
         #endregion

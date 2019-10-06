@@ -15,6 +15,13 @@
         <StackLayout
             BindingContext="{Binding Usuarios}"
             Padding="5">
+            <SearchBar 
+                HeightRequest="30"
+                Placeholder="Usuarios"
+                Text="{Binding filtro}"
+                SearchCommand="{Binding SearchCommand}">
+                
+            </SearchBar>
             <ListView
                 HasUnevenRows="True"
                 ItemsSource="{Binding Usuarios}"

@@ -1,16 +1,18 @@
-﻿using Antad.Views;
-using GalaSoft.MvvmLight.Command;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Input;
-using Xamarin.Forms;
+﻿
 
 namespace Antad.ViewModels
 {
+    using Antad.Views;
+    using GalaSoft.MvvmLight.Command;
+    using System.Collections.ObjectModel;
+    using System.Windows.Input;
+    using Views;
     public class MainViewModel
     {
+
         #region Properties
+        public ObservableCollection<MenuItemViewModel> Menu { get; set; }
+        public LoginViewModel Login { get; set; }
         public EditarUsuarioViewModel EditarUsuario { get; set; }
 
         public UsuariosViewModel Usuarios { get; set; }
@@ -22,8 +24,39 @@ namespace Antad.ViewModels
         public MainViewModel()
         {
             instance = this;
-            this.Usuarios = new UsuariosViewModel();
+            this.LoadMenu();
+            //this.Usuarios = new UsuariosViewModel();
 
+        }
+
+
+        #endregion
+
+        #region Methods
+        private void LoadMenu()
+        {
+            this.Menu = new ObservableCollection<MenuItemViewModel>();
+
+            this.Menu.Add(new MenuItemViewModel
+            {
+                Icon = "ic_info",
+                PageName = "AboutPage",
+                Title = "Acerc de",
+            });
+
+            this.Menu.Add(new MenuItemViewModel
+            {
+                Icon = "ic_phonelink_setup",
+                PageName = "SetupPage",
+                Title = "Configuración",
+            });
+
+            this.Menu.Add(new MenuItemViewModel
+            {
+                Icon = "ic_exit_to_app",
+                PageName = "LoginPage",
+                Title = "Salir",
+            });
         }
         #endregion
 
@@ -55,7 +88,9 @@ namespace Antad.ViewModels
         private async void IrAgregarUsuario()
         {
             this.AgregarUsuario = new AgregarUsuarioViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new AgregarUsuarioPage());
+            // await Application.Current.MainPage.Navigation.PushAsync(new AgregarUsuarioPage());
+            await App.Navigator.PushAsync(new AgregarUsuarioPage());
+           // await App.Navigator.PushAsync(new AgregarUsuarioPage());
 
         } 
         #endregion
