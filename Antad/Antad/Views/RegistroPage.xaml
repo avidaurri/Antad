@@ -1,15 +1,208 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Antad.Helpers"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Antad.Views.RegistroPage">
+             x:Class="Antad.Views.RegistroPage"
+              BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Registro">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView
+            BindingContext="{Binding Register}">
+            <StackLayout
+                Padding="5">
+                <Image
+                    Source="{Binding ImageSourceFoto}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CargarImagenCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label
+                    FontSize="Small"
+                    HorizontalOptions="Center"
+                    Text="Cargar Imagen">
+                </Label>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="Nombre"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Text="{Binding Nombre}"
+                        Placeholder="Nombre">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Text="Apellido Paterno"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Text="{Binding ApellidoPaterno}"
+                        Placeholder="Apellido Paterno">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Text="Apellido Materno"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Text="{Binding ApellidoMaterno}"
+                        Placeholder="Apellido Materno">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="3"
+                        Text="Email"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        Keyboard="Email"
+                        Text="{Binding Email}"
+                        Placeholder="Email">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="4"
+                        Text="Login"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="4"
+                          Text="{Binding Login}"
+                        Placeholder="Login">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="5"
+                        Text="Password"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="5"
+                        IsPassword="True"
+                        Text="{Binding Password}"
+                        Placeholder="Password">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="6"
+                        Text="CURP"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="6"
+                        Text="{Binding Curp}"
+                        Placeholder="CURP">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="7"
+                        Text="Empresa Interes"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="7"
+                        Text="{Binding EmpresaInteres}"
+                        Placeholder="Empresa Interes">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="8"
+                        Text="Puesto"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Picker x:Name="IndustryTypePicker1" 
+                        Grid.Column="1"
+                        Grid.Row="8"
+                            SelectedIndex="{Binding Puesto}">
+                        <Picker.Items>
+                            <x:String>Promotor</x:String>
+                            <x:String>Supervisor</x:String>
+                            <x:String>Intramuro</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <StackLayout Orientation="Vertical"
+                        Grid.Column="0"
+                        Grid.Row="9" >
+                        <Image WidthRequest="70"
+                               VerticalOptions="Center"
+                            Source="{Binding ImageSourceIdentificacion}">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CargarIdentificacionCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label VerticalOptions="Center"
+                            FontSize="Small"
+                            HorizontalOptions="Center"
+                            Text="Cargar Identificación">
+                        </Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical"
+                        Grid.Column="1"
+                        Grid.Row="9" >
+                        <Image WidthRequest="70"
+                               VerticalOptions="Center"
+                            Source="{Binding ImageSourceComprobante}">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CargarComprobanteCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label
+                            VerticalOptions="Center"
+                            FontSize="Small"
+                            HorizontalOptions="Center"
+                            Text="Cargar Comprobante">
+                        </Label>
+                    </StackLayout>
+                </Grid>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning}"
+                    VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>
+                <Button
+                    BackgroundColor="Navy"
+                    BorderRadius="23"
+                    Command="{Binding SaveCommand}"
+                    HeightRequest="46"
+                    IsEnabled="{Binding IsEnabled}"
+                    Text="Guardar"
+                    TextColor="White">
+                </Button>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

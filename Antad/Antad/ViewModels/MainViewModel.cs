@@ -6,7 +6,7 @@ namespace Antad.ViewModels
     using GalaSoft.MvvmLight.Command;
     using System.Collections.ObjectModel;
     using System.Windows.Input;
-    using Views;
+
     public class MainViewModel
     {
 
@@ -14,6 +14,7 @@ namespace Antad.ViewModels
         public ObservableCollection<MenuItemViewModel> Menu { get; set; }
         public LoginViewModel Login { get; set; }
         public EditarUsuarioViewModel EditarUsuario { get; set; }
+        public RegistroViewModel Register { get; set; }
 
         public UsuariosViewModel Usuarios { get; set; }
         public AgregarUsuarioViewModel AgregarUsuario { get; set; }

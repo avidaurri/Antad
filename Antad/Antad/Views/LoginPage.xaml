@@ -7,14 +7,14 @@
              mc:Ignorable="d"
              x:Class="Antad.Views.LoginPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Login">
+             Title="BIENVENIDO">
     <ContentPage.Content>
         <ScrollView
             BindingContext="{Binding Login}">
             <StackLayout
                 Padding="5">
                 <Image  
-                    HeightRequest="150"
+                    HeightRequest="230"
                     Source="logoantad">
                 </Image>
                 <Grid
@@ -27,15 +27,14 @@
                     <Label
                         Grid.Row="0"
                         Grid.Column="0"
-                        Text="Usuario"
+                        Text="Login"
                         VerticalOptions="Center">
                     </Label>
                     <Entry
                         Grid.Row="0"
                         Grid.Column="1"
-                        Keyboard="Email"
                         Text="{Binding Usuario}"
-                        Placeholder="Email">
+                        >
                     </Entry>
                     <Label
                         Grid.Row="1"
@@ -48,7 +47,7 @@
                         Grid.Column="1"
                         IsPassword="true"
                         Text="{Binding Password}"
-                        Placeholder="Password">
+                        >
                     </Entry>
                 </Grid>
                 <StackLayout
@@ -65,7 +64,7 @@
                         HorizontalOptions="End">
                     </Switch>
                 </StackLayout>
-                <Label
+                <!--<Label
                     HorizontalOptions="Center"
                     Text="Olvide mi Password"
                     TextColor="Blue"
@@ -73,7 +72,7 @@
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ForgotPasswordComand}"/>
                     </Label.GestureRecognizers>
-                </Label>
+                </Label> -->
                 <ActivityIndicator
                     IsRunning="{Binding IsRunning}"
                     VerticalOptions="CenterAndExpand">
@@ -92,6 +91,12 @@
                         Text="Autenticar"
                         TextColor="White">
                     </Button>
+
+                </StackLayout>
+                <StackLayout
+                    Margin="40,0"
+                    Orientation="Horizontal"
+                    VerticalOptions="CenterAndExpand">
                     <Button
                         BackgroundColor="Purple"
                         BorderRadius="23"
@@ -103,7 +108,6 @@
                         TextColor="White">
                     </Button>
                 </StackLayout>
-
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

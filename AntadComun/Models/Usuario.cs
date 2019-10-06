@@ -37,6 +37,8 @@ namespace AntadComun.Models
 
         public byte[] ImageArray { get; set; }
 
+
+
         public string ImagePath { get; set; }
     }
 }

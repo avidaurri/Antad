@@ -6,6 +6,7 @@ namespace Antad.ViewModels
     using Antad.Services;
     using Antad.Views;
     using GalaSoft.MvvmLight.Command;
+    using System;
     using System.Windows.Input;
     using Xamarin.Forms;
     public class LoginViewModel:BaseViewModel
@@ -54,6 +55,23 @@ namespace Antad.ViewModels
         #endregion
 
         #region Commands
+
+        
+        public ICommand RegisterCommand
+        {
+            get
+            {
+                return new RelayCommand(Register);
+            }
+
+        }
+
+        private async void Register()
+        {
+            MainViewModel.GetInstance().Register = new RegistroViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new RegistroPage());
+        }
+
         public ICommand LoginCommand {
             get
             {

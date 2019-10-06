@@ -160,6 +160,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MisEventosController.cs" />
+    <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\SucursalOperacionController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\ValidacionEventoController.cs" />
@@ -177,6 +178,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Comprobantes\fondosplash.jpg" />
+    <Content Include="Content\Identificaciones\fondosplash.jpg" />
     <Content Include="Content\Usuarios\avatar.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

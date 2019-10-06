@@ -49,6 +49,7 @@
     <Compile Include="Models\LoginAntad.cs" />
     <Compile Include="Models\MiEvento.cs" />
     <Compile Include="Models\ParamValidarEvento.cs" />
+    <Compile Include="Models\Registro.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Models\SucursalOperacion.cs" />
     <Compile Include="Models\Usuario.cs" />
