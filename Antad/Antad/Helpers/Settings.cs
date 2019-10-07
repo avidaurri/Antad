@@ -21,11 +21,26 @@ namespace Antad.Helpers
         private const string usuario = "Usuario";
         private const string password = "Password";
         private const string isRemembered = "IsRemembered";
+
+        private const string userSession = "UserSession";
+
         private static readonly string SettingsDefault = string.Empty;
         private static readonly bool booleanDefault = false;
 
         #endregion
-        
+
+        public static string UserSession
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(userSession, SettingsDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(userSession, value);
+            }
+        }
+
         public static string Usuario
         {
             get

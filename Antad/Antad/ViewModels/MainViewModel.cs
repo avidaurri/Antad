@@ -3,6 +3,7 @@
 namespace Antad.ViewModels
 {
     using Antad.Views;
+    using AntadComun.Models;
     using GalaSoft.MvvmLight.Command;
     using System.Collections.ObjectModel;
     using System.Windows.Input;
@@ -11,6 +12,7 @@ namespace Antad.ViewModels
     {
 
         #region Properties
+        public UserSession UserSession { get; set; }
         public ObservableCollection<MenuItemViewModel> Menu { get; set; }
         public LoginViewModel Login { get; set; }
         public EditarUsuarioViewModel EditarUsuario { get; set; }
@@ -18,6 +20,30 @@ namespace Antad.ViewModels
 
         public UsuariosViewModel Usuarios { get; set; }
         public AgregarUsuarioViewModel AgregarUsuario { get; set; }
+
+        public string UserFullName
+        {
+            get
+            {
+                if(this.UserSession !=null)
+                {
+                    return $"{this.UserSession.nombre}";
+                }
+                return null;
+            }
+        }
+        public string UserImageFullPath
+        {
+            get
+            {
+                if (this.UserSession != null)
+                {
+                    return $"{this.UserSession.foto}";
+                }
+                return null;
+            }
+        }
+
         #endregion
 
 

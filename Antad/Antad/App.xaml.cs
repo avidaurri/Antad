@@ -1,6 +1,8 @@
 ﻿using Antad.Helpers;
 using Antad.ViewModels;
 using Antad.Views;
+using AntadComun.Models;
+using Newtonsoft.Json;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -15,7 +17,7 @@ namespace Antad
         {
             InitializeComponent();
 
-            if(Settings.IsRemembered && !string.IsNullOrEmpty(Settings.Usuario))
+            /*if(Settings.IsRemembered && !string.IsNullOrEmpty(Settings.Usuario))
             {
                 MainViewModel.GetInstance().Usuarios = new UsuariosViewModel();
                 MainPage = new Master();
@@ -24,10 +26,27 @@ namespace Antad
             {
              MainViewModel.GetInstance().Login = new LoginViewModel();
              MainPage =new NavigationPage(new LoginPage());
+            }*/
+            var mainViewModel = MainViewModel.GetInstance();
+
+            if (Settings.IsRemembered)
+            {
+
+                if (!string.IsNullOrEmpty(Settings.UserSession))
+                {
+                    mainViewModel.UserSession = JsonConvert.DeserializeObject<UserSession>(Settings.UserSession);
+                }
+
+                mainViewModel.Usuarios = new UsuariosViewModel();
+                this.MainPage = new Master();
+            }
+            else
+            {
+                mainViewModel.Login = new LoginViewModel();
+                this.MainPage = new NavigationPage(new LoginPage());
             }
 
 
-         
         }
 
         protected override void OnStart()

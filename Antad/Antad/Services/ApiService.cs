@@ -136,6 +136,62 @@ namespace Antad.Services
 
         }
 
+        public async Task<Response> PostLogin<T>(string urlBase, string prefix, string controller, T model)
+        {
+            try
+            {
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(request, Encoding.UTF8, "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = $"{prefix}{controller}";
+                var response = await client.PostAsync(url, content);
+                var answer = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = answer,
+                    };
+                }
+
+                var obj = JsonConvert.DeserializeObject<T>(answer);
+                return new Response
+                {
+                    IsSuccess = true,
+                    Result = obj,
+                };
+
+               /* if (answer.Equals("1"))
+                {
+                    return new Response
+                    {
+                        IsSuccess = true,
+
+                    };
+                }*/
+
+                return new Response
+                {
+                    IsSuccess = false,
+
+                };
+            }
+            catch (Exception ex)
+            {
+
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+
+                };
+            }
+
+        }
+
         public async Task<Response> Delete(string urlBase, string prefix, string controller, int id)
         {
             try
@@ -225,6 +281,48 @@ namespace Antad.Services
                 };
             }
 
+        }
+
+        public async Task<Response> GetUser(string urlBase, string prefix, string controller, string email)
+        {
+            try
+            {
+                var getUserRequest = new GetUserRequest
+                {
+                    User = email,
+                };
+
+                var request = JsonConvert.SerializeObject(getUserRequest);
+                var content = new StringContent(request, Encoding.UTF8, "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = $"{prefix}{controller}";
+                var response = await client.PostAsync(url, content);
+                var answer = await response.Content.ReadAsStringAsync();
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = answer,
+                    };
+                }
+
+                var user = JsonConvert.DeserializeObject<UserSession>(answer);
+                return new Response
+                {
+                    IsSuccess = true,
+                    Result = user,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
         }
     }
 }

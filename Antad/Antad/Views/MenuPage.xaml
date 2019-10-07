@@ -13,7 +13,7 @@
     <ContentPage.Content>
         <StackLayout
             Padding="5">
-            <Image Source="logoantad"/>
+            <Image Source="{Binding UserImageFullPath}"/>
             <Label
                 FontAttributes="Bold"
                 FontSize="Large"

@@ -47,6 +47,7 @@
     <Compile Include="DAO\CheckInDAO.cs" />
     <Compile Include="DAO\EventoOperacionDAO.cs" />
     <Compile Include="DAO\LoginAntadDAO.cs" />
+    <Compile Include="DAO\LoginAppDAO.cs" />
     <Compile Include="DAO\MiEventoDAO.cs" />
     <Compile Include="DAO\RegistroDAO.cs" />
     <Compile Include="DAO\SucursalOperacionDAO.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Services\CheckInService.cs" />
     <Compile Include="Services\EventoOperacionService.cs" />
     <Compile Include="Services\LoginAntadService.cs" />
+    <Compile Include="Services\LoginAppService.cs" />
     <Compile Include="Services\MiEventoService.cs" />
     <Compile Include="Services\RegistroService.cs" />
     <Compile Include="Services\SucursalOperacionService.cs" />

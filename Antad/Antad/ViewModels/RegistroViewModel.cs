@@ -101,8 +101,8 @@ namespace Antad.ViewModels
             this.IsEnabled = true;
             this.apiService = new ApiService();
             this.ImageSourceFoto = "avatar";
-            this.ImageSourceComprobante = "avatar";
-            this.ImageSourceIdentificacion = "avatar";
+            this.ImageSourceComprobante = "comprobante";
+            this.ImageSourceIdentificacion = "credencial";
 
 
         }

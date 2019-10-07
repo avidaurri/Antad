@@ -46,12 +46,15 @@
   <ItemGroup>
     <Compile Include="Models\CheckIn.cs" />
     <Compile Include="Models\EventoOperacion.cs" />
+    <Compile Include="Models\GetUserRequest.cs" />
     <Compile Include="Models\LoginAntad.cs" />
+    <Compile Include="Models\LoginApp.cs" />
     <Compile Include="Models\MiEvento.cs" />
     <Compile Include="Models\ParamValidarEvento.cs" />
     <Compile Include="Models\Registro.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Models\SucursalOperacion.cs" />
+    <Compile Include="Models\UserSession.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\ValidacionEvento.cs" />
     <Compile Include="Models\ValidaIntramuro.cs" />

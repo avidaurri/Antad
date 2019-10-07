@@ -158,10 +158,12 @@
     <Compile Include="Controllers\CheckInController.cs" />
     <Compile Include="Controllers\EventoOperacionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginAppController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MisEventosController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\SucursalOperacionController.cs" />
+    <Compile Include="Controllers\UserSessionController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\ValidacionEventoController.cs" />
     <Compile Include="Controllers\ValidaIntramuroController.cs" />

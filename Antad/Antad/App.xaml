@@ -16,6 +16,8 @@
             <x:String x:Key="UrlMisEventosController">/MisEventos</x:String>
             <x:String x:Key="UrlUsuarios">/Usuarios</x:String>
             <x:String x:Key="UrlRegistro">/Registro</x:String>
+            <x:String x:Key="UrlLoginApp">/LoginApp</x:String>
+            <x:String x:Key="UrlUserSession">/UserSession</x:String>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

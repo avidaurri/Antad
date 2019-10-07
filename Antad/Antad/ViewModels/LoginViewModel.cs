@@ -5,7 +5,9 @@ namespace Antad.ViewModels
     using Antad.Helpers;
     using Antad.Services;
     using Antad.Views;
+    using AntadComun.Models;
     using GalaSoft.MvvmLight.Command;
+    using Newtonsoft.Json;
     using System;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -109,18 +111,94 @@ namespace Antad.ViewModels
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
                 return;
             }
-            var url = Application.Current.Resources["UrlAPI"].ToString();
+
+
+            var login = new LoginApp
+            {
+                login = this.Usuario,
+                password = this.Password,
+
+
+            };
+
 
             //consumir api para logear
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var prefix = Application.Current.Resources["UrlPrefix"].ToString();
+            var controller = Application.Current.Resources["UrlLoginApp"].ToString();
+            var response = await this.apiService.PostLogin(url, prefix, controller, login);
 
-            Settings.Usuario = "ale";
-            Settings.Password = "123";
-            Settings.IsRemembered = true;
+            if (!response.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    response.Message,
+                    Languages.Accept);
+                return;
+            }
+            if (response.Result == null)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                 "Aviso",
+                 "Login y/o password incorrecto",
+                    "Aceptar");
+            }
+            else
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
 
-            this.IsRunning = false;
-            this.IsEnabled = true;
-            MainViewModel.GetInstance().Usuarios = new UsuariosViewModel();
-            Application.Current.MainPage = new Master();
+                login =(LoginApp)response.Result;
+
+                if (login.idEdoRegUsuario != 5)
+                {
+                    await Application.Current.MainPage.DisplayAlert(
+                    "Aviso",
+                    login.mensajeLogin,
+                     "Aceptar");
+                }
+                else
+                {
+                    if (this.IsRemembered)
+                    {
+                    Settings.Usuario = "ale";
+                    Settings.Password = "123";
+                    Settings.IsRemembered = true;
+                    }
+
+                    //recuperar UserSession
+
+                    //var prefixd = Application.Current.Resources["UrlPrefix"].ToString();
+                    var controllerd = Application.Current.Resources["UrlUserSession"].ToString();
+                    var responsed = await this.apiService.GetUser(url, prefix, controllerd, this.Usuario);
+                    if (responsed.IsSuccess)
+                    {
+                        UserSession userASP = new UserSession();
+                        userASP = (UserSession)responsed.Result;
+                        MainViewModel.GetInstance().UserSession = userASP;
+                        Settings.UserSession = JsonConvert.SerializeObject(userASP);
+                    }
+
+
+                    MainViewModel.GetInstance().Usuarios = new UsuariosViewModel();
+                    Application.Current.MainPage = new Master();
+
+
+                }
+
+                this.IsRunning = false;
+                this.IsEnabled = true;
+
+
+
+
+            }
+
+
 
 
 
