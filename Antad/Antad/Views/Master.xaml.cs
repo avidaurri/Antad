@@ -17,11 +17,14 @@ namespace Antad.Views
             InitializeComponent();
             //this.Master = new IntramuroPage();
             //Detail =new IntramuroPage();
+
+            //this.Detail=new IntramuroPage();
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
             App.Navigator = Navigator;
+
             
         }
     }

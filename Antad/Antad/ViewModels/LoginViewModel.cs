@@ -181,6 +181,17 @@ namespace Antad.ViewModels
                         userASP = (UserSession)responsed.Result;
                         MainViewModel.GetInstance().UserSession = userASP;
                         Settings.UserSession = JsonConvert.SerializeObject(userASP);
+
+                        if (userASP.idPuesto.Equals(1))
+                        {
+                            //promotor
+
+                        }else if (userASP.idPuesto.Equals(3))
+                        {
+                            //intramuro
+
+                        }
+
                     }
 
                     // MainViewModel.GetInstance().Usuarios = new UsuariosViewModel();
