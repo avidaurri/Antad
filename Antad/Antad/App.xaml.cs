@@ -37,7 +37,8 @@ namespace Antad
                     mainViewModel.UserSession = JsonConvert.DeserializeObject<UserSession>(Settings.UserSession);
                 }
 
-                mainViewModel.Usuarios = new UsuariosViewModel();
+                //mainViewModel.Usuarios = new UsuariosViewModel();
+                mainViewModel.Intramuro = new IntramuroViewModel();
                 this.MainPage = new Master();
             }
             else

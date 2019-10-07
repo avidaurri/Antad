@@ -7,6 +7,7 @@
              mc:Ignorable="d"
              x:Class="Antad.Views.LoginPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundImageSource="fondosplash"
              Title="BIENVENIDO">
     <ContentPage.Content>
         <ScrollView

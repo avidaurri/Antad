@@ -11,9 +11,9 @@
         <pages:MenuPage/>
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
-        <NavigationPage x:Name="Navigator">
-            <x:Arguments>
-                <pages:UsuariosPage/>
+          <NavigationPage x:Name="Navigator">
+          <x:Arguments>
+                <pages:IntramuroPage/>
             </x:Arguments>
             
         </NavigationPage>

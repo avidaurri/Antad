@@ -19,6 +19,12 @@ namespace Antad.ViewModels
         public RegistroViewModel Register { get; set; }
 
         public UsuariosViewModel Usuarios { get; set; }
+        //private Sucursal Sucursal { get; set; }
+
+        public IntramuroViewModel Intramuro { get; set; }
+
+        public PromotorViewModel Promotor { get; set; }
+
         public AgregarUsuarioViewModel AgregarUsuario { get; set; }
 
         public string UserFullName

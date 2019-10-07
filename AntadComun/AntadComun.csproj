@@ -51,8 +51,10 @@
     <Compile Include="Models\LoginApp.cs" />
     <Compile Include="Models\MiEvento.cs" />
     <Compile Include="Models\ParamValidarEvento.cs" />
+    <Compile Include="Models\Promotor.cs" />
     <Compile Include="Models\Registro.cs" />
     <Compile Include="Models\Response.cs" />
+    <Compile Include="Models\Intramuro.cs" />
     <Compile Include="Models\SucursalOperacion.cs" />
     <Compile Include="Models\UserSession.cs" />
     <Compile Include="Models\Usuario.cs" />

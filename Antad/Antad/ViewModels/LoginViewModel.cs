@@ -183,8 +183,8 @@ namespace Antad.ViewModels
                         Settings.UserSession = JsonConvert.SerializeObject(userASP);
                     }
 
-
-                    MainViewModel.GetInstance().Usuarios = new UsuariosViewModel();
+                    // MainViewModel.GetInstance().Usuarios = new UsuariosViewModel();
+                    MainViewModel.GetInstance().Intramuro = new IntramuroViewModel();
                     Application.Current.MainPage = new Master();
 
 
