@@ -9,17 +9,113 @@
              BackgroundImageSource="fondosplash"
              Title="Intramuro">
     <ContentPage.Content>
-        <Grid>
-        <StackLayout>
-            
+
+        <Grid VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+      
+        <StackLayout Grid.Column="0" Orientation="Horizontal"  HorizontalOptions="Center" VerticalOptions="Center">
+            <StackLayout Orientation="Horizontal" VerticalOptions="Start" Margin="0">
+                <Image x:Name="imgFotoIntramuro"  Source="{Binding UserImageFullPath}" HeightRequest="80" VerticalOptions="Center"/>
+            </StackLayout>
+
         </StackLayout>
-        <StackLayout
-             BindingContext="{Binding Intramuro}"
-            Padding="5">
-
+        <StackLayout Grid.Column="1"  Orientation="Vertical"   VerticalOptions="Center" HorizontalOptions="Start">
+         
+                <Label x:Name="lblNombreIntramuro"  Text="{Binding UserFullName}" TextColor="Gray" 
+                       FontSize="16" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+         
+   
+        </StackLayout>
             
-        </StackLayout>  
-        </Grid>
+        <Frame Grid.Row="2" Grid.ColumnSpan="2"  HasShadow="True" CornerRadius="10" Margin="20,0,20,0" Padding="0" HeightRequest="50" VerticalOptions="Start">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                    <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
+                        <Label  Text="SUCURSAL DE TRABAJO" TextColor="Gray" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    </StackLayout>
+                </StackLayout>
 
+            </Grid>
+        </Frame>
+
+
+        <StackLayout  BindingContext="{Binding Intramuro}" 
+                Grid.Row="3" Grid.ColumnSpan="2">
+            <Grid VerticalOptions="Start">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="120" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                     <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!-- -->
+
+                    <StackLayout BindingContext="{Binding Sucursal}" Grid.ColumnSpan="2" 
+             Orientation="Horizontal" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center" >
+                    <Image IsVisible="{Binding existeSucursal}" x:Name="imgSucursal" Source="{Binding fotoSucursal}" WidthRequest="85" HeightRequest="65" HorizontalOptions="Start" VerticalOptions="Center"/>
+                    <Label IsVisible="{Binding existeSucursal}" x:Name="nombreSucursal" Text="{Binding nombreSucursal}" FontSize="18" VerticalOptions="Center" TextColor="Gray"/>
+                    <Label  IsVisible="{Binding mostarMensajeSucursal}"  Text="{Binding mensajeSucursal}" 
+            FontSize="18" VerticalOptions="Center" TextColor="Gray" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                    <Image IsVisible="{Binding mostarMensajeSucursal}" Source="ic_action_error" WidthRequest="50" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </StackLayout>
+
+                <Frame Grid.Row="1" Grid.ColumnSpan="2"  HasShadow="True" Margin="20,0,20,0" CornerRadius="10"  Padding="0" HeightRequest="50" VerticalOptions="Start">
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                            <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
+                                <Label  Text="SUCURSAL DE TRABAJO" TextColor="Gray" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+
+                <StackLayout BindingContext="{Binding Sucursal}"  Grid.Row="2" Grid.ColumnSpan="2"  BackgroundColor="Transparent"  VerticalOptions="End">
+                    <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="Center" VerticalOptions="End">
+                        <Button IsVisible="{Binding existeOperacion}" BackgroundColor="DarkBlue" BorderRadius="10" Text="ESCANEAR QR" TextColor="White"   />
+                        <Button IsVisible="{Binding existeOperacion}" BackgroundColor="BlueViolet" BorderRadius="10" Text="VALIDAR OPERACION" TextColor="White" />
+                        <Label IsVisible="{Binding mostrarMensajeOperacion}"  Text="{Binding mensajeOperacion}" 
+                    FontSize="18" VerticalOptions="Center" TextColor="Gray" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                            <Image IsVisible="{Binding mostrarMensajeOperacion}" Source="ic_action_error" WidthRequest="50" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </StackLayout>
+                </StackLayout>
+
+                    <StackLayout Grid.Row="3" Grid.ColumnSpan="2" Orientation="Vertical" VerticalOptions="EndAndExpand" >
+                        <ActivityIndicator
+                    IsRunning="{Binding IsRunning}"
+                    VerticalOptions="CenterAndExpand">
+                        </ActivityIndicator>
+                        <Button IsEnabled="{Binding IsEnabled}" IsVisible="{Binding falloValidacion}" BackgroundColor="DeepSkyBlue" Text="Actualizar" TextColor="White"></Button>
+                    </StackLayout>
+                    
+
+                    <!-- -->
+
+
+
+            </Grid>
+
+
+        </StackLayout>
+
+
+        </Grid>  
     </ContentPage.Content>
+    
+
 </ContentPage>

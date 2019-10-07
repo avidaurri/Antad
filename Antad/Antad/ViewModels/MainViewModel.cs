@@ -72,9 +72,21 @@ namespace Antad.ViewModels
 
             this.Menu.Add(new MenuItemViewModel
             {
-                Icon = "ic_info",
-                PageName = "AboutPage",
-                Title = "Acerc de",
+                Icon = "ic_action_user",
+                PageName = "SetupPage",
+                Title = "Perfil",
+            });
+            this.Menu.Add(new MenuItemViewModel
+            {
+                Icon = "ic_action_report",
+                PageName = "SetupPage",
+                Title = "Incidencias",
+            });
+            this.Menu.Add(new MenuItemViewModel
+            {
+                Icon = "ic_action_time",
+                PageName = "SetupPage",
+                Title = "Historial",
             });
 
             this.Menu.Add(new MenuItemViewModel
@@ -83,7 +95,12 @@ namespace Antad.ViewModels
                 PageName = "SetupPage",
                 Title = "Configuración",
             });
-
+            this.Menu.Add(new MenuItemViewModel
+            {
+                Icon = "ic_info",
+                PageName = "AboutPage",
+                Title = "Acerca de",
+            });
             this.Menu.Add(new MenuItemViewModel
             {
                 Icon = "ic_exit_to_app",
