@@ -18,6 +18,7 @@
             <x:String x:Key="UrlRegistro">/Registro</x:String>
             <x:String x:Key="UrlLoginApp">/LoginApp</x:String>
             <x:String x:Key="UrlUserSession">/UserSession</x:String>
+            <x:String x:Key="UrlIntramuro">/Intramuro</x:String>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

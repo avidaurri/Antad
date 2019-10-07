@@ -10,7 +10,7 @@ namespace AntadComun.Models
     {
         public int idUsuario { get; set; }
         public string empresa { get; set; }
-        public int idSucursal { get; set; }
+        public string idSucursal { get; set; }
         public string nombreSucursal { get; set; }
         public string fotoSucursal { get; set; }
         public string distanciaSucursal { get; set; }
@@ -23,5 +23,7 @@ namespace AntadComun.Models
         public string latitud { get; set; }
         public string longitud { get; set; }
         public bool falloValidacion { get; set; }
+        public double latitudSucursal { get; set; }
+        public double longitudSucursal { get; set; }
     }
 }

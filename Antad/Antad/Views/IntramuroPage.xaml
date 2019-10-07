@@ -79,7 +79,7 @@
                         </Grid.RowDefinitions>
                         <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
                             <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
-                                <Label  Text="SUCURSAL DE TRABAJO" TextColor="Gray" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                <Label  Text="ACTIVIDADES" TextColor="Gray" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center"/>
                             </StackLayout>
                         </StackLayout>
                     </Grid>
@@ -100,7 +100,7 @@
                     IsRunning="{Binding IsRunning}"
                     VerticalOptions="CenterAndExpand">
                         </ActivityIndicator>
-                        <Button IsEnabled="{Binding IsEnabled}" IsVisible="{Binding falloValidacion}" BackgroundColor="DeepSkyBlue" Text="Actualizar" TextColor="White"></Button>
+                        <Button IsEnabled="{Binding IsEnabled}" IsVisible="{Binding falloValidacion}" BackgroundColor="DeepSkyBlue" Text="ACTUALIZAR SUCURSAL" TextColor="White"></Button>
                     </StackLayout>
                     
 

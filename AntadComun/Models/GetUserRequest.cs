@@ -10,5 +10,7 @@ namespace AntadComun.Models
     {
         public string User { get; set; }
 
+        public double latitud { get; set; }
+        public double longitud { get; set; }
     }
 }

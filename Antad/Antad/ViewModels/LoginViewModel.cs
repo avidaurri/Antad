@@ -165,8 +165,8 @@ namespace Antad.ViewModels
                 {
                     if (this.IsRemembered)
                     {
-                    Settings.Usuario = "ale";
-                    Settings.Password = "123";
+                    Settings.Usuario = this.Usuario;
+                    Settings.Password = this.Password;
                     Settings.IsRemembered = true;
                     }
 

@@ -50,6 +50,18 @@ namespace Antad.ViewModels
             }
         }
 
+        public string UserName
+        {
+            get
+            {
+                if (this.UserSession != null)
+                {
+                    return $"{this.UserSession.usuario}";
+                }
+                return null;
+            }
+        }
+
         #endregion
 
 

@@ -158,6 +158,7 @@
     <Compile Include="Controllers\CheckInController.cs" />
     <Compile Include="Controllers\EventoOperacionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IntramuroController.cs" />
     <Compile Include="Controllers\LoginAppController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MisEventosController.cs" />
