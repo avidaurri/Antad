@@ -1,7 +1,9 @@
 ﻿using Antad.Helpers;
 using Antad.Services;
+using Antad.Views;
 using AntadComun.Models;
 using GalaSoft.MvvmLight.Command;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -68,9 +70,12 @@ namespace Antad.ViewModels
             if (this.Eventt.clvEstatusEvento.Equals(3))
             {
                 //autorizado- ir a pantalla de operacion
+                MainViewModel.GetInstance().EventoOperacion = new EventoOperacionViewModel(this);
+                //await Application.Current.MainPage.Navigation.PushAsync(new EditarUsuarioPage());
+                await App.Navigator.PushAsync(new EventoOperacionPage());
 
-
-            }else if (this.Eventt.clvEstatusEvento.Equals(20))
+            }
+            else if (this.Eventt.clvEstatusEvento.Equals(20))
             {
                 // evento cancelado
                 await Application.Current.MainPage.DisplayAlert("Mensaje", "Tu evento esta cancelado", "Aceptar");
@@ -80,7 +85,7 @@ namespace Antad.ViewModels
             else if (this.Eventt.seeQR)
             {
                 // mostrar qr
-
+                PopupNavigation.Instance.PushAsync(new PopupView(this.Eventt.usuario, this.Eventt.folioEvento, "Pide autorización a través de este código"));
             }
             else if (!this.Eventt.seeQR && this.Eventt.clvEstatusEvento.Equals(4))
             {

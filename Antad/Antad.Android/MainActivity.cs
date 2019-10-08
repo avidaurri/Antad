@@ -23,7 +23,7 @@ namespace Antad.Droid
 
             //añadido
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
-            //Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
+            Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             //añadido
 
             CrossCurrentActivity.Current.Init(this, savedInstanceState);

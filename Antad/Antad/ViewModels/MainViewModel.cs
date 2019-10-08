@@ -5,6 +5,7 @@ namespace Antad.ViewModels
     using Antad.Views;
     using AntadComun.Models;
     using GalaSoft.MvvmLight.Command;
+    using Rg.Plugins.Popup.Services;
     using System.Collections.ObjectModel;
     using System.Windows.Input;
 
@@ -17,7 +18,7 @@ namespace Antad.ViewModels
         public LoginViewModel Login { get; set; }
         public EditarUsuarioViewModel EditarUsuario { get; set; }
         public RegistroViewModel Register { get; set; }
-
+        public EventoOperacionViewModel EventoOperacion { get; set; }
         public UsuariosViewModel Usuarios { get; set; }
 
         public IntramuroViewModel Intramuro { get; set; }
@@ -153,7 +154,25 @@ namespace Antad.ViewModels
             await App.Navigator.PushAsync(new AgregarUsuarioPage());
            // await App.Navigator.PushAsync(new AgregarUsuarioPage());
 
-        } 
+        }
+        #endregion
+
+        #region Commands
+        public ICommand SeeQRCommand
+        {
+            get
+            {
+                return new RelayCommand(SeeQR);
+            }
+        }
+
+        private void SeeQR()
+        {
+            string eventtoo = this.EventoOperacion.Evento.folioEvento;
+            string usuario = this.EventoOperacion.Evento.usuario;
+            PopupNavigation.Instance.PushAsync(new PopupView(eventtoo, usuario,"Escanea este código para supervisar tu evento"));
+
+        }
         #endregion
     }
 }
