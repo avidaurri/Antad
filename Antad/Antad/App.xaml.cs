@@ -38,8 +38,8 @@ namespace Antad
                 }
 
                 //mainViewModel.Usuarios = new UsuariosViewModel();
-                //mainViewModel.Intramuro = new IntramuroViewModel();
-                mainViewModel.Promotor = new PromotorViewModel();
+                //  mainViewModel.Intramuro = new IntramuroViewModel();
+              mainViewModel.Promotor = new PromotorViewModel();
                 this.MainPage = new Master();
             }
             else

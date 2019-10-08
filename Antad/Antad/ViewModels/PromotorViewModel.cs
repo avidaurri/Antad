@@ -1,11 +1,13 @@
 ﻿using Antad.Helpers;
 using Antad.Services;
 using AntadComun.Models;
+using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Antad.ViewModels
@@ -13,6 +15,7 @@ namespace Antad.ViewModels
     public class PromotorViewModel:BaseViewModel
     {
         #region Attributes
+        private bool isRefreshing;
         private ApiService apiService;
         private Promotor Promotor { get; set; }
         private ObservableCollection<Evento> eventos { get; set; }
@@ -20,7 +23,15 @@ namespace Antad.ViewModels
 
 
         #region Properties
-
+        public bool IsRefreshing
+        {
+            get { return this.isRefreshing; }
+            set
+            {
+                isRefreshing = value;
+                OnPropertyChanged();
+            }
+        }
         public UserSession urr = JsonConvert.DeserializeObject<UserSession>(Settings.UserSession);
 
         public string UserName
@@ -44,6 +55,16 @@ namespace Antad.ViewModels
         }
         #endregion
 
+        #region Commands
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new RelayCommand(CargarEventos);
+            }
+        }
+        #endregion
+
         #region Contructors
         public PromotorViewModel()
         {
@@ -53,12 +74,12 @@ namespace Antad.ViewModels
 
          private async void CargarEventos()
          {
-            //this.IsRefreshing = true;
+            this.IsRefreshing = true;
             var connection = await this.apiService.CheckConnection();
 
             if (!connection.IsSuccess)
             {
-               // this.IsRefreshing = false;
+               this.IsRefreshing = false;
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
                 return;
             }
@@ -78,14 +99,14 @@ namespace Antad.ViewModels
             var response = await this.apiService.PostList<Evento>(url, prefix, controller, usser);
             if (!response.IsSuccess)
             {
-                //this.IsRefreshing = false;
+                this.IsRefreshing = false;
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
                 return;
             }
 
             var list = (List<Evento>)response.Result;
             this.Eventos = new ObservableCollection<Evento>(list);
-            //this.IsRefreshing = false;
+            this.IsRefreshing = false;
             //this.MyUsuarios = (List<Usuario>)response.Result;
             //this.RefreshList();
 

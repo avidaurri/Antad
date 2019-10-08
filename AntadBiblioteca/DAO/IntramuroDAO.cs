@@ -73,6 +73,7 @@ namespace AntadBiblioteca.DAO
                     intramuro.existeSucursal = true;
                     intramuro.mensajeSucursal = "ok";
                     intramuro.mensajeOperacion = "Debes de estar cerca de tu sucursal asignada";
+                    intramuro.falloValidacion = true;
                 }
                 //string km = (distancia / 1000).ToString();
             }

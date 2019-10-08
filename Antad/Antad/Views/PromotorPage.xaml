@@ -9,8 +9,8 @@
              BackgroundImageSource="fondosplash"
              Title="Promotor">
     <ContentPage.Content>
-
-        <Grid VerticalOptions="FillAndExpand">
+       
+            <Grid VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="120" />
                 <RowDefinition Height="Auto" />
@@ -49,12 +49,14 @@
                 </Grid>
             </Frame>
 
-
+           
+                
+           
             <StackLayout Grid.Row="3" Grid.ColumnSpan="2"
             BindingContext="{Binding Promotor}"
             Padding="5">
-
-                <ListView
+                <ScrollView>
+                    <ListView
                 HasUnevenRows="True"
                 ItemsSource="{Binding Eventos}"
                 IsRefreshing="{Binding IsRefreshing}"
@@ -109,9 +111,9 @@
 
 
                 </ListView>
-
+ </ScrollView>
             </StackLayout>
-
+           
 
         </Grid>
 

@@ -7,6 +7,7 @@ using Plugin.Geolocator;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using ZXing;
@@ -103,7 +104,13 @@ namespace Antad.ViewModels
                 return new RelayCommand(Scan);
             }
         }
-
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new RelayCommand(CargarSucursal);
+            }
+        }
         private async  void Scan()
         {
             /*  await Application.Current.MainPage.DisplayAlert(
@@ -139,8 +146,37 @@ namespace Antad.ViewModels
                await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
                 return;
             }
+
+             var usser = new GetUserRequest
+            {
+                User = UserName,
+                latitud = -99.528970,
+                longitud = -99.528970,
+
+
+            };
+
+            this.IsRunning = true;
+            this.IsEnabled = false;
+
+          var url = Application.Current.Resources["UrlAPI"].ToString();
+            var prefix = Application.Current.Resources["UrlPrefix"].ToString();
+            var controller = Application.Current.Resources["UrlIntramuro"].ToString();
+            var response = await this.apiService.GetWithPost(url, prefix, controller, usser);
+            if (!response.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
+                return;
+            }
+            this.IsRunning = false;
+            this.IsEnabled = true;
+            this.Sucursal = (Intramuro)response.Result;
+
+
             /////////////////////////////////////////////
-            var locator = CrossGeolocator.Current;
+            /*var locator = CrossGeolocator.Current;
             locator.DesiredAccuracy = 50;
 
             if (locator.IsGeolocationAvailable)// devuuelve si el servicio existe en el dispositivo
@@ -165,14 +201,14 @@ namespace Antad.ViewModels
 
                         };
 
+                        await Task.Delay(1000);
+
                         this.IsRunning = true;
                         this.IsEnabled = false;
 
                         var url = Application.Current.Resources["UrlAPI"].ToString();
                         var prefix = Application.Current.Resources["UrlPrefix"].ToString();
                         var controller = Application.Current.Resources["UrlIntramuro"].ToString();
-                        //var response = await this.apiService.GetList<Intramuro>(url, prefix, controller);
-                        //var response = await this.apiService.GetWithPost(url, prefix, controller, registro);
                         var response = await this.apiService.GetWithPost(url, prefix, controller, usser);
                         if (!response.IsSuccess)
                         {
@@ -191,67 +227,13 @@ namespace Antad.ViewModels
                 }
 
 
-            }
+            }*/
 
 
 
 
             ////////////////////////////////////////////
-            /*var usser = new GetUserRequest
-            {
-                User = UserName,
-                latitud = 1.4008161,
-                longitud = -9.528970,
 
-
-            };*/
-
-
-
-
-            //throw new NotImplementedException();
-            // ok
-            /*this.Sucursal = new Intramuro
-            {                
-                idUsuario = 1,
-                empresa = "walmart",
-                idSucursal = 1,
-                nombreSucursal = "walmart",
-                fotoSucursal = "https://compilacionweb.online/DemoAntad/FotosCC/soriana.jpg",
-                distanciaSucursal = "6",
-                existeSucursal = true,
-                mostarMensajeSucursal = false,
-                existeOperacion = true,
-                mostrarMensajeOperacion = false,
-                mensajeSucursal = "walmart",
-                mensajeOperacion = "walmart",
-                latitud = "walmart",
-                longitud = "walmart",
-
-            };
-
-
-
-            // no sucursal
-            this.Sucursal = new Intramuro
-            {
-                idUsuario = 1,
-                empresa = "walmart",
-                idSucursal = 1,
-                nombreSucursal = "walmart",
-                fotoSucursal = "https://compilacionweb.online/DemoAntad/FotosCC/soriana.jpg",
-                distanciaSucursal = "6",
-                existeSucursal = false,
-                mostarMensajeSucursal = true,
-                existeOperacion = false,
-                mostrarMensajeOperacion = true,
-                mensajeSucursal = "la sucursal no esta tu alcance",
-                mensajeOperacion = "Ubicate en tu sucursalde trabajo",
-                latitud = "walmart",
-                longitud = "walmart",
-                falloValidacion=true,
-
-            };*/
         }
         #endregion
     }

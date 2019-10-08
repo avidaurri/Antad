@@ -49,7 +49,9 @@
             </Grid>
         </Frame>
 
-
+      
+                
+        
         <StackLayout  BindingContext="{Binding Intramuro}" 
                 Grid.Row="3" Grid.ColumnSpan="2">
             <Grid VerticalOptions="Start">
@@ -100,7 +102,8 @@
                     IsRunning="{Binding Sucursal.IsRunning}"
                     VerticalOptions="CenterAndExpand">
                         </ActivityIndicator>
-                        <Button IsEnabled="{Binding Sucursal.IsEnabled}" IsVisible="{Binding Sucursal.falloValidacion}" BackgroundColor="DeepSkyBlue" Text="ACTUALIZAR SUCURSAL" TextColor="White"></Button>
+                        <Button IsEnabled="{Binding Sucursal.IsEnabled}" IsVisible="{Binding Sucursal.falloValidacion}"
+                                Command="{Binding RefreshCommand}" BackgroundColor="DeepSkyBlue" Text="ACTUALIZAR SUCURSAL" TextColor="White"></Button>
                     </StackLayout>
                     
 
@@ -112,7 +115,8 @@
 
 
         </StackLayout>
-
+        
+       
 
         </Grid>  
     </ContentPage.Content>
