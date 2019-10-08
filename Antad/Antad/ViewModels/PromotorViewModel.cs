@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -18,7 +19,7 @@ namespace Antad.ViewModels
         private bool isRefreshing;
         private ApiService apiService;
         private Promotor Promotor { get; set; }
-        private ObservableCollection<Evento> eventos { get; set; }
+        private ObservableCollection<EventoItemViewModel> eventos { get; set; }
         #endregion
 
 
@@ -44,7 +45,7 @@ namespace Antad.ViewModels
 
             }
         }
-        public ObservableCollection<Evento> Eventos {
+        public ObservableCollection<EventoItemViewModel> Eventos {
 
             get { return this.eventos; }
             set
@@ -105,7 +106,22 @@ namespace Antad.ViewModels
             }
 
             var list = (List<Evento>)response.Result;
-            this.Eventos = new ObservableCollection<Evento>(list);
+            var myList = list.Select(p => new EventoItemViewModel
+            {
+                folioEvento = p.folioEvento,
+                clv_Empleado = p.clv_Empleado,
+                usuario = p.usuario,
+                fotoSucursal = p.fotoSucursal,
+                folioSucursal = p.folioSucursal,
+                nombreSucursal = p.nombreSucursal,
+                fechaInicio = p.fechaInicio,
+                fechaFinal = p.fechaFinal,
+                estatusEvento = p.estatusEvento,
+                clvEstatusEvento = p.clvEstatusEvento,
+
+            });
+
+            this.Eventos = new ObservableCollection<EventoItemViewModel>(myList);
             this.IsRefreshing = false;
             //this.MyUsuarios = (List<Usuario>)response.Result;
             //this.RefreshList();

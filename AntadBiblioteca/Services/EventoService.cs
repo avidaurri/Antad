@@ -23,6 +23,11 @@ namespace AntadBiblioteca.Services
 
         }
 
+        public Evento getDetalleEvento(string usuario, string evento)
+        {
+            return loginAccesoDatos.getDetalleEvento(usuario, evento);
+            //return loginAccesoDatos.ValidarUsuario(usuario, password);
 
+        }
     }
 }

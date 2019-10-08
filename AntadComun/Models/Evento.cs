@@ -19,5 +19,9 @@ namespace AntadComun.Models
         public string estatusEvento { get; set; }
         public int clvEstatusEvento { get; set; }
 
+        public string mensajeEvento { get; set; }
+        public string descripcionMensajeEvento { get; set; }
+
+        public bool seeQR { get; set; }
     }
 }

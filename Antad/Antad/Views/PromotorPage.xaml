@@ -66,13 +66,13 @@
                         <DataTemplate>
 
                             <ViewCell>
-                                <ViewCell.ContextActions>
+                                <!--<ViewCell.ContextActions>
                                     <MenuItem Text="Editar" Command="{Binding EditarUsuarioCommand}"/>
                                     <MenuItem Text="Eliminar" Command="{Binding EliminarUsuarioCommand}" IsDestructive="True"/>
-                                </ViewCell.ContextActions>
+                                </ViewCell.ContextActions>-->
                                 <Grid>
                                     <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding EditarUsuarioCommand}"/>
+                                        <TapGestureRecognizer Command="{Binding DetalleEventoCommand}"/>
                                     </Grid.GestureRecognizers>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
