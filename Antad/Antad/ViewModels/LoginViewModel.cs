@@ -195,7 +195,8 @@ namespace Antad.ViewModels
                     }
 
                     // MainViewModel.GetInstance().Usuarios = new UsuariosViewModel();
-                    MainViewModel.GetInstance().Intramuro = new IntramuroViewModel();
+                    //MainViewModel.GetInstance().Intramuro = new IntramuroViewModel();
+                    MainViewModel.GetInstance().Promotor = new PromotorViewModel();
                     Application.Current.MainPage = new Master();
 
 

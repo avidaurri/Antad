@@ -79,7 +79,49 @@ namespace Antad.Services
                 };
             }
         }
-        
+
+
+        public async Task<Response> PostList<T>(string urlBase, string prefix, string controller, GetUserRequest model)
+        {
+            try
+            {
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(request, Encoding.UTF8, "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = $"{prefix}{controller}";
+                var response = await client.PostAsync(url, content);
+                var answer = await response.Content.ReadAsStringAsync();
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = answer,
+                    };
+                }
+
+                var list = JsonConvert.DeserializeObject<List<T>>(answer);
+                return new Response
+                {
+                    IsSuccess = true,
+                    Result = list,
+                };
+
+            }
+            catch (Exception ex)
+            {
+
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+
+                };
+            }
+        }
+
+
         public async Task<Response> GetWithPost<T>(string urlBase, string prefix, string controller, T model)
         {
             try

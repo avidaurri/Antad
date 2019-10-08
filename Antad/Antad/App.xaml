@@ -19,6 +19,7 @@
             <x:String x:Key="UrlLoginApp">/LoginApp</x:String>
             <x:String x:Key="UrlUserSession">/UserSession</x:String>
             <x:String x:Key="UrlIntramuro">/Intramuro</x:String>
+            <x:String x:Key="UrlEvento">/Evento</x:String>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

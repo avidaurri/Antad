@@ -46,7 +46,7 @@ namespace AntadBiblioteca.DAO
                 evento.folioEvento = readerSuc["folioEvento"].ToString();
                 evento.clv_Empleado = Convert.ToInt32(readerSuc["clv_Empleado"].ToString());
                 evento.usuario = readerSuc["usuario"].ToString();
-                evento.fotoSucursal = readerSuc["fotoSucursal"].ToString();
+                evento.fotoSucursal = "https://compilacionweb.online/DemoAntad/" + readerSuc["fotoSucursal"].ToString();
                 evento.folioSucursal = readerSuc["folioSucursal"].ToString();
                 evento.nombreSucursal = readerSuc["nombreSucursal"].ToString();
                 evento.fechaInicio = readerSuc["fechaInicio"].ToString();
