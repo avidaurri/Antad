@@ -20,8 +20,15 @@ namespace Antad.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
+
+            //añadido
+            ZXing.Net.Mobile.Forms.Android.Platform.Init();
+            //Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
+            //añadido
+
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             ImageCircleRenderer.Init();
+
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
@@ -37,6 +44,10 @@ namespace Antad.Droid
                     permissions,
                     grantResults);
             }
+
+
+
+
        /* public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);

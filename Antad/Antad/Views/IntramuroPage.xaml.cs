@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ZXing.Net.Mobile.Forms;
 
 namespace Antad.Views
 {
@@ -16,5 +17,25 @@ namespace Antad.Views
         {
             InitializeComponent();
         }
+
+       /* private async Task Button_ClickedAsync(object sender, EventArgs e)
+        {
+            var scannerPage = new ZXingScannerPage();
+            scannerPage.Title = "Lector QR";
+            scannerPage.OnScanResult += (result) =>
+            {
+                scannerPage.IsScanning = false;
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    Navigation.PopAsync();
+                    string evento = result.Text;
+
+                });
+            };
+
+            await Navigation.PushAsync(scannerPage);
+        }*/
+
+ 
     }
 }

@@ -63,13 +63,13 @@
 
                 <!-- -->
 
-                    <StackLayout BindingContext="{Binding Sucursal}" Grid.ColumnSpan="2" 
+                    <StackLayout  Grid.ColumnSpan="2" 
              Orientation="Horizontal" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center" >
-                    <Image IsVisible="{Binding existeSucursal}" x:Name="imgSucursal" Source="{Binding fotoSucursal}" WidthRequest="85" HeightRequest="65" HorizontalOptions="Start" VerticalOptions="Center"/>
-                    <Label IsVisible="{Binding existeSucursal}" x:Name="nombreSucursal" Text="{Binding nombreSucursal}" FontSize="18" VerticalOptions="Center" TextColor="Gray"/>
-                    <Label  IsVisible="{Binding mostarMensajeSucursal}"  Text="{Binding mensajeSucursal}" 
+                        <Image IsVisible="{Binding Sucursal.existeSucursal}" x:Name="imgSucursal" Source="{Binding Sucursal.fotoSucursal}" WidthRequest="85" HeightRequest="65" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Label IsVisible="{Binding Sucursal.existeSucursal}" x:Name="nombreSucursal" Text="{Binding Sucursal.nombreSucursal}" FontSize="18" VerticalOptions="Center" TextColor="Gray"/>
+                        <Label  IsVisible="{Binding Sucursal.mostarMensajeSucursal}"  Text="{Binding Sucursal.mensajeSucursal}" 
             FontSize="18" VerticalOptions="Center" TextColor="Gray" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
-                    <Image IsVisible="{Binding mostarMensajeSucursal}" Source="ic_action_error" WidthRequest="50" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <!--<Image IsVisible="{Binding Sucursal.mostarMensajeSucursal}" Source="ic_action_error" WidthRequest="50" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center"/>-->
                     </StackLayout>
 
                 <Frame Grid.Row="1" Grid.ColumnSpan="2"  HasShadow="True" Margin="20,0,20,0" CornerRadius="10"  Padding="0" HeightRequest="50" VerticalOptions="Start">
@@ -85,22 +85,22 @@
                     </Grid>
                 </Frame>
 
-                <StackLayout BindingContext="{Binding Sucursal}"  Grid.Row="2" Grid.ColumnSpan="2"  BackgroundColor="Transparent"  VerticalOptions="End">
+                <StackLayout   Grid.Row="2" Grid.ColumnSpan="2"  BackgroundColor="Transparent"  VerticalOptions="End">
                     <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="Center" VerticalOptions="End">
-                        <Button IsVisible="{Binding existeOperacion}" BackgroundColor="DarkBlue" BorderRadius="10" Text="ESCANEAR QR" TextColor="White"   />
-                        <Button IsVisible="{Binding existeOperacion}" BackgroundColor="BlueViolet" BorderRadius="10" Text="VALIDAR OPERACION" TextColor="White" />
-                        <Label IsVisible="{Binding mostrarMensajeOperacion}"  Text="{Binding mensajeOperacion}" 
+                            <Button IsVisible="{Binding Sucursal.existeOperacion}" BackgroundColor="DarkBlue" BorderRadius="10" Text="ESCANEAR QR" TextColor="White"  Command="{Binding ScanCommand}" />
+                        <!--<Button IsVisible="{Binding existeOperacion}" BackgroundColor="BlueViolet" BorderRadius="10" Text="VALIDAR OPERACION" TextColor="White" /> -->
+                            <Label IsVisible="{Binding Sucursal.mostrarMensajeOperacion}"  Text="{Binding Sucursal.mensajeOperacion}" 
                     FontSize="18" VerticalOptions="Center" TextColor="Gray" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
-                            <Image IsVisible="{Binding mostrarMensajeOperacion}" Source="ic_action_error" WidthRequest="50" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <!--<Image IsVisible="{Binding Sucursal.mostrarMensajeOperacion}" Source="ic_action_error" WidthRequest="50" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center"/>-->
                         </StackLayout>
                 </StackLayout>
 
-                    <StackLayout Grid.Row="3" Grid.ColumnSpan="2" Orientation="Vertical" VerticalOptions="EndAndExpand" >
+                    <StackLayout  Grid.Row="3" Grid.ColumnSpan="2" Orientation="Vertical" VerticalOptions="EndAndExpand" >
                         <ActivityIndicator
-                    IsRunning="{Binding IsRunning}"
+                    IsRunning="{Binding Sucursal.IsRunning}"
                     VerticalOptions="CenterAndExpand">
                         </ActivityIndicator>
-                        <Button IsEnabled="{Binding IsEnabled}" IsVisible="{Binding falloValidacion}" BackgroundColor="DeepSkyBlue" Text="ACTUALIZAR SUCURSAL" TextColor="White"></Button>
+                        <Button IsEnabled="{Binding Sucursal.IsEnabled}" IsVisible="{Binding Sucursal.falloValidacion}" BackgroundColor="DeepSkyBlue" Text="ACTUALIZAR SUCURSAL" TextColor="White"></Button>
                     </StackLayout>
                     
 

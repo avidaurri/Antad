@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\CheckIn.cs" />
+    <Compile Include="Models\Evento.cs" />
     <Compile Include="Models\EventoOperacion.cs" />
     <Compile Include="Models\GetUserRequest.cs" />
     <Compile Include="Models\LoginAntad.cs" />
