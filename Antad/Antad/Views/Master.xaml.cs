@@ -15,7 +15,8 @@ namespace Antad.Views
         public Master()
         {
             InitializeComponent();
-            //this.Master = new IntramuroPage();
+           // this.Detail.Navigation.PushAsync(new PromotorPage());
+            //this.Detail = new NavigationPage(new PromotorPage());
             //Detail =new IntramuroPage();
 
             //this.Detail=new IntramuroPage();
