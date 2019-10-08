@@ -14,7 +14,7 @@ namespace Antad.Views
     public partial class PopupView
     {
         ZXingBarcodeImageView barcode;
-        public PopupView(string usuario, string evento, string mensaje)
+        public PopupView(string usuario, string evento, string estatus,string mensaje)
         {
             InitializeComponent();
             barcode = new ZXingBarcodeImageView
@@ -26,7 +26,7 @@ namespace Antad.Views
             barcode.BarcodeFormat = ZXing.BarcodeFormat.QR_CODE;
             barcode.BarcodeOptions.Width = 500;
             barcode.BarcodeOptions.Height = 500;
-            barcode.BarcodeValue = usuario+ "/" + evento;
+            barcode.BarcodeValue = usuario+ "/" + evento + "&" + estatus;
  //mensajePop.Text = mensaje;
           // Task.Delay(500);
             stackPrinc.Children.Insert(1, barcode);

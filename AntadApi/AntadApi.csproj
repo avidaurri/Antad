@@ -169,6 +169,7 @@
     <Compile Include="Controllers\UserSessionController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\ValidacionEventoController.cs" />
+    <Compile Include="Controllers\ValidaEventoController.cs" />
     <Compile Include="Controllers\ValidaIntramuroController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">

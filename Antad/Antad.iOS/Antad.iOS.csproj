@@ -215,4 +215,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_action_camera_alt.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_action_check.png" />
+  </ItemGroup>
 </Project>

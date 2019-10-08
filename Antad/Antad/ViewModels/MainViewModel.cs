@@ -27,6 +27,12 @@ namespace Antad.ViewModels
 
         public AgregarUsuarioViewModel AgregarUsuario { get; set; }
 
+        public ValidacionAutorizarViewModel ValidarAutorizar { get; set; }
+
+        public ValidacionActividadViewModel ValidacionActividad { get; set; }
+
+        public BienvenidoViewModel Bienvenido { get; set; }
+
         public string UserFullName
         {
             get
@@ -168,9 +174,10 @@ namespace Antad.ViewModels
 
         private void SeeQR()
         {
+            string estatus = this.EventoOperacion.Evento.clvEstatusEvento.ToString();
             string eventtoo = this.EventoOperacion.Evento.folioEvento;
             string usuario = this.EventoOperacion.Evento.usuario;
-            PopupNavigation.Instance.PushAsync(new PopupView(eventtoo, usuario,"Escanea este código para supervisar tu evento"));
+            PopupNavigation.Instance.PushAsync(new PopupView(usuario,eventtoo,estatus,"Escanea este código para supervisar tu evento"));
 
         }
         #endregion

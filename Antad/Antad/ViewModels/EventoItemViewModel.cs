@@ -85,7 +85,7 @@ namespace Antad.ViewModels
             else if (this.Eventt.seeQR)
             {
                 // mostrar qr
-                PopupNavigation.Instance.PushAsync(new PopupView(this.Eventt.usuario, this.Eventt.folioEvento, "Pide autorización a través de este código"));
+                PopupNavigation.Instance.PushAsync(new PopupView(this.Eventt.usuario, this.Eventt.folioEvento,this.Eventt.clvEstatusEvento.ToString(), "Pide autorización a través de este código"));
             }
             else if (!this.Eventt.seeQR && this.Eventt.clvEstatusEvento.Equals(4))
             {

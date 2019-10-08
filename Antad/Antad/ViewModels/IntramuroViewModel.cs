@@ -10,9 +10,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using System.Linq;
 using ZXing;
 using ZXing.Mobile;
 using ZXing.Net.Mobile.Forms;
+using Antad.Views;
 
 namespace Antad.ViewModels
 {
@@ -29,6 +31,7 @@ namespace Antad.ViewModels
 
 
         #region Properties
+        public Evento enviar = new Evento();
         public string Result
         {
             get => _result;
@@ -113,11 +116,6 @@ namespace Antad.ViewModels
         }
         private async  void Scan()
         {
-            /*  await Application.Current.MainPage.DisplayAlert(
-         "Error",
-         "Escribe una curp valida",
-         Languages.Accept);*/
-
             var scannerPage = new ZXingScannerPage();
             scannerPage.Title = "Lector QR";
             await App.Navigator.PushAsync(scannerPage);
@@ -129,9 +127,42 @@ namespace Antad.ViewModels
                     await App.Navigator.PopAsync();
                     string evento = result.Text;
 
+                    int estatus = Convert.ToInt32(evento.Split('&').Last());
+                    string primera = evento.Split('&').First();
+
+                    string eventom = primera.Split('/').Last();
+                    string usuariom = primera.Split('/').First();
+
+                    //inicializado
+                    /*int estatus = 3;
+                    string eventom = "e01";
+                    string usuariom = "alexa";*/
+
+                    // no inicializado
+                    /*int estatus = 4;
+                    string eventom = "e02";
+                    string usuariom = "alexa";*/
+
+                    if (estatus.Equals(3))
+                    {
+                        // evento inicializado
+                        MainViewModel.GetInstance().ValidacionActividad = new ValidacionActividadViewModel(eventom, usuariom);
+                        //await Application.Current.MainPage.Navigation.PushAsync(new EditarUsuarioPage());
+                        await App.Navigator.PushAsync(new ValidacionActividadPage());
+
+
+                    }
+                    else if (estatus.Equals(4))
+                    {
+                        //evento no inicializado
+                        MainViewModel.GetInstance().ValidarAutorizar = new ValidacionAutorizarViewModel(eventom,usuariom);
+                        //await Application.Current.MainPage.Navigation.PushAsync(new EditarUsuarioPage());
+                        await App.Navigator.PushAsync(new ValidacionAutorizarPage());
+                    }
+
                 });
             };
-            // Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(page), true);
+
         }
         #endregion
         #region Methods

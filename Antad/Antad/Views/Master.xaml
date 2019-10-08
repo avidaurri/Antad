@@ -13,7 +13,7 @@
     <MasterDetailPage.Detail>
           <NavigationPage x:Name="Navigator">
           <x:Arguments>
-                <pages:PromotorPage/>
+                <pages:Bienvenido/>
             </x:Arguments>
             
         </NavigationPage>

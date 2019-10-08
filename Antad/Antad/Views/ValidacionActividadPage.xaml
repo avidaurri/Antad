@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Antad.Views.ValidacionActividadPage"
+                           BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundImageSource="fondosplash"
+             Title="Validar actividad">
+    <ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Grid.Column="0" Orientation="Horizontal"  HorizontalOptions="Center" VerticalOptions="Center">
+                <StackLayout Orientation="Horizontal" VerticalOptions="Start" Margin="0">
+                    <Image x:Name="imgFotoIntramuro"  Source="alexa" HeightRequest="80" VerticalOptions="Center"/>
+                </StackLayout>
+
+            </StackLayout>
+            <StackLayout Grid.Column="1"  Orientation="Vertical"   VerticalOptions="Center" HorizontalOptions="Start">
+
+                <Label x:Name="lblNombreIntramuro"  Text="alexa martinez martinez" TextColor="Gray" 
+                       FontSize="16" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+
+
+            </StackLayout>
+
+            <Frame Grid.Row="2" Grid.ColumnSpan="2"  HasShadow="True" CornerRadius="10" Margin="0" Padding="0" HeightRequest="50" VerticalOptions="Start">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                        <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
+                            <Label  Text="VALIDACION DE ACTIVIDAD" TextColor="Gray" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </StackLayout>
+
+                </Grid>
+            </Frame>
+
+            <Frame Grid.Row="3" Grid.ColumnSpan="2"  HasShadow="True" CornerRadius="10" Margin="20,20,20,20" Padding="0" HeightRequest="50" VerticalOptions="Start">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                        <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
+                            <Label  Text="DEPARTAMENTOS AUTORIZADOS" TextColor="Gray" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </StackLayout>
+
+                </Grid>
+            </Frame>
+
+            <StackLayout Grid.ColumnSpan="2" Grid.Row="4" Orientation="Horizontal" >
+                <Image Source="ic_action_check.png" />
+                <Label Text="Salchichonería" VerticalOptions="Center" TextColor="DimGray" />
+            </StackLayout>
+
+            <StackLayout Grid.ColumnSpan="2" Grid.Row="5" Orientation="Horizontal" >
+                <Image Source="ic_action_check.png" />
+                <Label Text="Lacteos" VerticalOptions="Center" TextColor="DimGray" />
+            </StackLayout>
+
+            <StackLayout Grid.ColumnSpan="2" Grid.Row="6" Orientation="Horizontal">
+                <Image Source="ic_action_check.png" />
+                <Label Text="Vinos y Licores" VerticalOptions="Center" TextColor="DimGray" />
+            </StackLayout>
+
+            <StackLayout Grid.ColumnSpan="2" Grid.Row="7" Orientation="Horizontal" >
+                <Image Source="ic_action_check.png" />
+                <Label Text="Entrada Principal" VerticalOptions="Center" TextColor="DimGray" />
+            </StackLayout>
+
+
+
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

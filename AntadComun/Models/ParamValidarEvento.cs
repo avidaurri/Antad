@@ -11,5 +11,9 @@ namespace AntadComun.Models
         public int idUsuario { get; set; }
         public int idIntramuro { get; set; }
         public int idEvento { get; set; }
+
+        public string idUsuarios { get; set; }
+
+        public string idEventos { get; set; }
     }
 }
