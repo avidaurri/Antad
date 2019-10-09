@@ -48,7 +48,7 @@ namespace AntadBiblioteca.DAO
 
             SqlDataReader readerSuc = conexion.Consultar(select, parametros);
 
-
+            evento.validacionFinal = true;
 
             if (readerSuc.Read())
             {
@@ -65,228 +65,211 @@ namespace AntadBiblioteca.DAO
                 evento.fotoUsuario = readerSuc["fotoUsuario"].ToString();
                 evento.nombreUsuario = readerSuc["nombreUsuario"].ToString();
                 evento.sexoUsuario = readerSuc["sexoUsuario"].ToString();
-                evento.edadUsuario = readerSuc["edadUsuario"].ToString();
+                evento.edadUsuario = Convert.ToInt32(readerSuc["edadUsuario"].ToString());
                 evento.imssUsuario = Convert.ToBoolean(readerSuc["imssUsuario"].ToString());
 
             }
 
-            /*
+            //sacar sexo sucursal e imss sucursal
+
+            string sexoSuc = "  select clv_requisito as requisito from requisitos_cadena where clv_cadena=( " +
+                "select top 1 cct.clv_cadena from evento_cara ec left join centro_trabajo ct on ct.folio_centro_trabajo = ec.folio_centro_trabajo " +
+                "  left join cadena_centro_trabajo cct on cct.clv_cadena = ct.clv_cadena where folio_evento = @evento   )";
 
 
-            // documentos de sucursal
-            string selectd = "select cd.id as idDocumento, cd.nombre as nombreDocumento " +
-                "from evento e left join cat_sucursal cs on cs.id=e.id_sucursal left join cat_empresa ce on ce.id = cs.id_empresa " +
-                "left join empresa_requisitos er on er.id_empresa = ce.id left join cat_documentos cd on cd.id = er.id_documento " +
-                "where e.id = @evento";
+            SqlDataReader readersexoSuc = conexion.Consultar(sexoSuc, parametros);
 
-            SqlDataReader readerDocSuc = conexion.Consultar(selectd, parametros);
-
-            List<ValidacionEvento.DocumentoSucursal> ldocSuc = new List<ValidacionEvento.DocumentoSucursal>();
-
-            while (readerDocSuc.Read())
+            evento.imssSucursal = false;
+            bool feneminoSuc = false;
+            bool masculinoSuc = false;
+            int requisito;
+            while (readersexoSuc.Read())
             {
-                ValidacionEvento.DocumentoSucursal docSuc = new ValidacionEvento.DocumentoSucursal();
-                docSuc.idDocumento = Convert.ToInt32(readerDocSuc["idDocumento"].ToString());
-                docSuc.nombreDocumento = readerDocSuc["nombreDocumento"].ToString();
-                ldocSuc.Add(docSuc);
+                requisito = Convert.ToInt32(readersexoSuc["requisito"].ToString());
+
+                if (requisito.Equals(6))
+                {
+                    evento.imssSucursal = true;
+                    
+                }
+
+                if (requisito.Equals(2))
+                {
+                    feneminoSuc = true;
+                }
+
+                if (requisito.Equals(3))
+                {
+                    masculinoSuc = true;
+                }
             }
-            evento.documentosucursal = ldocSuc;
 
-            // documentos promotor
-            string selectp = "select ud.id_documento as idDocumento, cd.nombre as nombreDocumento,ud.documento as urlDocumento" +
-                " from usuarios u left join usuario_documentos ud on ud.id_usuario=u.id left join cat_documentos cd on cd.id = ud.id_documento " +
-                "where u.id = @usuario";
-
-            SqlDataReader readerDocPro = conexion.Consultar(selectp, parametros);
-
-            List<ValidacionEvento.DocumentoPromotor> ldocPro = new List<ValidacionEvento.DocumentoPromotor>();
-
-            while (readerDocPro.Read())
+            //valida imss
+            if (evento.imssSucursal)
             {
-                ValidacionEvento.DocumentoPromotor docPro = new ValidacionEvento.DocumentoPromotor();
-                docPro.idDocumento = Convert.ToInt32(readerDocPro["idDocumento"].ToString());
-                docPro.nombreDocumento = readerDocPro["nombreDocumento"].ToString();
-                docPro.urlDocumento = readerDocPro["urlDocumento"].ToString();
-                ldocPro.Add(docPro);
-            }
-            evento.documentospromotor = ldocPro;
-
-
-            //validacion de documentos
-            //total de docuemntos de la sucursal
-            string selectTotal = "select count(*) as Totals from evento e left join cat_sucursal cs on cs.id = e.id_sucursal left join cat_empresa ce on ce.id = cs.id_empresa " +
-                "left join empresa_requisitos er on er.id_empresa = ce.id left join cat_documentos cd on cd.id = er.id_documento where e.id = @evento ";
-
-
-            SqlDataReader readerToSuc = conexion.Consultar(selectTotal, parametros);
-            int totalDoc;
-            if (readerToSuc.Read())
-            {
-
-                totalDoc = Convert.ToInt32(readerToSuc["Totals"].ToString());
-
+                if (!evento.imssUsuario)
+                {
+                    evento.validaImss = false;
+                }
             }
             else
             {
-                totalDoc = 0;
-            }
-
-            //total de cruce doc suscursal y docs promotor
-            string selectTotalC = "select count(*) AS Totals from (select cd.id as idDocumento, cd.nombre as nombreDocumento from evento e left join " +
-                "cat_sucursal cs on cs.id=e.id_sucursal left join cat_empresa ce on ce.id = cs.id_empresa left join empresa_requisitos er on er.id_empresa = ce.id " +
-                "left join cat_documentos cd on cd.id = er.id_documento where e.id = @evento) as uno inner join " +
-                "(select ud.id_documento as idDocumento, cd.nombre as nombreDocumento,ud.documento as urlDocumento from usuarios u " +
-                "left join usuario_documentos ud on ud.id_usuario = u.id left join cat_documentos cd on cd.id = ud.id_documento where u.id = @usuario)as dos " +
-                "on uno.idDocumento = dos.idDocumento ";
-
-
-            SqlDataReader readerToSucC = conexion.Consultar(selectTotalC, parametros);
-            int totalDocC;
-            if (readerToSucC.Read())
-            {
-
-                totalDocC = Convert.ToInt32(readerToSucC["Totals"].ToString());
-
-            }
-            else
-            {
-                totalDocC = 0;
-            }
-
-            if (totalDocC.Equals(totalDoc))
-            {
-                evento.validacionDocumentos = true;
-                evento.mensajeValidacionDocumentos = "Ningun documento faltante";
-            }
-            else
-            {
-                evento.validacionDocumentos = false;
-                evento.mensajeValidacionDocumentos = "Faltan documentos";
-                evento.validacionFinal = false;
+                evento.validaImss = true;
             }
 
 
-            //validacion carta laboral.
-
-            if (evento.idTipoSucursal.Equals(2))
+            // llenar sexo sucursal
+            evento.validaSexo = true;
+            if(feneminoSuc && masculinoSuc)
             {
-                //verificar si promotor tiene carta laboral
-                string verificarCarta = "select * from usuario_carta_laboral ucl left join carta_laboral cl on cl.id = ucl.id_carta " +
-                    "left join cat_empresa ce on ce.id = cl.id_empresa  where ucl.id_usuario = @usuario and ucl.activo = 1 and ce.id = " +
-                    "(select ce.id from evento e left join cat_sucursal cs on e.id_sucursal = cs.id left join cat_empresa ce on ce.id = cs.id_empresa where e.id = @evento) " +
-                    "and cl.vigencia_final >= getdate() and cl.vigencia_inicial <= getdate()";
+                evento.sexoSucursal = "Ambos Sexos";
+            }
+            else if(!feneminoSuc && masculinoSuc)
+            {
 
-                SqlDataReader readerVerCarta = conexion.Consultar(verificarCarta, parametros);
+                evento.sexoSucursal = "Sexo masculino";
+                if (evento.sexoUsuario.Equals("H"))
+                {
+                    
+                    evento.validacionFinal = false;
+                    evento.validaSexo = false;
+                }
+                    
+            }
+            else if (feneminoSuc && !masculinoSuc)
+            {
+                evento.sexoSucursal = "Sexo femenino";
+                if (evento.sexoUsuario.Equals("M"))
+                {
+                    
+                    evento.validacionFinal = false;
+                    evento.validaSexo = false;
+                }
+            }
 
-                if (readerVerCarta.Read())
+
+            // extraer los requisitos de tipo 2 y 3 y validarlos
+
+
+            string tipoDosSuc = "select per.clv_requisito_evento as clvRequisito, per.rango_inferior as menor, per.rango_superior as mayor, " +
+                "ccc.descripcion as nombreRequisito, ccc.clv_tipo_requisito as tipoReq from proyecto_evento_requisitos per left join cat_requisito_evento ccc on ccc.clv_requisito_evento = per.clv_requisito_evento " +
+                "where per.clv_requisito_evento in( select clv_requisito from requisitos_cadena rc left join cat_requisito_evento cre on " +
+                "rc.clv_requisito = cre.clv_requisito_evento where clv_tipo_requisito in(2,3) and clv_cadena = " +
+                "( select top 1 cct.clv_cadena from evento_cara ec " +
+                " left join centro_trabajo ct on ct.folio_centro_trabajo = ec.folio_centro_trabajo  " +
+                " left join cadena_centro_trabajo cct on cct.clv_cadena = ct.clv_cadena   where folio_evento = @evento ) )";
+
+
+            SqlDataReader readertipoDos = conexion.Consultar(tipoDosSuc, parametros);
+
+            List<ValidaEvento.Rango> ldocSuc = new List<ValidaEvento.Rango>();
+            double bajo;
+            double alto;
+            int clvReqEven = 0;
+            //double valll = 0;
+            while (readertipoDos.Read())
+            {
+                ValidaEvento.Rango docSuc = new ValidaEvento.Rango();
+                docSuc.nombreRequisito = readertipoDos["nombreRequisito"].ToString();
+                docSuc.menor = Convert.ToDouble(readertipoDos["menor"].ToString());
+                docSuc.mayor = Convert.ToDouble(readertipoDos["mayor"].ToString());
+                bajo = docSuc.menor;
+                alto = docSuc.mayor;
+                if (Convert.ToInt32(readertipoDos["clvRequisito"].ToString()).Equals(1))
+                {
+                    docSuc.valor = evento.edadUsuario;
+                    if (evento.edadUsuario>=bajo && evento.edadUsuario <= alto)
+                    {
+                        docSuc.validado = true;
+                    }
+                    else
+                    {
+                        docSuc.validado = false;
+                    }
+                }
+                //extraer los rangos del empleado y comprar
+
+                clvReqEven = Convert.ToInt32(readertipoDos["clvRequisito"].ToString());
+                Parametro paramClvReq = new Parametro();
+                paramClvReq.Nombre = "@req";
+                paramClvReq.Valor = readertipoDos["clvRequisito"].ToString();
+                parametros.Add(paramClvReq);
+
+
+                string vall = "select erc.valor as valll from emp_requisitos_evento erc where erc.clv_requisito_evento = @req and erc.clv_emp = " +
+                    "(  select top 1 clv_emp from login where login = @usuario ) ";
+
+                SqlDataReader readerVal= conexion.Consultar(vall, parametros);
+
+                if (readerVal.Read())
                 {
 
-                    evento.validacionCartaLaboral = true;
-                    evento.mensajeValidacionCartaLaboral = "Carta laboral valida";
+                    if (clvReqEven.Equals(2))
+                    {
+                        docSuc.valor = Convert.ToDouble(readerVal["valll"].ToString());
+                        if (docSuc.valor >= bajo && docSuc.valor <= alto)
+                        {
+                            docSuc.validado = true;
+                        }
+                        else
+                        {
+                            docSuc.mens = "No esta dentro del rango requerido";
+                            docSuc.validado = false;
+                        }
+                    }else if (clvReqEven.Equals(3))
+                    {
+                        docSuc.valor = Convert.ToDouble(readerVal["valll"].ToString());
+                        if (docSuc.valor >= bajo )
+                        {
+                            docSuc.validado = true;
+                        }
+                        else
+                        {
+                            docSuc.mens = "No alcanza el valor requerido";
+                            docSuc.validado = false;
+                        }
+                    }
+                    else if (clvReqEven.Equals(4))
+                    {
+                        docSuc.valor = Convert.ToDouble(readerVal["valll"].ToString());
+                        docSuc.validado = true;
+
+                    }
+
+
+
                 }
                 else
                 {
-                    evento.validacionCartaLaboral = false;
-                    evento.mensajeValidacionCartaLaboral = "Tu carta laboral no es valida";
-                    evento.validacionFinal = false;
+                    if (clvReqEven.Equals(4))
+                    {
+                        
+                        docSuc.validado = false;
+                        docSuc.mens = "no cuenta cuenta con curso";
+                    }
+                    else
+                    {
+
+                        docSuc.validado = false;
+                        docSuc.mens = "no tiene registro";
+
+
+                    }
+
+
                 }
-
-            }
-            else
-            {
-                evento.validacionCartaLaboral = true;
-                evento.mensajeValidacionCartaLaboral = "La sucursal no requiere carta laboral";
-            }
-
-
-            //VALIDACION PERSONAL
-            string mensajeGenero;
-            string mensajeEdad;
-            evento.validacionPersonal = true;
-            if (!evento.sexoRequisito.Equals(evento.sexoPromotor))
-            {
-
-                evento.validacionPersonal = false;
-                mensajeGenero = "Promotor no cumple con el genero solicitado";
-                evento.validacionFinal = false;
-            }
-            else
-            {
-                mensajeGenero = "Promotor si cumple con el genero solicitado";
-            }
-
-            if (evento.mayorEdadRequisito.Equals("Mayor de edad"))
-            {
-                if (evento.edadPromotor < 18)
-                {
-                    evento.validacionPersonal = false;
-                    evento.validacionFinal = false;
-                    mensajeEdad = "promotor no cumple con la edad solicitada";
-                }
-                else
-                {
-                    mensajeEdad = "promotor si cumple con la edad solicitada";
-                }
-            }
-            else
-            {
-                if (evento.edadPromotor >= 18)
-                {
-                    evento.validacionPersonal = false;
-                    evento.validacionFinal = false;
-                    mensajeEdad = "promotor no cumple con la edad solicitada";
-                }
-                else
-                {
-                    mensajeEdad = "promotor si cumple con la edad solicitada";
-                }
-            }
-
-            evento.mensajeValidacionPersonal = mensajeGenero + " y " + mensajeEdad;
-
-
-            ///VALIDACION DEL HORARIO
-            DateTime fechaF = Convert.ToDateTime(evento.fechaEvento).Date;
-            DateTime FechAc = DateTime.Now.Date;
-            if (fechaF == FechAc) // Si la fecha indicada es menor o igual a la fecha actual
-            {
-                evento.validacionHorario = true;
-                evento.mensajeValidacionHorario = "La fecha del evento si coincide con la fecha de hoy";
-            }
-            else
-            {
-                evento.validacionHorario = false;
-                evento.mensajeValidacionHorario = "La fecha del evento no coincide con la fecha de hoy";
-                evento.validacionFinal = false;
-            }
-
-            //validacion de ubicacion
-
-            string veri = "select id_sucursal as idSucursal from sucursal_usuario where id_usuario= @intra";
-
-            SqlDataReader readerVeri = conexion.Consultar(veri, parametros);
-
-            if (readerVeri.Read())
-            {
-                int rtrt = Convert.ToInt32(readerVeri["idSucursal"].ToString());
-                if (rtrt == evento.idSucursal)
-                {
-                    evento.validacionUbicacion = true;
-                    evento.mensajeValidacionUbicacion = "La sucursal de tu evento coincide con la sucursal en la que te encuentras";
-                }
-                else
-                {
-                    evento.validacionUbicacion = false;
-                    evento.mensajeValidacionUbicacion = "La sucursal de tu evento no coincide con la sucursal en la que te encuentras";
-                    evento.validacionFinal = false;
-                }
+                
 
 
             }
-            else
-            {
 
-            }*/
+
+
+            evento.requisitosRangos = ldocSuc;
+
+
+
+
 
             conexion.Cerrar();
             return evento;

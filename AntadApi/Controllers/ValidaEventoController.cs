@@ -29,7 +29,7 @@ namespace AntadApi.Controllers
         public ValidaEvento Post([FromBody]ParamValidarEvento validacion)
         {
             ValidaEventoService servicio = new ValidaEventoService(cadenaConexion);
-            return servicio.getValidacionEvento(validacion.idUsuarios, validacion.idEventos);
+            return servicio.getValidacionEvento(validacion.usuario, validacion.folioEvento);
         }
 
         // PUT: api/ValidaEvento/5

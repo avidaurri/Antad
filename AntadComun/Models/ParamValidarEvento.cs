@@ -12,8 +12,8 @@ namespace AntadComun.Models
         public int idIntramuro { get; set; }
         public int idEvento { get; set; }
 
-        public string idUsuarios { get; set; }
+        public string usuario { get; set; }
 
-        public string idEventos { get; set; }
+        public string folioEvento { get; set; }
     }
 }

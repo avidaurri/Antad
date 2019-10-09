@@ -9,23 +9,16 @@
              BackgroundImageSource="fondosplash"
              Title="Validar Acceso">
     <ContentPage.Content>
-        <ScrollView>
+    
         <Grid VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="120" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="60" />
 
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-
-            </Grid.RowDefinitions>
+                </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -52,111 +45,155 @@
                     </Grid.RowDefinitions>
                     <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
                         <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
-                            <Label  Text="VALIDACION DE ACCESO" TextColor="Gray" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label  Text="VALIDACION DE ACCESO A SUCURSAL" TextColor="Gray" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
                         </StackLayout>
                     </StackLayout>
 
                 </Grid>
             </Frame>
 
-            <Frame Grid.Row="3" Grid.ColumnSpan="2"  HasShadow="True" CornerRadius="10" Margin="20,20,20,20" Padding="0" HeightRequest="50" VerticalOptions="Start">
-                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
-                        <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
-                            <Label  Text="Valicación fisica" TextColor="Gray" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center"/>
-                        </StackLayout>
+            
+            <StackLayout  Grid.ColumnSpan="2" Grid.Row="3"  >
+            <ScrollView>
+                        <Grid VerticalOptions="FillAndExpand">
+                       
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <!--                        -->
+
+                            <Frame Grid.Row="0"  Grid.ColumnSpan="2"  HasShadow="True" CornerRadius="10" Margin="20,20,20,20" Padding="0" HeightRequest="50" VerticalOptions="Start">
+                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                                        <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
+                                            <Label  Text="Validación fisica" TextColor="Gray" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                </Grid>
+                            </Frame>
+
+                            <StackLayout Grid.ColumnSpan="2" Grid.Row="1" Orientation="Horizontal">
+                                <Image Source="ic_action_check.png" />
+                                <Label Text="Mayor de Edad" VerticalOptions="Center" TextColor="DimGray" />
+                            </StackLayout>
+
+                            <StackLayout Grid.ColumnSpan="2" Grid.Row="2" Orientation="Horizontal" >
+                                <Image Source="ic_action_check.png" />
+                                <Label Text="Genero Femenino" VerticalOptions="Center" TextColor="DimGray" />
+                            </StackLayout>
+
+                            <StackLayout Grid.ColumnSpan="2" Grid.Row="3" Orientation="Horizontal" >
+                                <Image Source="ic_action_check.png" />
+                                <Label Text="Estatura mínima 1.70 y máxima 1.85" VerticalOptions="Center" TextColor="DimGray" />
+                            </StackLayout>
+
+                            <Frame Grid.Row="4" Grid.ColumnSpan="2"  HasShadow="True" CornerRadius="10" Margin="20,0,0,20" Padding="0" HeightRequest="50" VerticalOptions="Start">
+                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                                        <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
+                                            <Label  Text="Documentos personales" TextColor="Gray" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                </Grid>
+                            </Frame>
+
+                            <StackLayout Grid.ColumnSpan="2" Grid.Row="5" Orientation="Horizontal" >
+                                <Image Source="ic_action_check.png" />
+                                <Label Text="IMSS Activo" VerticalOptions="Center" TextColor="DimGray" />
+                            </StackLayout>
+
+                            <StackLayout Grid.ColumnSpan="2" Grid.Row="6" Orientation="Horizontal" >
+                                <Image Source="ic_action_check.png" />
+                                <Label Text="RFC" VerticalOptions="Center" TextColor="DimGray" />
+                            </StackLayout>
+
+                            <Frame Grid.Row="7" Grid.ColumnSpan="2"  HasShadow="True" CornerRadius="10" Margin="20,0,0,20" Padding="0" HeightRequest="50" VerticalOptions="Start">
+                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                                        <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
+                                            <Label  Text="Preparación Académica" TextColor="Gray" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                </Grid>
+                            </Frame>
+
+                            <StackLayout Grid.ColumnSpan="2" Grid.Row="8" Orientation="Horizontal" >
+                                <Image Source="ic_action_check.png" />
+                                <Label Text="Educación media superior" VerticalOptions="Center" TextColor="DimGray" />
+                            </StackLayout>
+
+                            <Frame Grid.Row="9" Grid.ColumnSpan="2"  HasShadow="True" CornerRadius="10" Margin="20,0,0,20" Padding="0" HeightRequest="50" VerticalOptions="Start">
+                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                                        <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
+                                            <Label  Text="Cursos necesarios" TextColor="Gray" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                </Grid>
+                            </Frame>
+
+                            <StackLayout Grid.ColumnSpan="2" Grid.Row="10" Orientation="Horizontal" >
+                                <Image Source="ic_action_check.png" />
+                                <Label Text="Preparación de botanas" VerticalOptions="Center" TextColor="DimGray" />
+                            </StackLayout>
+
+
+
+                            <!--                          -->
+
+
+                       
+                    </Grid>
+                
+                
+                
+                
+           </ScrollView>
+            </StackLayout>
+
+
+            <StackLayout  Grid.ColumnSpan="2" Grid.Row="4" Orientation="Vertical" VerticalOptions="End"  >
+                
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Button Text="CONCEDER ACCESO" BackgroundColor="BlueViolet" TextColor="White" HorizontalOptions="FillAndExpand"   />
+                        <Button Text="RECHAZAR ACCESO" BackgroundColor="Red" TextColor="White"  HorizontalOptions="FillAndExpand"  />
                     </StackLayout>
-
-                </Grid>
-            </Frame>
-
-            <StackLayout Grid.ColumnSpan="2" Grid.Row="4" Orientation="Horizontal">
-                <Image Source="ic_action_check.png" />
-                <Label Text="Mayor de Edad" VerticalOptions="Center" TextColor="DimGray" />
+                
             </StackLayout>
-
-            <StackLayout Grid.ColumnSpan="2" Grid.Row="5" Orientation="Horizontal" >
-                <Image Source="ic_action_check.png" />
-                <Label Text="Genero Femenino" VerticalOptions="Center" TextColor="DimGray" />
-            </StackLayout>
-
-            <StackLayout Grid.ColumnSpan="2" Grid.Row="6" Orientation="Horizontal" >
-                <Image Source="ic_action_check.png" />
-                <Label Text="Estatura mínima 1.70 y máxima 1.85" VerticalOptions="Center" TextColor="DimGray" />
-            </StackLayout>
-
-            <Frame Grid.Row="7" Grid.ColumnSpan="2"  HasShadow="True" CornerRadius="10" Margin="20,0,0,20" Padding="0" HeightRequest="50" VerticalOptions="Start">
-                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
-                        <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
-                            <Label  Text="Documentos personales" TextColor="Gray" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center"/>
-                        </StackLayout>
-                    </StackLayout>
-
-                </Grid>
-            </Frame>
-
-            <StackLayout Grid.ColumnSpan="2" Grid.Row="8" Orientation="Horizontal" >
-                <Image Source="ic_action_check.png" />
-                <Label Text="IMSS Activo" VerticalOptions="Center" TextColor="DimGray" />
-            </StackLayout>
-
-            <StackLayout Grid.ColumnSpan="2" Grid.Row="9" Orientation="Horizontal" >
-                <Image Source="ic_action_check.png" />
-                <Label Text="RFC" VerticalOptions="Center" TextColor="DimGray" />
-            </StackLayout>
-
-            <Frame Grid.Row="10" Grid.ColumnSpan="2"  HasShadow="True" CornerRadius="10" Margin="20,0,0,20" Padding="0" HeightRequest="50" VerticalOptions="Start">
-                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
-                        <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
-                            <Label  Text="Preparación Académica" TextColor="Gray" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center"/>
-                        </StackLayout>
-                    </StackLayout>
-
-                </Grid>
-            </Frame>
-
-            <StackLayout Grid.ColumnSpan="2" Grid.Row="11" Orientation="Horizontal" >
-                <Image Source="ic_action_check.png" />
-                <Label Text="Educación media superior" VerticalOptions="Center" TextColor="DimGray" />
-            </StackLayout>
-
-            <Frame Grid.Row="12" Grid.ColumnSpan="2"  HasShadow="True" CornerRadius="10" Margin="20,0,0,20" Padding="0" HeightRequest="50" VerticalOptions="Start">
-                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
-                        <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
-                            <Label  Text="Cursos necesarios" TextColor="Gray" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center"/>
-                        </StackLayout>
-                    </StackLayout>
-
-                </Grid>
-            </Frame>
-
-            <StackLayout Grid.ColumnSpan="2" Grid.Row="13" Orientation="Horizontal" >
-                <Image Source="ic_action_check.png" />
-                <Label Text="Preparación de botanas" VerticalOptions="Center" TextColor="DimGray" />
-            </StackLayout>
-
-                <StackLayout  Grid.ColumnSpan="2" Grid.Row="14"  >
-         
-                    <Button Text="CONCEDER ACCESO"  VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" BackgroundColor="BlueViolet" TextColor="White" CornerRadius="10"   />
-                </StackLayout>
 
             </Grid>
-        </ScrollView>
+    
     </ContentPage.Content>
 </ContentPage>
