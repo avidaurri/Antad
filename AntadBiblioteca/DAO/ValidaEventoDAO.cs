@@ -46,6 +46,11 @@ namespace AntadBiblioteca.DAO
             paramIdEevento.Valor = idEvento;
             parametros.Add(paramIdEevento);
 
+            Parametro paramClvReq = new Parametro();
+            paramClvReq.Nombre = "@req";
+            paramClvReq.Valor = "prueba";
+            parametros.Add(paramClvReq);
+
             SqlDataReader readerSuc = conexion.Consultar(select, parametros);
 
             evento.validacionFinal = true;
@@ -154,7 +159,7 @@ namespace AntadBiblioteca.DAO
             string tipoDosSuc = "select per.clv_requisito_evento as clvRequisito, per.rango_inferior as menor, per.rango_superior as mayor, " +
                 "ccc.descripcion as nombreRequisito, ccc.clv_tipo_requisito as tipoReq from proyecto_evento_requisitos per left join cat_requisito_evento ccc on ccc.clv_requisito_evento = per.clv_requisito_evento " +
                 "where per.clv_requisito_evento in( select clv_requisito from requisitos_cadena rc left join cat_requisito_evento cre on " +
-                "rc.clv_requisito = cre.clv_requisito_evento where clv_tipo_requisito in(2,3) and clv_cadena = " +
+                "rc.clv_requisito = cre.clv_requisito_evento where clv_tipo_requisito in(2,3,4) and clv_cadena = " +
                 "( select top 1 cct.clv_cadena from evento_cara ec " +
                 " left join centro_trabajo ct on ct.folio_centro_trabajo = ec.folio_centro_trabajo  " +
                 " left join cadena_centro_trabajo cct on cct.clv_cadena = ct.clv_cadena   where folio_evento = @evento ) )";
@@ -165,17 +170,18 @@ namespace AntadBiblioteca.DAO
             List<ValidaEvento.Rango> ldocSuc = new List<ValidaEvento.Rango>();
             double bajo;
             double alto;
-            int clvReqEven = 0;
+            int clvReqEven;
             //double valll = 0;
             while (readertipoDos.Read())
             {
+                clvReqEven = Convert.ToInt32(readertipoDos["clvRequisito"].ToString());
                 ValidaEvento.Rango docSuc = new ValidaEvento.Rango();
                 docSuc.nombreRequisito = readertipoDos["nombreRequisito"].ToString();
                 docSuc.menor = Convert.ToDouble(readertipoDos["menor"].ToString());
                 docSuc.mayor = Convert.ToDouble(readertipoDos["mayor"].ToString());
                 bajo = docSuc.menor;
                 alto = docSuc.mayor;
-                if (Convert.ToInt32(readertipoDos["clvRequisito"].ToString()).Equals(1))
+                if (clvReqEven.Equals(1))
                 {
                     docSuc.valor = evento.edadUsuario;
                     if (evento.edadUsuario>=bajo && evento.edadUsuario <= alto)
@@ -187,79 +193,82 @@ namespace AntadBiblioteca.DAO
                         docSuc.validado = false;
                     }
                 }
-                //extraer los rangos del empleado y comprar
-
-                clvReqEven = Convert.ToInt32(readertipoDos["clvRequisito"].ToString());
-                Parametro paramClvReq = new Parametro();
-                paramClvReq.Nombre = "@req";
-                paramClvReq.Valor = readertipoDos["clvRequisito"].ToString();
-                parametros.Add(paramClvReq);
-
-
-                string vall = "select erc.valor as valll from emp_requisitos_evento erc where erc.clv_requisito_evento = @req and erc.clv_emp = " +
-                    "(  select top 1 clv_emp from login where login = @usuario ) ";
-
-                SqlDataReader readerVal= conexion.Consultar(vall, parametros);
-
-                if (readerVal.Read())
-                {
-
-                    if (clvReqEven.Equals(2))
-                    {
-                        docSuc.valor = Convert.ToDouble(readerVal["valll"].ToString());
-                        if (docSuc.valor >= bajo && docSuc.valor <= alto)
-                        {
-                            docSuc.validado = true;
-                        }
-                        else
-                        {
-                            docSuc.mens = "No esta dentro del rango requerido";
-                            docSuc.validado = false;
-                        }
-                    }else if (clvReqEven.Equals(3))
-                    {
-                        docSuc.valor = Convert.ToDouble(readerVal["valll"].ToString());
-                        if (docSuc.valor >= bajo )
-                        {
-                            docSuc.validado = true;
-                        }
-                        else
-                        {
-                            docSuc.mens = "No alcanza el valor requerido";
-                            docSuc.validado = false;
-                        }
-                    }
-                    else if (clvReqEven.Equals(4))
-                    {
-                        docSuc.valor = Convert.ToDouble(readerVal["valll"].ToString());
-                        docSuc.validado = true;
-
-                    }
-
-
-
-                }
                 else
                 {
-                    if (clvReqEven.Equals(4))
+                   //extraer los rangos del empleado y comprar
+
+               
+           
+                    paramClvReq.Valor = readertipoDos["clvRequisito"].ToString();
+              
+
+
+                    string vall = "select erc.valor as valll from emp_requisitos_evento erc where erc.clv_requisito_evento = @req and erc.clv_emp = " +
+                        "(  select top 1 clv_emp from login where login = @usuario ) ";
+
+                    SqlDataReader readerVal= conexion.Consultar(vall, parametros);
+
+                    if (readerVal.Read())
                     {
-                        
-                        docSuc.validado = false;
-                        docSuc.mens = "no cuenta cuenta con curso";
+
+                        if (clvReqEven.Equals(2))
+                        {
+                            docSuc.valor = Convert.ToDouble(readerVal["valll"].ToString());
+                            if (docSuc.valor >= bajo && docSuc.valor <= alto)
+                            {
+                                docSuc.validado = true;
+                            }
+                            else
+                            {
+                                docSuc.mens = "No esta dentro del rango requerido";
+                                docSuc.validado = false;
+                            }
+                        }else if (clvReqEven.Equals(3))
+                        {
+                            docSuc.valor = Convert.ToDouble(readerVal["valll"].ToString());
+                            if (docSuc.valor >= bajo )
+                            {
+                                docSuc.validado = true;
+                            }
+                            else
+                            {
+                                docSuc.mens = "No alcanza el valor requerido";
+                                docSuc.validado = false;
+                            }
+                        }
+                        else if (clvReqEven.Equals(4))
+                        {
+                            docSuc.valor = Convert.ToDouble(readerVal["valll"].ToString());
+                            docSuc.validado = true;
+
+                        }
+
+
+
                     }
                     else
                     {
+                        if (clvReqEven.Equals(4))
+                        {
+                        
+                            docSuc.validado = false;
+                            docSuc.mens = "no cuenta cuenta con curso";
+                        }
+                        else
+                        {
 
-                        docSuc.validado = false;
-                        docSuc.mens = "no tiene registro";
+                            docSuc.validado = false;
+                            docSuc.mens = "no tiene registro";
+
+
+                        }
 
 
                     }
-
-
                 }
-                
 
+
+                ldocSuc.Add(docSuc);
 
             }
 

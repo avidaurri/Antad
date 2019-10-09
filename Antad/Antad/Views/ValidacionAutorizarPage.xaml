@@ -9,8 +9,8 @@
              BackgroundImageSource="fondosplash"
              Title="Validar Acceso">
     <ContentPage.Content>
-    
-        <Grid VerticalOptions="FillAndExpand">
+
+        <Grid VerticalOptions="FillAndExpand"  BindingContext="{Binding ValidarAutorizar}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="120" />
                 <RowDefinition Height="Auto" />

@@ -22,12 +22,19 @@ namespace AntadBiblioteca.DAO
             string urlServidor = ser.getUrlServidor(conexion);
 
 
-            string select = "select ec.folio_evento as folioEvento, l.clv_emp as clv_Empleado, l.login as usuario, " +
+            string select = "select ec.folio_evento as folioEvento, l.clv_emp as clv_Empleado, l.login as usuario, ct.logo_url as fotoSucursal, " +
+                "ct.folio_centro_trabajo as folioSucursal, ct.nombre_comercial as nombreSucursal, ec.fecha_inicial as fechaInicio, ec.fecha_final as fechaFinal, " +
+                "ee.descripcion as estatusEvento, ec.clv_edo_evento as clvEstatusEvento from evento_personal ep left join login l on l.clv_emp = ep.clv_emp " +
+                "left join evento_cara ec on ec.folio_evento = ep.folio_evento left join cat_tip_evento cte on cte.clv_tip_evento = ec.clv_tip_evento left join " +
+                "edo_evento ee on ee.clv_edo_evento = ec.clv_edo_evento left join centro_trabajo ct on ct.folio_centro_trabajo = ec.folio_centro_trabajo " +
+                "left join cadena_centro_trabajo cct on cct.clv_cadena = ct.clv_cadena where l.login =@usuario ";
+
+           /* string select = "select ec.folio_evento as folioEvento, l.clv_emp as clv_Empleado, l.login as usuario, " +
                 "ct.logo_url as fotoSucursal, ct.folio_centro_trabajo as folioSucursal, ct.nombre_comercial as nombreSucursal, " +
                 "ec.fecha_inicial as fechaInicio, ec.fecha_final as fechaFinal, ee.descripcion as estatusEvento, ec.clv_edo_evento as clvEstatusEvento " +
                 "from evento_cara ec left join login l on l.clv_emp = ec.clv_emp left join cat_tip_evento cte on cte.clv_tip_evento = ec.clv_tip_evento " +
                 "left join edo_evento ee on ee.clv_edo_evento = ec.clv_edo_evento left join centro_trabajo ct on ct.folio_centro_trabajo = ec.folio_centro_trabajo " +
-                "left join cadena_centro_trabajo cct on cct.clv_cadena = ct.clv_cadena where l.login = @usuario"; 
+                "left join cadena_centro_trabajo cct on cct.clv_cadena = ct.clv_cadena where l.login = @usuario"; */
 
             List<Parametro> parametros = new List<Parametro>();
 
