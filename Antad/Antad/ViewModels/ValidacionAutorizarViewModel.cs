@@ -59,15 +59,15 @@ namespace Antad.ViewModels
 
             var usser = new ParamValidarEvento
             {
-                usuario = this.evento,
-                folioEvento = this.usuario,
+                folioEvento = this.evento,
+                usuario = this.usuario,
 
             };
 
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
             var controller = Application.Current.Resources["UrlValidaEvento"].ToString();
-            var response = await this.apiService.GetWithPost(url, prefix, controller, usser);
+            var response = await this.apiService.GetWithPostVa(url, prefix, controller, usser);
             if (!response.IsSuccess)
             {
                 //this.IsRefreshing = false;
