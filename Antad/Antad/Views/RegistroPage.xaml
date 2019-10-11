@@ -7,7 +7,8 @@
              mc:Ignorable="d"
              x:Class="Antad.Views.RegistroPage"
               BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Registro">
+             Title="REGISTRO"
+                  BackgroundImageSource="fondosplash">
     <ContentPage.Content>
         <ScrollView
             BindingContext="{Binding Register}">
@@ -24,6 +25,9 @@
                     HorizontalOptions="Center"
                     Text="Cargar Imagen">
                 </Label>
+                <Frame BorderColor="MediumPurple"  BackgroundColor="Transparent"  HasShadow="True" CornerRadius="10" Margin="5" Padding="20,0,20,0" VerticalOptions="Start">
+                    
+              
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -39,113 +43,82 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Label
-                        Grid.Column="0"
-                        Grid.Row="0"
-                        Text="Nombre"
-                        VerticalOptions="Center">
-                    </Label>
+                     </Grid.RowDefinitions>
+
                     <Entry
-                        Grid.Column="1"
+                          FontFamily="{StaticResource MontserratRegular}"
+                        Grid.ColumnSpan="2"
                         Grid.Row="0"
                         Text="{Binding Nombre}"
                         Placeholder="Nombre">
                     </Entry>
-                    <Label
-                        Grid.Column="0"
-                        Grid.Row="1"
-                        Text="Apellido Paterno"
-                        VerticalOptions="Center">
-                    </Label>
+
                     <Entry
-                        Grid.Column="1"
+                          FontFamily="{StaticResource MontserratRegular}"
+                        Grid.ColumnSpan="2"
                         Grid.Row="1"
                         Text="{Binding ApellidoPaterno}"
                         Placeholder="Apellido Paterno">
                     </Entry>
-                    <Label
-                        Grid.Column="0"
-                        Grid.Row="2"
-                        Text="Apellido Materno"
-                        VerticalOptions="Center">
-                    </Label>
+
                     <Entry
-                        Grid.Column="1"
+                          FontFamily="{StaticResource MontserratRegular}"
+                        Grid.ColumnSpan="2"
                         Grid.Row="2"
                         Text="{Binding ApellidoMaterno}"
                         Placeholder="Apellido Materno">
                     </Entry>
-                    <Label
-                        Grid.Column="0"
-                        Grid.Row="3"
-                        Text="Email"
-                        VerticalOptions="Center">
-                    </Label>
+
                     <Entry
-                        Grid.Column="1"
+                          FontFamily="{StaticResource MontserratRegular}"
+                        Grid.ColumnSpan="2"
                         Grid.Row="3"
                         Keyboard="Email"
                         Text="{Binding Email}"
                         Placeholder="Email">
                     </Entry>
-                    <Label
-                        Grid.Column="0"
-                        Grid.Row="4"
-                        Text="Login"
-                        VerticalOptions="Center">
-                    </Label>
+
                     <Entry
-                        Grid.Column="1"
+                          FontFamily="{StaticResource MontserratRegular}"
+                        Grid.ColumnSpan="2"
                         Grid.Row="4"
                           Text="{Binding Login}"
                         Placeholder="Login">
                     </Entry>
-                    <Label
-                        Grid.Column="0"
-                        Grid.Row="5"
-                        Text="Password"
-                        VerticalOptions="Center">
-                    </Label>
+
                     <Entry
-                        Grid.Column="1"
+                          FontFamily="{StaticResource MontserratRegular}"
+                        Grid.ColumnSpan="2"
                         Grid.Row="5"
                         IsPassword="True"
                         Text="{Binding Password}"
                         Placeholder="Password">
                     </Entry>
-                    <Label
-                        Grid.Column="0"
-                        Grid.Row="6"
-                        Text="CURP"
-                        VerticalOptions="Center">
-                    </Label>
+
                     <Entry
-                        Grid.Column="1"
+                          FontFamily="{StaticResource MontserratRegular}"
+                        Grid.ColumnSpan="2"
                         Grid.Row="6"
                         Text="{Binding Curp}"
                         Placeholder="CURP">
                     </Entry>
-                    <Label
-                        Grid.Column="0"
-                        Grid.Row="7"
-                        Text="Empresa Interes"
-                        VerticalOptions="Center">
-                    </Label>
+
                     <Entry
-                        Grid.Column="1"
+                          FontFamily="{StaticResource MontserratRegular}"
+                        Grid.ColumnSpan="2"
                         Grid.Row="7"
                         Text="{Binding EmpresaInteres}"
                         Placeholder="Empresa Interes">
                     </Entry>
                     <Label
                         Grid.Column="0"
+                          FontFamily="{StaticResource MontserratRegular}"
                         Grid.Row="8"
-                        Text="Puesto"
+                        Text="Puesto solicitado"
                         VerticalOptions="Center">
                     </Label>
                     <Picker x:Name="IndustryTypePicker1" 
+                              FontFamily="{StaticResource MontserratRegular}"
                         Grid.Column="1"
                         Grid.Row="8"
                             SelectedIndex="{Binding Puesto}">
@@ -155,47 +128,38 @@
                             <x:String>Intramuro</x:String>
                         </Picker.Items>
                     </Picker>
-                    <StackLayout Orientation="Vertical"
-                        Grid.Column="0"
-                        Grid.Row="9" >
-                        <Image WidthRequest="70"
-                               VerticalOptions="Center"
-                            Source="{Binding ImageSourceIdentificacion}">
+
+
+                </Grid>
+                </Frame>
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                        <Image WidthRequest="70" HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                Source="{Binding ImageSourceIdentificacion}">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding CargarIdentificacionCommand}"/>
                             </Image.GestureRecognizers>
                         </Image>
-                        <Label VerticalOptions="Center"
-                            FontSize="Small"
-                            HorizontalOptions="Center"
-                            Text="Cargar Identificación">
-                        </Label>
                     </StackLayout>
-                    <StackLayout Orientation="Vertical"
-                        Grid.Column="1"
-                        Grid.Row="9" >
-                        <Image WidthRequest="70"
-                               VerticalOptions="Center"
-                            Source="{Binding ImageSourceComprobante}">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                        <Image WidthRequest="70" HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                Source="{Binding ImageSourceComprobante}">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding CargarComprobanteCommand}"/>
                             </Image.GestureRecognizers>
                         </Image>
-                        <Label
-                            VerticalOptions="Center"
-                            FontSize="Small"
-                            HorizontalOptions="Center"
-                            Text="Cargar Comprobante">
-                        </Label>
+                        <Label Text="Presiona apra cargar imagen"/>
                     </StackLayout>
-                </Grid>
+                </StackLayout>
+
                 <ActivityIndicator
                     IsRunning="{Binding IsRunning}"
                     VerticalOptions="CenterAndExpand">
                 </ActivityIndicator>
                 <Button
-                    BackgroundColor="BlueViolet"
-                    BorderRadius="23"
+                    BackgroundColor="DeepSkyBlue"
                     Command="{Binding SaveCommand}"
                     HeightRequest="46"
                     IsEnabled="{Binding IsEnabled}"

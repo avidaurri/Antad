@@ -7,9 +7,12 @@
              mc:Ignorable="d"
              x:Class="Antad.Views.AgregarUsuarioPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="{i18n:Translate AddUsers}">
+             Title="{i18n:Translate AddUsers}"
+             BackgroundImageSource="fondosplash"
+             >
     <ContentPage.Content>
         <ScrollView
+            BackgroundColor="Transparent"
             BindingContext="{Binding AgregarUsuario}">
               <StackLayout
             
@@ -20,43 +23,28 @@
                     </Image.GestureRecognizers>
                 </Image>
                 <Label Text="Cargar Imagen" HorizontalOptions="Center" FontSize="Small"/>
-                <Label
-             Text="Nombre}">
-                
-            </Label>
+
             <Entry 
                 Text="{Binding nombre}"
                 Placeholder="Escribe el nombre">
             </Entry>
-            <Label
-             Text="Usuario">
-
-            </Label>
+  
             <Entry 
                 Text="{Binding usuario}"
                 Placeholder="Usuario">
             </Entry>
-            <Label
-             Text="Password">
 
-            </Label>
             <Entry
                 Text="{Binding password}"
                 IsPassword="True"
                 Placeholder="Password">
             </Entry>
-            <Label
-             Text="CURP">
 
-            </Label>
             <Entry 
                 Text="{Binding curp}"
                 Placeholder="CURP">
             </Entry>
-            <Label
-             Text="RFC">
 
-            </Label>
             <Entry 
                 Text="{Binding rfc}"
                 Placeholder="RFC">
@@ -67,8 +55,9 @@
                 
             </ActivityIndicator>
             <Button
-                CornerRadius="15"
                 Text="Guardar"
+                BackgroundColor="DeepSkyBlue"
+                TextColor="White"
                 IsEnabled="{Binding IsEnabled}"
                 Command="{Binding SaveCommand}">
                 

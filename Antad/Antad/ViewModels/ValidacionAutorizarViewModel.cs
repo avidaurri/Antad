@@ -1,9 +1,11 @@
 ﻿using Antad.Helpers;
 using Antad.Services;
 using AntadComun.Models;
+using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Antad.ViewModels
@@ -101,6 +103,70 @@ namespace Antad.ViewModels
         }
 
 
+        #endregion
+
+
+        #region Commands
+
+        public ICommand ConcederCommand
+        {
+            get
+            {
+                return new RelayCommand(Conceder);
+            }
+        }
+
+        private async void Conceder()
+        {
+            //throw new NotImplementedException();
+
+            string folio = this.evento;
+            var connection = await this.apiService.CheckConnection();
+
+            if (!connection.IsSuccess)
+            {
+                //this.IsRefreshing = false;
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
+                return;
+            }
+
+            var usser = new ParamValidarEvento
+            {
+                folioEvento = folio,
+      
+
+            };
+
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var prefix = Application.Current.Resources["UrlPrefix"].ToString();
+            var controller = Application.Current.Resources["UrlDar"].ToString();
+            var response = await this.apiService.Dar(url, prefix, controller, usser);
+            if (!response.IsSuccess)
+            {
+                //this.IsRefreshing = false;
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
+                return;
+            }
+
+
+            await Application.Current.MainPage.DisplayAlert("Mensaje", "Aprobación exitosa", "aceptar");
+            await App.Navigator.PopAsync();
+
+
+        }
+
+        public ICommand RechazarCommand
+        {
+            get
+            {
+                return new RelayCommand(Rechazar);
+            }
+        }
+
+        private async void Rechazar()
+        {
+            await App.Navigator.PopAsync();
+        }
         #endregion
 
     }

@@ -15,6 +15,7 @@ namespace Antad.Views
         public LoginPage()
         {
             InitializeComponent();
+
         }
     }
 }

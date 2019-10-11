@@ -63,6 +63,30 @@
     <Compile Include="Implementations\Localize.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <BundleResource Include="..\..\..\..\Users\vidaurrialejandro\Documents\antad\antad_efajardo\Montserrat-Black.otf">
+      <Link>Resources\fonts\Montserrat-Black.otf</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\..\Users\vidaurrialejandro\Documents\antad\antad_efajardo\Montserrat-Bold.otf">
+      <Link>Resources\fonts\Montserrat-Bold.otf</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\..\Users\vidaurrialejandro\Documents\antad\antad_efajardo\Montserrat-ExtraBold.otf">
+      <Link>Resources\fonts\Montserrat-ExtraBold.otf</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\..\Users\vidaurrialejandro\Documents\antad\antad_efajardo\Montserrat-Hairline.otf">
+      <Link>Resources\fonts\Montserrat-Hairline.otf</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\..\Users\vidaurrialejandro\Documents\antad\antad_efajardo\Montserrat-Light.otf">
+      <Link>Resources\fonts\Montserrat-Light.otf</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\..\Users\vidaurrialejandro\Documents\antad\antad_efajardo\Montserrat-Regular.otf">
+      <Link>Resources\fonts\Montserrat-Regular.otf</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\..\Users\vidaurrialejandro\Documents\antad\antad_efajardo\Montserrat-SemiBold.otf">
+      <Link>Resources\fonts\Montserrat-SemiBold.otf</Link>
+    </BundleResource>
+    <BundleResource Include="..\..\..\..\Users\vidaurrialejandro\Documents\antad\antad_efajardo\Montserrat-UltraLight.otf">
+      <Link>Resources\fonts\Montserrat-UltraLight.otf</Link>
+    </BundleResource>
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />

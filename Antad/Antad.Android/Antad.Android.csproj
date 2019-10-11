@@ -105,6 +105,30 @@
     <Compile Include="SplashActicity.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="..\..\..\..\Users\vidaurrialejandro\Documents\antad\antad_efajardo\Montserrat-Black.otf">
+      <Link>Assets\Montserrat-Black.otf</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\..\..\Users\vidaurrialejandro\Documents\antad\antad_efajardo\Montserrat-Bold.otf">
+      <Link>Assets\Montserrat-Bold.otf</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\..\..\Users\vidaurrialejandro\Documents\antad\antad_efajardo\Montserrat-ExtraBold.otf">
+      <Link>Assets\Montserrat-ExtraBold.otf</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\..\..\Users\vidaurrialejandro\Documents\antad\antad_efajardo\Montserrat-Hairline.otf">
+      <Link>Assets\Montserrat-Hairline.otf</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\..\..\Users\vidaurrialejandro\Documents\antad\antad_efajardo\Montserrat-Light.otf">
+      <Link>Assets\Montserrat-Light.otf</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\..\..\Users\vidaurrialejandro\Documents\antad\antad_efajardo\Montserrat-Regular.otf">
+      <Link>Assets\Montserrat-Regular.otf</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\..\..\Users\vidaurrialejandro\Documents\antad\antad_efajardo\Montserrat-SemiBold.otf">
+      <Link>Assets\Montserrat-SemiBold.otf</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\..\..\..\Users\vidaurrialejandro\Documents\antad\antad_efajardo\Montserrat-UltraLight.otf">
+      <Link>Assets\Montserrat-UltraLight.otf</Link>
+    </AndroidAsset>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
@@ -204,6 +228,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\alexa.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_action_tache.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

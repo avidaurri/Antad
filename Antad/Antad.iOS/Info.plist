@@ -28,8 +28,6 @@
 	<string>com.companyname.Antad</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
 	<string>Antad</string>
 	<key>XSAppIconAssets</key>
@@ -48,5 +46,16 @@
 	<string>This app needs access to microphone.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>This app needs access to the photo gallery.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>fonts/Montserrat-Black.otf</string>
+		<string>fonts/Montserrat-Bold.otf</string>
+		<string>fonts/Montserrat-ExtraBold.otf</string>
+		<string>fonts/Montserrat-Hairline.otf</string>
+		<string>fonts/Montserrat-Light.otf</string>
+		<string>fonts/Montserrat-Regular.otf</string>
+		<string>fonts/Montserrat-SemiBold.otf</string>
+		<string>fonts/Montserrat-UltraLight.otf</string>
+	</array>
 </dict>
 </plist>
