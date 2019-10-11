@@ -102,7 +102,6 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SplashActicity.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="..\..\..\..\Users\vidaurrialejandro\Documents\antad\antad_efajardo\Montserrat-Black.otf">
@@ -164,9 +163,6 @@
     <AndroidResource Include="Resources\drawable\ic_action_add_circle_outline.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\avatar.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\xml\file_paths.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -183,12 +179,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\ic_exit_to_app.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\comprobante.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\credencial.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\ic_launcher.png" />
@@ -227,10 +217,16 @@
     <AndroidResource Include="Resources\drawable\ic_action_check.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\alexa.jpeg" />
+    <AndroidResource Include="Resources\drawable\ic_action_tache.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ic_action_tache.png" />
+    <AndroidResource Include="Resources\drawable\ic_launcher_domici.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_launcher_ine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_launcher_user.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -19,7 +19,7 @@
                     HeightRequest="200"
                     Source="logoantad">
                 </Image>
-                <Frame BorderColor="MediumPurple"  BackgroundColor="Transparent" 
+                <Frame   BackgroundColor="Transparent" 
                        HasShadow="True" CornerRadius="10" Margin="5" Padding="20,0,20,0"
                        VerticalOptions="Start">
                 <Grid

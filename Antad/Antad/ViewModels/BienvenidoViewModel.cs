@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Antad.ViewModels
@@ -30,6 +31,16 @@ namespace Antad.ViewModels
         }
         #endregion
 
+        #region Contructors
+
+        public BienvenidoViewModel()
+        {
+           
+            //Direccionar();
+
+        }
+
+        #endregion
 
         #region Command
 
@@ -45,6 +56,7 @@ namespace Antad.ViewModels
 
         private async void Direccionar()
         {
+            //await Task.Delay(1000);
             string roo = this.Puesto;
             if (roo.Equals("3"))
             {

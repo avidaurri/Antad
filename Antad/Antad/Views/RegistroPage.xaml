@@ -23,7 +23,7 @@
                 <Label
                     FontSize="Small"
                     HorizontalOptions="Center"
-                    Text="Cargar Imagen">
+                    Text="Presiona para cargar tu foto de perfil">
                 </Label>
                 <Frame BorderColor="MediumPurple"  BackgroundColor="Transparent"  HasShadow="True" CornerRadius="10" Margin="5" Padding="20,0,20,0" VerticalOptions="Start">
                     
@@ -132,32 +132,56 @@
 
                 </Grid>
                 </Frame>
-                <StackLayout Orientation="Horizontal">
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
-                        <Image WidthRequest="70" HorizontalOptions="Center"
-                                   VerticalOptions="Center"
-                                Source="{Binding ImageSourceIdentificacion}">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding CargarIdentificacionCommand}"/>
-                            </Image.GestureRecognizers>
-                        </Image>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Column="0" Orientation="Horizontal" HorizontalOptions="Center">
+                        <StackLayout HorizontalOptions="Center">
+                            <Image WidthRequest="70" HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                    Source="{Binding ImageSourceIdentificacion}">
+                                <!-- Source="{Binding ImageSourceIdentificacion}" -->
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding CargarIdentificacionCommand}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label
+                                FontSize="Micro"
+                                HorizontalOptions="Center"
+                                Text="Presiona para cargar tu identificación">
+                            </Label>
+                        </StackLayout>
+  
                     </StackLayout>
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                        <Image WidthRequest="70" HorizontalOptions="Center"
-                                   VerticalOptions="Center"
-                                Source="{Binding ImageSourceComprobante}">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding CargarComprobanteCommand}"/>
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <Label Text="Presiona apra cargar imagen"/>
+                    <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="Center">
+                        <StackLayout HorizontalOptions="Center">
+                            <Image WidthRequest="70" HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                    Source="{Binding ImageSourceComprobante}">
+                                <!-- Source="{Binding ImageSourceComprobante}"> -->
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding CargarComprobanteCommand}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label
+                                FontSize="Micro"
+                                HorizontalOptions="Center"
+                                Text="Presiona para cargar tu comprobante domiciliario">
+                            </Label>
+                        </StackLayout>                  
                     </StackLayout>
-                </StackLayout>
+                </Grid>
 
                 <ActivityIndicator
                     IsRunning="{Binding IsRunning}"
                     VerticalOptions="CenterAndExpand">
                 </ActivityIndicator>
+                
                 <Button
                     BackgroundColor="DeepSkyBlue"
                     Command="{Binding SaveCommand}"

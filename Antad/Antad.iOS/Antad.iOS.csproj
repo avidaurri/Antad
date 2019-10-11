@@ -201,9 +201,6 @@
     <BundleResource Include="Resources\ic_action_add_circle_outline.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\avatar.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\ic_action_chevron_right.png" />
   </ItemGroup>
   <ItemGroup>
@@ -217,12 +214,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_exit_to_app.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\comprobante.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\credencial.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_action_time.png" />
@@ -241,5 +232,14 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_action_check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_launcher_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_launcher_domici.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_launcher_ine.png" />
   </ItemGroup>
 </Project>
