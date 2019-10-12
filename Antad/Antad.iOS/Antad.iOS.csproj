@@ -242,4 +242,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_launcher_ine.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\indicador_gris.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\indicador_morado.png" />
+  </ItemGroup>
 </Project>

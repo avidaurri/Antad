@@ -1,15 +1,99 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:i18n="clr-namespace:Antad.Helpers"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Antad.Views.RegistroPage"
-              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="REGISTRO"
-                  BackgroundImageSource="fondosplash">
-    <ContentPage.Content>
+             x:Class="Antad.Views.RegistroPage" 
+              Title="REGISTRO" >
+
+    <ContentPage
+        xmlns:i18n="clr-namespace:Antad.Helpers"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+           
+             BackgroundImageSource="fondosplash">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <StackLayout Grid.ColumnSpan="3" BackgroundColor="Black" Orientation="Horizontal">
+                <Label 
+                    Text="Inicia tu registro escribiendo los datos de acceso a la aplicación"
+                    HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+            </StackLayout>
+
+           <StackLayout Orientation="Vertical" 
+                         BackgroundColor="Purple"
+                         Grid.Row="1" Grid.Column="0"
+                        VerticalOptions="Center">
+                <Image Source="logoantad" VerticalOptions="Center" WidthRequest="30" />
+            </StackLayout>
+            <StackLayout Orientation="Vertical" 
+                         BackgroundColor="Green"
+                         Grid.Row="1" Grid.Column="1">
+                <Label Text="cuestionario " />
+            </StackLayout>
+            <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="2"
+                         BackgroundColor="Brown" VerticalOptions="Center">
+                <Image Source="logoantad" VerticalOptions="Center" WidthRequest="30"  />
+            </StackLayout>
+
+            <StackLayout Grid.ColumnSpan="3"
+                       Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="2">
+                <Image Source="indicador_morado" WidthRequest="50"/>
+                <Image Source="indicador_gris" WidthRequest="35"/>
+                <Image Source="indicador_gris" WidthRequest="35"/>
+                <Image Source="indicador_gris" WidthRequest="35"/>
+                <Image Source="indicador_gris" WidthRequest="35"/>
+                <Image Source="indicador_gris" WidthRequest="35"/>
+            </StackLayout>
+            <StackLayout Grid.ColumnSpan="3" 
+                         Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="3">
+                <Label 
+                    HorizontalOptions="Center"
+                    Text="1"
+                    FontSize="50"
+                    TextColor="Navy"
+                    FontFamily="{StaticResource MontserratBold}"
+                    HorizontalTextAlignment="Center"/>
+                <Label 
+                    HorizontalOptions="Center"
+                    Text="DE"
+                    FontSize="30"
+                    TextColor="DimGray"
+                    FontFamily="{StaticResource MontserratBold}"
+                    HorizontalTextAlignment="Center"/>
+                <Label 
+                    HorizontalOptions="Center"
+                    Text="6"
+                    FontSize="50"
+                    TextColor="Navy"
+                    FontFamily="{StaticResource MontserratBold}"
+                    HorizontalTextAlignment="Center"/>
+            </StackLayout>
+
+        </Grid>
+
+
+        
+    </ContentPage>
+    
+    <!--<ContentPage
+        xmlns:i18n="clr-namespace:Antad.Helpers"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+           
+             BackgroundImageSource="fondosplash">
+        <ContentPage.Content>
         <ScrollView
             BindingContext="{Binding Register}">
             <StackLayout
@@ -132,65 +216,98 @@
 
                 </Grid>
                 </Frame>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <StackLayout Grid.Column="0" Orientation="Horizontal" HorizontalOptions="Center">
-                        <StackLayout HorizontalOptions="Center">
-                            <Image WidthRequest="70" HorizontalOptions="Center"
+
+
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>    
+    </ContentPage>
+
+
+    <ContentPage
+        xmlns:i18n="clr-namespace:Antad.Helpers"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="REGISTRO"
+             BackgroundImageSource="fondosplash">
+        <ContentPage.Content>
+            <ScrollView
+            BindingContext="{Binding Register}">
+                <StackLayout
+                Padding="5">
+                    <Image
+                    Source="{Binding ImageSourceFoto}">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding CargarImagenCommand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label
+                    FontSize="Small"
+                    HorizontalOptions="Center"
+                    Text="Presiona para cargar tu foto de perfil">
+                    </Label>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <StackLayout Grid.Column="0" Orientation="Horizontal" HorizontalOptions="Center">
+                            <StackLayout HorizontalOptions="Center">
+                                <Image WidthRequest="70" HorizontalOptions="Center"
                                        VerticalOptions="Center"
                                     Source="{Binding ImageSourceIdentificacion}">
-                                <!-- Source="{Binding ImageSourceIdentificacion}" -->
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding CargarIdentificacionCommand}"/>
-                                </Image.GestureRecognizers>
-                            </Image>
-                            <Label
+                                   
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding CargarIdentificacionCommand}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Label
                                 FontSize="Micro"
                                 HorizontalOptions="Center"
                                 Text="Presiona para cargar tu identificación">
-                            </Label>
+                                </Label>
+                            </StackLayout>
+
                         </StackLayout>
-  
-                    </StackLayout>
-                    <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="Center">
-                        <StackLayout HorizontalOptions="Center">
-                            <Image WidthRequest="70" HorizontalOptions="Center"
+                        <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="Center">
+                            <StackLayout HorizontalOptions="Center">
+                                <Image WidthRequest="70" HorizontalOptions="Center"
                                        VerticalOptions="Center"
+                                   x:Name="cargarAni"
                                     Source="{Binding ImageSourceComprobante}">
-                                <!-- Source="{Binding ImageSourceComprobante}"> -->
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding CargarComprobanteCommand}"/>
-                                </Image.GestureRecognizers>
-                            </Image>
-                            <Label
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding CargarComprobanteCommand}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Label
                                 FontSize="Micro"
                                 HorizontalOptions="Center"
                                 Text="Presiona para cargar tu comprobante domiciliario">
-                            </Label>
-                        </StackLayout>                  
-                    </StackLayout>
-                </Grid>
+                                </Label>
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
 
-                <ActivityIndicator
+                    <ActivityIndicator
                     IsRunning="{Binding IsRunning}"
                     VerticalOptions="CenterAndExpand">
-                </ActivityIndicator>
-                
-                <Button
+                    </ActivityIndicator>
+
+                    <Button
                     BackgroundColor="DeepSkyBlue"
                     Command="{Binding SaveCommand}"
                     HeightRequest="46"
                     IsEnabled="{Binding IsEnabled}"
                     Text="Guardar"
                     TextColor="White">
-                </Button>
-            </StackLayout>
-        </ScrollView>
-    </ContentPage.Content>
-</ContentPage>
+                    </Button>
+                </StackLayout>
+            </ScrollView>
+        </ContentPage.Content>
+    </ContentPage> -->
+
+</CarouselPage>
