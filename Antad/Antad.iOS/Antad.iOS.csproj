@@ -248,4 +248,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\indicador_morado.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\user_large.png" />
+  </ItemGroup>
 </Project>

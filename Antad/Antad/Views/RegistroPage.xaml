@@ -15,6 +15,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -25,31 +26,78 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            
-            <StackLayout Grid.ColumnSpan="3" BackgroundColor="Black" Orientation="Horizontal">
-                <Label 
+
+            <StackLayout Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="Center">
+                <Label Text="Comencemos tu registro!!" FontFamily="{StaticResource MontserratBold}" FontSize="23" HorizontalOptions="Center" TextColor="Purple"/>
+            </StackLayout>
+
+            <StackLayout Grid.ColumnSpan="3" Orientation="Horizontal" Grid.Row="1" Padding="20,0,20,0">
+                <Label FontFamily="{StaticResource MontserratRegular}" FontSize="17" TextColor="DimGray" 
                     Text="Inicia tu registro escribiendo los datos de acceso a la aplicación"
-                    HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    HorizontalTextAlignment="Center" FontAttributes="Bold" VerticalTextAlignment="Center"/>
             </StackLayout>
 
            <StackLayout Orientation="Vertical" 
-                         BackgroundColor="Purple"
-                         Grid.Row="1" Grid.Column="0"
+                        
+                         Grid.Row="2" Grid.Column="0"
                         VerticalOptions="Center">
-                <Image Source="logoantad" VerticalOptions="Center" WidthRequest="30" />
+                <Image Source="ic_left" VerticalOptions="Center" WidthRequest="30" />
             </StackLayout>
-            <StackLayout Orientation="Vertical" 
-                         BackgroundColor="Green"
-                         Grid.Row="1" Grid.Column="1">
-                <Label Text="cuestionario " />
-            </StackLayout>
-            <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="2"
-                         BackgroundColor="Brown" VerticalOptions="Center">
-                <Image Source="logoantad" VerticalOptions="Center" WidthRequest="30"  />
+            <Frame Grid.Row="2" Grid.Column="1" BindingContext="{Binding Register}">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                     
+                    </Grid.RowDefinitions>
+                    
+                    <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                        <Image
+                            HeightRequest="180"
+                    Source="{Binding ImageSourceFoto}">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CargarImagenCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label
+                    FontSize="Small"
+                    HorizontalOptions="Center"
+                            TextColor="DimGray"
+                           HorizontalTextAlignment="Center"
+                            FontFamily="{StaticResource MontserratLight}"
+                    Text="Presiona para cargar tu foto de perfil">
+                        </Label> 
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Grid.Row="1" VerticalOptions="Center">
+                        <Entry VerticalOptions="CenterAndExpand"
+                              FontFamily="{StaticResource MontserratRegular}"
+                            Grid.ColumnSpan="2"
+                            Grid.Row="4"
+                              Text="{Binding Login}"
+                            Placeholder="Login">
+                        </Entry>
+
+                        <Entry VerticalOptions="CenterAndExpand"
+                              FontFamily="{StaticResource MontserratRegular}"
+                            Grid.ColumnSpan="2"
+                            Grid.Row="5"
+                            IsPassword="True"
+                            Text="{Binding Password}"
+                            Placeholder="Password">
+                        </Entry>
+                    </StackLayout>
+
+
+                </Grid>
+            </Frame>
+            <StackLayout Orientation="Vertical" Grid.Row="2" Grid.Column="2"
+                         VerticalOptions="Center">
+                <Image Source="ic_action_chevron_right" VerticalOptions="Center" WidthRequest="30"  />
             </StackLayout>
 
             <StackLayout Grid.ColumnSpan="3"
-                       Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="2">
+                       Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="3">
                 <Image Source="indicador_morado" WidthRequest="50"/>
                 <Image Source="indicador_gris" WidthRequest="35"/>
                 <Image Source="indicador_gris" WidthRequest="35"/>
@@ -58,12 +106,12 @@
                 <Image Source="indicador_gris" WidthRequest="35"/>
             </StackLayout>
             <StackLayout Grid.ColumnSpan="3" 
-                         Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="3">
+                         Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="4">
                 <Label 
                     HorizontalOptions="Center"
                     Text="1"
-                    FontSize="50"
-                    TextColor="Navy"
+                    FontSize="40"
+                    TextColor="Purple"
                     FontFamily="{StaticResource MontserratBold}"
                     HorizontalTextAlignment="Center"/>
                 <Label 
@@ -76,8 +124,8 @@
                 <Label 
                     HorizontalOptions="Center"
                     Text="6"
-                    FontSize="50"
-                    TextColor="Navy"
+                    FontSize="40"
+                    TextColor="Purple"
                     FontFamily="{StaticResource MontserratBold}"
                     HorizontalTextAlignment="Center"/>
             </StackLayout>
@@ -88,7 +136,7 @@
         
     </ContentPage>
     
-    <!--<ContentPage
+    <ContentPage
         xmlns:i18n="clr-namespace:Antad.Helpers"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
            
@@ -98,17 +146,7 @@
             BindingContext="{Binding Register}">
             <StackLayout
                 Padding="5">
-                <Image
-                    Source="{Binding ImageSourceFoto}">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding CargarImagenCommand}"/>
-                    </Image.GestureRecognizers>
-                </Image>
-                <Label
-                    FontSize="Small"
-                    HorizontalOptions="Center"
-                    Text="Presiona para cargar tu foto de perfil">
-                </Label>
+
                 <Frame BorderColor="MediumPurple"  BackgroundColor="Transparent"  HasShadow="True" CornerRadius="10" Margin="5" Padding="20,0,20,0" VerticalOptions="Start">
                     
               
@@ -162,22 +200,7 @@
                         Placeholder="Email">
                     </Entry>
 
-                    <Entry
-                          FontFamily="{StaticResource MontserratRegular}"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="4"
-                          Text="{Binding Login}"
-                        Placeholder="Login">
-                    </Entry>
 
-                    <Entry
-                          FontFamily="{StaticResource MontserratRegular}"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="5"
-                        IsPassword="True"
-                        Text="{Binding Password}"
-                        Placeholder="Password">
-                    </Entry>
 
                     <Entry
                           FontFamily="{StaticResource MontserratRegular}"
@@ -225,7 +248,7 @@
     </ContentPage>
 
 
-    <ContentPage
+    <!--<ContentPage
         xmlns:i18n="clr-namespace:Antad.Helpers"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="REGISTRO"

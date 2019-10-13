@@ -4613,22 +4613,22 @@ namespace Antad.Droid
 			public const int ic_group_expand_15 = 2131165328;
 			
 			// aapt resource value: 0x7F070091
-			public const int ic_indicator_gray = 2131165329;
+			public const int ic_info = 2131165329;
 			
 			// aapt resource value: 0x7F070092
-			public const int ic_info = 2131165330;
+			public const int ic_launcher = 2131165330;
 			
 			// aapt resource value: 0x7F070093
-			public const int ic_launcher = 2131165331;
+			public const int ic_launcher_domici = 2131165331;
 			
 			// aapt resource value: 0x7F070094
-			public const int ic_launcher_domici = 2131165332;
+			public const int ic_launcher_ine = 2131165332;
 			
 			// aapt resource value: 0x7F070095
-			public const int ic_launcher_ine = 2131165333;
+			public const int ic_launcher_user = 2131165333;
 			
 			// aapt resource value: 0x7F070096
-			public const int ic_launcher_user = 2131165334;
+			public const int ic_left = 2131165334;
 			
 			// aapt resource value: 0x7F070097
 			public const int ic_media_pause_dark = 2131165335;
@@ -5169,6 +5169,9 @@ namespace Antad.Droid
 			
 			// aapt resource value: 0x7F07014A
 			public const int tooltip_frame_light = 2131165514;
+			
+			// aapt resource value: 0x7F07014B
+			public const int user_large = 2131165515;
 			
 			static Drawable()
 			{
