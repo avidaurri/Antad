@@ -50,6 +50,7 @@
             <x:String x:Key="UrlEventoMensajeDetalle">/EventoDetalle</x:String>
             <x:String x:Key="UrlValidaEvento">/ValidaEvento</x:String>
             <x:String x:Key="UrlDar">/Dar</x:String>
+            <x:String x:Key="UrlGetCatalogo">/CatalogoRegistro</x:String>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

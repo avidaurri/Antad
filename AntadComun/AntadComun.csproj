@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\CatalogoRegistro.cs" />
     <Compile Include="Models\CheckIn.cs" />
     <Compile Include="Models\Evento.cs" />
     <Compile Include="Models\EventoOperacion.cs" />

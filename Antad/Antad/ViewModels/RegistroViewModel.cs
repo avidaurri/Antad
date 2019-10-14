@@ -6,6 +6,7 @@ using Plugin.Media;
 using Plugin.Media.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -27,6 +28,7 @@ namespace Antad.ViewModels
         private ApiService apiService;
         private bool isRunning;
         private bool isEnabled;
+        private List<CatalogoRegistro.Banco> bancoList { get; set; }
 
         #endregion
 
@@ -37,13 +39,52 @@ namespace Antad.ViewModels
         public string ApellidoPaterno { get; set; }
         public string ApellidoMaterno { get; set; }
         public string Curp { get; set; }
+        public string clabe { get; set; }
+        
         public string foto { get; set; }
         public string identificacion { get; set; }
         public string comprobanteDomiciliario { get; set; }
         public string Email { get; set; }
         public string EmpresaInteres { get; set; }
         public int Puesto { get; set; }
+        public string banco { get; set; }
+        private string _bancoText;
+        public string BancoText
+        {
+            get
+            {
+                return _bancoText;
+            }
+            set
+            {
+               _bancoText=value;
+            }
+        }
+        //public List<string> listBank = new List<string>();
+        private CatalogoRegistro.Banco _selectedBanco;
+        public CatalogoRegistro.Banco SelectedBanco
+        {
+            get
+            {
+                return _selectedBanco;
+            }
+            set
+            {
+                _selectedBanco = value;
+                //put here your code  
+                BancoText = _selectedBanco.key.ToString();
+            }
+        }
+        public List<CatalogoRegistro.Banco> BancoList
+        {
 
+            get { return this.bancoList; }
+            set
+            {
+                bancoList = value;
+                OnPropertyChanged();
+            }
+        }
         public bool IsRunning
         {
             get { return this.isRunning; }
@@ -103,14 +144,52 @@ namespace Antad.ViewModels
             this.ImageSourceFoto = "user_large";
             this.ImageSourceComprobante = "ic_launcher_domici";
             this.ImageSourceIdentificacion = "ic_launcher_ine";
+            bancoList = new List<CatalogoRegistro.Banco>();
+            CargarCatalogos();
 
+        }
+
+        private async void CargarCatalogos()
+        {
+            var connection = await this.apiService.CheckConnection();
+
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
+                return;
+            }
+
+
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var prefix = Application.Current.Resources["UrlPrefix"].ToString();
+            var controller = Application.Current.Resources["UrlGetCatalogo"].ToString();
+            var response = await this.apiService.Get(url, prefix, controller);
+            if (!response.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
+                return;
+            }
+            CatalogoRegistro cat = new CatalogoRegistro();
+            cat= (CatalogoRegistro)response.Result;
+
+            this.BancoList = cat.listaBancos;
+            /*CatalogoRegistro.Banco nuevod = new CatalogoRegistro.Banco();
+            CatalogoRegistro.Banco nuevo = new CatalogoRegistro.Banco();
+            nuevo.key = 1;
+            nuevo.value = "alex";
+            bancoList.Add(nuevo);
+            nuevod.key = 2;
+            nuevod.value = "pedro";
+            bancoList.Add(nuevod);*/
 
         }
         #endregion
 
         #region Commands
 
-        
+
         public ICommand SaveCommand
         {
             get
@@ -121,6 +200,8 @@ namespace Antad.ViewModels
 
         private async void Save()
         {
+            string prue = this.BancoText;
+
             if (string.IsNullOrEmpty(this.Curp))
             {
                 await Application.Current.MainPage.DisplayAlert(
@@ -130,7 +211,7 @@ namespace Antad.ViewModels
                 return;
             }
 
-            if (!RegexHelper.IsValidCurp(this.Curp))
+            /*if (!RegexHelper.IsValidCurp(this.Curp))
             {
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
@@ -307,7 +388,7 @@ namespace Antad.ViewModels
                "Registro exitoso",
                 "Aceptar");
 
-            await Application.Current.MainPage.Navigation.PopAsync();
+            await Application.Current.MainPage.Navigation.PopAsync();*/
         }
 
         public ICommand CargarImagenCommand

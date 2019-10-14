@@ -6,6 +6,7 @@ namespace Antad.ViewModels
     using AntadComun.Models;
     using GalaSoft.MvvmLight.Command;
     using Rg.Plugins.Popup.Services;
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Windows.Input;
 
@@ -32,7 +33,7 @@ namespace Antad.ViewModels
         public ValidacionActividadViewModel ValidacionActividad { get; set; }
 
         public BienvenidoViewModel Bienvenido { get; set; }
-
+       // public List<string> listBank = new List<string>();
         public string UserFullName
         {
             get
@@ -77,10 +78,23 @@ namespace Antad.ViewModels
             instance = this;
             this.LoadMenu();
             //this.Usuarios = new UsuariosViewModel();
-
+           // CargarCatalogos();
         }
 
+        /*private void CargarCatalogos()
+        {
+            var monkeyList = new List<string>();
+            monkeyList.Add("Baboon");
+            monkeyList.Add("Capuchin Monkey");
+            monkeyList.Add("Blue Monkey");
+            monkeyList.Add("Squirrel Monkey");
+            monkeyList.Add("Golden Lion Tamarin");
+            monkeyList.Add("Howler Monkey");
+            monkeyList.Add("Japanese Macaque");
 
+            //var picker = new Picker { Title = "Select a monkey", TitleColor = Color.Red };
+            this.listBank = monkeyList;
+        }*/
         #endregion
 
         #region Methods
