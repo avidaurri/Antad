@@ -20,15 +20,17 @@ namespace AntadApi.Controllers
         }*/
 
         // GET: api/CatalogoRegistro/5
-        public CatalogoRegistro Get(int idEstado)
+        public CatalogoRegistro Get()
         {
             CatalogoRegistroService servicio = new CatalogoRegistroService(cadenaConexion);
-            return servicio.getCatalogo(idEstado);
+            return servicio.getCatalogo();
         }
 
         // POST: api/CatalogoRegistro
-        public void Post([FromBody]string value)
+        public CatalogoRegistro Post([FromBody]int idEstado)
         {
+            CatalogoRegistroService servicio = new CatalogoRegistroService(cadenaConexion);
+            return servicio.getMunicipios(idEstado);
         }
 
         // PUT: api/CatalogoRegistro/5

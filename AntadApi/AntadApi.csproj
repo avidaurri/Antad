@@ -166,6 +166,7 @@
     <Compile Include="Controllers\LoginAppController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MisEventosController.cs" />
+    <Compile Include="Controllers\PruebaController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\SucursalOperacionController.cs" />
     <Compile Include="Controllers\UserSessionController.cs" />

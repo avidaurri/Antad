@@ -29,7 +29,12 @@ namespace Antad.ViewModels
         private bool isRunning;
         private bool isEnabled;
         private List<CatalogoRegistro.Banco> bancoList { get; set; }
-
+        private List<CatalogoRegistro.EstadoCivil> estadoCivilList { get; set; }
+        private List<CatalogoRegistro.GradoEstudios> gradoEstudiosList { get; set; }
+        private List<CatalogoRegistro.Estados> estadosList { get; set; }
+        private List<CatalogoRegistro.Municipio> municipiosList { get; set; }
+        private List<CatalogoRegistro.Region> regionList { get; set; }
+        private List<CatalogoRegistro.Puesto> puestoList { get; set; }
         #endregion
 
         #region Properties
@@ -40,7 +45,6 @@ namespace Antad.ViewModels
         public string ApellidoMaterno { get; set; }
         public string Curp { get; set; }
         public string clabe { get; set; }
-        
         public string foto { get; set; }
         public string identificacion { get; set; }
         public string comprobanteDomiciliario { get; set; }
@@ -48,7 +52,20 @@ namespace Antad.ViewModels
         public string EmpresaInteres { get; set; }
         public int Puesto { get; set; }
         public string banco { get; set; }
-        private string _bancoText;
+        private string _puestoText{ get; set; }
+
+        public string PuestoText
+        {
+            get
+            {
+                return _puestoText;
+            }
+            set
+            {
+                _puestoText = value;
+            }
+        }
+        private string _bancoText { get; set; }
         public string BancoText
         {
             get
@@ -60,7 +77,84 @@ namespace Antad.ViewModels
                _bancoText=value;
             }
         }
+        private string _estadocivilText { get; set; }
+        public string EstadoCivilText
+        {
+            get
+            {
+                return _estadocivilText;
+            }
+            set
+            {
+                _estadocivilText = value;
+            }
+        }
+        private string _gradoestudiosText { get; set; }
+        public string GradoEstudiosText
+        {
+            get
+            {
+                return _gradoestudiosText;
+            }
+            set
+            {
+                _gradoestudiosText = value;
+            }
+        }
+        private string _estadoText { get; set; }
+        public string EstadoText
+        {
+            get
+            {
+                return _estadoText;
+            }
+            set
+            {
+                _estadoText = value;
+            }
+        }
+        private string _municipioText { get; set; }
+        public string MunicipioText
+        {
+            get
+            {
+                return _municipioText;
+            }
+            set
+            {
+                _municipioText = value;
+            }
+        }
+
+        private string _regionText { get; set; }
+        public string RegionText
+        {
+            get
+            {
+                return _regionText;
+            }
+            set
+            {
+                _regionText = value;
+            }
+        }
         //public List<string> listBank = new List<string>();
+        private CatalogoRegistro.Puesto _selectedPuesto;
+        public CatalogoRegistro.Puesto SelectedPuesto
+        {
+            get
+            {
+                return _selectedPuesto;
+            }
+            set
+            {
+                _selectedPuesto = value;
+                //put here your code  
+                PuestoText = _selectedPuesto.key.ToString();
+            }
+        }
+
+
         private CatalogoRegistro.Banco _selectedBanco;
         public CatalogoRegistro.Banco SelectedBanco
         {
@@ -75,6 +169,129 @@ namespace Antad.ViewModels
                 BancoText = _selectedBanco.key.ToString();
             }
         }
+        private CatalogoRegistro.EstadoCivil _selectedEstadoCivil;
+        public CatalogoRegistro.EstadoCivil SelectedEstadoCivil
+        {
+
+            get
+            {
+                return _selectedEstadoCivil;
+            }
+            set
+            {
+                _selectedEstadoCivil = value;
+                //put here your code  
+
+                EstadoCivilText = _selectedEstadoCivil.key.ToString();
+
+            }
+        }
+
+
+
+        private CatalogoRegistro.GradoEstudios _selectedGradoEstudios;
+        public CatalogoRegistro.GradoEstudios SelectedGradoEstudios
+        {
+            get
+            {
+                return _selectedGradoEstudios;
+            }
+            set
+            {
+                _selectedGradoEstudios = value;
+                //put here your code  
+                GradoEstudiosText = _selectedGradoEstudios.key.ToString();
+            }
+        }
+        private CatalogoRegistro.Estados _selectedEstado;
+        public CatalogoRegistro.Estados SelectedEstado
+        {
+            get
+            {
+                return _selectedEstado;
+            }
+            set
+            {
+                _selectedEstado = value;
+               
+                //put here your code  
+                EstadoText = _selectedEstado.key.ToString();
+                cargaMun(EstadoText);
+            }
+        }
+        private async void cargaMun(string val)
+        {
+            //this.MunicipiosList.Clear();
+            var connection = await this.apiService.CheckConnection();
+
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
+                return;
+            }
+
+
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var prefix = Application.Current.Resources["UrlPrefix"].ToString();
+            var controller = Application.Current.Resources["UrlGetCatalogo"].ToString();// + "?idEstado=0";
+            var response = await this.apiService.Post(url, prefix, controller, Convert.ToInt32(val));
+            if (!response.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
+                return;
+            }
+            CatalogoRegistro cat = new CatalogoRegistro();
+            cat = (CatalogoRegistro)response.Result;
+
+            //municipios
+            this.MunicipiosList =null;
+            this.MunicipiosList = cat.listaMunicipios;
+
+        }
+        private CatalogoRegistro.Municipio _selectedMunicipio;
+        public CatalogoRegistro.Municipio SelectedMunicipio
+        {
+            get
+            {
+                return _selectedMunicipio;
+            }
+            set
+            {
+                _selectedMunicipio = value;
+                if (_selectedMunicipio != null)
+                {
+ MunicipioText = _selectedMunicipio.key.ToString();
+                }
+                //put here your code  
+               
+            }
+        }
+        private CatalogoRegistro.Region _selectedRegion;
+        public CatalogoRegistro.Region SelectedRegion
+        {
+            get
+            {
+                return _selectedRegion;
+            }
+            set
+            {
+                _selectedRegion = value;
+                //put here your code  
+               RegionText = _selectedRegion.key.ToString();
+            }
+        }
+        public List<CatalogoRegistro.Puesto> PuestoList
+        {
+
+            get { return this.puestoList; }
+            set
+            {
+                puestoList = value;
+                OnPropertyChanged();
+            }
+        }
         public List<CatalogoRegistro.Banco> BancoList
         {
 
@@ -82,6 +299,56 @@ namespace Antad.ViewModels
             set
             {
                 bancoList = value;
+                OnPropertyChanged();
+            }
+        }
+        public List<CatalogoRegistro.EstadoCivil> EstadoCivilList
+        {
+
+            get { return this.estadoCivilList; }
+            set
+            {
+                estadoCivilList = value;
+                OnPropertyChanged();
+            }
+        }
+        public List<CatalogoRegistro.GradoEstudios> GradoEstudiosList
+        {
+
+            get { return this.gradoEstudiosList; }
+            set
+            {
+                gradoEstudiosList = value;
+                OnPropertyChanged();
+            }
+        }
+        public List<CatalogoRegistro.Estados> EstadosList
+        {
+
+            get { return this.estadosList; }
+            set
+            {
+                estadosList = value;
+                OnPropertyChanged();
+            }
+        }
+        public List<CatalogoRegistro.Municipio> MunicipiosList
+        {
+
+            get { return this.municipiosList; }
+            set
+            {
+                municipiosList = value;
+                OnPropertyChanged();
+            }
+        }
+        public List<CatalogoRegistro.Region> RegionList
+        {
+
+            get { return this.regionList; }
+            set
+            {
+                regionList = value;
                 OnPropertyChanged();
             }
         }
@@ -162,7 +429,7 @@ namespace Antad.ViewModels
 
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
-            var controller = Application.Current.Resources["UrlGetCatalogo"].ToString();
+            var controller = Application.Current.Resources["UrlGetCatalogo"].ToString();// + "?idEstado=0";
             var response = await this.apiService.Get(url, prefix, controller);
             if (!response.IsSuccess)
             {
@@ -174,15 +441,21 @@ namespace Antad.ViewModels
             CatalogoRegistro cat = new CatalogoRegistro();
             cat= (CatalogoRegistro)response.Result;
 
+            // bancos
             this.BancoList = cat.listaBancos;
-            /*CatalogoRegistro.Banco nuevod = new CatalogoRegistro.Banco();
-            CatalogoRegistro.Banco nuevo = new CatalogoRegistro.Banco();
-            nuevo.key = 1;
-            nuevo.value = "alex";
-            bancoList.Add(nuevo);
-            nuevod.key = 2;
-            nuevod.value = "pedro";
-            bancoList.Add(nuevod);*/
+            // estados civil
+            this.EstadoCivilList = cat.listaEdoCivil;
+            // grados de estudios
+            this.GradoEstudiosList = cat.listaGradoEstudios;
+            //estados
+            this.EstadosList = cat.listaEstados;
+            //municipios
+            //this.MunicipiosList = cat.listaMunicipios;
+            //regiones
+            this.RegionList = cat.listaRegiones;
+            //puesto
+            this.PuestoList = cat.listaPuestos;
+
 
         }
         #endregion

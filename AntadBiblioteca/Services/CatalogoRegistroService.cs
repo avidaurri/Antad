@@ -15,11 +15,16 @@ namespace AntadBiblioteca.Services
         {
             loginAccesoDatos = new CatalogoRegistroDAO(cadena);
         }
-        public CatalogoRegistro getCatalogo(int idEstado)
+        public CatalogoRegistro getCatalogo()
         {
 
-            return loginAccesoDatos.getCatalogo(idEstado);
-            //return loginAccesoDatos.ValidarUsuario(usuario, password);
+            return loginAccesoDatos.getCatalogo();
+
+        }
+        public CatalogoRegistro getMunicipios(int idEstado)
+        {
+
+            return loginAccesoDatos.getMunicipios(idEstado);
 
         }
     }

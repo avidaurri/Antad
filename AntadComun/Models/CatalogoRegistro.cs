@@ -15,6 +15,13 @@ namespace AntadComun.Models
         public List<Municipio> listaMunicipios { get; set; } //2
         public List<Region> listaRegiones { get; set; } //2
 
+        public List<Puesto> listaPuestos { get; set; } //2
+
+        public class Puesto
+        {
+            public int key { get; set; }
+            public string value { get; set; }
+        }
 
         public class Banco
         {
