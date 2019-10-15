@@ -28,7 +28,7 @@ namespace AntadApi.Controllers
         }
 
         // POST: api/Registro
-        public int Post([FromBody]Registro value)
+        public Registro Post([FromBody]Registro value)
         {
             //var path = Path.Combine(HttpContext.Current.Server.MapPath("foede"), "name");
             RegistroService servicio = new RegistroService(cadenaConexion);

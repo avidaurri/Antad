@@ -40,16 +40,39 @@ namespace Antad.ViewModels
         #region Properties
         public string Login { get; set; }
         public string Password { get; set; }
+        public int ClvPuesto { get; set; }
         public string Nombre { get; set; }
         public string ApellidoPaterno { get; set; }
         public string ApellidoMaterno { get; set; }
+        public string Email { get; set; }
         public string Curp { get; set; }
+        public string Telefono { get; set; }
+        public string DescripcionTelefono { get; set; }
+        public int ClvEstadoCivil { get; set; }
+        public double Peso { get; set; }
+        public double Altura { get; set; }
+        public int ClvGradoEstudios { get; set; }
+        public int ClvEstado { get; set; }
+        public int ClvMunicipio{ get; set; }
+        public string CodigoPostal { get; set; }
+        public string Calle { get; set; }
+        public string NumeroExterior { get; set; }
+        public string NumeroInterior { get; set; }
+        public int ClvBanco { get; set; }
+        public string Clabe { get; set; }
+        public string NumeroCuenta { get; set; }
+        public string NumeroTarjeta { get; set; }
+        public string NombreReferenciaUno { get; set; }
+        public string TelefonoReferenciaUno { get; set; }
+        public string NombreReferenciaDos { get; set; }
+        public string TelefonoReferenciaDos { get; set; }
+        public string NombreReferenciaTres { get; set; }
+        public string TelefonoReferenciaTres { get; set; }
         public string clabe { get; set; }
         public string foto { get; set; }
         public string identificacion { get; set; }
         public string comprobanteDomiciliario { get; set; }
-        public string Email { get; set; }
-        public string EmpresaInteres { get; set; }
+       
         public int Puesto { get; set; }
         public string banco { get; set; }
         private string _puestoText{ get; set; }
@@ -182,7 +205,7 @@ namespace Antad.ViewModels
                 _selectedEstadoCivil = value;
                 //put here your code  
 
-                EstadoCivilText = _selectedEstadoCivil.key.ToString();
+                EstadoCivilText = _selectedEstadoCivil.value.ToString();
 
             }
         }
@@ -215,8 +238,8 @@ namespace Antad.ViewModels
                 _selectedEstado = value;
                
                 //put here your code  
-                EstadoText = _selectedEstado.key.ToString();
-                cargaMun(EstadoText);
+                EstadoText = _selectedEstado.value.ToString();
+                cargaMun(_selectedEstado.key.ToString());
             }
         }
         private async void cargaMun(string val)
@@ -260,9 +283,10 @@ namespace Antad.ViewModels
             set
             {
                 _selectedMunicipio = value;
+                // ????????
                 if (_selectedMunicipio != null)
                 {
- MunicipioText = _selectedMunicipio.key.ToString();
+ MunicipioText = _selectedMunicipio.value.ToString();
                 }
                 //put here your code  
                
@@ -473,115 +497,283 @@ namespace Antad.ViewModels
 
         private async void Save()
         {
-            string prue = this.BancoText;
+            //this.NombreReferenciaUno = "hola";
+            //string prue = this.BancoText;
 
-            if (string.IsNullOrEmpty(this.Curp))
+            //VALIDACIONES
+
+            //Login
+            if (string.IsNullOrEmpty(this.Login))
             {
-                await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "Escribe la curp",
-                    Languages.Accept);
+                await Application.Current.MainPage.DisplayAlert("Aviso","Escribe tu usuario",Languages.Accept);
                 return;
             }
 
-            /*if (!RegexHelper.IsValidCurp(this.Curp))
+            //Password
+            if (string.IsNullOrEmpty(this.Password))
             {
-                await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "Escribe una curp valida",
-                    Languages.Accept);
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe tu contraseña", Languages.Accept);
+                return;
+            }
+            if (this.Password.Length < 3)
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe una contraseña mayor a 3 caracteres", Languages.Accept);
                 return;
             }
 
-
-
+            //ClvPuesto--  this.PuestoText
+            if (this.PuestoText == null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Selecciona el puesto que te interesa", Languages.Accept);
+                return;
+            }
+            //Nombre
             if (string.IsNullOrEmpty(this.Nombre))
             {
-                await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "Escribe el nombre",
-                    Languages.Accept);
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe tu nombre", Languages.Accept);
                 return;
             }
-
+            //ApellidoPaterno
             if (string.IsNullOrEmpty(this.ApellidoPaterno))
             {
-                await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "Escribe el apellido paterno",
-                    Languages.Accept);
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe tu apellido paterno", Languages.Accept);
                 return;
             }
-
+            //ApellidoMaterno
             if (string.IsNullOrEmpty(this.ApellidoMaterno))
             {
-                await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "Escribe el apellido materno",
-                    Languages.Accept);
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe tu apellido materno",Languages.Accept);
                 return;
             }
+            //Email
             if (string.IsNullOrEmpty(this.Email))
             {
-                await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "Escribe el email",
-                    Languages.Accept);
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe tu email",Languages.Accept);
                 return;
             }
             if (!RegexHelper.IsValidEmailAddress(this.Email))
             {
-                await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "Escribe un email valido",
-                    Languages.Accept);
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe un email valido",Languages.Accept);
                 return;
             }
-
-            if (string.IsNullOrEmpty(this.Login))
-            {
-                await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "Escribe el login",
-                    Languages.Accept);
-                return;
-            }
-
-            if (string.IsNullOrEmpty(this.Password))
-            {
-                await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "Escribe el password",
-                    Languages.Accept);
-                return;
-            }
-
-            if (this.Password.Length < 3)
-            {
-                await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "Escribe un password mayor a 3 digitos",
-                    Languages.Accept);
-                return;
-            }
-
+            //Curp
             if (string.IsNullOrEmpty(this.Curp))
             {
-                await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "Escribe la curp",
-                    Languages.Accept);
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe tu CURP",Languages.Accept);
+                return;
+            }
+            if (!RegexHelper.IsValidCurp(this.Curp))
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe una CURP valida",Languages.Accept);
+                return;
+            }
+            //Telefono
+            if (string.IsNullOrEmpty(this.Telefono))
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe tu teléfono", Languages.Accept);
+                return;
+            }
+            if (!RegexHelper.IsValidTel(this.Telefono) || this.Telefono.Length !=10)
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe un teléfono de 10 dígitos", Languages.Accept);
+                return;
+            }
+            //DescripcionTelefono
+            if (string.IsNullOrEmpty(this.DescripcionTelefono))
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe la descripción de tu teléfono", Languages.Accept);
+                return;
+            }
+            //ClvEstadoCivil --this.EstadoCivilText
+            if (this.EstadoCivilText == null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Selecciona tu estado civil", Languages.Accept);
+                return;
+            }
+            //Peso
+            if (double.IsNaN(this.Peso)|| this.Peso==0 || this.Peso > 200 || this.Peso<20)
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe un peso valido en Kilogramos", Languages.Accept);
+                return;
+            }
+            //Altura
+            if (double.IsNaN(this.Altura)|| this.Altura== 0 || this.Altura > 2 || this.Altura < 1.4)
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe una altura valida en Metros", Languages.Accept);
+                return;
+            }
+            //ClvGradoEstudios-- this.GradoEstudiosText
+            if (this.GradoEstudiosText == null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Selecciona tu grado de estudios", Languages.Accept);
+                return;
+            }
+            // ClvEstado -- this.EstadoText
+            if (this.EstadoText == null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Selecciona tu estado de residencia", Languages.Accept);
+                return;
+            }
+            // ClvMunicipio -- this.MunicipioText
+            if (this.MunicipioText == null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Selecciona tu municipio de residencia", Languages.Accept);
+                return;
+            }
+            //CodigoPostal
+            if (string.IsNullOrEmpty(this.CodigoPostal))
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe un código postal", Languages.Accept);
+                return;
+            }
+            if (!RegexHelper.IsValidCP(this.CodigoPostal) || this.CodigoPostal.Length != 5)
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Código postal no valido", Languages.Accept);
+                return;
+            }
+            //Calle
+            if (string.IsNullOrEmpty(this.Calle))
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe el nombre de la calle donde resides", Languages.Accept);
+                return;
+            }
+            //NumeroExterior
+            if (string.IsNullOrEmpty(this.NumeroExterior)|| !RegexHelper.IsValidCP(this.NumeroExterior))
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe un numero exterior", Languages.Accept);
+                return;
+            }
+            //NumeroInterior
+            if (string.IsNullOrEmpty(this.NumeroInterior) || !RegexHelper.IsValidCP(this.NumeroInterior))
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe un numero interior", Languages.Accept);
+                return;
+            }
+            //ClvBanco -- this.BancoText
+            if (this.BancoText == null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Selecciona un banco", Languages.Accept);
+                return;
+            }
+            //Clabe
+            if (string.IsNullOrEmpty(this.Clabe))
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe tu cuenta clabe", Languages.Accept);
+                return;
+            }
+            if (!RegexHelper.IsValidCP(this.Clabe)|| this.Clabe.Length != 18)
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe tu cuenta clabe de 18 números", Languages.Accept);
                 return;
             }
 
-            if (string.IsNullOrEmpty(this.EmpresaInteres))
+            //NumeroCuenta
+            if (string.IsNullOrEmpty(this.NumeroCuenta))
             {
-                await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "Escribe la empresa de interes",
-                    Languages.Accept);
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe tu número de cuenta", Languages.Accept);
                 return;
             }
+            if (!RegexHelper.IsValidCP(this.NumeroCuenta) || this.NumeroCuenta.Length >12)
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe un número de cuenta no mayor a 12 números", Languages.Accept);
+                return;
+            }
+            //NumeroTarjeta
+            if (string.IsNullOrEmpty(this.NumeroTarjeta))
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe tu número de tarjeta", Languages.Accept);
+                return;
+            }
+            if (!RegexHelper.IsValidCP(this.NumeroTarjeta) || this.NumeroTarjeta.Length !=16)
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe un número de tarjeta de 16 dígitos", Languages.Accept);
+                return;
+            }
+            //NombreReferenciaUno
+            if (string.IsNullOrEmpty(this.NombreReferenciaUno))
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe el nombre de la referencia Uno", Languages.Accept);
+                return;
+            }
+            //TelefonoReferenciaUno
+            if (string.IsNullOrEmpty(this.TelefonoReferenciaUno)||this.TelefonoReferenciaUno.Length != 10)
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe el teléfono de la referencia Uno", Languages.Accept);
+                return;
+            }
+            if (!RegexHelper.IsValidTel(this.TelefonoReferenciaUno))
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe un teléfono de 10 dígitos en la referencia Uno", Languages.Accept);
+                return;
+            }
+            //NombreReferenciaDos
+            if (string.IsNullOrEmpty(this.NombreReferenciaDos))
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe el nombre de la referencia Dos", Languages.Accept);
+                return;
+            }
+            //TelefonoReferenciaDos
+            if (string.IsNullOrEmpty(this.TelefonoReferenciaDos) || this.TelefonoReferenciaDos.Length != 10)
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe el teléfono de la referencia Dos", Languages.Accept);
+                return;
+            }
+            if (!RegexHelper.IsValidTel(this.TelefonoReferenciaDos))
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe un teléfono de 10 dígitos  en la referencia Dos", Languages.Accept);
+                return;
+            }
+            //NombreReferenciaTres
+            if (string.IsNullOrEmpty(this.NombreReferenciaTres))
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe el nombre de la referencia Tres", Languages.Accept);
+                return;
+            }
+            //TelefonoReferenciaTres
+            if (string.IsNullOrEmpty(this.TelefonoReferenciaTres) || this.TelefonoReferenciaTres.Length != 10)
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe el teléfono de la referencia Tres", Languages.Accept);
+                return;
+            }
+            if (!RegexHelper.IsValidTel(this.TelefonoReferenciaTres))
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe un teléfono de 10 dígitos en la referencia Tres", Languages.Accept);
+                return;
+            }
+
+            // validar fotos
+            byte[] imageArray = null;
+            if (this.fileFoto != null)
+            {
+                imageArray = FilesHelper.ReadFully(this.fileFoto.GetStream());
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Agrega tu foto de perfil", Languages.Accept);
+                return;
+            }
+            byte[] imageArrayIdentificacion = null;
+            if (this.fileIdentificacion != null)
+            {
+                imageArrayIdentificacion = FilesHelper.ReadFully(this.fileIdentificacion.GetStream());
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Agrega la foto de tu identificación", Languages.Accept);
+                return;
+            }
+            byte[] imageArrayComprobante = null;
+            if (this.fileComprobante != null)
+            {
+                imageArrayComprobante = FilesHelper.ReadFully(this.fileComprobante.GetStream());
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Agrega la foto de tu comprobante domiciliario", Languages.Accept);
+                return;
+            }
+
+            
 
             this.IsRunning = true;
             this.IsEnabled = false;
@@ -598,7 +790,7 @@ namespace Antad.ViewModels
                 return;
             }
 
-            byte[] imageArray = null;
+            /*byte[] imageArray = null;
             if (this.fileFoto != null)
             {
                 imageArray = FilesHelper.ReadFully(this.fileFoto.GetStream());
@@ -612,20 +804,41 @@ namespace Antad.ViewModels
             if (this.fileComprobante != null)
             {
                 imageArrayComprobante = FilesHelper.ReadFully(this.fileComprobante.GetStream());
-            }
+            }*/
 
 
             var registro = new Registro
             {
                 login = this.Login,
                 password = this.Password,
+                clvPuesto = Convert.ToInt32(this.PuestoText),
                 nombre = this.Nombre,
                 apellidoPaterno = this.ApellidoPaterno,
                 apellidoMaterno = this.ApellidoMaterno,
-                curp = this.Curp,
                 email = this.Email,
-                empresainteres = this.EmpresaInteres,
-                clvPuesto = Convert.ToInt32(this.Puesto)+1,
+                curp = this.Curp,
+                telefono = this.Telefono,
+                descripcionTelefono = this.DescripcionTelefono,
+                estadoCivil = this.EstadoCivilText,
+                peso = this.Peso,
+                altura = this.Altura,
+                clvGradoEstudios = Convert.ToInt32(this.GradoEstudiosText),
+                estado = this.EstadoText,
+                municipio = this.MunicipioText,
+                codigoPostal = this.CodigoPostal,
+                calle = this.Calle,
+                numeroExterior = this.NumeroExterior,
+                numeroInterior = this.NumeroInterior,
+                clvBanco = Convert.ToInt32(this.BancoText),
+                clabe=this.Clabe,
+                numeroCuenta=this.NumeroCuenta,
+                numeroTarjeta=this.NumeroTarjeta,
+                nombreReferenciaUno=this.NombreReferenciaUno,
+                telefonoReferenciaUno=this.TelefonoReferenciaUno,
+                nombreReferenciaDos=this.NombreReferenciaDos,
+                telefonoReferenciaDos=this.TelefonoReferenciaDos,
+                nombreReferenciaTres=this.NombreReferenciaTres,
+                telefonoReferenciaTres=this.TelefonoReferenciaTres,
                 ImageArray = imageArray,
                 IdentificacionArray = imageArrayIdentificacion,
                 ComprobanteArray = imageArrayComprobante,
@@ -635,12 +848,10 @@ namespace Antad.ViewModels
 
             };
 
-            
-
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
             var controller = Application.Current.Resources["UrlRegistro"].ToString();
-            var response = await this.apiService.Post(url, prefix, controller, registro);
+            var response = await this.apiService.Post<Registro>(url, prefix, controller, registro);
 
             if (!response.IsSuccess)
             {
@@ -661,7 +872,7 @@ namespace Antad.ViewModels
                "Registro exitoso",
                 "Aceptar");
 
-            await Application.Current.MainPage.Navigation.PopAsync();*/
+            await Application.Current.MainPage.Navigation.PopAsync();
         }
 
         public ICommand CargarImagenCommand

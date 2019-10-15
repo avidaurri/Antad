@@ -40,6 +40,47 @@ namespace Antad.Helpers
                 return false;
             }
         }
+        public static bool IsValidTel(string telefono)
+        {
+            //Regex Val = new Regex("^.*(?=.{18})(?=.*[0-9])(?=.*[A-ZÑ]).*$");
+            Regex Val = new Regex(@"^{10}[0-9]+$");
+            try
+            {
+                if (Val.IsMatch(telefono))
+                {
+                    return true;
+                }
+                return false;
+                /*if (!curp.match(/[a-zA-Z]{4,4}[0-9]{6}[a-zA-Z]{6,6}[0-9]{2}/) ){
 
+            var cu = new MailAddress(curp);
+            return true;*/
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
+        public static bool IsValidCP(string cp)
+        {
+            //Regex Val = new Regex("^.*(?=.{18})(?=.*[0-9])(?=.*[A-ZÑ]).*$");
+            Regex Val = new Regex(@"^{5}[0-9]+$");
+            try
+            {
+                if (Val.IsMatch(cp))
+                {
+                    return true;
+                }
+                return false;
+                /*if (!curp.match(/[a-zA-Z]{4,4}[0-9]{6}[a-zA-Z]{6,6}[0-9]{2}/) ){
+
+            var cu = new MailAddress(curp);
+            return true;*/
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
     }
 }

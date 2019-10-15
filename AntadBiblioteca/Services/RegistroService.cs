@@ -17,7 +17,7 @@ namespace AntadBiblioteca.Services
             loginAccesoDatos = new RegistroDAO(cadena);
         }
 
-        public int PostRegistro(Registro user)
+        public Registro PostRegistro(Registro user)
         {
             return loginAccesoDatos.PostRegistro(user);
         }
