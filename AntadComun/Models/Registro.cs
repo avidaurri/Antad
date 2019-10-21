@@ -27,6 +27,7 @@ namespace AntadComun.Models
         public string estado { get; set; }
         public int clvMunicipio { get; set; }
         public string municipio { get; set; }
+        public string colonia { get; set; }
         public string codigoPostal { get; set; }
         public string calle { get; set; }
         public string numeroExterior { get; set; }
@@ -39,8 +40,6 @@ namespace AntadComun.Models
         public string telefonoReferenciaUno { get; set; }
         public string nombreReferenciaDos { get; set; }
         public string telefonoReferenciaDos { get; set; }
-        public string nombreReferenciaTres { get; set; }
-        public string telefonoReferenciaTres { get; set; }
         public string foto { get; set; }
         public string identificacion { get; set; }
         public string comprobanteDomiciliario { get; set; }

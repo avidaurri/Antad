@@ -29,6 +29,7 @@ namespace AntadBiblioteca.DAO
             bool folioConMesb;
             string folioEmpleado;
             int generoas;
+            string generostr;
             string verificarRepetido = "select * from login where login=@usuario";
                         
             List<Parametro> parametrosd = new List<Parametro>();
@@ -136,21 +137,25 @@ namespace AntadBiblioteca.DAO
                 if (generoprev.Equals("H"))
                 {
                     generoas = 1;
+                    generostr = "Masculino";
                 }
                 else if (generoprev.Equals("M"))
                 {
                     generoas = 0;
+                    generostr = "Femenino";
                 }
                 else
                 {
                     generoas = 0;
+                    generostr = "Femenino";
                 }
 
 
-                string sqlInsert = "insert into empleado(procesar_nomina,sicepo,clv_emp,clv_gen,fecha_naci,clv_puesto,nombre,apellido_paterno,apellido_materno," +
-                    "email,curp,edo_civil,peso,estatura,clv_grado_estu,ciu_edo,del_mun,cp,calle_no,no_exterior,no_interior," +
+                string sqlInsert = "insert into empleado(clv_nacionalidad,tipo_empleado,titulo,procesar_nomina,sicepo,clv_emp,clv_empre,clv_gen,genero,fecha_naci,clv_puesto,nombre,apellido_paterno,apellido_materno," +
+                    "email,curp,edo_civil,peso,estatura,clv_grado_estu,ciu_edo,del_mun,cp,calle_no,colonia,no_exterior,no_interior," +
                     "clv_banco,clabe,cuenta,tarjeta,tipo_empleado,foto_url) " +
-        "values(0,0,@clv_emp,@clv_gen,@fecha_naci,@clv_puesto,@nombre,@apellido_paterno,@apellido_materno,@email,@curp,@edo_civil,@peso,@altura,@clv_gradoestu,@ciu_edo,@del_mun,@cp,@calle_no," +
+        "values(1,1,' ',0,0,@clv_emp,1,@clv_gen,@genero,@fecha_naci,@clv_puesto,@nombre,@apellido_paterno,@apellido_materno,@email,@curp,@edo_civil,@peso," +
+        "@altura,@clv_gradoestu,@ciu_edo,@del_mun,@cp,@calle_no,@colonia," +
         "@no_exterior,@no_interior, @clv_banco,@clabe,@cuenta,@tarjeta,2,@foto_url)";
 
                 List<Parametro> parametrosInsert = new List<Parametro>();
@@ -174,6 +179,11 @@ namespace AntadBiblioteca.DAO
                 paramGen.Nombre = "@clv_gen";
                 paramGen.Valor = generoas.ToString();
                 parametrosInsert.Add(paramGen);
+
+                Parametro paramGenero = new Parametro();
+                paramGenero.Nombre = "@genero";
+                paramGenero.Valor = generostr;
+                parametrosInsert.Add(paramGenero);
 
                 Parametro paramFechanac = new Parametro();
                 paramFechanac.Nombre = "@fecha_naci";
@@ -245,6 +255,11 @@ namespace AntadBiblioteca.DAO
                 paramCodigoP.Valor = user.codigoPostal.ToString();
                 parametrosInsert.Add(paramCodigoP);
 
+                Parametro paramColonia = new Parametro();
+                paramColonia.Nombre = "@colonia";
+                paramColonia.Valor = user.colonia.ToString();
+                parametrosInsert.Add(paramColonia);
+
                 Parametro paramCalle = new Parametro();
                 paramCalle.Nombre = "@calle_no";
                 paramCalle.Valor = user.calle;
@@ -288,12 +303,12 @@ namespace AntadBiblioteca.DAO
 
                 Parametro paramIdentificacion = new Parametro();
                 paramIdentificacion.Nombre = "@identificacion";
-                paramIdentificacion.Valor = urlServidor + user.identificacion;
+                paramIdentificacion.Valor = urlServidor + "Content/Iden/" + user.identificacion;
                 parametrosInsert.Add(paramIdentificacion);
 
                 Parametro paramComprobante = new Parametro();
                 paramComprobante.Nombre = "@comprobante";
-                paramComprobante.Valor = urlServidor  + user.comprobanteDomiciliario;
+                paramComprobante.Valor = urlServidor  + "Content/Com/" + user.comprobanteDomiciliario;
                 parametrosInsert.Add(paramComprobante);
 
                 Parametro paramTelefonoUno = new Parametro();
@@ -316,15 +331,7 @@ namespace AntadBiblioteca.DAO
                 paramNombreReferenciaDos.Valor = user.nombreReferenciaDos;
                 parametrosInsert.Add(paramNombreReferenciaDos);
 
-                Parametro paramTelefonoTres = new Parametro();
-                paramTelefonoTres.Nombre = "@telefonoTres";
-                paramTelefonoTres.Valor = user.telefonoReferenciaTres.ToString();
-                parametrosInsert.Add(paramTelefonoTres);
-
-                Parametro paramNombreReferenciaTres = new Parametro();
-                paramNombreReferenciaTres.Nombre = "@nombreReferenciaTres";
-                paramNombreReferenciaTres.Valor = user.nombreReferenciaTres;
-                parametrosInsert.Add(paramNombreReferenciaTres);
+ 
                 //ImagePath
                 int registradoEmpleado = conexion.ActualizarParametro(sqlInsert, parametrosInsert);
 
@@ -337,8 +344,8 @@ namespace AntadBiblioteca.DAO
                 {
                     //insertar en login
 
-                    string sqlInsertLogin = "insert into login(clv_edo_reg_usr,estado_cuenta,administrador,login,password,clv_emp, reg_url_identificacion,reg_url_domicilio) " +
-                        "values(5,0,0,@login,@password,@clv_emp,@identificacion,@comprobante)";
+                    string sqlInsertLogin = "insert into login(clv_empre,clv_edo_reg_usr,estado_cuenta,administrador,login,password,clv_emp, url_dom,url_com) " +
+                        "values(1,5,0,0,@login,@password,@clv_emp,@identificacion,@comprobante)";
 
                     int registradoLogin = conexion.ActualizarParametro(sqlInsertLogin, parametrosInsert);
 
@@ -351,11 +358,6 @@ namespace AntadBiblioteca.DAO
     "values(@clv_emp,@telefonoDos,@nombreReferenciaDos)";
 
                     int registradoreferenciaDos = conexion.ActualizarParametro(sqlInsertReferenciaDos, parametrosInsert);
-
-                    string sqlInsertReferenciaTres = "insert into emp_telefono(clv_emp,telefono,descripcion) " +
-    "values(@clv_emp,@telefonoTres,@nombreReferenciaTres)";
-
-                    int registradoreferenciaTres = conexion.ActualizarParametro(sqlInsertReferenciaTres, parametrosInsert);
 
 
                     if (registradoLogin == 1)

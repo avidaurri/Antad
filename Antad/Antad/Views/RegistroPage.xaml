@@ -6,143 +6,960 @@
              mc:Ignorable="d"
              x:Class="Antad.Views.RegistroPage" 
               Title="REGISTRO" >
-    <!-- pagina uno perfil -->
+    <!-- 1 foto de perfil -->
     <ContentPage
         xmlns:i18n="clr-namespace:Antad.Helpers"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-           
              BackgroundImageSource="fondosplash">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-
-            <StackLayout Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="Center">
-                <Label Text="Comencemos tu registro!!" FontFamily="{StaticResource MontserratBold}" FontSize="23" HorizontalOptions="Center" TextColor="Purple"/>
+            <StackLayout  Orientation="Vertical" VerticalOptions="Center" >
+                <Label Text="Comencemos tu registro!!" FontFamily="{StaticResource MontserratBold}" 
+                       FontSize="23" HorizontalOptions="Center" TextColor="Purple" VerticalOptions="Center"/>
             </StackLayout>
 
-            <StackLayout Grid.ColumnSpan="3" Orientation="Horizontal" Grid.Row="1" Padding="20,0,20,0">
-                <Label FontFamily="{StaticResource MontserratRegular}" FontSize="14" TextColor="DimGray" 
-                    Text="Felicidades!! Estas cerca de permanecer a nuestro equipo de trabajo"
-                    HorizontalTextAlignment="Center" FontAttributes="Bold" VerticalTextAlignment="Center"/>
-            </StackLayout>
-
-           <StackLayout Orientation="Vertical" 
-                        
-                         Grid.Row="2" Grid.Column="0"
-                        VerticalOptions="Center">
-                <Image Source="ic_left" VerticalOptions="Center" WidthRequest="30" />
-            </StackLayout>
-            <Frame Grid.Row="2" Grid.Column="1" BindingContext="{Binding Register}">
+            <Frame Grid.Row="1" Opacity=".9" BindingContext="{Binding Register}" Margin="20,0,20,30">
 
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
-                     
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     
-                    <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                    <StackLayout Orientation="Vertical" VerticalOptions="Center"  >
+                        <Label FontFamily="{StaticResource MontserratRegular}" FontSize="14" TextColor="DimGray" 
+                    Text="Felicidades!! Haz iniciado el camino para pertenecer a nuestro equipo de trabajo"
+                    HorizontalTextAlignment="Center" FontAttributes="Bold" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center">
                         <Image
-                            HeightRequest="180"
-                    Source="{Binding ImageSourceFoto}">
+                            HeightRequest="240"
+                            Source="{Binding ImageSourceFoto}">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding CargarImagenCommand}"/>
                             </Image.GestureRecognizers>
                         </Image>
                         <Label
-                    FontSize="Small"
-                    HorizontalOptions="Center"
+                            FontSize="Small"
+                            HorizontalOptions="Center"
                             TextColor="DimGray"
-                           HorizontalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
                             FontFamily="{StaticResource MontserratLight}"
-                    Text="Presiona para cargar tu foto de perfil">
-                        </Label> 
+                            Text="Prepara tu mejor foto y presiona la imagen para cargarla">
+                        </Label>
                     </StackLayout>
-                    <StackLayout Orientation="Vertical" Grid.Row="1" VerticalOptions="Center">
-                        <Entry VerticalOptions="CenterAndExpand"
-                              FontFamily="{StaticResource MontserratRegular}"
+
+                    <StackLayout Grid.Row="2"
+                       Orientation="Horizontal" HorizontalOptions="Center" >
+                        <Image Source="indicador_morado" WidthRequest="40"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                    </StackLayout>
+                    <StackLayout 
+                         Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="3">
+                        <Label 
+                            HorizontalOptions="Center"
+                            Text="1"
+                            FontSize="35"
+                            TextColor="Purple"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                        <Label 
+                            HorizontalOptions="Center"
+                            Text="DE"
+                            FontSize="25"
+                            TextColor="DimGray"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                        <Label 
+                            HorizontalOptions="Center"
+                            Text="9"
+                            FontSize="35"
+                            TextColor="Purple"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+        </Grid>
+    </ContentPage>
+
+    <!-- 2 datos de perfil -->
+    <ContentPage
+        xmlns:i18n="clr-namespace:Antad.Helpers"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundImageSource="fondosplash">
+
+            <Frame Grid.Row="1" Opacity=".9" BindingContext="{Binding Register}" Margin="20,20,20,30">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Orientation="Vertical" VerticalOptions="Center"  >
+                    <Label FontFamily="{StaticResource MontserratBold}" FontSize="17" TextColor="Purple" 
+                    Text="Estos datos seran muy importantes para que inicies sesión en tu aplicación"
+                    HorizontalTextAlignment="Center" FontAttributes="Bold" VerticalTextAlignment="Start"/>
+                    </StackLayout>
+
+                <StackLayout Orientation="Vertical" Grid.Row="1" VerticalOptions="Center">
+                    <Entry VerticalOptions="CenterAndExpand"
+                              FontFamily="{StaticResource MontserratBold}"
                             Grid.ColumnSpan="2"
                             Grid.Row="4"
                               Text="{Binding Login}"
-                            Placeholder="Usuario">
-                        </Entry>
+                            Placeholder="Alias y/o username">
+                    </Entry>
 
-                        <Entry VerticalOptions="CenterAndExpand"
-                              FontFamily="{StaticResource MontserratRegular}"
+                    <Entry VerticalOptions="CenterAndExpand"
+                            FontFamily="{StaticResource MontserratBold}"
                             Grid.ColumnSpan="2"
                             Grid.Row="5"
                             IsPassword="True"
                             Text="{Binding Password}"
                             Placeholder="Contraseña">
-                        </Entry>
+                    </Entry>
 
-                        <Picker Grid.Row="0" Grid.Column="1" TextColor="DimGray" 
+                    <Picker Grid.Row="0" Grid.Column="1" TextColor="DimGray" 
                             Title="Puesto deseado" 
                             ItemsSource="{Binding PuestoList}"
                             ItemDisplayBinding="{Binding value}"
                             SelectedItem="{Binding SelectedPuesto}"   
                             FontFamily="{StaticResource MontserratRegular}">
-                        </Picker>
+                    </Picker>
+                </StackLayout>
+
+                <StackLayout Grid.Row="2"
+                       Orientation="Horizontal" HorizontalOptions="Center" >
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_morado" WidthRequest="40"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
                     </StackLayout>
+                    <StackLayout 
+                         Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="3">
+                        <Label 
+                            HorizontalOptions="Center"
+                            Text="2"
+                            FontSize="35"
+                            TextColor="Purple"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                        <Label 
+                            HorizontalOptions="Center"
+                            Text="DE"
+                            FontSize="25"
+                            TextColor="DimGray"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                        <Label 
+                            HorizontalOptions="Center"
+                            Text="9"
+                            FontSize="35"
+                            TextColor="Purple"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+
+    </ContentPage>
+
+    <!-- 3 datos generales-->
+    <ContentPage
+        xmlns:i18n="clr-namespace:Antad.Helpers"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundImageSource="fondosplash">
+
+        <Frame Grid.Row="1" Opacity=".9" BindingContext="{Binding Register}" Margin="20,20,20,30">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackLayout Orientation="Vertical" VerticalOptions="Center"  >
+                    <Label FontFamily="{StaticResource MontserratBold}" FontSize="17" TextColor="Purple" 
+                    Text="Esta información nos ayudará a evaluar mejor tu perfil"
+                    HorizontalTextAlignment="Center" FontAttributes="Bold" VerticalTextAlignment="Start"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Vertical" Grid.Row="1" VerticalOptions="Center">
+                    <Entry  VerticalOptions="CenterAndExpand"
+                          FontFamily="{StaticResource MontserratBold}"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="0"
+                        Text="{Binding Nombre}"
+                        Placeholder="Nombre">
+                    </Entry>
+
+                    <Entry
+                          FontFamily="{StaticResource MontserratBold}"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="1"
+                        Text="{Binding ApellidoPaterno}"
+                        Placeholder="Apellido Paterno">
+                    </Entry>
+
+
+                    <Entry
+                          FontFamily="{StaticResource MontserratBold}"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="2"
+                        Text="{Binding ApellidoMaterno}"
+                        Placeholder="Apellido Materno">
+                    </Entry>
+
+
+                    <Entry
+                          FontFamily="{StaticResource MontserratBold}"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="3"
+                        Keyboard="Email"
+                        Text="{Binding Email}"
+                        Placeholder="Email">
+                    </Entry>
+
+
+                    <Entry
+                          FontFamily="{StaticResource MontserratBold}"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="6"
+                        Text="{Binding Curp}"
+                        Placeholder="CURP">
+                    </Entry>
+                </StackLayout>
+
+                <StackLayout Grid.Row="2"
+                       Orientation="Horizontal" HorizontalOptions="Center" >
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_morado" WidthRequest="40"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                </StackLayout>
+                <StackLayout 
+                         Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="3">
+                    <Label 
+                            HorizontalOptions="Center"
+                            Text="3"
+                            FontSize="35"
+                            TextColor="Purple"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                    <Label 
+                            HorizontalOptions="Center"
+                            Text="DE"
+                            FontSize="25"
+                            TextColor="DimGray"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                    <Label 
+                            HorizontalOptions="Center"
+                            Text="9"
+                            FontSize="35"
+                            TextColor="Purple"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </Grid>
+        </Frame>
+
+    </ContentPage>
+
+    <!-- 4 identificación personal -->
+    <ContentPage
+        xmlns:i18n="clr-namespace:Antad.Helpers"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundImageSource="fondosplash">
+
+        <Frame Grid.Row="1" Opacity=".9" BindingContext="{Binding Register}" Margin="20,20,20,30">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Orientation="Vertical" VerticalOptions="Center"  >
+                        <Label FontFamily="{StaticResource MontserratBold}" FontSize="17" TextColor="Purple" 
+                    Text="Ayudanos con una identificación oficial"
+                    HorizontalTextAlignment="Center" FontAttributes="Bold" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Image WidthRequest="120" HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                    Source="{Binding ImageSourceIdentificacion}">
+
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CargarIdentificacionCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    <Label FontFamily="{StaticResource MontserratRegular}"
+                                FontSize="Small" HorizontalTextAlignment="Center"
+                                HorizontalOptions="Center"
+                                Text="Presiona la imagen para cargar una foto de tu identificación personal con fotografía">
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="2"
+                       Orientation="Horizontal" HorizontalOptions="Center" >
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_morado" WidthRequest="40"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                    </StackLayout>
+                    <StackLayout 
+                         Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="3">
+                        <Label 
+                            HorizontalOptions="Center"
+                            Text="4"
+                            FontSize="35"
+                            TextColor="Purple"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                        <Label 
+                            HorizontalOptions="Center"
+                            Text="DE"
+                            FontSize="25"
+                            TextColor="DimGray"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                        <Label 
+                            HorizontalOptions="Center"
+                            Text="9"
+                            FontSize="35"
+                            TextColor="Purple"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+
+    </ContentPage>
+
+    <!-- 5 datos especificos-->
+    <ContentPage
+        xmlns:i18n="clr-namespace:Antad.Helpers"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundImageSource="fondosplash">
+
+        <Frame Grid.Row="1" Opacity=".9" BindingContext="{Binding Register}" Margin="20,20,20,30">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackLayout Orientation="Vertical" VerticalOptions="Center"  >
+                    <Label FontFamily="{StaticResource MontserratBold}" FontSize="17" TextColor="Purple" 
+                    Text="Esta información nos ayudará a evaluar mejor tu perfil"
+                    HorizontalTextAlignment="Center" FontAttributes="Bold" VerticalTextAlignment="Start"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Vertical" Grid.Row="1" VerticalOptions="Center">
+                    <Entry
+                          FontFamily="{StaticResource MontserratBold}"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="6"
+                        Text="{Binding Telefono}"
+                        Placeholder="Teléfono">
+                    </Entry>
+
+                    <Entry
+                          FontFamily="{StaticResource MontserratBold}"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="6"
+                        Text="{Binding DescripcionTelefono}"
+                        Placeholder="Descripción teléfono">
+                    </Entry>
+
+                    <Picker Grid.Row="0" Grid.Column="1" TextColor="DimGray" 
+                            Title="Estado Civil" 
+                            ItemsSource="{Binding EstadoCivilList}"
+                            ItemDisplayBinding="{Binding value}"
+                            SelectedItem="{Binding SelectedEstadoCivil}"   
+                            FontFamily="{StaticResource MontserratBold}">
+                    </Picker>
+
+
+                    <Entry  VerticalOptions="CenterAndExpand"
+                          FontFamily="{StaticResource MontserratBold}"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="0"
+                        Text="{Binding Peso}"
+                        Placeholder="Peso (Kgs)">
+                    </Entry>
+
+                    <Entry
+                          FontFamily="{StaticResource MontserratBold}"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="1"
+                        Text="{Binding Altura}"
+                        Placeholder="Altura (mts)">
+                    </Entry>
+
+                    <Picker Grid.Row="0" Grid.Column="1" TextColor="DimGray" 
+                            Title="Grado de estudios" 
+                            ItemsSource="{Binding GradoEstudiosList}"
+                            ItemDisplayBinding="{Binding value}"
+                            SelectedItem="{Binding SelectedGradoEstudios}"   
+                            FontFamily="{StaticResource MontserratBold}">
+                    </Picker>
+                </StackLayout>
+
+                <StackLayout Grid.Row="2"
+                       Orientation="Horizontal" HorizontalOptions="Center" >
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_morado" WidthRequest="40"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                </StackLayout>
+                <StackLayout 
+                         Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="3">
+                    <Label 
+                            HorizontalOptions="Center"
+                            Text="5"
+                            FontSize="35"
+                            TextColor="Purple"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                    <Label 
+                            HorizontalOptions="Center"
+                            Text="DE"
+                            FontSize="25"
+                            TextColor="DimGray"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                    <Label 
+                            HorizontalOptions="Center"
+                            Text="9"
+                            FontSize="35"
+                            TextColor="Purple"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </Grid>
+        </Frame>
+
+    </ContentPage>
+
+    <!-- 6 ubicación-->
+    <ContentPage
+        xmlns:i18n="clr-namespace:Antad.Helpers"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundImageSource="fondosplash">
+
+        <Frame Grid.Row="1" Opacity=".9" BindingContext="{Binding Register}" Margin="20,20,20,30">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackLayout Orientation="Vertical" VerticalOptions="Center"  >
+                    <Label FontFamily="{StaticResource MontserratBold}" FontSize="17" TextColor="Purple" 
+                    Text="Esta información nos ayudará a asignarte a centros de trabajo"
+                    HorizontalTextAlignment="Center" FontAttributes="Bold" VerticalTextAlignment="Start"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Vertical" Grid.Row="1" VerticalOptions="Center">
+
+                    <Picker  TextColor="DimGray" 
+                            Title="Estado" 
+                            ItemsSource="{Binding EstadosList}"
+                            ItemDisplayBinding="{Binding value}"
+                            SelectedItem="{Binding SelectedEstado}"   
+                            FontFamily="{StaticResource MontserratBold}">
+                    </Picker>
+
+                    <Picker  TextColor="DimGray" 
+                            Title="Municipio" 
+                            ItemsSource="{Binding MunicipiosList}"
+                            ItemDisplayBinding="{Binding value}"
+                            SelectedItem="{Binding SelectedMunicipio}"   
+                            FontFamily="{StaticResource MontserratBold}">
+                    </Picker>
+                    <Entry  VerticalOptions="CenterAndExpand"
+                          FontFamily="{StaticResource MontserratBold}"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="0"
+                        Text="{Binding CodigoPostal}"
+                        Placeholder="Código Postal">
+                    </Entry>
+                    <Entry
+                          FontFamily="{StaticResource MontserratBold}"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="1"
+                        Text="{Binding Colonia}"
+                        Placeholder="Colonia">
+                    </Entry>
+                    <Entry
+                          FontFamily="{StaticResource MontserratBold}"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="1"
+                        Text="{Binding Calle}"
+                        Placeholder="Calle">
+                    </Entry>
+                    <Entry  VerticalOptions="CenterAndExpand"
+                          FontFamily="{StaticResource MontserratBold}"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="0"
+                        Text="{Binding NumeroExterior}"
+                        Placeholder="Numero Exterior">
+                    </Entry>
+                    <Entry  VerticalOptions="CenterAndExpand"
+                          FontFamily="{StaticResource MontserratBold}"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="0"
+                        Text="{Binding NumeroInterior}"
+                        Placeholder="Numero Interior">
+                    </Entry>
+
+                </StackLayout>
+
+                <StackLayout Grid.Row="2"
+                       Orientation="Horizontal" HorizontalOptions="Center" >
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_morado" WidthRequest="40"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                </StackLayout>
+                <StackLayout 
+                         Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="3">
+                    <Label 
+                            HorizontalOptions="Center"
+                            Text="6"
+                            FontSize="35"
+                            TextColor="Purple"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                    <Label 
+                            HorizontalOptions="Center"
+                            Text="DE"
+                            FontSize="25"
+                            TextColor="DimGray"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                    <Label 
+                            HorizontalOptions="Center"
+                            Text="9"
+                            FontSize="35"
+                            TextColor="Purple"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </Grid>
+        </Frame>
+
+    </ContentPage>
+
+    <!-- 7 comprobante domiciliario -->
+    <ContentPage
+        xmlns:i18n="clr-namespace:Antad.Helpers"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundImageSource="fondosplash">
+
+        <Frame Grid.Row="1" Opacity=".9" BindingContext="{Binding Register}" Margin="20,20,20,30">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackLayout Orientation="Vertical" VerticalOptions="Center"  >
+                    <Label FontFamily="{StaticResource MontserratBold}" FontSize="17" TextColor="Purple" 
+                    Text="Ayudanos con un comprobante domiciliario"
+                    HorizontalTextAlignment="Center" FontAttributes="Bold" VerticalTextAlignment="Center"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Vertical" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center">
+
+                    <StackLayout HorizontalOptions="Center">
+                        <Image WidthRequest="130" HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                   x:Name="cargarAni"
+                                    Source="{Binding ImageSourceComprobante}">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CargarComprobanteCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label HorizontalTextAlignment="Center"
+                                FontSize="Small"
+                               FontFamily="{StaticResource MontserratRegular}"
+                                HorizontalOptions="Center"
+                                Text="Presiona la imagen para cargar tu comprobante domiciliario">
+                        </Label>
+                    </StackLayout>
+
+                </StackLayout>
+
+                <StackLayout Grid.Row="2"
+                       Orientation="Horizontal" HorizontalOptions="Center" >
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_morado" WidthRequest="40"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                </StackLayout>
+                <StackLayout 
+                         Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="3">
+                    <Label 
+                            HorizontalOptions="Center"
+                            Text="7"
+                            FontSize="35"
+                            TextColor="Purple"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                    <Label 
+                            HorizontalOptions="Center"
+                            Text="DE"
+                            FontSize="25"
+                            TextColor="DimGray"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                    <Label 
+                            HorizontalOptions="Center"
+                            Text="9"
+                            FontSize="35"
+                            TextColor="Purple"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </Grid>
+        </Frame>
+
+    </ContentPage>
+
+    <!-- 8 datos bancarios-->
+    <ContentPage
+        xmlns:i18n="clr-namespace:Antad.Helpers"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundImageSource="fondosplash">
+
+        <Frame Grid.Row="1" Opacity=".9" BindingContext="{Binding Register}" Margin="20,20,20,30">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackLayout Orientation="Vertical" VerticalOptions="Center"  >
+                    <Label FontFamily="{StaticResource MontserratBold}" FontSize="17" TextColor="Purple" 
+                    Text="Es muy importante para nosotros recompensar tu trabajo, ayudanos con tus datos bancarios"
+                    HorizontalTextAlignment="Center" FontAttributes="Bold" VerticalTextAlignment="Start"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Vertical" Grid.Row="1" VerticalOptions="Center">
+
+                    <Picker Grid.Row="0"  TextColor="DimGray" 
+                                Title="Banco" 
+                              ItemsSource="{Binding BancoList}"
+                                ItemDisplayBinding="{Binding value}"
+                       SelectedItem="{Binding SelectedBanco}"   
+                            
+                              FontFamily="{StaticResource MontserratBold}">
+                    </Picker>
+
+                    <Entry
+                          FontFamily="{StaticResource MontserratBold}"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="1"
+                        Text="{Binding Clabe}"
+                        Placeholder="clabe">
+                    </Entry>
+                    <Entry  VerticalOptions="CenterAndExpand"
+                          FontFamily="{StaticResource MontserratBold}"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="0"
+                        Text="{Binding NumeroCuenta}"
+                        Placeholder="noDeCuenta">
+                    </Entry>
+
+                    <Entry
+                          FontFamily="{StaticResource MontserratBold}"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="1"
+                        Text="{Binding NumeroTarjeta}"
+                        Placeholder="tarjeta">
+                    </Entry>
+
+
+                </StackLayout>
+
+                <StackLayout Grid.Row="2"
+                       Orientation="Horizontal" HorizontalOptions="Center" >
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_morado" WidthRequest="40"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                </StackLayout>
+                <StackLayout 
+                         Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="3">
+                    <Label 
+                            HorizontalOptions="Center"
+                            Text="8"
+                            FontSize="35"
+                            TextColor="Purple"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                    <Label 
+                            HorizontalOptions="Center"
+                            Text="DE"
+                            FontSize="25"
+                            TextColor="DimGray"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                    <Label 
+                            HorizontalOptions="Center"
+                            Text="9"
+                            FontSize="35"
+                            TextColor="Purple"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </Grid>
+        </Frame>
+
+    </ContentPage>
+
+    <!-- 9 referencias-->
+    <ContentPage
+        xmlns:i18n="clr-namespace:Antad.Helpers"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundImageSource="fondosplash">
+        <Grid BindingContext="{Binding Register}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout  Orientation="Vertical" VerticalOptions="Center" >
+                <Label Text="Estas a punto de finalizar!!!!" FontFamily="{StaticResource MontserratBold}" 
+                       FontSize="23" HorizontalOptions="Center" TextColor="Purple" VerticalOptions="Center"/>
+            </StackLayout>
+
+            <Frame Grid.Row="1" Opacity=".9" BindingContext="{Binding Register}" Margin="20,0,20,30">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Orientation="Vertical" VerticalOptions="Center"  >
+                        <Label FontFamily="{StaticResource MontserratRegular}" FontSize="14" TextColor="DimGray" 
+                    Text="Primer Referencia"
+                    HorizontalTextAlignment="Center" FontAttributes="Bold" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Entry
+                          FontFamily="{StaticResource MontserratRegular}"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="1"
+                        Text="{Binding NombreReferenciaUno}"
+                        Placeholder="Nombre referencia Uno">
+                        </Entry>
+                        <Entry
+                          FontFamily="{StaticResource MontserratRegular}"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="1"
+                        Text="{Binding TelefonoReferenciaUno}"
+                        Placeholder="Telefono referencia Uno">
+                        </Entry>
+
+                    </StackLayout>
+
 
 
                 </Grid>
             </Frame>
-            <StackLayout Orientation="Vertical" Grid.Row="2" Grid.Column="2"
-                         VerticalOptions="Center">
-                <Image Source="ic_action_chevron_right" VerticalOptions="Center" WidthRequest="30"  />
-            </StackLayout>
 
-            <StackLayout Grid.ColumnSpan="3"
-                       Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="3">
-                <Image Source="indicador_morado" WidthRequest="40"/>
-                <Image Source="indicador_gris" WidthRequest="25"/>
-                <Image Source="indicador_gris" WidthRequest="25"/>
-                <Image Source="indicador_gris" WidthRequest="25"/>
-                <Image Source="indicador_gris" WidthRequest="25"/>
-                <Image Source="indicador_gris" WidthRequest="25"/>
-            </StackLayout>
-            <StackLayout Grid.ColumnSpan="3" 
+            <Frame Grid.Row="2" Opacity=".9" BindingContext="{Binding Register}" Margin="20,0,20,30">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Orientation="Vertical" VerticalOptions="Center"  >
+                        <Label FontFamily="{StaticResource MontserratRegular}" FontSize="14" TextColor="DimGray" 
+                    Text="Segunda referencia"
+                    HorizontalTextAlignment="Center" FontAttributes="Bold" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center">
+
+                        <Entry
+                          FontFamily="{StaticResource MontserratRegular}"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="1"
+                        Text="{Binding NombreReferenciaDos}"
+                        Placeholder="Nombre referencia Dos">
+                        </Entry>
+                        <Entry
+                          FontFamily="{StaticResource MontserratRegular}"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="1"
+                        Text="{Binding TelefonoReferenciaDos}"
+                        Placeholder="Telefono referencia Dos">
+                        </Entry>
+                    </StackLayout>
+
+
+
+                </Grid>
+            </Frame>
+            <Frame Grid.Row="3" Opacity=".9" BindingContext="{Binding Register}" Margin="20,0,20,30">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+
+
+                    <StackLayout Grid.Row="2"
+                       Orientation="Horizontal" HorizontalOptions="Center" >
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_gris" WidthRequest="25"/>
+                        <Image Source="indicador_morado" WidthRequest="40"/>
+                    </StackLayout>
+                    <StackLayout 
+                         Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="3">
+                        <Label 
+                            HorizontalOptions="Center"
+                            Text="9"
+                            FontSize="35"
+                            TextColor="Purple"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                        <Label 
+                            HorizontalOptions="Center"
+                            Text="DE"
+                            FontSize="25"
+                            TextColor="DimGray"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                        <Label 
+                            HorizontalOptions="Center"
+                            Text="9"
+                            FontSize="35"
+                            TextColor="Purple"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+            <StackLayout 
                          Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="4">
-                <Label 
-                    HorizontalOptions="Center"
-                    Text="1"
-                    FontSize="35"
-                    TextColor="Purple"
-                    FontFamily="{StaticResource MontserratBold}"
-                    HorizontalTextAlignment="Center"/>
-                <Label 
-                    HorizontalOptions="Center"
-                    Text="DE"
-                    FontSize="25"
-                    TextColor="DimGray"
-                    FontFamily="{StaticResource MontserratBold}"
-                    HorizontalTextAlignment="Center"/>
-                <Label 
-                    HorizontalOptions="Center"
-                    Text="6"
-                    FontSize="35"
-                    TextColor="Purple"
-                    FontFamily="{StaticResource MontserratBold}"
-                    HorizontalTextAlignment="Center"/>
-            </StackLayout>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning}"
+                    VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>
 
+            </StackLayout>
+            <StackLayout  
+                         Orientation="Vertical" 
+                         VerticalOptions="End"  Grid.Row="5">
+
+                <Button HorizontalOptions="FillAndExpand"
+                    BackgroundColor="Purple"
+                    Command="{Binding SaveCommand}"
+                    HeightRequest="46"
+                    IsEnabled="{Binding IsEnabled}"
+                    Text="Guardar"
+                    TextColor="White">
+                </Button>
+            </StackLayout>
         </Grid>
-      
     </ContentPage>
     
-    <!-- Pagina Dos generales -->
+    
+
+    <!-- Pagina Dos generales 
     <ContentPage
         xmlns:i18n="clr-namespace:Antad.Helpers"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
@@ -298,10 +1115,108 @@
 
         </Grid>
 
-    </ContentPage>
+    </ContentPage>-->
+    
+    <!-- pagina uno perfil 
+    <ContentPage
+        xmlns:i18n="clr-namespace:Antad.Helpers"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+           
+             BackgroundImageSource="fondosplash">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout  Orientation="Horizontal" HorizontalOptions="Center">
+                <Label Text="Comencemos tu registro!!" FontFamily="{StaticResource MontserratBold}" FontSize="23" HorizontalOptions="Center" TextColor="Purple"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Grid.Row="1" Padding="20,0,20,0">
+                <Label FontFamily="{StaticResource MontserratRegular}" FontSize="14" TextColor="DimGray" 
+                    Text="Felicidades!! Estas cerca de permanecer a nuestro equipo de trabajo"
+                    HorizontalTextAlignment="Center" FontAttributes="Bold" VerticalTextAlignment="Center"/>
+            </StackLayout>
+
+            <Frame Grid.Row="2" Grid.Column="1" BindingContext="{Binding Register}">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                     
+                    </Grid.RowDefinitions>
+                    
+                    <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                        <Image
+                            HeightRequest="180"
+                    Source="{Binding ImageSourceFoto}">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CargarImagenCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label
+                    FontSize="Small"
+                    HorizontalOptions="Center"
+                            TextColor="DimGray"
+                           HorizontalTextAlignment="Center"
+                            FontFamily="{StaticResource MontserratLight}"
+                    Text="Presiona para cargar tu foto de perfil">
+                        </Label> 
+                    </StackLayout>
 
 
-    <!-- Pagina Tres especificos -->
+
+                </Grid>
+            </Frame>
+
+
+            <StackLayout 
+                       Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="3">
+                <Image Source="indicador_morado" WidthRequest="40"/>
+                <Image Source="indicador_gris" WidthRequest="25"/>
+                <Image Source="indicador_gris" WidthRequest="25"/>
+                <Image Source="indicador_gris" WidthRequest="25"/>
+                <Image Source="indicador_gris" WidthRequest="25"/>
+                <Image Source="indicador_gris" WidthRequest="25"/>
+            </StackLayout>
+            <StackLayout 
+                         Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="4">
+                <Label 
+                    HorizontalOptions="Center"
+                    Text="1"
+                    FontSize="35"
+                    TextColor="Purple"
+                    FontFamily="{StaticResource MontserratBold}"
+                    HorizontalTextAlignment="Center"/>
+                <Label 
+                    HorizontalOptions="Center"
+                    Text="DE"
+                    FontSize="25"
+                    TextColor="DimGray"
+                    FontFamily="{StaticResource MontserratBold}"
+                    HorizontalTextAlignment="Center"/>
+                <Label 
+                    HorizontalOptions="Center"
+                    Text="6"
+                    FontSize="35"
+                    TextColor="Purple"
+                    FontFamily="{StaticResource MontserratBold}"
+                    HorizontalTextAlignment="Center"/>
+            </StackLayout>
+
+        </Grid>
+      
+    </ContentPage>-->
+    
+
+
+
+    <!-- Pagina Tres especificos 
     <ContentPage
         xmlns:i18n="clr-namespace:Antad.Helpers"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
@@ -453,10 +1368,10 @@
 
         </Grid>
 
-    </ContentPage>
+    </ContentPage>-->
 
 
-    <!-- Pagina Cuatro Ubicacion -->
+    <!-- Pagina Cuatro Ubicacion
     <ContentPage
         xmlns:i18n="clr-namespace:Antad.Helpers"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
@@ -617,10 +1532,10 @@
 
         </Grid>
 
-    </ContentPage>
+    </ContentPage> -->
 
 
-    <!-- Pagina Cinco Datos Bancarios -->
+    <!-- Pagina Cinco Datos Bancarios 
     <ContentPage
         xmlns:i18n="clr-namespace:Antad.Helpers"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
@@ -750,7 +1665,7 @@
 
         </Grid>
 
-    </ContentPage>
+    </ContentPage>-->
 
     <!-- Pagina Seis Region -->
     <!--<ContentPage
@@ -862,7 +1777,7 @@
 
     </ContentPage>-->
 
-    <!-- Pagina Siete Referencias -->
+    <!-- Pagina Siete Referencias 
     <ContentPage
         xmlns:i18n="clr-namespace:Antad.Helpers"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
@@ -1011,7 +1926,7 @@
             </StackLayout>
         </Grid>
 
-    </ContentPage>
+    </ContentPage>-->
 
     <!--<ContentPage
         xmlns:i18n="clr-namespace:Antad.Helpers"

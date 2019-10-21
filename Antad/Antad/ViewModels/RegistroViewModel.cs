@@ -49,12 +49,13 @@ namespace Antad.ViewModels
         public string Telefono { get; set; }
         public string DescripcionTelefono { get; set; }
         public int ClvEstadoCivil { get; set; }
-        public double Peso { get; set; }
-        public double Altura { get; set; }
+        public string Peso { get; set; }
+        public string Altura { get; set; }
         public int ClvGradoEstudios { get; set; }
         public int ClvEstado { get; set; }
         public int ClvMunicipio{ get; set; }
         public string CodigoPostal { get; set; }
+        public string Colonia { get; set; }
         public string Calle { get; set; }
         public string NumeroExterior { get; set; }
         public string NumeroInterior { get; set; }
@@ -286,7 +287,7 @@ namespace Antad.ViewModels
                 // ????????
                 if (_selectedMunicipio != null)
                 {
- MunicipioText = _selectedMunicipio.value.ToString();
+                    MunicipioText = _selectedMunicipio.value.ToString();
                 }
                 //put here your code  
                
@@ -501,6 +502,18 @@ namespace Antad.ViewModels
             //string prue = this.BancoText;
 
             //VALIDACIONES
+            //validar foto perfil
+            byte[] imageArray = null;
+            if (this.fileFoto != null)
+            {
+                imageArray = FilesHelper.ReadFully(this.fileFoto.GetStream());
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Agrega tu foto de perfil", Languages.Accept);
+                return;
+            }
+
 
             //Login
             if (string.IsNullOrEmpty(this.Login))
@@ -567,6 +580,17 @@ namespace Antad.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe una CURP valida",Languages.Accept);
                 return;
             }
+            //validar identificacion
+            byte[] imageArrayIdentificacion = null;
+            if (this.fileIdentificacion != null)
+            {
+                imageArrayIdentificacion = FilesHelper.ReadFully(this.fileIdentificacion.GetStream());
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Agrega la foto de tu identificación", Languages.Accept);
+                return;
+            }
             //Telefono
             if (string.IsNullOrEmpty(this.Telefono))
             {
@@ -591,17 +615,36 @@ namespace Antad.ViewModels
                 return;
             }
             //Peso
-            if (double.IsNaN(this.Peso)|| this.Peso==0 || this.Peso > 200 || this.Peso<20)
+            double ejem = 0;
+            if(double.TryParse(this.Peso, out ejem))
             {
-                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe un peso valido en Kilogramos", Languages.Accept);
+                if (double.IsNaN(Convert.ToDouble(this.Peso))|| Convert.ToDouble(this.Peso)==0 || Convert.ToDouble(this.Peso) > 200 || Convert.ToDouble(this.Peso)<20)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe un peso valido en Kilogramos", Languages.Accept);
+                    return;
+                }
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Introduce un Peso valido", Languages.Accept);
                 return;
             }
+
             //Altura
-            if (double.IsNaN(this.Altura)|| this.Altura== 0 || this.Altura > 2 || this.Altura < 1.4)
+            if (double.TryParse(this.Altura, out ejem))
             {
-                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe una altura valida en Metros", Languages.Accept);
-                return;
+                if (double.IsNaN(Convert.ToDouble(this.Altura)) || Convert.ToDouble(this.Altura) == 0 || Convert.ToDouble(this.Altura) > 2 || Convert.ToDouble(this.Altura) < .5)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe una altura valida en Metros", Languages.Accept);
+                    return;
+                }
             }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Introduce una Altura valida", Languages.Accept);
+                return;
+            }     
+
             //ClvGradoEstudios-- this.GradoEstudiosText
             if (this.GradoEstudiosText == null)
             {
@@ -631,6 +674,12 @@ namespace Antad.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Aviso", "Código postal no valido", Languages.Accept);
                 return;
             }
+            //Colonia
+            if (string.IsNullOrEmpty(this.Colonia))
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe el nombre de la colonia donde resides", Languages.Accept);
+                return;
+            }
             //Calle
             if (string.IsNullOrEmpty(this.Calle))
             {
@@ -647,6 +696,18 @@ namespace Antad.ViewModels
             if (string.IsNullOrEmpty(this.NumeroInterior) || !RegexHelper.IsValidCP(this.NumeroInterior))
             {
                 await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe un numero interior", Languages.Accept);
+                return;
+            }
+
+            // validar comprobante
+            byte[] imageArrayComprobante = null;
+            if (this.fileComprobante != null)
+            {
+                imageArrayComprobante = FilesHelper.ReadFully(this.fileComprobante.GetStream());
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Agrega la foto de tu comprobante domiciliario", Languages.Accept);
                 return;
             }
             //ClvBanco -- this.BancoText
@@ -723,55 +784,8 @@ namespace Antad.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe un teléfono de 10 dígitos  en la referencia Dos", Languages.Accept);
                 return;
             }
-            //NombreReferenciaTres
-            if (string.IsNullOrEmpty(this.NombreReferenciaTres))
-            {
-                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe el nombre de la referencia Tres", Languages.Accept);
-                return;
-            }
-            //TelefonoReferenciaTres
-            if (string.IsNullOrEmpty(this.TelefonoReferenciaTres) || this.TelefonoReferenciaTres.Length != 10)
-            {
-                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe el teléfono de la referencia Tres", Languages.Accept);
-                return;
-            }
-            if (!RegexHelper.IsValidTel(this.TelefonoReferenciaTres))
-            {
-                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe un teléfono de 10 dígitos en la referencia Tres", Languages.Accept);
-                return;
-            }
 
-            // validar fotos
-            byte[] imageArray = null;
-            if (this.fileFoto != null)
-            {
-                imageArray = FilesHelper.ReadFully(this.fileFoto.GetStream());
-            }
-            else
-            {
-                await Application.Current.MainPage.DisplayAlert("Aviso", "Agrega tu foto de perfil", Languages.Accept);
-                return;
-            }
-            byte[] imageArrayIdentificacion = null;
-            if (this.fileIdentificacion != null)
-            {
-                imageArrayIdentificacion = FilesHelper.ReadFully(this.fileIdentificacion.GetStream());
-            }
-            else
-            {
-                await Application.Current.MainPage.DisplayAlert("Aviso", "Agrega la foto de tu identificación", Languages.Accept);
-                return;
-            }
-            byte[] imageArrayComprobante = null;
-            if (this.fileComprobante != null)
-            {
-                imageArrayComprobante = FilesHelper.ReadFully(this.fileComprobante.GetStream());
-            }
-            else
-            {
-                await Application.Current.MainPage.DisplayAlert("Aviso", "Agrega la foto de tu comprobante domiciliario", Languages.Accept);
-                return;
-            }
+
 
             
 
@@ -820,12 +834,13 @@ namespace Antad.ViewModels
                 telefono = this.Telefono,
                 descripcionTelefono = this.DescripcionTelefono,
                 estadoCivil = this.EstadoCivilText,
-                peso = this.Peso,
-                altura = this.Altura,
+                peso = Convert.ToDouble(this.Peso),
+                altura = Convert.ToDouble(this.Altura),
                 clvGradoEstudios = Convert.ToInt32(this.GradoEstudiosText),
                 estado = this.EstadoText,
                 municipio = this.MunicipioText,
                 codigoPostal = this.CodigoPostal,
+                colonia = this.Colonia,
                 calle = this.Calle,
                 numeroExterior = this.NumeroExterior,
                 numeroInterior = this.NumeroInterior,
@@ -837,8 +852,6 @@ namespace Antad.ViewModels
                 telefonoReferenciaUno=this.TelefonoReferenciaUno,
                 nombreReferenciaDos=this.NombreReferenciaDos,
                 telefonoReferenciaDos=this.TelefonoReferenciaDos,
-                nombreReferenciaTres=this.NombreReferenciaTres,
-                telefonoReferenciaTres=this.TelefonoReferenciaTres,
                 ImageArray = imageArray,
                 IdentificacionArray = imageArrayIdentificacion,
                 ComprobanteArray = imageArrayComprobante,

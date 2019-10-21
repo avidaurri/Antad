@@ -441,14 +441,14 @@ namespace Antad.Services
                     };
                 }
 
-                /*var obj = JsonConvert.DeserializeObject<T>(answer);
+                var obj = JsonConvert.DeserializeObject<T>(answer);
                 return new Response
                 {
                     IsSuccess = true,
                     Result = obj,
-                };*/
+                };
 
-                if (answer.Equals("1"))
+                /*if (answer.Equals("1"))
                 {
                     return new Response
                     {
@@ -461,7 +461,7 @@ namespace Antad.Services
                 {
                     IsSuccess = false,
                   
-                };
+                };*/
             }
             catch (Exception ex)
             {
