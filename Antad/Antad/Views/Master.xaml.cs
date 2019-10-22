@@ -12,21 +12,24 @@ namespace Antad.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Master : MasterDetailPage
     {
-        public Master()
+        public Master(Page pagina)
         {
-            InitializeComponent();
-           // this.Detail.Navigation.PushAsync(new PromotorPage());
-            //this.Detail = new NavigationPage(new PromotorPage());
-            //Detail =new IntramuroPage();
-
-            //this.Detail=new IntramuroPage();
+            //
+           InitializeComponent();
+            //this.Detail = new NavigationPage(pagina);
+            App.Navigator = new NavigationPage(pagina);
+            this.Detail = App.Navigator;
+            //this.Detail = new NavigationPage(new Bienvenido());
+            //this.Detail = (new Bienvenido());
+            //App.Navigator.PushAsync(new Bienvenido());
         }
-        protected override void OnAppearing()
+        /*protected override void OnAppearing()
         {
             base.OnAppearing();
-            App.Navigator = Navigator;
-
             
-        }
+           App.Navigator = Navigator;
+
+
+        }*/
     }
 }

@@ -254,4 +254,25 @@
   <ItemGroup>
     <BundleResource Include="Resources\user_large.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_misusuarios.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_misincidencias.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_misautorizaciones.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_misrechazos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_bienvenido.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\scan_code.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\triste.png" />
+  </ItemGroup>
 </Project>

@@ -455,7 +455,7 @@ namespace Antad.ViewModels
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
             var controller = Application.Current.Resources["UrlGetCatalogo"].ToString();// + "?idEstado=0";
-            var response = await this.apiService.Get(url, prefix, controller);
+            var response = await this.apiService.GetCatalogos(url, prefix, controller);
             if (!response.IsSuccess)
             {
                 this.IsRunning = false;
@@ -880,12 +880,19 @@ namespace Antad.ViewModels
             this.IsRunning = false;
             this.IsEnabled = true;
 
-            await Application.Current.MainPage.DisplayAlert(
-                "confirmación",
-               "Registro exitoso",
+            Registro respuesta = (Registro)response.Result;
+
+                await Application.Current.MainPage.DisplayAlert(
+                "Mensaje",
+               respuesta.mensajeRegistro,
                 "Aceptar");
 
-            await Application.Current.MainPage.Navigation.PopAsync();
+            if (respuesta.usuarioRegistrado)
+            {
+                await Application.Current.MainPage.Navigation.PopAsync();
+            }
+
+      
         }
 
         public ICommand CargarImagenCommand

@@ -5,6 +5,7 @@ using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -16,15 +17,35 @@ namespace Antad.ViewModels
 
 
         #region Properties
-
+        public ObservableCollection<MenuItemViewModel> Menu { get; set; }
         public UserSession urr = JsonConvert.DeserializeObject<UserSession>(Settings.UserSession);
 
+        public string UserName
+        {
+            get
+            {
+
+                return urr.nombre;
+
+
+            }
+        }
+        public string ImageUser
+        {
+            get
+            {
+
+                return urr.foto;
+
+
+            }
+        }
         public string Puesto
         {
             get
             {
 
-                return urr.idPuesto.ToString();
+                return urr.clvPuesto.ToString();
 
 
             }
@@ -35,9 +56,75 @@ namespace Antad.ViewModels
 
         public BienvenidoViewModel()
         {
-           
+            LoadMenu();
             //Direccionar();
 
+        }
+
+        private void LoadMenu()
+        {
+            /*UserSession urr = JsonConvert.DeserializeObject<UserSession>(Settings.UserSession);
+            int clvPu = urr.clvPuesto;*/
+            this.Menu = new ObservableCollection<MenuItemViewModel>();
+            string roo = this.Puesto;
+
+            this.Menu.Add(new MenuItemViewModel
+            {
+                Icon = "ic_bienvenido",
+                PageName = "Bienvenido",
+                Title = "Bienvenido",
+            });
+
+
+            if (roo.Equals("3"))
+            {
+
+                this.Menu.Add(new MenuItemViewModel
+                {
+                    Icon = "ic_misucursal",
+                    PageName = "misucursal",
+                    Title = "Mi Sucursal",
+                });
+                this.Menu.Add(new MenuItemViewModel
+                {
+                    Icon = "ic_misusuarios",
+                    PageName = "misusuarios",
+                    Title = "Mis Usuarios",
+                });
+
+                this.Menu.Add(new MenuItemViewModel
+                {
+                    Icon = "ic_misincidencias",
+                    PageName = "misincidencias",
+                    Title = "Incidencias",
+                });
+                this.Menu.Add(new MenuItemViewModel
+                {
+                    Icon = "ic_misautorizaciones",
+                    PageName = "misautorizaciones",
+                    Title = "Mis Autorizaciones",
+                });
+                this.Menu.Add(new MenuItemViewModel
+                {
+                    Icon = "ic_misrechazos",
+                    PageName = "misrechazos",
+                    Title = "Mis Rechazos",
+                });
+            }
+            else if (roo.Equals("1"))
+            {
+
+            }
+
+
+
+
+            this.Menu.Add(new MenuItemViewModel
+            {
+                Icon = "ic_exit_to_app",
+                PageName = "LoginPage",
+                Title = "Salir",
+            });
         }
 
         #endregion

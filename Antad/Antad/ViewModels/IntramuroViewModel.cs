@@ -64,7 +64,16 @@ namespace Antad.ViewModels
               
             }
         }
+        public string ClvEmp
+        {
+            get
+            {
 
+                return urr.clvEmp.ToString();
+
+
+            }
+        }
         public Intramuro Sucursal
         {
             get { return this.sucursal; }
@@ -92,6 +101,10 @@ namespace Antad.ViewModels
         {
             this.IsEnabled = true;
             this.apiService = new ApiService();
+             /*this.Sucursal.existeSucursal = false;
+           this.Sucursal.existeOperacion = false;
+            this.Sucursal.errorOperacion = true;
+            this.Sucursal.errorSucursal = true;*/
             this.CargarSucursal();
             //SaveCommand = new Command(Scan);
         }
@@ -114,7 +127,7 @@ namespace Antad.ViewModels
                 return new RelayCommand(CargarSucursal);
             }
         }
-        private async  void Scan()
+        private async void Scan()
         {
             var scannerPage = new ZXingScannerPage();
             scannerPage.Title = "Lector QR";
@@ -178,9 +191,9 @@ namespace Antad.ViewModels
                 return;
             }
 
-             var usser = new GetUserRequest
+             var usser = new Intramuro
             {
-                User = UserName,
+                clvEmp = Convert.ToInt32(ClvEmp),
                 latitud = -99.528970,
                 longitud = -99.528970,
 
@@ -190,10 +203,11 @@ namespace Antad.ViewModels
             this.IsRunning = true;
             this.IsEnabled = false;
 
-          var url = Application.Current.Resources["UrlAPI"].ToString();
+            var url = Application.Current.Resources["UrlAPI"].ToString();
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
             var controller = Application.Current.Resources["UrlIntramuro"].ToString();
-            var response = await this.apiService.GetWithPost(url, prefix, controller, usser);
+            var response = await this.apiService.Post<Intramuro>(url, prefix, controller, usser);
+            //var response = await this.apiService.GetWithPost(url, prefix, controller, usser);
             if (!response.IsSuccess)
             {
                 this.IsRunning = false;

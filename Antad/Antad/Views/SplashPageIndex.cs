@@ -64,7 +64,8 @@ namespace Antad.Views
                 mainViewModel.Bienvenido = new BienvenidoViewModel();
 
                 //this.MainPage = new Master();
-                Application.Current.MainPage = new Master();
+                Application.Current.MainPage = new Master(new Bienvenido());
+                //
             }
             else
             {

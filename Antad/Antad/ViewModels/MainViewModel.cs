@@ -2,9 +2,11 @@
 
 namespace Antad.ViewModels
 {
+    using Antad.Helpers;
     using Antad.Views;
     using AntadComun.Models;
     using GalaSoft.MvvmLight.Command;
+    using Newtonsoft.Json;
     using Rg.Plugins.Popup.Services;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
@@ -76,7 +78,7 @@ namespace Antad.ViewModels
         public MainViewModel()
         {
             instance = this;
-            this.LoadMenu();
+            //this.LoadMenu();
             //this.Usuarios = new UsuariosViewModel();
            // CargarCatalogos();
         }
@@ -100,39 +102,60 @@ namespace Antad.ViewModels
         #region Methods
         private void LoadMenu()
         {
+             UserSession urr = JsonConvert.DeserializeObject<UserSession>(Settings.UserSession);
+            int clvPu = urr.clvPuesto;
             this.Menu = new ObservableCollection<MenuItemViewModel>();
 
             this.Menu.Add(new MenuItemViewModel
             {
                 Icon = "ic_action_user",
-                PageName = "SetupPage",
-                Title = "Perfil",
-            });
-            this.Menu.Add(new MenuItemViewModel
-            {
-                Icon = "ic_action_report",
-                PageName = "SetupPage",
-                Title = "Incidencias",
-            });
-            this.Menu.Add(new MenuItemViewModel
-            {
-                Icon = "ic_action_time",
-                PageName = "SetupPage",
-                Title = "Historial",
+                PageName = "Bienvenido",
+                Title = "Bienvenido",
             });
 
-            this.Menu.Add(new MenuItemViewModel
+
+            if (clvPu.Equals(3))
             {
-                Icon = "ic_phonelink_setup",
-                PageName = "SetupPage",
-                Title = "Configuración",
-            });
-            this.Menu.Add(new MenuItemViewModel
-            {
-                Icon = "ic_info",
-                PageName = "AboutPage",
-                Title = "Acerca de",
-            });
+
+                this.Menu.Add(new MenuItemViewModel
+                {
+                    Icon = "ic_misucursal",
+                    PageName = "misucursal",
+                    Title = "Mi Sucursal",
+                });
+                this.Menu.Add(new MenuItemViewModel
+                {
+                    Icon = "ic_misusuarios",
+                    PageName = "misusuarios",
+                    Title = "Mis Usuarios",
+                });
+
+                this.Menu.Add(new MenuItemViewModel
+                {
+                    Icon = "ic_misincidencias",
+                    PageName = "misincidencias",
+                    Title = "Incidencias",
+                });
+                this.Menu.Add(new MenuItemViewModel
+                {
+                    Icon = "ic_misautorizaciones",
+                    PageName = "misautorizaciones",
+                    Title = "Mis Autorizaciones",
+                });
+                this.Menu.Add(new MenuItemViewModel
+                {
+                    Icon = "ic_misrechazos",
+                    PageName = "misrechazos",
+                    Title = "Mis Rechazos",
+                });
+            }
+            else if(clvPu.Equals(1)){
+
+            }
+
+    
+
+
             this.Menu.Add(new MenuItemViewModel
             {
                 Icon = "ic_exit_to_app",

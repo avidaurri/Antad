@@ -10,12 +10,12 @@
     <MasterDetailPage.Master>
         <pages:MenuPage/>
     </MasterDetailPage.Master>
-    <MasterDetailPage.Detail>
+    <!--<MasterDetailPage.Detail>
           <NavigationPage x:Name="Navigator">
           <x:Arguments>
                 <pages:Bienvenido/>
             </x:Arguments>
             
         </NavigationPage>
-    </MasterDetailPage.Detail>
+    </MasterDetailPage.Detail> -->
 </MasterDetailPage>

@@ -34,12 +34,12 @@ namespace AntadApi.Controllers
             RegistroService servicio = new RegistroService(cadenaConexion);
 
             //subir iagen
-            if (value.ImageArray != null && value.ImageArray.Length > 0)
+            /*if (value.ImageArray != null && value.ImageArray.Length > 0)
             {
                 var stream = new MemoryStream(value.ImageArray);
                 var guid = Guid.NewGuid().ToString();
                 var file = $"{guid}.jpg";
-                var folder = "~/Content/Usuarios";
+                var folder = "~/Content/Com";
                 var fullPath = $"{folder}/{file}";
                 var response = FilesHelper.UploadPhoto(stream, folder, file);
 
@@ -54,7 +54,7 @@ namespace AntadApi.Controllers
                 var stream = new MemoryStream(value.IdentificacionArray);
                 var guid = Guid.NewGuid().ToString();
                 var file = $"{guid}.jpg";
-                var folder = "~/Content/Identificaciones";
+                var folder = "~/Content/Iden";
                 var fullPath = $"{folder}/{file}";
                 var response = FilesHelper.UploadPhoto(stream, folder, file);
 
@@ -78,7 +78,7 @@ namespace AntadApi.Controllers
                     value.comprobanteDomiciliario = file;
                 }
             }
-
+            */
             return servicio.PostRegistro(value);
         }
 

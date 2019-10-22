@@ -11,7 +11,7 @@ namespace Antad
 {
     public partial class App : Application
     {
-        public static NavigationPage Navigator { get; internal set; }
+        public static NavigationPage Navigator { get; set; }
 
         public App()
         {
@@ -32,7 +32,8 @@ namespace Antad
                 //mainViewModel.Promotor = new PromotorViewModel();
                 mainViewModel.Bienvenido = new BienvenidoViewModel();
                 
-                this.MainPage = new Master();
+                this.MainPage = new Master(new Bienvenido());
+                //
             }
             else
             {

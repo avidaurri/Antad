@@ -18,5 +18,7 @@ namespace AntadComun.Models
         public string estadoLogin { get; set; }
         public string mensajeLogin { get; set; }
 
+        public bool seLogeo { get; set; }
+
     }
 }

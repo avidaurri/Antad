@@ -16,7 +16,7 @@ namespace AntadBiblioteca.Services
         {
             loginAccesoDatos = new LoginAppDAO(cadena);
         }
-        public LoginApp LoginUsuario(string usuario, string password)
+        public UserSession LoginUsuario(string usuario, string password)
         {
 
             return loginAccesoDatos.LoginUsuario(usuario, password);
@@ -24,13 +24,13 @@ namespace AntadBiblioteca.Services
 
         }
 
-        public UserSession GetUser(string usuario)
+        /*public UserSession GetUser(string usuario, string password)
         {
 
-            return loginAccesoDatos.GetUser(usuario);
+            return loginAccesoDatos.GetUser(usuario, password);
             //return loginAccesoDatos.ValidarUsuario(usuario, password);
 
-        }
+        }*/
 
     }
 }

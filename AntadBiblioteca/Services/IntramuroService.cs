@@ -17,7 +17,7 @@ namespace AntadBiblioteca.Services
             loginAccesoDatos = new IntramuroDAO(cadena);
         }
 
-        public Intramuro GetIntramuro(string usuario, double latitud, double longitud)
+        public Intramuro GetIntramuro(int usuario, double latitud, double longitud)
         {
 
             return loginAccesoDatos.GetIntramuro(usuario, latitud, longitud);

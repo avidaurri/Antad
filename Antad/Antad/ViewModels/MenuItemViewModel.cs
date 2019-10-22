@@ -42,6 +42,25 @@ namespace Antad.ViewModels
                 MainViewModel.GetInstance().Login = new LoginViewModel();
                 Application.Current.MainPage = new NavigationPage(new LoginPage());
             }
+            if (this.PageName == "misucursal")
+            {
+                /*Settings.Usuario = string.Empty;
+                Settings.Password = string.Empty;
+                Settings.IsRemembered = false;*/
+                MainViewModel.GetInstance().Intramuro = new IntramuroViewModel();
+                Application.Current.MainPage = new Master(new IntramuroPage());
+                //App.Navigator.PushAsync(new IntramuroPage());
+                //
+            }
+            if (this.PageName == "Bienvenido")
+            {
+                /*Settings.Usuario = string.Empty;
+                Settings.Password = string.Empty;
+                Settings.IsRemembered = false;*/
+                MainViewModel.GetInstance().Bienvenido = new BienvenidoViewModel();
+                Application.Current.MainPage = new Master(new Bienvenido());
+                //
+            }
         }
         #endregion
     }

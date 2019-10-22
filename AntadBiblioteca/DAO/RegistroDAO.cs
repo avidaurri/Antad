@@ -123,7 +123,15 @@ namespace AntadBiblioteca.DAO
 
                 if (anoo < 50)
                 {
-                    anooo = "20" + anoo;
+                    if (anoo == 0)
+                    {
+                        anooo = "2000";
+                    }
+                    else
+                    {
+                        anooo = "20" + anoo;
+                    }
+                    
                 }
                 else
                 {
@@ -151,12 +159,12 @@ namespace AntadBiblioteca.DAO
                 }
 
 
-                string sqlInsert = "insert into empleado(clv_nacionalidad,tipo_empleado,titulo,procesar_nomina,sicepo,clv_emp,clv_empre,clv_gen,genero,fecha_naci,clv_puesto,nombre,apellido_paterno,apellido_materno," +
+                string sqlInsert = "insert into empleado(clv_nacionalidad,titulo,procesar_nomina,sicepo,clv_emp,clv_empre,clv_gen,genero,fecha_naci,clv_puesto,nombre,apellido_paterno,apellido_materno," +
                     "email,curp,edo_civil,peso,estatura,clv_grado_estu,ciu_edo,del_mun,cp,calle_no,colonia,no_exterior,no_interior," +
                     "clv_banco,clabe,cuenta,tarjeta,tipo_empleado,foto_url) " +
-        "values(1,1,' ',0,0,@clv_emp,1,@clv_gen,@genero,@fecha_naci,@clv_puesto,@nombre,@apellido_paterno,@apellido_materno,@email,@curp,@edo_civil,@peso," +
+        "values(1,' ',0,0,@clv_emp,1,@clv_gen,@genero,@fecha_naci,@clv_puesto,@nombre,@apellido_paterno,@apellido_materno,@email,@curp,@edo_civil,@peso," +
         "@altura,@clv_gradoestu,@ciu_edo,@del_mun,@cp,@calle_no,@colonia," +
-        "@no_exterior,@no_interior, @clv_banco,@clabe,@cuenta,@tarjeta,2,@foto_url)";
+        "@no_exterior,@no_interior, @clv_banco,@clabe,@cuenta,@tarjeta,1,@foto_url)";
 
                 List<Parametro> parametrosInsert = new List<Parametro>();
 

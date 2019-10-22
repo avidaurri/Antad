@@ -402,6 +402,7 @@
                           FontFamily="{StaticResource MontserratBold}"
                         Grid.ColumnSpan="2"
                         Grid.Row="6"
+                        Keyboard="Numeric"
                         Text="{Binding Telefono}"
                         Placeholder="Teléfono">
                     </Entry>
@@ -427,6 +428,7 @@
                           FontFamily="{StaticResource MontserratBold}"
                         Grid.ColumnSpan="2"
                         Grid.Row="0"
+                             Keyboard="Numeric"
                         Text="{Binding Peso}"
                         Placeholder="Peso (Kgs)">
                     </Entry>
@@ -435,6 +437,7 @@
                           FontFamily="{StaticResource MontserratBold}"
                         Grid.ColumnSpan="2"
                         Grid.Row="1"
+                         Keyboard="Numeric"
                         Text="{Binding Altura}"
                         Placeholder="Altura (mts)">
                     </Entry>
@@ -532,6 +535,7 @@
                           FontFamily="{StaticResource MontserratBold}"
                         Grid.ColumnSpan="2"
                         Grid.Row="0"
+                             Keyboard="Numeric"
                         Text="{Binding CodigoPostal}"
                         Placeholder="Código Postal">
                     </Entry>
@@ -553,6 +557,7 @@
                           FontFamily="{StaticResource MontserratBold}"
                         Grid.ColumnSpan="2"
                         Grid.Row="0"
+                             Keyboard="Numeric"
                         Text="{Binding NumeroExterior}"
                         Placeholder="Numero Exterior">
                     </Entry>
@@ -560,6 +565,7 @@
                           FontFamily="{StaticResource MontserratBold}"
                         Grid.ColumnSpan="2"
                         Grid.Row="0"
+                             Keyboard="Numeric"
                         Text="{Binding NumeroInterior}"
                         Placeholder="Numero Interior">
                     </Entry>
@@ -728,6 +734,7 @@
                           FontFamily="{StaticResource MontserratBold}"
                         Grid.ColumnSpan="2"
                         Grid.Row="1"
+                         Keyboard="Numeric"
                         Text="{Binding Clabe}"
                         Placeholder="clabe">
                     </Entry>
@@ -735,6 +742,7 @@
                           FontFamily="{StaticResource MontserratBold}"
                         Grid.ColumnSpan="2"
                         Grid.Row="0"
+                             Keyboard="Numeric"
                         Text="{Binding NumeroCuenta}"
                         Placeholder="noDeCuenta">
                     </Entry>
@@ -743,6 +751,7 @@
                           FontFamily="{StaticResource MontserratBold}"
                         Grid.ColumnSpan="2"
                         Grid.Row="1"
+                         Keyboard="Numeric"
                         Text="{Binding NumeroTarjeta}"
                         Placeholder="tarjeta">
                     </Entry>
@@ -811,7 +820,7 @@
                        FontSize="23" HorizontalOptions="Center" TextColor="Purple" VerticalOptions="Center"/>
             </StackLayout>
 
-            <Frame Grid.Row="1" Opacity=".9" BindingContext="{Binding Register}" Margin="20,0,20,30">
+            <Frame Grid.Row="1" Opacity=".9"  Margin="20,0,20,30">
 
                 <Grid>
                     <Grid.RowDefinitions>
@@ -838,6 +847,7 @@
                           FontFamily="{StaticResource MontserratRegular}"
                         Grid.ColumnSpan="2"
                         Grid.Row="1"
+                             Keyboard="Numeric"
                         Text="{Binding TelefonoReferenciaUno}"
                         Placeholder="Telefono referencia Uno">
                         </Entry>
@@ -849,7 +859,7 @@
                 </Grid>
             </Frame>
 
-            <Frame Grid.Row="2" Opacity=".9" BindingContext="{Binding Register}" Margin="20,0,20,30">
+            <Frame Grid.Row="2" Opacity=".9"  Margin="20,0,20,30">
 
                 <Grid>
                     <Grid.RowDefinitions>
@@ -876,6 +886,7 @@
                           FontFamily="{StaticResource MontserratRegular}"
                         Grid.ColumnSpan="2"
                         Grid.Row="1"
+                             Keyboard="Numeric"
                         Text="{Binding TelefonoReferenciaDos}"
                         Placeholder="Telefono referencia Dos">
                         </Entry>

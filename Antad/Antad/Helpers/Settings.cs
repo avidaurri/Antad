@@ -19,6 +19,7 @@ namespace Antad.Helpers
         #region Setting Constants
 
         private const string usuario = "Usuario";
+        private const string clvemp = "0";
         private const string password = "Password";
         private const string isRemembered = "IsRemembered";
 
@@ -40,7 +41,17 @@ namespace Antad.Helpers
                 AppSettings.AddOrUpdateValue(userSession, value);
             }
         }
-
+        public static string Clvemp
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(clvemp, SettingsDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(clvemp, value);
+            }
+        }
         public static string Usuario
         {
             get

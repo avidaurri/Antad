@@ -8,59 +8,62 @@
              x:Class="Antad.Views.MenuPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Menu"
-             BackgroundColor="WhiteSmoke">
+            BackgroundImageSource="fondosplash">
     
     <ContentPage.Content>
-        <StackLayout
-            Padding="5">
-            <controls:CircleImage  
-                Source="{Binding UserImageFullPath}"
-                Aspect="AspectFill"
-                WidthRequest="150"
-                HeightRequest="150">
-            </controls:CircleImage>
+        <ScrollView>
+            <StackLayout BindingContext="{Binding Bienvenido}" Margin="5" BackgroundColor="White" Opacity="1"
+                Padding="5">
+                <controls:CircleImage  
+                    Source="{Binding ImageUser}"
+                    Aspect="AspectFill"
+                    WidthRequest="150"
+                    HeightRequest="150">
+                </controls:CircleImage>
           
-            <Label
-                FontAttributes="Bold"
-                FontSize="Large"
-                HorizontalOptions="Center"
-                Text="{Binding UserFullName}"
-                TextColor="DimGray">
-            </Label>
-            <ListView
-                BackgroundColor="Transparent"
-                ItemsSource="{Binding Menu}"
-                HasUnevenRows="True"
-                SeparatorVisibility="None">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid>
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding GotoCommand}"/>
-                                </Grid.GestureRecognizers>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Image Margin="0,15,0,15"
-                                    Grid.Column="0"
-                                    Source="{Binding Icon}"
-                                    WidthRequest="30"
-                                    HeightRequest="30">
-                                </Image>
-                                <Label
-                                    Grid.Column="1"
-                                    VerticalOptions="Center"
-                                    TextColor="Gray"
-                                    FontSize="16"
-                                    Text="{Binding Title}">
-                                </Label>
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    Text="{Binding UserName}"
+                    TextColor="DimGray">
+                </Label>
+                <ListView
+                    BackgroundColor="Transparent"
+                    ItemsSource="{Binding Menu}"
+                    HasUnevenRows="True"
+                    SeparatorVisibility="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid >
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding GotoCommand}"/>
+                                    </Grid.GestureRecognizers>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Margin="0,15,0,15"
+                                        Grid.Column="0"
+                                        Source="{Binding Icon}"
+                                        WidthRequest="30"
+                                        HeightRequest="30">
+                                    </Image>
+                                    <Label FontFamily="{StaticResource MontserratRegular}"
+                                        Grid.Column="1"
+                                        VerticalOptions="Center"
+                                        TextColor="DimGray"
+                                        FontSize="16"
+                                        Text="{Binding Title}">
+                                    </Label>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout> 
+        </ScrollView>
+
     </ContentPage.Content>
 </ContentPage>

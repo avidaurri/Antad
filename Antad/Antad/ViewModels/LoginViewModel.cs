@@ -22,7 +22,7 @@ namespace Antad.ViewModels
 
         #region Properties
         public string Usuario { get; set; }
-
+        public string ClvEmp { get; set; }
         public string Password { get; set; }
 
         public bool IsRemembered { get; set; }
@@ -113,9 +113,9 @@ namespace Antad.ViewModels
             }
 
 
-            var login = new LoginApp
+            var login = new UserSession
             {
-                login = this.Usuario,
+                usuario = this.Usuario,
                 password = this.Password,
 
 
@@ -126,7 +126,7 @@ namespace Antad.ViewModels
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
             var controller = Application.Current.Resources["UrlLoginApp"].ToString();
-            var response = await this.apiService.PostLogin(url, prefix, controller, login);
+            var response = await this.apiService.Post<UserSession>(url, prefix, controller, login);
 
             if (!response.IsSuccess)
             {
@@ -138,73 +138,56 @@ namespace Antad.ViewModels
                     Languages.Accept);
                 return;
             }
-            if (response.Result == null)
+            this.IsRunning = false;
+            this.IsEnabled = true;
+
+            login = (UserSession)response.Result;
+
+
+
+            if (!login.seLogeo)
             {
-                this.IsRunning = false;
-                this.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
-                 "Aviso",
-                 "Login y/o password incorrecto",
-                    "Aceptar");
+                "Mensaje",
+               login.mensajeLogin,
+                "Aceptar");
+                return;
             }
             else
             {
-                this.IsRunning = false;
-                this.IsEnabled = true;
 
-                login =(LoginApp)response.Result;
-
-                if (login.idEdoRegUsuario != 5)
+                if (this.IsRemembered)
                 {
-                    await Application.Current.MainPage.DisplayAlert(
-                    "Aviso",
-                    login.mensajeLogin,
-                     "Aceptar");
+                Settings.Clvemp = login.clvEmp.ToString();
+                Settings.Usuario = this.Usuario;
+                Settings.Password = this.Password;
+                Settings.IsRemembered = true;
                 }
-                else
+
+                //recuperar UserSession
+                MainViewModel.GetInstance().UserSession = login;
+                Settings.UserSession = JsonConvert.SerializeObject(login);
+                if (login.clvPuesto.Equals(1))
                 {
-                    if (this.IsRemembered)
-                    {
-                    Settings.Usuario = this.Usuario;
-                    Settings.Password = this.Password;
-                    Settings.IsRemembered = true;
-                    }
+                    //promotor
 
-                    //recuperar UserSession
-
-                    //var prefixd = Application.Current.Resources["UrlPrefix"].ToString();
-                    var controllerd = Application.Current.Resources["UrlUserSession"].ToString();
-                    var responsed = await this.apiService.GetUser(url, prefix, controllerd, this.Usuario);
-                    if (responsed.IsSuccess)
-                    {
-                        UserSession userASP = new UserSession();
-                        userASP = (UserSession)responsed.Result;
-                        MainViewModel.GetInstance().UserSession = userASP;
-                        Settings.UserSession = JsonConvert.SerializeObject(userASP);
-
-                        if (userASP.idPuesto.Equals(1))
-                        {
-                            //promotor
-
-                        }else if (userASP.idPuesto.Equals(3))
-                        {
-                            //intramuro
-
-                        }
-
-                    }
-
-                    // MainViewModel.GetInstance().Usuarios = new UsuariosViewModel();
-                    // MainViewModel.GetInstance().Intramuro = new IntramuroViewModel();
-                    // MainViewModel.GetInstance().Promotor = new PromotorViewModel();
-                    MainViewModel.GetInstance().Bienvenido = new BienvenidoViewModel();
-                    Application.Current.MainPage = new Master();
-
+                }else if (login.clvPuesto.Equals(3))
+                {
+                    //intramuro
 
                 }
 
-                this.IsRunning = false;
-                this.IsEnabled = true;
+     
+
+                // MainViewModel.GetInstance().Usuarios = new UsuariosViewModel();
+                // MainViewModel.GetInstance().Intramuro = new IntramuroViewModel();
+                // MainViewModel.GetInstance().Promotor = new PromotorViewModel();
+                MainViewModel.GetInstance().Bienvenido = new BienvenidoViewModel();
+                Application.Current.MainPage = new Master(new Bienvenido());
+                //
+
+                /*this.IsRunning = false;
+                this.IsEnabled = true;*/
 
 
 

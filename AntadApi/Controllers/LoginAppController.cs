@@ -26,10 +26,10 @@ namespace AntadApi.Controllers
         }
 
         // POST: api/LoginApp
-        public LoginApp Post([FromBody]LoginApp usuario)
+        public UserSession Post([FromBody]UserSession usuario)
         {
             LoginAppService servicio = new LoginAppService(cadenaConexion);
-            return servicio.LoginUsuario(usuario.login, usuario.password);
+            return servicio.LoginUsuario(usuario.usuario, usuario.password);
         }
 
         /*[HttpPost]

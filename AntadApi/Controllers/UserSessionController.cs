@@ -26,10 +26,10 @@ namespace AntadApi.Controllers
         }
 
         // POST: api/UserSession
-        public UserSession Post([FromBody]GetUserRequest usuario)
+        public UserSession Post([FromBody]UserSession usuario)
         {
             LoginAppService servicio = new LoginAppService(cadenaConexion);
-            return servicio.GetUser(usuario.User);
+            return servicio.LoginUsuario(usuario.usuario, usuario.password);
         }
 
         // PUT: api/UserSession/5

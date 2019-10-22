@@ -8,21 +8,20 @@ namespace AntadComun.Models
 {
     public class Intramuro
     {
-        public int idUsuario { get; set; }
+        public int clvEmp { get; set; }
         public string empresa { get; set; }
-        public string idSucursal { get; set; }
-        public string nombreSucursal { get; set; }
-        public string fotoSucursal { get; set; }
-        public string distanciaSucursal { get; set; }
+        public string fotoEmpresa { get; set; }
+        public string folioCentroTrabajo { get; set; }
+        public string nombreCentroTrabajo { get; set; }
+        public string fotoCentroTrabajo { get; set; }
+        public string distanciaIntramuroCTrabajo { get; set; }
         public bool existeSucursal { get; set; }
-        public bool mostarMensajeSucursal { get; set; }
         public bool existeOperacion { get; set; }
-        public bool mostrarMensajeOperacion { get; set; }
+        public bool errorOperacion { get; set; }
         public string mensajeSucursal { get; set; }
-        public string mensajeOperacion { get; set; }
-        public string latitud { get; set; }
-        public string longitud { get; set; }
-        public bool falloValidacion { get; set; }
+        public double latitud { get; set; }
+        public double longitud { get; set; }
+        public bool errorSucursal { get; set; }
         public double latitudSucursal { get; set; }
         public double longitudSucursal { get; set; }
     }

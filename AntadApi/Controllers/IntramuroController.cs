@@ -26,10 +26,10 @@ namespace AntadApi.Controllers
         }
 
         // POST: api/Intramuro
-        public Intramuro Post([FromBody]GetUserRequest usuario)
+        public Intramuro Post([FromBody]Intramuro usuario)
         {
             IntramuroService servicio = new IntramuroService(cadenaConexion);
-            return servicio.GetIntramuro(usuario.User, usuario.latitud, usuario.longitud);
+            return servicio.GetIntramuro(usuario.clvEmp, usuario.latitud, usuario.longitud);
         }
 
         // PUT: api/Intramuro/5
