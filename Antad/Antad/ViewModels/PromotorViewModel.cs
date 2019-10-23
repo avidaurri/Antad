@@ -45,6 +45,18 @@ namespace Antad.ViewModels
 
             }
         }
+
+        public string ClvEmp
+        {
+            get
+            {
+
+                return urr.clvEmp.ToString();
+
+
+            }
+        }
+
         public ObservableCollection<EventoItemViewModel> Eventos {
 
             get { return this.eventos; }
@@ -87,6 +99,7 @@ namespace Antad.ViewModels
 
             var usser = new GetUserRequest
             {
+                clvEmp= Convert.ToInt32(ClvEmp),
                 User = UserName,
                 latitud = 1.2,
                 longitud = 1.2,
@@ -109,15 +122,15 @@ namespace Antad.ViewModels
             var myList = list.Select(p => new EventoItemViewModel
             {
                 folioEvento = p.folioEvento,
-                clv_Empleado = p.clv_Empleado,
-                usuario = p.usuario,
-                fotoSucursal = p.fotoSucursal,
-                folioSucursal = p.folioSucursal,
-                nombreSucursal = p.nombreSucursal,
+                clvEmp = p.clvEmp,
+                fotoCentroTrabajo = p.fotoCentroTrabajo,
+                folioCentroTrabajo = p.folioCentroTrabajo,
+                nombreCentroTrabajo = p.nombreCentroTrabajo,
                 fechaInicio = p.fechaInicio,
                 fechaFinal = p.fechaFinal,
-                estatusEvento = p.estatusEvento,
-                clvEstatusEvento = p.clvEstatusEvento,
+                estadoEvento = p.estadoEvento,
+                clvEdoEvento = p.clvEdoEvento,
+                fotoCadenaCentroTrabajo = p.fotoCadenaCentroTrabajo,
 
             });
 

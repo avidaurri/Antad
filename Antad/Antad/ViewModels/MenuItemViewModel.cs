@@ -61,6 +61,17 @@ namespace Antad.ViewModels
                 Application.Current.MainPage = new Master(new Bienvenido());
                 //
             }
+            if (this.PageName == "miseventos")
+            {
+                /*Settings.Usuario = string.Empty;
+                Settings.Password = string.Empty;
+                Settings.IsRemembered = false;*/
+                MainViewModel.GetInstance().Promotor = new PromotorViewModel();
+                Application.Current.MainPage = new Master(new PromotorPage());
+                //
+            }
+
+            
         }
         #endregion
     }

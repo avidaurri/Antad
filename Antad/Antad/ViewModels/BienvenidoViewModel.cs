@@ -113,6 +113,25 @@ namespace Antad.ViewModels
             }
             else if (roo.Equals("1"))
             {
+                this.Menu.Add(new MenuItemViewModel
+                {
+                    Icon = "ic_misucursal",
+                    PageName = "miseventos",
+                    Title = "Mis Eventos",
+                });
+
+                this.Menu.Add(new MenuItemViewModel
+                {
+                    Icon = "ic_misincidencias",
+                    PageName = "misincidencias",
+                    Title = "Incidencias",
+                });
+                this.Menu.Add(new MenuItemViewModel
+                {
+                    Icon = "ic_misautorizaciones",
+                    PageName = "mihistorial",
+                    Title = "Mis Historial",
+                });
 
             }
 

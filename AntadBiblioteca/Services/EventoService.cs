@@ -16,14 +16,14 @@ namespace AntadBiblioteca.Services
             loginAccesoDatos = new EventoDAO(cadena);
         }
 
-        public List<Evento> getEventos(string usuario)
+        public List<Evento> getEventos(int usuario)
         {
             return loginAccesoDatos.getEventos(usuario);
             //return loginAccesoDatos.ValidarUsuario(usuario, password);
 
         }
 
-        public Evento getDetalleEvento(string usuario, string evento)
+        public Evento getDetalleEvento(int usuario, string evento)
         {
             return loginAccesoDatos.getDetalleEvento(usuario, evento);
             //return loginAccesoDatos.ValidarUsuario(usuario, password);

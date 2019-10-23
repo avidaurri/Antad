@@ -10,94 +10,91 @@
              Title="Intramuro">
     <ContentPage.Content>
         <StackLayout BindingContext="{Binding Intramuro}" >
-                   <Grid VerticalOptions="FillAndExpand"  >
+            <Grid VerticalOptions="FillAndExpand"  >
             <Grid.RowDefinitions>
-                <RowDefinition Height="120" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <StackLayout  Orientation="Horizontal"  HorizontalOptions="Center" VerticalOptions="Center">
-            <StackLayout Orientation="Horizontal" VerticalOptions="Start" Margin="0">
-                    <Image x:Name="imgFotoIntramuro"  Source="{Binding Sucursal.fotoEmpresa}" HeightRequest="80" VerticalOptions="Center"/>
-            </StackLayout>
-
-        </StackLayout>
-
-
-                <Frame Grid.Row="1" IsVisible="{Binding Sucursal.existeSucursal}"   HasShadow="True" CornerRadius="10" Margin="20,0,20,0" Padding="0" HeightRequest="80" VerticalOptions="Start">
-            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
-                    <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
-                                <Label Text="TU SUCURSAL DE TRABAJO ES" TextColor="Gray" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center"/>
+            <Frame  HasShadow="True" BackgroundColor="Purple"  Margin="0" Padding="0" HeightRequest="80" VerticalOptions="Start">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                        <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
+                            <Label  Text="MI SUCURSAL" TextColor="White" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center"/>
+                        </StackLayout>
                     </StackLayout>
-                </StackLayout>
 
-            </Grid>
-        </Frame>
+                </Grid>
+            </Frame>
+                
 
 
+            <Frame Grid.Row="1" IsVisible="{Binding Sucursal.existeSucursal}"   HasShadow="True" CornerRadius="10" Margin="20,0,20,0" Padding="0" HeightRequest="80" VerticalOptions="Start">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                            <Image Source="{Binding Sucursal.fotoEmpresa}" />
+                        </StackLayout>
+                        <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
+                            <Label Text="{Binding Sucursal.nombreCentroTrabajo}" TextColor="Gray" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Image Source="{Binding Sucursal.fotoCentroTrabajo}" />
+                        </StackLayout>
+
+                    </Grid>
+            </Frame>
 
             <StackLayout 
                 Grid.Row="2" >
-            <Grid VerticalOptions="Start">
+                <Grid VerticalOptions="Start">
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="85" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                  
-                </Grid.RowDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    
+                        <StackLayout    BackgroundColor="Transparent"  VerticalOptions="End">
+                            <StackLayout Orientation="Vertical" Spacing="10"  VerticalOptions="EndAndExpand">
+                                <Image Source="scan_code" WidthRequest="150" IsVisible="{Binding Sucursal.existeOperacion}" />
+                                <Image Source="triste" WidthRequest="100" IsVisible="{Binding Sucursal.errorOperacion}" />
+                            </StackLayout>
+                        </StackLayout>
 
-                <!-- -->
-
-                    <StackLayout  Grid.ColumnSpan="2" 
-             Orientation="Horizontal" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center" >
-                        <Image IsVisible="{Binding Sucursal.existeSucursal}" x:Name="imgSucursal" Source="{Binding Sucursal.fotoCentroTrabajo}" WidthRequest="95" HeightRequest="75" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <Label IsVisible="{Binding Sucursal.existeSucursal}" x:Name="nombreSucursal" Text="{Binding Sucursal.nombreCentroTrabajo}" FontSize="18" VerticalOptions="Center" TextColor="Gray"/>
-                         <!-- <Label  IsVisible="{Binding Sucursal.mostarMensajeSucursal}"  Text="{Binding Sucursal.mensajeSucursal}" 
-            FontSize="18" VerticalOptions="Center" TextColor="Gray" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
-                      <Image IsVisible="{Binding Sucursal.mostarMensajeSucursal}" Source="ic_action_error" WidthRequest="50" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center"/>-->
-                    </StackLayout>
-
-
-
-                    <StackLayout   Grid.Row="1" Grid.ColumnSpan="2"  BackgroundColor="Transparent"  VerticalOptions="End">
-                    <StackLayout Orientation="Vertical" Spacing="10"  VerticalOptions="EndAndExpand">
-                            <Image Source="scan_code" WidthRequest="150" IsVisible="{Binding Sucursal.existeOperacion}" />
-                            <Image Source="triste" WidthRequest="100" IsVisible="{Binding Sucursal.errorOperacion}" />
+                        <StackLayout   Grid.Row="1"   BackgroundColor="Transparent"  VerticalOptions="End">
+                       
                             <Button IsVisible="{Binding Sucursal.existeOperacion}" BackgroundColor="DarkBlue"  
                                     Text="ESCANEAR QR" TextColor="White"  Command="{Binding ScanCommand}" VerticalOptions="End" />
                             <Label IsVisible="{Binding Sucursal.errorOperacion}"  Text="{Binding Sucursal.mensajeSucursal}" 
-                    FontSize="18" VerticalOptions="Center" TextColor="Gray" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
-                               </StackLayout>
-                </StackLayout>
+                                FontSize="18" VerticalOptions="Center" TextColor="Gray" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+            
+                    </StackLayout>
 
-                <StackLayout IsVisible="{Binding Sucursal.errorOperacion}"  Grid.Row="2" Grid.ColumnSpan="2" Orientation="Vertical" VerticalOptions="EndAndExpand" >
+
+                    
+                </Grid>
+
+
+            </StackLayout>
+
+                <StackLayout Grid.Row="2" IsVisible="{Binding Sucursal.errorOperacion}" Orientation="Vertical" VerticalOptions="EndAndExpand" >
                     <ActivityIndicator
-                IsRunning="{Binding Sucursal.IsRunning}"
-                VerticalOptions="CenterAndExpand">
+                    IsRunning="{Binding Sucursal.IsRunning}"
+                    VerticalOptions="CenterAndExpand">
                     </ActivityIndicator>
                     <Button IsEnabled="{Binding Sucursal.IsEnabled}" VerticalOptions="End"
-                            Command="{Binding RefreshCommand}" BackgroundColor="Purple" Text="ACTUALIZAR" TextColor="White"></Button>
+                                Command="{Binding RefreshCommand}" BackgroundColor="Red" Text="ACTUALIZAR" TextColor="White"></Button>
                 </StackLayout>
-                    
 
-                    <!-- -->
-
-
-
-            </Grid>
-
-
-        </StackLayout>
-        
-       
-
-        </Grid>  
+            </Grid>  
         </StackLayout>
  
     </ContentPage.Content>

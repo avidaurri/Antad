@@ -123,9 +123,9 @@ namespace AntadBiblioteca.DAO
 
                 if (anoo < 50)
                 {
-                    if (anoo == 0)
+                    if (anoo <10)
                     {
-                        anooo = "2000";
+                        anooo = "200" + anoo;
                     }
                     else
                     {

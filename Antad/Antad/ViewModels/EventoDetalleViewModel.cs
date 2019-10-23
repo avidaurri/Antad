@@ -12,49 +12,105 @@ using Xamarin.Forms;
 
 namespace Antad.ViewModels
 {
-    public class EventoItemViewModel: Evento
+    public class EventoDetalleViewModel :BaseViewModel
     {
-
         #region Attributes
         private ApiService apiService;
-       // private Evento eventt { get; set; }
+        private Evento eventodetalle { get; set; }
+        private int clvemp;
+        private string folioevento;
         #endregion
 
         #region Properties
-        public Evento Eventt
-        { get; set; }
+        public Evento Eventodetalle
+        {
+            get { return this.eventodetalle; }
+            set
+            {
+                eventodetalle = value;
+                OnPropertyChanged();
+            }
+        }
+        public int Clvemp
+        {
+            get { return this.clvemp; }
+            set
+            {
+                clvemp = value;
+                OnPropertyChanged();
+            }
+        }
+        public string Folioevento
+        {
+            get { return this.folioevento; }
+            set
+            {
+                folioevento = value;
+                OnPropertyChanged();
+            }
+        }
         #endregion
 
+        #region Contructors
+        public EventoDetalleViewModel(int clvEmp, string folioEvento)
+        {
+            this.apiService = new ApiService();
+            this.folioevento = folioEvento;
+            this.clvemp = clvEmp;
+            getDetalleEvento(clvEmp, folioEvento);
+        }
+
+
         #region Commands
-        public ICommand DetalleEventoCommand
+        public ICommand UpdateDetailCommand
         {
             get
             {
-                return new RelayCommand(DetalleEvento);
+                return new RelayCommand(UpdateDetail);
             }
         }
 
-        private async void DetalleEvento()
+        public ICommand ViewQrCommand
         {
-            MainViewModel.GetInstance().EventoDeta = new EventoDetalleViewModel(this.clvEmp, this.folioEvento);
-            //await Application.Current.MainPage.Navigation.PushAsync(new EditarUsuarioPage());
-            await App.Navigator.PushAsync(new EventoDetallePage());
+            get
+            {
+                return new RelayCommand(ViewQr);
+            }
+        }
 
-            /*string usuario = this.clvEmp.ToString();
-            string folioEvento = this.folioEvento;
+        private void ViewQr()
+        {
+            string usuario = this.clvemp.ToString();
+            string folioEvento = this.folioevento.ToString();
+
+            PopupNavigation.Instance.PushAsync(new PopupView(usuario, folioEvento));
+        }
+
+        private void UpdateDetail()
+        {
+            int usuario = this.clvemp;
+            string folioEvento = this.folioevento.ToString();
+            getDetalleEvento(usuario, folioEvento);
+        }
+        #endregion
+
+        private async void getDetalleEvento(int clvEmp, string folioEvento)
+        {
+         /*   string usuario = this.clvEmp.ToString();
+            string folioEvento = this.folioEvento;*/
 
             var connection = await this.apiService.CheckConnection();
 
             if (!connection.IsSuccess)
             {
-                
+
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
                 return;
             }
 
             var usser = new Evento
             {
-                clvEmp = Convert.ToInt32(usuario),
+                clvEmp = clvEmp,
                 folioEvento = folioEvento,
 
             };
@@ -69,9 +125,9 @@ namespace Antad.ViewModels
                 return;
             }
 
-            this.Eventt = (Evento)response.Result;
+            this.Eventodetalle = (Evento)response.Result;
 
-            if (this.Eventt.clvEdoEvento.Equals(3))
+            /*if (this.eventodetalle.clvEdoEvento.Equals(3))
             {
                 //autorizado- ir a pantalla de operacion
                 MainViewModel.GetInstance().EventoOperacion = new EventoOperacionViewModel(this);
@@ -89,7 +145,7 @@ namespace Antad.ViewModels
             else if (this.Eventt.seeQR)
             {
                 // mostrar qr
-                PopupNavigation.Instance.PushAsync(new PopupView(this.Eventt.clvEmp.ToString(), this.Eventt.folioEvento,this.Eventt.clvEdoEvento.ToString(), "Pide autorización a través de este código"));
+                PopupNavigation.Instance.PushAsync(new PopupView(this.Eventt.clvEmp.ToString(), this.Eventt.folioEvento, this.Eventt.clvEdoEvento.ToString(), "Pide autorización a través de este código"));
             }
             else if (!this.Eventt.seeQR && this.Eventt.clvEdoEvento.Equals(4))
             {
@@ -101,11 +157,8 @@ namespace Antad.ViewModels
         #endregion
 
 
-        #region Contructors
-        public EventoItemViewModel()
-        {
-            this.apiService = new ApiService();
-        }
+        #region Commands
+
         #endregion
     }
 }

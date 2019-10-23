@@ -30,7 +30,7 @@ namespace AntadApi.Controllers
         {
 
             EventoService servicio = new EventoService(cadenaConexion);
-            return servicio.getDetalleEvento(value.usuario, value.folioEvento);
+            return servicio.getDetalleEvento(value.clvEmp, value.folioEvento);
         }
 
         // PUT: api/EventoDetalle/5

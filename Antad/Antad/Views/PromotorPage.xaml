@@ -12,65 +12,45 @@
        
             <Grid VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
-                <RowDefinition Height="120" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
 
-            <StackLayout Grid.Column="0" Orientation="Horizontal"  HorizontalOptions="Center" VerticalOptions="Center">
-                <StackLayout Orientation="Horizontal" VerticalOptions="Start" Margin="0">
-                    <Image x:Name="imgFotoIntramuro"  Source="{Binding UserImageFullPath}" HeightRequest="80" VerticalOptions="Center"/>
-                </StackLayout>
-
-            </StackLayout>
-            <StackLayout Grid.Column="1"  Orientation="Vertical"   VerticalOptions="Center" HorizontalOptions="Start">
-
-                <Label x:Name="lblNombreIntramuro"  Text="{Binding UserFullName}" TextColor="Gray" 
-                       FontSize="16" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
-
-
-            </StackLayout>
-
-            <Frame Grid.Row="2" Grid.ColumnSpan="2"  HasShadow="True" CornerRadius="10" Margin="20,0,20,0" Padding="0" HeightRequest="50" VerticalOptions="Start">
+            <Frame  HasShadow="True" BackgroundColor="Purple"  Margin="0" Padding="0" HeightRequest="80" VerticalOptions="Start">
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
                         <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
-                            <Label  Text="MIS EVENTOS" TextColor="Gray" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label  Text="MIS EVENTOS" TextColor="White" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center"/>
                         </StackLayout>
                     </StackLayout>
 
                 </Grid>
             </Frame>
 
-           
-                
-           
-            <StackLayout Grid.Row="3" Grid.ColumnSpan="2"
-            BindingContext="{Binding Promotor}"
-            Padding="5">
+            <StackLayout Grid.Row="1" 
+                    BindingContext="{Binding Promotor}"
+                    Padding="5">
                 <ScrollView>
                     <ListView
-                HasUnevenRows="True"
-                ItemsSource="{Binding Eventos}"
-                IsRefreshing="{Binding IsRefreshing}"
-                RefreshCommand="{Binding RefreshCommand}"
-                IsPullToRefreshEnabled="True">
-                    <ListView.ItemTemplate>
+                         HasUnevenRows="True"
+                        ItemsSource="{Binding Eventos}"
+                        IsRefreshing="{Binding IsRefreshing}"
+                        RefreshCommand="{Binding RefreshCommand}"
+                        IsPullToRefreshEnabled="True">
+                        <ListView.ItemTemplate>
                         <DataTemplate>
 
-                            <ViewCell>
-                                <!--<ViewCell.ContextActions>
+                            <ViewCell >
+                                    <Frame HasShadow="True" CornerRadius="10" Margin="0,5,0,5">
+                                        
+                                                                     <!--<ViewCell.ContextActions>
                                     <MenuItem Text="Editar" Command="{Binding EditarUsuarioCommand}"/>
                                     <MenuItem Text="Eliminar" Command="{Binding EliminarUsuarioCommand}" IsDestructive="True"/>
                                 </ViewCell.ContextActions>-->
-                                <Grid>
+                                <Grid >
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding DetalleEventoCommand}"/>
                                     </Grid.GestureRecognizers>
@@ -83,10 +63,10 @@
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
-                                    <Label Text="{Binding nombreSucursal}" Grid.ColumnSpan="3" HorizontalTextAlignment="Center"/>
+                                        <Label Text="{Binding nombreCentroTrabajo}" Grid.ColumnSpan="3" HorizontalTextAlignment="Center"/>
                                     <Image Grid.Column="0" Grid.Row="1"
                                        WidthRequest="100"
-                                       Source="{Binding fotoSucursal}">
+                                       Source="{Binding fotoCadenaCentroTrabajo}">
 
                                     </Image>
                                     <StackLayout Grid.Column="1" Grid.Row="1"
@@ -103,15 +83,16 @@
                                         <Image Source="ic_action_chevron_right.png"/>
                                     </StackLayout>
 
-                                </Grid>
+                                </Grid>   
+                                        
+                                    </Frame>
+
 
                             </ViewCell>
                         </DataTemplate>
-                    </ListView.ItemTemplate>
-
-
-                </ListView>
- </ScrollView>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollView>
             </StackLayout>
            
 

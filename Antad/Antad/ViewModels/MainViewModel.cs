@@ -22,6 +22,9 @@ namespace Antad.ViewModels
         public EditarUsuarioViewModel EditarUsuario { get; set; }
         public RegistroViewModel Register { get; set; }
         public EventoOperacionViewModel EventoOperacion { get; set; }
+
+        public EventoDetalleViewModel EventoDeta { get; set; }
+
         public UsuariosViewModel Usuarios { get; set; }
 
         public IntramuroViewModel Intramuro { get; set; }
@@ -211,10 +214,10 @@ namespace Antad.ViewModels
 
         private void SeeQR()
         {
-            string estatus = this.EventoOperacion.Evento.clvEstatusEvento.ToString();
+            string estatus = this.EventoOperacion.Evento.clvEdoEvento.ToString();
             string eventtoo = this.EventoOperacion.Evento.folioEvento;
-            string usuario = this.EventoOperacion.Evento.usuario;
-            PopupNavigation.Instance.PushAsync(new PopupView(usuario,eventtoo,estatus,"Escanea este código para supervisar tu evento"));
+            string usuario = this.EventoOperacion.Evento.clvEmp.ToString();
+            PopupNavigation.Instance.PushAsync(new PopupView(usuario,eventtoo));
 
         }
         #endregion

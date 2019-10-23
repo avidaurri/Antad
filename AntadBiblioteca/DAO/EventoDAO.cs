@@ -16,31 +16,34 @@ namespace AntadBiblioteca.DAO
         {
             conexion = new ConexionDB(cadena);
         }
-        public List<Evento> getEventos(string usuario)
+        public List<Evento> getEventos(int usuario)
         {
             Utilidades ser = new Utilidades();
             string urlServidor = ser.getUrlServidor(conexion);
 
 
-            string select = "select ec.folio_evento as folioEvento, l.clv_emp as clv_Empleado, l.login as usuario, ct.logo_url as fotoSucursal, " +
+            /*string select = "select ec.folio_evento as folioEvento, l.clv_emp as clv_Empleado, l.login as usuario, ct.logo_url as fotoSucursal, " +
                 "ct.folio_centro_trabajo as folioSucursal, ct.nombre_comercial as nombreSucursal, ec.fecha_inicial as fechaInicio, ec.fecha_final as fechaFinal, " +
                 "ee.descripcion as estatusEvento, ec.clv_edo_evento as clvEstatusEvento from evento_personal ep left join login l on l.clv_emp = ep.clv_emp " +
                 "left join evento_cara ec on ec.folio_evento = ep.folio_evento left join cat_tip_evento cte on cte.clv_tip_evento = ec.clv_tip_evento left join " +
                 "edo_evento ee on ee.clv_edo_evento = ec.clv_edo_evento left join centro_trabajo ct on ct.folio_centro_trabajo = ec.folio_centro_trabajo " +
-                "left join cadena_centro_trabajo cct on cct.clv_cadena = ct.clv_cadena where l.login =@usuario ";
+                "left join cadena_centro_trabajo cct on cct.clv_cadena = ct.clv_cadena where l.login =@usuario ";*/
 
-           /* string select = "select ec.folio_evento as folioEvento, l.clv_emp as clv_Empleado, l.login as usuario, " +
-                "ct.logo_url as fotoSucursal, ct.folio_centro_trabajo as folioSucursal, ct.nombre_comercial as nombreSucursal, " +
-                "ec.fecha_inicial as fechaInicio, ec.fecha_final as fechaFinal, ee.descripcion as estatusEvento, ec.clv_edo_evento as clvEstatusEvento " +
-                "from evento_cara ec left join login l on l.clv_emp = ec.clv_emp left join cat_tip_evento cte on cte.clv_tip_evento = ec.clv_tip_evento " +
-                "left join edo_evento ee on ee.clv_edo_evento = ec.clv_edo_evento left join centro_trabajo ct on ct.folio_centro_trabajo = ec.folio_centro_trabajo " +
-                "left join cadena_centro_trabajo cct on cct.clv_cadena = ct.clv_cadena where l.login = @usuario"; */
+            string select = "select ec.folio_evento as folioEvento, ec.fecha_inicial as fechaInicio, " +
+                "ec.fecha_final as fechaFinal, ec.clv_edo_evento as clvEdoEvento, ee.descripcion as estadoEvento, " +
+                "ec.clv_tip_evento as clvTipoEvento, cte.descripcion as tipoEvento, ep.clv_emp as clvEmp, ct.logo_url as fotoCentroTrabajo, " +
+                "ct.folio_centro_trabajo as folioCentroTrabajo, ct.nombre_comercial as nombreCentroTrabajo, cct.clv_cadena " +
+                "as clvCadenaCentroTrabajo, cct.nombre as cadenaCentroTrabajo, cct.url_logo as fotoCadenaCentroTrabajo from evento_cara ec " +
+                "left join evento_personal ep on ep.folio_evento = ec.folio_evento left join centro_trabajo ct on " +
+                "ct.folio_centro_trabajo = ec.folio_centro_trabajo left join cadena_centro_trabajo cct on cct.clv_cadena = ct.clv_cadena left " +
+                "join cat_tip_evento cte on cte.clv_tip_evento = ec.clv_tip_evento left join edo_evento ee on ee.clv_edo_evento = ec.clv_edo_evento " +
+                "where ep.clv_emp = @usuario order by ec.fecha_inicial asc"; 
 
             List<Parametro> parametros = new List<Parametro>();
 
             Parametro paramIdUsuario = new Parametro();
             paramIdUsuario.Nombre = "@usuario";
-            paramIdUsuario.Valor = usuario;
+            paramIdUsuario.Valor = usuario.ToString();
             parametros.Add(paramIdUsuario);
 
             SqlDataReader readerSuc = conexion.Consultar(select, parametros);
@@ -51,15 +54,19 @@ namespace AntadBiblioteca.DAO
             {
                 Evento evento = new Evento();
                 evento.folioEvento = readerSuc["folioEvento"].ToString();
-                evento.clv_Empleado = Convert.ToInt32(readerSuc["clv_Empleado"].ToString());
-                evento.usuario = readerSuc["usuario"].ToString();
-                evento.fotoSucursal = "https://compilacionweb.online/DemoAntad/" + readerSuc["fotoSucursal"].ToString();
-                evento.folioSucursal = readerSuc["folioSucursal"].ToString();
-                evento.nombreSucursal = readerSuc["nombreSucursal"].ToString();
                 evento.fechaInicio = readerSuc["fechaInicio"].ToString();
                 evento.fechaFinal = readerSuc["fechaFinal"].ToString();
-                evento.estatusEvento = readerSuc["estatusEvento"].ToString();
-                evento.clvEstatusEvento = Convert.ToInt32(readerSuc["clvEstatusEvento"].ToString());
+                evento.clvEdoEvento = Convert.ToInt32(readerSuc["clvEdoEvento"].ToString());
+                evento.estadoEvento = readerSuc["estadoEvento"].ToString();
+                evento.clvTipoEvento = Convert.ToInt32(readerSuc["clvTipoEvento"].ToString());
+                evento.tipoEvento = readerSuc["tipoEvento"].ToString();
+                evento.clvEmp = Convert.ToInt32(readerSuc["clvEmp"].ToString());
+                evento.fotoCentroTrabajo = "https://compilacionweb.online/DemoAntad/" + readerSuc["fotoCentroTrabajo"].ToString();
+                evento.folioCentroTrabajo = readerSuc["folioCentroTrabajo"].ToString();
+                evento.nombreCentroTrabajo = readerSuc["nombreCentroTrabajo"].ToString();
+                evento.clvCadenaCentroTrabajo = Convert.ToInt32(readerSuc["clvCadenaCentroTrabajo"].ToString());
+                evento.cadenaCentroTrabajo = readerSuc["cadenaCentroTrabajo"].ToString();
+                evento.fotoCadenaCentroTrabajo = readerSuc["fotoCadenaCentroTrabajo"].ToString();
 
                 eventos.Add(evento);
 
@@ -70,24 +77,24 @@ namespace AntadBiblioteca.DAO
 
         }
 
-        public Evento getDetalleEvento(string usuario, string eve)
+        public Evento getDetalleEvento(int clvEmp, string eve)
         {
-            /*Utilidades ser = new Utilidades();
-             string urlServidor = ser.getUrlServidor(conexion);*/
 
-
-            string select = "select ec.folio_evento as folioEvento, l.clv_emp as clv_Empleado, l.login as usuario, " +
-                "ct.logo_url as fotoSucursal, ct.folio_centro_trabajo as folioSucursal, ct.nombre_comercial as nombreSucursal, " +
-                "ec.fecha_inicial as fechaInicio, ec.fecha_final as fechaFinal, ee.descripcion as estatusEvento, ec.clv_edo_evento as clvEstatusEvento " +
-                "from evento_cara ec left join login l on l.clv_emp = ec.clv_emp left join cat_tip_evento cte on cte.clv_tip_evento = ec.clv_tip_evento " +
-                "left join edo_evento ee on ee.clv_edo_evento = ec.clv_edo_evento left join centro_trabajo ct on ct.folio_centro_trabajo = ec.folio_centro_trabajo " +
-                "left join cadena_centro_trabajo cct on cct.clv_cadena = ct.clv_cadena where l.login = @usuario and ec.folio_evento=@evento ";
+            string select = "select ec.folio_evento as folioEvento, ec.fecha_inicial as fechaInicio, " +
+                "ec.fecha_final as fechaFinal, ec.clv_edo_evento as clvEdoEvento, ee.descripcion as estadoEvento, " +
+                "ec.clv_tip_evento as clvTipoEvento, cte.descripcion as tipoEvento, ep.clv_emp as clvEmp, ct.logo_url as fotoCentroTrabajo, " +
+                "ct.folio_centro_trabajo as folioCentroTrabajo, ct.nombre_comercial as nombreCentroTrabajo, cct.clv_cadena " +
+                "as clvCadenaCentroTrabajo, cct.nombre as cadenaCentroTrabajo, cct.url_logo as fotoCadenaCentroTrabajo from evento_cara ec " +
+                "left join evento_personal ep on ep.folio_evento = ec.folio_evento left join centro_trabajo ct on " +
+                "ct.folio_centro_trabajo = ec.folio_centro_trabajo left join cadena_centro_trabajo cct on cct.clv_cadena = ct.clv_cadena left " +
+                "join cat_tip_evento cte on cte.clv_tip_evento = ec.clv_tip_evento left join edo_evento ee on ee.clv_edo_evento = ec.clv_edo_evento " +
+                "where ep.clv_emp = @clvEmp and ec.folio_evento=@evento";
 
             List<Parametro> parametros = new List<Parametro>();
 
             Parametro paramIdUsuario = new Parametro();
-            paramIdUsuario.Nombre = "@usuario";
-            paramIdUsuario.Valor = usuario;
+            paramIdUsuario.Nombre = "@clvEmp";
+            paramIdUsuario.Valor = clvEmp.ToString();
             parametros.Add(paramIdUsuario);
 
             Parametro paramIdEvento = new Parametro();
@@ -101,25 +108,24 @@ namespace AntadBiblioteca.DAO
 
             if (readerSuc.Read())
             {
-                evento.seeQR = false;
                 evento.folioEvento = readerSuc["folioEvento"].ToString();
-                evento.clv_Empleado = Convert.ToInt32(readerSuc["clv_Empleado"].ToString());
-                evento.usuario = readerSuc["usuario"].ToString();
-                evento.fotoSucursal = "https://compilacionweb.online/DemoAntad/" + readerSuc["fotoSucursal"].ToString();
-                evento.folioSucursal = readerSuc["folioSucursal"].ToString();
-                evento.nombreSucursal = readerSuc["nombreSucursal"].ToString();
                 evento.fechaInicio = readerSuc["fechaInicio"].ToString();
                 evento.fechaFinal = readerSuc["fechaFinal"].ToString();
-                evento.estatusEvento = readerSuc["estatusEvento"].ToString();
-                evento.clvEstatusEvento = Convert.ToInt32(readerSuc["clvEstatusEvento"].ToString());
+                evento.clvEdoEvento = Convert.ToInt32(readerSuc["clvEdoEvento"].ToString());
+                evento.estadoEvento = readerSuc["estadoEvento"].ToString();
+                evento.clvTipoEvento = Convert.ToInt32(readerSuc["clvTipoEvento"].ToString());
+                evento.tipoEvento = readerSuc["tipoEvento"].ToString();
+                evento.clvEmp = Convert.ToInt32(readerSuc["clvEmp"].ToString());
+                evento.fotoCentroTrabajo = "https://compilacionweb.online/DemoAntad/" + readerSuc["fotoCentroTrabajo"].ToString();
+                evento.folioCentroTrabajo = readerSuc["folioCentroTrabajo"].ToString();
+                evento.nombreCentroTrabajo = readerSuc["nombreCentroTrabajo"].ToString();
+                evento.clvCadenaCentroTrabajo = Convert.ToInt32(readerSuc["clvCadenaCentroTrabajo"].ToString());
+                evento.cadenaCentroTrabajo = readerSuc["cadenaCentroTrabajo"].ToString();
+                evento.fotoCadenaCentroTrabajo = readerSuc["fotoCadenaCentroTrabajo"].ToString();
 
-                if (evento.clvEstatusEvento.Equals(4))
+                if (evento.clvEdoEvento.Equals(4))
                 {
-                    /*string dt = "1/3/2011";
-                    DateTime myDateTime = DateTime.Parse(dt);
-                    string dia = Convert.ToString(myDateTime.Day);
-                    string mes = Convert.ToString(myDateTime.Month);
-                    string año = Convert.ToString(myDateTime.Year);*/
+                    //agendado
 
                     DateTime fechaF = Convert.ToDateTime(evento.fechaInicio).Date;
                     DateTime FechAc = DateTime.Now.Date;
@@ -138,23 +144,23 @@ namespace AntadBiblioteca.DAO
                         {
                             int nombredidad = Convert.ToInt32(FechAc.ToString("dd"));
                             int nombredida = Convert.ToInt32(fechaF.ToString("dd"));
-                            //int nombredidadt = Convert.ToInt32(FechAc.ToString("hh"));
-                            //int nombredidat = Convert.ToInt32(evento.fechaInicio.ToString("hh"));
-                 
-                            //string nombrediadd = fechaF.ToString("d");
 
                             if (nombredidad.Equals(nombredida))
                             {
 
                                     evento.seeQR = true;
                                     evento.mensajeEvento = "Mensaje";
-                                    evento.descripcionMensajeEvento = "Escanea tu código para obtener autorización";
-                 
+                                    evento.descripcionMensajeEvento = "El evento no esta autorizado, porfavor muestra el código QR para solicitar autorización";
+                                    evento.checkIn = false;
+                                     evento.seeUpdate = true;
                             }
                             else
                             {
                                 evento.mensajeEvento = "Mensaje";
                                 evento.descripcionMensajeEvento = "El evento no corresponde al día de hoy";
+                                evento.seeQR = false;
+                                evento.seeUpdate = true;
+                                evento.checkIn = false;
                             }
 
                         }
@@ -162,18 +168,27 @@ namespace AntadBiblioteca.DAO
                         {
                             evento.mensajeEvento = "Mensaje";
                             evento.descripcionMensajeEvento = "El evento no corresponde al día de hoy";
+                            evento.seeQR = false;
+                            evento.seeUpdate = true;
+                            evento.checkIn = false;
                         }
                     }
                     else
                     {
                         evento.mensajeEvento = "Mensaje";
                         evento.descripcionMensajeEvento = "El evento no corresponde al día de hoy";
+                        evento.seeQR = false;
+                        evento.seeUpdate = true;
+                        evento.checkIn = false;
                     }
 
                     if (fechaF != FechAc) // Si la fecha indicada es menor o igual a la fecha actual
                     {
                         evento.mensajeEvento = "Mensaje";
                         evento.descripcionMensajeEvento = "El evento no corresponde al día de hoy";
+                        evento.seeQR = false;
+                        evento.seeUpdate = true;
+                        evento.checkIn = false;
                     }
                     else
                     {
@@ -188,9 +203,69 @@ namespace AntadBiblioteca.DAO
                         }
                         //Operación 2
                     }
+                }else if (evento.clvEdoEvento.Equals(3))
+                {
+                    //evento autorizado.
+                    evento.mensajeEvento = "Mensaje";
+                    evento.descripcionMensajeEvento = "El evento esta autorizado, ya puedes hacer checkIn";
+                    evento.seeQR = false;
+                    evento.seeUpdate = true;
+                    evento.checkIn = true;
+
+                }
+                else if (evento.clvEdoEvento.Equals(20))
+                {
+                    //evento autorizado.
+                    evento.mensajeEvento = "Mensaje";
+                    evento.descripcionMensajeEvento = "El evento se encuentra cancelado";
+                    evento.seeQR = false;
+                    evento.seeUpdate = false;
+                    evento.checkIn = false;
+
                 }
 
 
+
+            }
+            else
+            {
+                string selectd = "select ec.folio_evento as folioEvento, ec.fecha_inicial as fechaInicio, " +
+                    "ec.fecha_final as fechaFinal, ec.clv_edo_evento as clvEdoEvento, ee.descripcion as estadoEvento, " +
+                    "ec.clv_tip_evento as clvTipoEvento, cte.descripcion as tipoEvento, ep.clv_emp as clvEmp, ct.logo_url as fotoCentroTrabajo, " +
+                    "ct.folio_centro_trabajo as folioCentroTrabajo, ct.nombre_comercial as nombreCentroTrabajo, cct.clv_cadena " +
+                    "as clvCadenaCentroTrabajo, cct.nombre as cadenaCentroTrabajo, cct.url_logo as fotoCadenaCentroTrabajo from evento_cara ec " +
+                    "left join evento_personal ep on ep.folio_evento = ec.folio_evento left join centro_trabajo ct on " +
+                    "ct.folio_centro_trabajo = ec.folio_centro_trabajo left join cadena_centro_trabajo cct on cct.clv_cadena = ct.clv_cadena left " +
+                    "join cat_tip_evento cte on cte.clv_tip_evento = ec.clv_tip_evento left join edo_evento ee on ee.clv_edo_evento = ec.clv_edo_evento " +
+                    "where ec.folio_evento=@evento";
+
+                    SqlDataReader readerSucd = conexion.Consultar(selectd, parametros);
+
+
+                if (readerSucd.Read())
+                {
+
+                    evento.folioEvento = readerSucd["folioEvento"].ToString();
+                    evento.fechaInicio = readerSucd["fechaInicio"].ToString();
+                    evento.fechaFinal = readerSucd["fechaFinal"].ToString();
+                    evento.clvEdoEvento = Convert.ToInt32(readerSucd["clvEdoEvento"].ToString());
+                    evento.estadoEvento = readerSucd["estadoEvento"].ToString();
+                    evento.clvTipoEvento = Convert.ToInt32(readerSucd["clvTipoEvento"].ToString());
+                    evento.tipoEvento = readerSucd["tipoEvento"].ToString();
+                    evento.clvEmp = Convert.ToInt32(readerSucd["clvEmp"].ToString());
+                    evento.fotoCentroTrabajo = "https://compilacionweb.online/DemoAntad/" + readerSucd["fotoCentroTrabajo"].ToString();
+                    evento.folioCentroTrabajo = readerSucd["folioCentroTrabajo"].ToString();
+                    evento.nombreCentroTrabajo = readerSucd["nombreCentroTrabajo"].ToString();
+                    evento.clvCadenaCentroTrabajo = Convert.ToInt32(readerSucd["clvCadenaCentroTrabajo"].ToString());
+                    evento.cadenaCentroTrabajo = readerSucd["cadenaCentroTrabajo"].ToString();
+                    evento.fotoCadenaCentroTrabajo = readerSucd["fotoCadenaCentroTrabajo"].ToString();
+
+                    evento.mensajeEvento = "Mensaje";
+                    evento.descripcionMensajeEvento = "El evento no esta disponible para ti, porfavor solicita tu asignación";
+                    evento.seeQR = false;
+                    evento.seeUpdate = true;
+                    evento.checkIn = false;
+                }
 
             }
 
