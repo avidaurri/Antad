@@ -17,7 +17,7 @@ namespace Antad
         {
             InitializeComponent();
 
-            var mainViewModel = MainViewModel.GetInstance();
+           /* var mainViewModel = MainViewModel.GetInstance();
 
             if (Settings.IsRemembered)
             {
@@ -39,9 +39,9 @@ namespace Antad
             {
                 mainViewModel.Login = new LoginViewModel();
                 this.MainPage = new NavigationPage(new LoginPage());
-            }
+            }*/
             //
-           // MainPage = new SplashPageIndex();
+            MainPage = new SplashPageIndex();
 
 
         }

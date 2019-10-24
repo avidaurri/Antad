@@ -59,17 +59,19 @@ namespace Antad.ViewModels
                 return;
             }
 
-            var usser = new ParamValidarEvento
+            var usser = new ValidaEvento
             {
                 folioEvento = this.evento,
-                usuario = this.usuario,
+                clv_Empleado =Convert.ToInt32(this.usuario),
 
             };
 
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
             var controller = Application.Current.Resources["UrlValidaEvento"].ToString();
-            var response = await this.apiService.GetWithPostVa(url, prefix, controller, usser);
+            //var response = await this.apiService.GetWithPostVa(url, prefix, controller, usser);
+            var response = await this.apiService.Post<ValidaEvento>(url, prefix, controller, usser);
+            
             if (!response.IsSuccess)
             {
                 //this.IsRefreshing = false;

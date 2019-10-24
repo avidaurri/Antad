@@ -27,10 +27,20 @@ namespace Antad.ViewModels
         private bool isRunning;
         private bool isEnabled;
         private string _result;
+        private int estadodelevento { get; set; }
         #endregion
 
 
         #region Properties
+        public int Estadodelevento
+        {
+            get { return this.estadodelevento; }
+            set
+            {
+                estadodelevento = value;
+                OnPropertyChanged();
+            }
+        }
         public Evento enviar = new Evento();
         public string Result
         {
@@ -140,11 +150,11 @@ namespace Antad.ViewModels
                     await App.Navigator.PopAsync();
                     string evento = result.Text;
 
-                    int estatus = Convert.ToInt32(evento.Split('&').Last());
-                    string primera = evento.Split('&').First();
+                    /*int estatus = Convert.ToInt32(evento.Split('&').Last());
+                    string primera = evento.Split('&').First();*/
 
-                    string eventom = primera.Split('/').Last();
-                    string usuariom = primera.Split('/').First();
+                    string eventom = evento.Split('/').Last();
+                    int clvemp = Convert.ToInt32(evento.Split('/').First());
 
                     //inicializado
                     /*int estatus = 3;
@@ -156,19 +166,51 @@ namespace Antad.ViewModels
                     string eventom = "e02";
                     string usuariom = "alexa";*/
 
-                    if (estatus.Equals(3))
+
+                    var connection = await this.apiService.CheckConnection();
+
+                    if (!connection.IsSuccess)
+                    {
+
+                        await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
+                        return;
+                    }
+
+                    var usser = new Evento
+                    {
+                        clvEmp = clvemp,
+                        folioEvento = eventom,
+
+                    };
+
+                    var url = Application.Current.Resources["UrlAPI"].ToString();
+                    var prefix = Application.Current.Resources["UrlPrefix"].ToString();
+                    var controller = Application.Current.Resources["UrlEventoMensajeDetalle"].ToString();
+                    var response = await this.apiService.GetDetalleEvento(url, prefix, controller, usser);
+                    if (!response.IsSuccess)
+                    {
+                        await Application.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
+                        return;
+                    }
+
+                    usser = (Evento)response.Result;
+                    this.Estadodelevento = usser.clvEdoEvento;
+
+
+
+                    if (this.Estadodelevento.Equals(3))
                     {
                         // evento inicializado
-                        MainViewModel.GetInstance().ValidacionActividad = new ValidacionActividadViewModel(eventom, usuariom);
+                       /* MainViewModel.GetInstance().ValidacionActividad = new ValidacionActividadViewModel(eventom, clvemp.ToString());
                         //await Application.Current.MainPage.Navigation.PushAsync(new EditarUsuarioPage());
-                        await App.Navigator.PushAsync(new ValidacionActividadPage());
+                        await App.Navigator.PushAsync(new ValidacionActividadPage());*/
 
 
                     }
-                    else if (estatus.Equals(4))
+                    else if (this.Estadodelevento.Equals(4))
                     {
                         //evento no inicializado
-                        MainViewModel.GetInstance().ValidarAutorizar = new ValidacionAutorizarViewModel(eventom,usuariom);
+                        MainViewModel.GetInstance().ValidarAutorizar = new ValidacionAutorizarViewModel(eventom, clvemp.ToString());
                         //await Application.Current.MainPage.Navigation.PushAsync(new EditarUsuarioPage());
                         await App.Navigator.PushAsync(new ValidacionAutorizarPage());
                     }

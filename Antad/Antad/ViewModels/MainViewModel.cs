@@ -21,6 +21,8 @@ namespace Antad.ViewModels
         public LoginViewModel Login { get; set; }
         public EditarUsuarioViewModel EditarUsuario { get; set; }
         public RegistroViewModel Register { get; set; }
+
+        public PreregistroViewModel Preregistro { get; set; }
         public EventoOperacionViewModel EventoOperacion { get; set; }
 
         public EventoDetalleViewModel EventoDeta { get; set; }

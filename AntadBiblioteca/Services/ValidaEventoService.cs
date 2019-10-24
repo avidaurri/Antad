@@ -15,7 +15,7 @@ namespace AntadBiblioteca.Services
         {
             loginAccesoDatos = new ValidaEventoDAO(cadena);
         }
-        public ValidaEvento getValidacionEvento(string idusuario, string idEvento)
+        public ValidaEvento getValidacionEvento(int idusuario, string idEvento)
         {
 
             return loginAccesoDatos.getValidacionEvento(idusuario, idEvento);

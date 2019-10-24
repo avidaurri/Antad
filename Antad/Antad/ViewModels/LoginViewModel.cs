@@ -70,8 +70,10 @@ namespace Antad.ViewModels
 
         private async void Register()
         {
-            MainViewModel.GetInstance().Register = new RegistroViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new RegistroPage());
+            /*MainViewModel.GetInstance().Register = new RegistroViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new RegistroPage());*/
+            MainViewModel.GetInstance().Preregistro = new PreregistroViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new PreregistroPage());
         }
 
         public ICommand LoginCommand {

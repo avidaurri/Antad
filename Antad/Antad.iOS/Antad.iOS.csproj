@@ -275,4 +275,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\triste.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_errorvalidacion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_okvalidacion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_vineta.png" />
+  </ItemGroup>
 </Project>
