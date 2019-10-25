@@ -21,7 +21,16 @@ namespace Antad.ViewModels
         public LoginViewModel Login { get; set; }
         public EditarUsuarioViewModel EditarUsuario { get; set; }
         public RegistroViewModel Register { get; set; }
-
+        public RegistroUnoViewModel RegistroUno { get; set; }
+        public RegistroDosViewModel RegistroDos { get; set; }
+        public RegistroTresViewModel RegistroTres { get; set; }
+        public RegistroCuatroViewModel RegistroCuatro { get; set; }
+        public RegistroCincoViewModel RegistroCinco { get; set; }
+        public RegistroSeisViewModel RegistroSeis { get; set; }
+        public RegistroSieteViewModel RegistroSiete { get; set; }
+        public RegistroOchoViewModel RegistroOcho { get; set; }
+        public RegistroNueveViewModel RegistroNueve { get; set; }
+        public RegistroExitosoViewModel RegistroExitoso { get; set; }
         public PreregistroViewModel Preregistro { get; set; }
         public EventoOperacionViewModel EventoOperacion { get; set; }
 

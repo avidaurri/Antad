@@ -40,9 +40,12 @@ namespace Antad.ViewModels
 
         private  void AceptarRegistro()
         {
-            MainViewModel.GetInstance().Register = new RegistroViewModel();
-           // await Application.Current.MainPage.Navigation.PushAsync(new RegistroPage());
-             Application.Current.MainPage = new NavigationPage(new RegistroPage());
+            /*MainViewModel.GetInstance().Register = new RegistroViewModel();
+            Application.Current.MainPage = new NavigationPage(new RegistroPage());*/
+
+            MainViewModel.GetInstance().RegistroUno = new RegistroUnoViewModel();
+            Application.Current.MainPage = new NavigationPage(new RegistroUnoPage());
+
         }
         #endregion
 

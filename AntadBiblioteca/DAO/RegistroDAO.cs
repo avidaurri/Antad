@@ -45,7 +45,7 @@ namespace AntadBiblioteca.DAO
             {
                 //si esta repetido
                 respuesta.usuarioRegistrado = false;
-                respuesta.mensajeRegistro = "El usuario ya se encuentra registrado";
+                respuesta.mensajeRegistro = "El usuario ya se encuentra registrado, por favor escriba otro";
             }
             else
             {
@@ -159,12 +159,12 @@ namespace AntadBiblioteca.DAO
                 }
 
 
-                string sqlInsert = "insert into empleado(clv_nacionalidad,titulo,procesar_nomina,sicepo,clv_emp,clv_empre,clv_gen,genero,fecha_naci,clv_puesto,nombre,apellido_paterno,apellido_materno," +
+                string sqlInsert = "insert into empleado(fecha_cap,clv_edo_emp,clv_nacionalidad,titulo,procesar_nomina,sicepo,clv_emp,clv_empre,clv_gen,genero,fecha_naci,clv_puesto,nombre,apellido_paterno,apellido_materno," +
                     "email,curp,edo_civil,peso,estatura,clv_grado_estu,ciu_edo,del_mun,cp,calle_no,colonia,no_exterior,no_interior," +
-                    "clv_banco,clabe,cuenta,tarjeta,tipo_empleado,foto_url) " +
-        "values(1,' ',0,0,@clv_emp,1,@clv_gen,@genero,@fecha_naci,@clv_puesto,@nombre,@apellido_paterno,@apellido_materno,@email,@curp,@edo_civil,@peso," +
+                    "clv_banco,clabe,cuenta,tarjeta,tipo_empleado,foto_url, telefono1,telefono2, telefonos) " +
+        "values(GetDate(),1,1,' ',0,0,@clv_emp,1,@clv_gen,@genero,@fecha_naci,@clv_puesto,@nombre,@apellido_paterno,@apellido_materno,@email,@curp,@edo_civil,@peso," +
         "@altura,@clv_gradoestu,@ciu_edo,@del_mun,@cp,@calle_no,@colonia," +
-        "@no_exterior,@no_interior, @clv_banco,@clabe,@cuenta,@tarjeta,1,@foto_url)";
+        "@no_exterior,@no_interior, @clv_banco,@clabe,@cuenta,@tarjeta,1,@foto_url,@telefonoU,@telefonoD,@telefonos)";
 
                 List<Parametro> parametrosInsert = new List<Parametro>();
 
@@ -226,6 +226,11 @@ namespace AntadBiblioteca.DAO
                 paramCurp.Nombre = "@curp";
                 paramCurp.Valor = user.curp.ToString();
                 parametrosInsert.Add(paramCurp);
+
+                Parametro paramTell = new Parametro();
+                paramTell.Nombre = "@telefono";
+                paramTell.Valor = user.telefono.ToString();
+                parametrosInsert.Add(paramTell);
 
                 Parametro paramFEdoCivil = new Parametro();
                 paramFEdoCivil.Nombre = "@edo_civil";
@@ -329,7 +334,24 @@ namespace AntadBiblioteca.DAO
                 paramNombreReferenciaUno.Valor = user.nombreReferenciaUno;
                 parametrosInsert.Add(paramNombreReferenciaUno);
 
-                Parametro paramTelefonoDos = new Parametro();
+
+                Parametro paramTelU = new Parametro();
+                paramTelU.Nombre = "@telefonoU";
+                paramTelU.Valor = user.telefono.ToString()+"-particular";
+                parametrosInsert.Add(paramTelU);
+
+                Parametro paramTelD = new Parametro();
+                paramTelD.Nombre = "@telefonoD";
+                paramTelD.Valor = user.telefonoReferenciaUno.ToString() + "-"+user.nombreReferenciaUno;
+                parametrosInsert.Add(paramTelD);
+
+                Parametro paramTels = new Parametro();
+                paramTels.Nombre = "@telefonos";
+                paramTels.Valor = user.telefono.ToString() + "-particular -"+ user.telefonoReferenciaUno.ToString() + "-" + user.nombreReferenciaUno;
+                parametrosInsert.Add(paramTels);
+
+
+                /*Parametro paramTelefonoDos = new Parametro();
                 paramTelefonoDos.Nombre = "@telefonoDos";
                 paramTelefonoDos.Valor = user.telefonoReferenciaDos.ToString();
                 parametrosInsert.Add(paramTelefonoDos);
@@ -337,9 +359,9 @@ namespace AntadBiblioteca.DAO
                 Parametro paramNombreReferenciaDos = new Parametro();
                 paramNombreReferenciaDos.Nombre = "@nombreReferenciaDos";
                 paramNombreReferenciaDos.Valor = user.nombreReferenciaDos;
-                parametrosInsert.Add(paramNombreReferenciaDos);
+                parametrosInsert.Add(paramNombreReferenciaDos);*/
 
- 
+
                 //ImagePath
                 int registradoEmpleado = conexion.ActualizarParametro(sqlInsert, parametrosInsert);
 
@@ -352,25 +374,48 @@ namespace AntadBiblioteca.DAO
                 {
                     //insertar en login
 
-                    string sqlInsertLogin = "insert into login(clv_empre,clv_edo_reg_usr,estado_cuenta,administrador,login,password,clv_emp, url_dom,url_com) " +
-                        "values(1,5,0,0,@login,@password,@clv_emp,@identificacion,@comprobante)";
+                    string sqlInsertLogin = "insert into login(fecha_cap,clv_empre,clv_edo_reg_usr,estado_cuenta,administrador,login,password,clv_emp, url_dom,url_com) " +
+                        "values(GetDate(),1,5,0,0,@login,@password,@clv_emp,@identificacion,@comprobante)";
 
                     int registradoLogin = conexion.ActualizarParametro(sqlInsertLogin, parametrosInsert);
 
-                    string sqlInsertReferenciaUno = "insert into emp_telefono(clv_emp,telefono,descripcion) " +
-                        "values(@clv_emp,@telefonoUno,@nombreReferenciaUno)";
+                    string sqlInsertReferenciaUno = "insert into emp_telefono(clv_emp,telefono,descripcion,fecha_cap,clv_empre) " +
+                        "values(@clv_emp,@telefonoUno,@nombreReferenciaUno,GetDate(),1)";
 
                     int registradoreferenciaUno = conexion.ActualizarParametro(sqlInsertReferenciaUno, parametrosInsert);
 
-                    string sqlInsertReferenciaDos = "insert into emp_telefono(clv_emp,telefono,descripcion) " +
-    "values(@clv_emp,@telefonoDos,@nombreReferenciaDos)";
+                    string sqlInserttelefono = "insert into emp_telefono(clv_emp,telefono,descripcion,fecha_cap,clv_empre) " +
+                        "values(@clv_emp,@telefono,'particular',GetDate(),1)";
 
-                    int registradoreferenciaDos = conexion.ActualizarParametro(sqlInsertReferenciaDos, parametrosInsert);
+                    int registradoreferenciaDos = conexion.ActualizarParametro(sqlInserttelefono, parametrosInsert);
 
+                    /*string sqlInsertReferenciaDos = "insert into emp_telefono(clv_emp,telefono,descripcion) " +
+                    "values(@clv_emp,@telefonoDos,@nombreReferenciaDos)";
+
+                    int registradoreferenciaDos = conexion.ActualizarParametro(sqlInsertReferenciaDos, parametrosInsert);*/
+
+                    //insertar foto usuario
+
+                    string sqlInsertfoto = "insert into emp_foto(clv_emp,consec,clv_usr,clv_empre,fecha,ruta) " +
+                        "values(@clv_emp,1,1,1,GetDate(),@foto_url)";
+
+                    int registradofoto = conexion.ActualizarParametro(sqlInsertfoto, parametrosInsert);
+
+                    //insertar documentos
+
+                    string sqlInsertdocu = "insert into emp_documentacion(clv_emp,consec,clv_usr,observaciones,clv_empre,fecha,ruta) " +
+                        "values(@clv_emp,1,1,'identificacion personal',1,GetDate(),@identificacion)";
+
+                    int registradodocu = conexion.ActualizarParametro(sqlInsertdocu, parametrosInsert);
+
+                    string sqlInsertdocd = "insert into emp_documentacion(clv_emp,consec,clv_usr,observaciones,clv_empre,fecha,ruta) " +
+                        "values(@clv_emp,1,1,'comprobante domiciliario',1,GetDate(),@comprobante)";
+
+                    int registradodocd = conexion.ActualizarParametro(sqlInsertdocd, parametrosInsert);
 
                     if (registradoLogin == 1)
                     {
-                        respuesta.mensajeRegistro = "Tu registro fue exitoso";
+                        respuesta.mensajeRegistro = "Felicidades, tu registro fue exitoso";
                         respuesta.usuarioRegistrado = true;
                     }
                 }

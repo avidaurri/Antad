@@ -49,6 +49,7 @@ namespace Antad.ViewModels
                 Settings.IsRemembered = false;*/
                 MainViewModel.GetInstance().Intramuro = new IntramuroViewModel();
                 Application.Current.MainPage = new Master(new IntramuroPage());
+                //Application.Current.MainPage.Navigation.PushAsync(new IntramuroPage());
                 //App.Navigator.PushAsync(new IntramuroPage());
                 //
             }

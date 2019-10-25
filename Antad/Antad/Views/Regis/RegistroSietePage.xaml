@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Antad.Views.Regis.RegistroSietePage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundImageSource="fondosplash"
+             Title="REGISTRO PASO 7/9" >
+    <ContentPage.Content>
+        <Frame Margin="30" Padding="20" HasShadow="True" BindingContext="{Binding RegistroUno}" Opacity=".8">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label Text="Fotografia de tu identificación"
+                    FontFamily="{StaticResource MontserratBlack}" TextColor="DimGray" FontSize="17" HorizontalTextAlignment="Center" />
+                </StackLayout>
+
+                <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label Text="Paso 7/9"
+                    FontFamily="{StaticResource MontserratBold}"  FontSize="16" HorizontalTextAlignment="Center" />
+                </StackLayout>
+
+                <ScrollView Grid.Row="2">
+                    <StackLayout   Orientation="Vertical" VerticalOptions="CenterAndExpand"  >
+
+
+                        <Image
+                            HeightRequest="350"
+                            Source="{Binding ImageSourceIdentificacion}">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CargarIdentificacionCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label
+                            FontSize="15"
+                            HorizontalOptions="Center"
+                            TextColor="DimGray"
+                            HorizontalTextAlignment="Center"
+                            FontFamily="{StaticResource MontserratLight}"
+                            Text="Da click en el icono para activar la camara o para seleccionar alguna foto en tu equipo">
+                        </Label>
+
+
+                    </StackLayout>
+                </ScrollView>
+                <StackLayout  Grid.Row="3" Orientation="Vertical" VerticalOptions="End" >
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Button Text="ATRAS" BackgroundColor="DeepSkyBlue" TextColor="White"  CornerRadius="3"
+                                HorizontalOptions="FillAndExpand" Clicked="Button_Clicked" />
+
+                        <Button Text="SIGUIENTE >>" BackgroundColor="Purple" TextColor="White" CornerRadius="3"
+                                HorizontalOptions="FillAndExpand" Command="{Binding IrOchoCommand}"   />
+                    </StackLayout>
+
+                </StackLayout>
+
+            </Grid>
+        </Frame>
+    </ContentPage.Content>
+
+</ContentPage>

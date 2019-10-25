@@ -284,4 +284,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_vineta.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_camara.png" />
+  </ItemGroup>
 </Project>

@@ -40,6 +40,7 @@ namespace Antad.ViewModels
         #region Properties
         public string Login { get; set; }
         public string Password { get; set; }
+        public string ConfirmarPassword { get; set; }
         public int ClvPuesto { get; set; }
         public string Nombre { get; set; }
         public string ApellidoPaterno { get; set; }
@@ -73,7 +74,6 @@ namespace Antad.ViewModels
         public string foto { get; set; }
         public string identificacion { get; set; }
         public string comprobanteDomiciliario { get; set; }
-       
         public int Puesto { get; set; }
         public string banco { get; set; }
         private string _puestoText{ get; set; }
@@ -558,6 +558,17 @@ namespace Antad.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe tu apellido materno",Languages.Accept);
                 return;
             }
+            //Curp
+            if (string.IsNullOrEmpty(this.Curp))
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe tu CURP", Languages.Accept);
+                return;
+            }
+            if (!RegexHelper.IsValidCurp(this.Curp))
+            {
+                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe una CURP valida", Languages.Accept);
+                return;
+            }
             //Email
             if (string.IsNullOrEmpty(this.Email))
             {
@@ -569,17 +580,7 @@ namespace Antad.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe un email valido",Languages.Accept);
                 return;
             }
-            //Curp
-            if (string.IsNullOrEmpty(this.Curp))
-            {
-                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe tu CURP",Languages.Accept);
-                return;
-            }
-            if (!RegexHelper.IsValidCurp(this.Curp))
-            {
-                await Application.Current.MainPage.DisplayAlert("Aviso", "Escribe una CURP valida",Languages.Accept);
-                return;
-            }
+
             //validar identificacion
             byte[] imageArrayIdentificacion = null;
             if (this.fileIdentificacion != null)
@@ -823,38 +824,38 @@ namespace Antad.ViewModels
 
             var registro = new Registro
             {
-                login = this.Login,
-                password = this.Password,
-                clvPuesto = Convert.ToInt32(this.PuestoText),
-                nombre = this.Nombre,
-                apellidoPaterno = this.ApellidoPaterno,
-                apellidoMaterno = this.ApellidoMaterno,
-                email = this.Email,
-                curp = this.Curp,
-                telefono = this.Telefono,
+                login = this.Login,//
+                password = this.Password,//
+                clvPuesto = Convert.ToInt32(this.PuestoText),//
+                nombre = this.Nombre, //
+                apellidoPaterno = this.ApellidoPaterno, //
+                apellidoMaterno = this.ApellidoMaterno, //
+                email = this.Email, //
+                curp = this.Curp, //
+                telefono = this.Telefono, //
                 descripcionTelefono = this.DescripcionTelefono,
-                estadoCivil = this.EstadoCivilText,
-                peso = Convert.ToDouble(this.Peso),
-                altura = Convert.ToDouble(this.Altura),
-                clvGradoEstudios = Convert.ToInt32(this.GradoEstudiosText),
-                estado = this.EstadoText,
-                municipio = this.MunicipioText,
-                codigoPostal = this.CodigoPostal,
-                colonia = this.Colonia,
-                calle = this.Calle,
-                numeroExterior = this.NumeroExterior,
-                numeroInterior = this.NumeroInterior,
-                clvBanco = Convert.ToInt32(this.BancoText),
-                clabe=this.Clabe,
-                numeroCuenta=this.NumeroCuenta,
-                numeroTarjeta=this.NumeroTarjeta,
-                nombreReferenciaUno=this.NombreReferenciaUno,
-                telefonoReferenciaUno=this.TelefonoReferenciaUno,
+                estadoCivil = this.EstadoCivilText,//
+                peso = Convert.ToDouble(this.Peso),//
+                altura = Convert.ToDouble(this.Altura),//
+                clvGradoEstudios = Convert.ToInt32(this.GradoEstudiosText),//
+                estado = this.EstadoText,//
+                municipio = this.MunicipioText,//
+                codigoPostal = this.CodigoPostal,//
+                colonia = this.Colonia,//
+                calle = this.Calle,//
+                numeroExterior = this.NumeroExterior,//
+                numeroInterior = this.NumeroInterior,//
+                clvBanco = Convert.ToInt32(this.BancoText),//
+                clabe=this.Clabe,//
+                numeroCuenta=this.NumeroCuenta,//
+                numeroTarjeta=this.NumeroTarjeta,//
+                nombreReferenciaUno=this.NombreReferenciaUno,//
+                telefonoReferenciaUno=this.TelefonoReferenciaUno,//
                 nombreReferenciaDos=this.NombreReferenciaDos,
                 telefonoReferenciaDos=this.TelefonoReferenciaDos,
-                ImageArray = imageArray,
-                IdentificacionArray = imageArrayIdentificacion,
-                ComprobanteArray = imageArrayComprobante,
+                ImageArray = imageArray,//
+                IdentificacionArray = imageArrayIdentificacion,//
+                ComprobanteArray = imageArrayComprobante,//
                 foto = "",
                 identificacion="",
                 comprobanteDomiciliario="",
