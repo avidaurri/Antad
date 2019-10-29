@@ -625,10 +625,42 @@ namespace Antad.ViewModels
             }
         }
 
-        private void CancelReg()
+        private async void CancelReg()
         {
-            MainViewModel.GetInstance().Login = new LoginViewModel();
-            Application.Current.MainPage = new NavigationPage(new LoginPage());
+            var source = await Application.Current.MainPage.DisplayActionSheet(
+    "¿Esta seguro que desea salir de la sección registro registro?",
+    "SI",
+    "NO");
+
+            if (source == "NO")
+            {
+                //this.fileFoto = null;
+                return;
+            }
+            else
+            {
+
+                MainViewModel.GetInstance().Login = new LoginViewModel();
+                Application.Current.MainPage = new NavigationPage(new LoginPage());
+            }
+
+            /*if (source == Languages.NewPicture)
+            {
+                this.fileFoto = await CrossMedia.Current.TakePhotoAsync(
+                    new StoreCameraMediaOptions
+                    {
+                        Directory = "Sample",
+                        Name = "test.jpg",
+                        PhotoSize = PhotoSize.Small,
+                    }
+                );
+            }
+            else
+            {
+                this.fileFoto = await CrossMedia.Current.PickPhotoAsync();
+            }*/
+
+
         }
 
         public ICommand IrDosCommand

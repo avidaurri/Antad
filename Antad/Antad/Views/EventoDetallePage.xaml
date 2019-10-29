@@ -7,7 +7,8 @@
              x:Class="Antad.Views.EventoDetallePage"
               BindingContext="{Binding Main, Source={StaticResource Locator}}"
                BackgroundImageSource="fondosplash"
-             Title="Informacion del Evento">
+             IconImageSource="ic_informationtab">
+    <!--     Title="Informacion del Evento" -->
     <ContentPage.Content>
         <StackLayout BindingContext="{Binding EventoDeta}" >
  

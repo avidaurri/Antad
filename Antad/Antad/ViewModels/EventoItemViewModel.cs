@@ -38,7 +38,8 @@ namespace Antad.ViewModels
         {
             MainViewModel.GetInstance().EventoDeta = new EventoDetalleViewModel(this.clvEmp, this.folioEvento);
             //await Application.Current.MainPage.Navigation.PushAsync(new EditarUsuarioPage());
-            await App.Navigator.PushAsync(new EventoDetallePage());
+            await App.Navigator.PushAsync(new DetalleEventoTabbedPage());
+            //EventoDetallePage
 
             /*string usuario = this.clvEmp.ToString();
             string folioEvento = this.folioEvento;

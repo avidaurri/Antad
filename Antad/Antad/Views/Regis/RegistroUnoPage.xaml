@@ -99,10 +99,10 @@
                 <StackLayout  Grid.Row="3" Orientation="Vertical" VerticalOptions="End"  >
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                        <Button Text="CANCELAR" BackgroundColor="Red" TextColor="White"  CornerRadius="3"
+                        <Button Text="CANCELAR REGISTRO" BackgroundColor="Red" TextColor="White"  CornerRadius="3"
                                 HorizontalOptions="FillAndExpand" Command="{Binding CancelRegCommand}"   />
 
-                        <Button Text="SIGUIENTE >>" BackgroundColor="Purple" TextColor="White" CornerRadius="3"
+                        <Button Text="SIGUIENTE" BackgroundColor="Purple" TextColor="White" CornerRadius="3"
                                 HorizontalOptions="FillAndExpand" Command="{Binding IrDosCommand}"   />
                     </StackLayout>
 
