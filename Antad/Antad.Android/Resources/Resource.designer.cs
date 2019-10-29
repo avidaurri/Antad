@@ -5216,7 +5216,7 @@ namespace Antad.Droid
 			public const int notify_panel_notification_icon_bg = 2131165529;
 			
 			// aapt resource value: 0x7F07015A
-			public const int qrtrans = 2131165530;
+			public const int qrpngexample = 2131165530;
 			
 			// aapt resource value: 0x7F07015B
 			public const int scan_code = 2131165531;
