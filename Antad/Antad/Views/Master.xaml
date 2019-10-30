@@ -6,7 +6,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Antad.Views.Master"
+<<<<<<< HEAD
                 IconImageSource="logoantad"
+=======
+>>>>>>> parent of ba224c9... dddd
                      Title="menu">
     <MasterDetailPage.Master>
         <pages:MenuPage/>

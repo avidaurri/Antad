@@ -8,6 +8,7 @@
              x:Class="Antad.Views.MenuPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Menu"
+<<<<<<< HEAD
              Opacity=".9"
              IconImageSource="logoantad"
                >
@@ -15,6 +16,13 @@
     <ContentPage.Content>
         <!--<ScrollView> -->
             <StackLayout  BindingContext="{Binding Bienvenido}" 
+=======
+            BackgroundImageSource="fondosplash">
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BindingContext="{Binding Bienvenido}" Margin="5" BackgroundColor="White" Opacity="1"
+>>>>>>> parent of ba224c9... dddd
                 Padding="5">
                 <controls:CircleImage  
                     Source="{Binding ImageUser}"
@@ -31,6 +39,7 @@
                     TextColor="DimGray">
                 </Label>
                 <ListView
+                    BackgroundColor="Transparent"
                     ItemsSource="{Binding Menu}"
                     HasUnevenRows="True"
                     SeparatorVisibility="None">
