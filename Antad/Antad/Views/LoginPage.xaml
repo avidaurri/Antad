@@ -4,16 +4,17 @@
              xmlns:i18n="clr-namespace:Antad.Helpers"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+
              mc:Ignorable="d"
              x:Class="Antad.Views.LoginPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              BackgroundImageSource="fondosplash"
-             Title="BIENVENIDO"
-             >
+             Title="BIENVENIDO">
+
     <ContentPage.Content>
         <ScrollView
             BindingContext="{Binding Login}">
-            <StackLayout
+            <StackLayout x:Name="framelogin"
                 Padding="5">
                 <Image  
                     HeightRequest="200"

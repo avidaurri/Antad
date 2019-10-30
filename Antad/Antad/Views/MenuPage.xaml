@@ -8,13 +8,13 @@
              x:Class="Antad.Views.MenuPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Menu"
-       BackgroundImageSource="fondosplash"
-             Opacity=".5"
+             Opacity=".9"
+             IconImageSource="logoantad"
                >
     
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout BackgroundColor="Transparent"  BindingContext="{Binding Bienvenido}" 
+        <!--<ScrollView> -->
+            <StackLayout  BindingContext="{Binding Bienvenido}" 
                 Padding="5">
                 <controls:CircleImage  
                     Source="{Binding ImageUser}"
@@ -37,7 +37,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid >
+                                <Grid RowSpacing="15">
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding GotoCommand}"/>
                                     </Grid.GestureRecognizers>
@@ -51,20 +51,21 @@
                                         WidthRequest="30"
                                         HeightRequest="30">
                                     </Image>
-                                    <Label FontFamily="{StaticResource MontserratRegular}"
+                                    <Label  FontFamily="{StaticResource MontserratRegular}"
                                         Grid.Column="1"
                                         VerticalOptions="Center"
                                         TextColor="DimGray"
                                         FontSize="16"
                                         Text="{Binding Title}">
                                     </Label>
-                                </Grid>
+                          
+                            </Grid>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout> 
-        </ScrollView>
+        <!--</ScrollView> -->
 
     </ContentPage.Content>
 </ContentPage>
