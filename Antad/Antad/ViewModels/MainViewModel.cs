@@ -91,7 +91,7 @@ namespace Antad.ViewModels
         public MainViewModel()
         {
             instance = this;
-            //this.LoadMenu();
+            this.LoadMenu();
             //this.Usuarios = new UsuariosViewModel();
            // CargarCatalogos();
         }

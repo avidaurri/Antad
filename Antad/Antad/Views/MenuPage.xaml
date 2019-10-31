@@ -12,8 +12,6 @@
 
   <ContentPage.Content>
     <!--<ScrollView> -->
-    <StackLayout  BindingContext="{Binding Bienvenido}">
-
 
           <StackLayout BindingContext="{Binding Bienvenido}" Margin="5" BackgroundColor="White" Opacity="1" >
             <controls:CircleImage
@@ -67,6 +65,6 @@
             </ListView>
           </StackLayout>
           <!--</ScrollView> -->
-        </StackLayout>
+  
         </ContentPage.Content>
     </ContentPage>
