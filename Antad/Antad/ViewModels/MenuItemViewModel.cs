@@ -1,6 +1,5 @@
 ﻿using Antad.Helpers;
 using Antad.Views;
-using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,7 +20,7 @@ namespace Antad.ViewModels
         public ICommand GotoCommand {
             get
             {
-                return new RelayCommand(GoTo);
+                return new GalaSoft.MvvmLight.Command.RelayCommand(GoTo);
             }
   
         }

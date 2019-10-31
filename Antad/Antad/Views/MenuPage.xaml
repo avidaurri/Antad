@@ -12,8 +12,7 @@
 
   <ContentPage.Content>
     <!--<ScrollView> -->
-    <StackLayout  BindingContext="{Binding Bienvenido}"
-    BackgroundImageSource="fondosplash">
+    <StackLayout  BindingContext="{Binding Bienvenido}">
 
 
           <StackLayout BindingContext="{Binding Bienvenido}" Margin="5" BackgroundColor="White" Opacity="1" >

@@ -1,7 +1,6 @@
 ﻿using Antad.Helpers;
 using Antad.Services;
 using AntadComun.Models;
-using GalaSoft.MvvmLight.Command;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using System;
@@ -492,7 +491,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new RelayCommand(Save);
+                return new GalaSoft.MvvmLight.Command.RelayCommand(Save);
             }
         }
 
@@ -900,7 +899,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new RelayCommand(CargarImagen);
+                return new GalaSoft.MvvmLight.Command.RelayCommand(CargarImagen);
             }
         }
 
@@ -951,7 +950,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new RelayCommand(CargarIdentificacion);
+                return new GalaSoft.MvvmLight.Command.RelayCommand(CargarIdentificacion);
             }
         }
 
@@ -1002,7 +1001,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new RelayCommand(CargarComprobante);
+                return new GalaSoft.MvvmLight.Command.RelayCommand(CargarComprobante);
             }
         }
 

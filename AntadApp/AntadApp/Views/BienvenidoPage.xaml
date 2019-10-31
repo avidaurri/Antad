@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="AntadApp.Views.BienvenidoPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundImageSource="fondosplash"
+             Title="ANTAD"
+              IconImageSource="logoantad">
+    <ContentPage.Content>
+        <!--<StackLayout BindingContext="{Binding Bienvenido}" >
+            <Label Text="Bienvenido " FontSize="30"
+                VerticalOptions="CenterAndExpand"  HorizontalTextAlignment="Center"
+                HorizontalOptions="CenterAndExpand" />
+            <Button Text="IR A MIS ACTIVIDADES"  VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" BackgroundColor="BlueViolet" TextColor="White" CornerRadius="10"  Command="{Binding DireccionarCommand}" />
+        </StackLayout>-->
+        <Frame Grid.Row="1" Opacity=".9" BindingContext="{Binding Register}" Margin="20,20,20,30">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackLayout Orientation="Vertical" VerticalOptions="Center"  >
+                    <Label FontFamily="{StaticResource MontserratBold}" FontSize="17" TextColor="Purple" 
+                    Text="BIENVENIDO A TU GUIA ANTAD"
+                    HorizontalTextAlignment="Center" FontAttributes="Bold" VerticalTextAlignment="Start"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Vertical" Grid.Row="1" VerticalOptions="Center">
+                    <Image Source="logoantad" >
+
+                    </Image>
+                </StackLayout>
+
+                <StackLayout Grid.Row="2"
+                       Orientation="Horizontal" HorizontalOptions="Center" >
+                    <Image Source="indicador_morado" WidthRequest="40"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+                    <Image Source="indicador_gris" WidthRequest="25"/>
+
+                </StackLayout>
+                <StackLayout 
+                         Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="3">
+                    <Label 
+                            HorizontalOptions="Center"
+                            Text="1"
+                            FontSize="35"
+                            TextColor="Purple"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                    <Label 
+                            HorizontalOptions="Center"
+                            Text="DE"
+                            FontSize="25"
+                            TextColor="DimGray"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                    <Label 
+                            HorizontalOptions="Center"
+                            Text="6"
+                            FontSize="35"
+                            TextColor="Purple"
+                            FontFamily="{StaticResource MontserratBold}"
+                            HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </Grid>
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>

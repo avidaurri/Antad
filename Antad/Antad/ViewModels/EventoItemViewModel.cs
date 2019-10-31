@@ -2,7 +2,6 @@
 using Antad.Services;
 using Antad.Views;
 using AntadComun.Models;
-using GalaSoft.MvvmLight.Command;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -30,7 +29,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new RelayCommand(DetalleEvento);
+                return new GalaSoft.MvvmLight.Command.RelayCommand(DetalleEvento);
             }
         }
 

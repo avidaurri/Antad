@@ -1,7 +1,6 @@
 ﻿using Antad.Helpers;
 using Antad.Services;
 using AntadComun.Models;
-using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
 using Plugin.Geolocator;
 using System;
@@ -127,14 +126,14 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new RelayCommand(Scan);
+                return new GalaSoft.MvvmLight.Command.RelayCommand(Scan);
             }
         }
         public ICommand RefreshCommand
         {
             get
             {
-                return new RelayCommand(CargarSucursal);
+                return new GalaSoft.MvvmLight.Command.RelayCommand(CargarSucursal);
             }
         }
         private async void Scan()

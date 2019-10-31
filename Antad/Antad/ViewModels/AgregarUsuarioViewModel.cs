@@ -5,7 +5,6 @@ namespace Antad.ViewModels
     using Antad.Helpers;
     using Antad.Services;
     using AntadComun.Models;
-    using GalaSoft.MvvmLight.Command;
     using Plugin.Media;
     using Plugin.Media.Abstractions;
     using System;
@@ -72,7 +71,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new RelayCommand(ChangeImage);
+                return new GalaSoft.MvvmLight.Command.RelayCommand(ChangeImage);
             }
         }
 
@@ -123,7 +122,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new RelayCommand(Save);
+                return new GalaSoft.MvvmLight.Command.RelayCommand(Save);
             }
         }
 

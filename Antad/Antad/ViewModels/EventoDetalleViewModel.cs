@@ -2,7 +2,6 @@
 using Antad.Services;
 using Antad.Views;
 using AntadComun.Models;
-using GalaSoft.MvvmLight.Command;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -66,7 +65,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new RelayCommand(UpdateDetail);
+                return new GalaSoft.MvvmLight.Command.RelayCommand(UpdateDetail);
             }
         }
 
@@ -74,7 +73,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new RelayCommand(ViewQr);
+                return new GalaSoft.MvvmLight.Command.RelayCommand(ViewQr);
             }
         }
 

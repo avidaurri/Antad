@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="AntadApp.Views.EventoDetallePage"
+                           BindingContext="{Binding Main, Source={StaticResource Locator}}"
+               BackgroundImageSource="fondosplash"
+             Title="detalle"
+             IconImageSource="ic_informationtab">
+    <ContentPage.Content>
+        <StackLayout BindingContext="{Binding EventoDeta}" >
+            <Grid>
+                <Grid.RowDefinitions >
+                    <!--<RowDefinition Height="Auto"/>-->
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!--<Frame BackgroundColor="#2196F3"  Grid.Row="0" HasShadow="True" Padding="0"  VerticalOptions="Center">
+                    <Label Text="Incidencias" TextColor="White" FontSize="20" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" />
+                </Frame>-->
+                <Frame Grid.Row="0" >
+                    <Grid>
+                        <Grid.RowDefinitions >
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout  Grid.Row="1" Grid.Column="0" Orientation="Vertical" >
+                            <Image Source="qrpngexample" WidthRequest="100">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ViewQrCommand}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+                        <StackLayout Grid.Row="1" Grid.Column="1" VerticalOptions="Center" Padding="8">
+                            <Button Text="Realizar Check In" VerticalOptions="Center" FontSize="12"
+                                    BackgroundColor="Purple" TextColor="White" />
+                            <Label Text="En espera de Acceso" TextColor="Red" HorizontalTextAlignment="Center" FontSize="12"/>
+                        </StackLayout>
+
+
+                        <StackLayout Grid.Row="2" Padding="0"  HeightRequest="20" Grid.Column="0" Orientation="Horizontal"  HorizontalOptions="Center">
+                            <Label Text="Folio" TextColor="Black" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="13"/>
+                        </StackLayout>
+                        <StackLayout Grid.Row="2" Padding="0"  HeightRequest="20" Grid.Column="1"  Orientation="Horizontal"  HorizontalOptions="Center">
+                            <Label Text="Folio" TextColor="Black" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="13"/>
+                        </StackLayout>
+                        <StackLayout Grid.Row="3"  HeightRequest="20" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="Center">
+                            <Label Text="En espera de Acceso" TextColor="Black" HorizontalTextAlignment="Center" FontSize="Micro"/>
+                        </StackLayout>
+                        <StackLayout Grid.Row="3"  HeightRequest="20" Grid.Column="1" Orientation="Horizontal"  HorizontalOptions="Center">
+                            <Label Text="En espera de Acceso" TextColor="Black" HorizontalTextAlignment="Center" FontSize="Micro"/>
+                        </StackLayout>
+                        <StackLayout Grid.Row="4"  HeightRequest="20" Grid.Column="0" Orientation="Horizontal"  HorizontalOptions="Center">
+                            <Label Text="En espera de Acceso" TextColor="Black" HorizontalTextAlignment="Center" FontSize="Micro"/>
+                        </StackLayout>
+                        <StackLayout Grid.Row="4"  HeightRequest="20" Grid.Column="1" Orientation="Horizontal"  HorizontalOptions="Center">
+                            <Label Text="En espera de Acceso" TextColor="Black" HorizontalTextAlignment="Center" FontSize="Micro"/>
+                        </StackLayout>
+                    </Grid>
+
+
+                </Frame>
+
+                <StackLayout  Grid.Row="1" Orientation="Vertical" >
+                    <Label Text="Detalle" TextColor="DimGray" FontSize="20" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" />
+
+                </StackLayout>
+            </Grid>
+            <!--<Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+
+                <Frame Grid.Row="0"   HasShadow="True" CornerRadius="10" Margin="20,20,20,0" Padding="0" HeightRequest="80" VerticalOptions="Start">
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0" Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                            <Image Source="{Binding Eventodetalle.fotoCadenaCentroTrabajo}" HeightRequest="70" />
+                        </StackLayout>
+                        <StackLayout Grid.Column="1" Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                            <Label Text="Evento para:" />
+                            <Label Text="estatus :" />
+                        </StackLayout>
+                        <StackLayout Grid.Column="2" Orientation="Vertical" Spacing="10" HorizontalOptions="Start">
+                            <Label Text="{Binding Eventodetalle.tipoEvento}" />
+                            <Label Text="{Binding Eventodetalle.estadoEvento}" />
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+
+                <Frame Grid.Row="1"   HasShadow="True" CornerRadius="10" Margin="20,20,20,0" Padding="0"  VerticalOptions="Start">
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0" Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                            <Image Source="{Binding Eventodetalle.fotoCentroTrabajo}" HeightRequest="70" />
+                            <Label Text="{Binding Eventodetalle.nombreCentroTrabajo}" />
+                        </StackLayout>
+                         <StackLayout  Grid.Column="1" Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
+                            <Label Text="Fecha Inicial:" />
+                            <Label Text="Fecha Final :" />
+                        </StackLayout>
+                        <StackLayout   Grid.Column="2" Orientation="Vertical" Spacing="10" HorizontalOptions="Start">
+                            <Label Text="{Binding Eventodetalle.fechaInicio}" />
+                            <Label Text="{Binding Eventodetalle.fechaFinal}" />
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+
+                <Frame Grid.Row="2" HeightRequest="150"   HasShadow="True" CornerRadius="10" Margin="20,20,20,0" Padding="0"  VerticalOptions="Start">
+                    <StackLayout Orientation="Vertical" VerticalOptions="Center">
+                        <Label Text="{Binding Eventodetalle.descripcionMensajeEvento}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame Grid.Row="3"   HasShadow="True" CornerRadius="10" Margin="20,20,20,0" Padding="0"  VerticalOptions="Start">
+                    <StackLayout Orientation="Vertical" VerticalOptions="End">
+                        <Button IsVisible="{Binding Eventodetalle.seeQR}" Text="VER CODIGO QR" TextColor="White" BackgroundColor="Purple"
+                                Command="{Binding ViewQrCommand}"></Button>
+                        <Button IsVisible="{Binding Eventodetalle.checkIn}" Text="CHECK IN" TextColor="White" BackgroundColor="BlueViolet"></Button>
+                    </StackLayout>
+             
+                        
+             
+                </Frame>
+                <Frame IsVisible="{Binding Eventodetalle.seeUpdate}" Grid.Row="4"   HasShadow="True" CornerRadius="10" Margin="20,20,20,0" Padding="0"  VerticalOptions="Start">
+                    <StackLayout Orientation="Vertical" VerticalOptions="End">
+                        <Button Text="ACTUALIZAR" TextColor="White" BackgroundColor="Red" VerticalOptions="End" Command="{Binding UpdateDetailCommand}"></Button>
+                    </StackLayout>
+
+                </Frame>
+            </Grid>-->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

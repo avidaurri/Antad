@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="AntadApp.Views.ValidacionAutorizarPage"
+                          BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundImageSource="fondosplash"
+             Title="Validar Acceso">
+    <ContentPage.Content >
+
+        <Grid VerticalOptions="FillAndExpand"  BindingContext="{Binding ValidarAutorizar}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="110" />
+                <RowDefinition Height="130" />
+                <RowDefinition Height="130" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="60" />
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Frame Grid.Row="0" Grid.ColumnSpan="2"  HasShadow="True" CornerRadius="10" Margin="5" Padding="0" VerticalOptions="Start">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.RowSpan="2" Grid.Column="0" Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center">
+
+                        <Image x:Name="imgFotoIntramuro"  Source="{Binding ValidaEvento.fotoUsuario}"  HeightRequest="100" VerticalOptions="Center"/>
+
+
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" Grid.Row="1"  Orientation="Horizontal"   HorizontalOptions="Center" >
+
+                        <Label   Text="Nombre" TextColor="Gray" 
+                       FontSize="16" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+
+
+                    </StackLayout>
+                    <StackLayout Grid.Column="2" Grid.Row="1"  Orientation="Horizontal"   HorizontalOptions="Center" >
+
+                        <Label   Text="{Binding ValidaEvento.nombreUsuario}" TextColor="Gray"  VerticalOptions="Start"
+                       FontSize="16" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" Grid.Row="2"  Orientation="Vertical"   VerticalOptions="Center" HorizontalOptions="Start">
+
+                        <Label   Text="Num. de empleado" TextColor="Gray" 
+                       FontSize="16" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+
+
+                    </StackLayout>
+                    <StackLayout Grid.Column="2" Grid.Row="2"  Orientation="Vertical"   VerticalOptions="Center" HorizontalOptions="Start">
+
+                        <Label   Text="{Binding ValidaEvento.clv_Empleado}" TextColor="Gray" 
+                       FontSize="16" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+
+                    </StackLayout>
+
+
+                </Grid>
+            </Frame>
+
+            <Frame Grid.Row="1" Grid.ColumnSpan="2"  HasShadow="True" CornerRadius="10" Margin="5" Padding="0" VerticalOptions="Start">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Orientation="Horizontal"  HorizontalOptions="Center" VerticalOptions="Center">
+
+                        <Image   Source="{Binding ValidaEvento.fotoSucursal}"  HeightRequest="80" VerticalOptions="Center"/>
+
+
+                    </StackLayout>
+                    <StackLayout Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="0"  Orientation="Vertical"   VerticalOptions="Center" HorizontalOptions="Start">
+
+                        <Label   Text="{Binding ValidaEvento.nombreSucursal}" TextColor="Gray" 
+                       FontSize="16" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="0" Grid.Row="1"  Orientation="Vertical"   VerticalOptions="Center" HorizontalOptions="Start">
+
+                        <Label   Text="fecha inicial" TextColor="Gray" FontSize="Micro"
+                        FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" Grid.Row="1"  Orientation="Vertical"   VerticalOptions="Center" HorizontalOptions="Start">
+
+                        <Label   Text="{Binding ValidaEvento.fechaInicio}" TextColor="Gray" 
+                       FontSize="Micro" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+
+                    </StackLayout>
+                    <StackLayout Grid.Column="2" Grid.Row="1"  Orientation="Vertical"   VerticalOptions="Center" HorizontalOptions="Start">
+
+                        <Label   Text="fecha final" TextColor="Gray" 
+                       FontSize="Micro" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+
+                    </StackLayout>
+                    <StackLayout Grid.Column="3" Grid.Row="1"  Orientation="Vertical"   VerticalOptions="Center" HorizontalOptions="Start">
+
+                        <Label   Text="{Binding ValidaEvento.fechaFinal}" TextColor="Gray" 
+                       FontSize="Micro" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="0" Grid.Row="2"  Orientation="Vertical"   VerticalOptions="Center" HorizontalOptions="Start">
+
+                        <Label   Text="tipo de evento" TextColor="Gray" 
+                       FontSize="Micro" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" Grid.Row="2"  Orientation="Vertical"   VerticalOptions="Center" HorizontalOptions="Start">
+
+                        <Label   Text="{Binding ValidaEvento.tipoEvento}" TextColor="Gray" 
+                       FontSize="Micro" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="2" Grid.Row="2"  Orientation="Vertical"   VerticalOptions="Center" HorizontalOptions="Start">
+
+                        <Label   Text="estado" TextColor="Gray" 
+                       FontSize="Micro" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+
+                    </StackLayout>
+                    <StackLayout Grid.Column="3" Grid.Row="2"  Orientation="Vertical"   VerticalOptions="Center" HorizontalOptions="Start">
+
+                        <Label   Text="{Binding ValidaEvento.estatusEvento}" TextColor="Gray" 
+                       FontSize="Micro" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+
+                    </StackLayout>
+
+
+                </Grid>
+            </Frame>
+
+
+
+            <Frame Grid.Row="2" Grid.ColumnSpan="2"  HasShadow="True" CornerRadius="10" Margin="5" Padding="0" VerticalOptions="Start">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Grid.Column="0" Grid.Row="0" Orientation="Vertical"  HorizontalOptions="CenterAndExpand">
+                        <Label Text="Genero sucursal" TextColor="DimGray" FontSize="Micro"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" Grid.Row="0" Orientation="Vertical"  HorizontalOptions="CenterAndExpand">
+                        <Label Text="Genero empleado" TextColor="DimGray" FontSize="Micro"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="2" Grid.Row="0" Orientation="Vertical"  HorizontalOptions="CenterAndExpand">
+                        <Label Text="validacion" TextColor="DimGray" FontSize="Micro"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="0" Grid.Row="1" Orientation="Vertical"  HorizontalOptions="CenterAndExpand">
+                        <Label Text="{Binding ValidaEvento.sexoSucursal}" TextColor="DimGray" FontSize="Micro"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" Grid.Row="1" Orientation="Vertical"  HorizontalOptions="CenterAndExpand">
+                        <Label Text="{Binding ValidaEvento.sexoUsuario}" TextColor="DimGray" FontSize="Micro"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="2" Grid.Row="1" Orientation="Horizontal"  HorizontalOptions="CenterAndExpand">
+                        <Image  IsVisible="{Binding ValidaEvento.generoValidado}" Source="ic_okvalidacion" WidthRequest="25" />
+                        <Image  IsVisible="{Binding ValidaEvento.errorGenero}" Source="ic_errorvalidacion" WidthRequest="25" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="0" Grid.Row="2" Orientation="Vertical"  HorizontalOptions="CenterAndExpand">
+                        <Label Text="Edad sucursal" TextColor="DimGray" FontSize="Micro"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" Grid.Row="2" Orientation="Vertical"  HorizontalOptions="CenterAndExpand">
+                        <Label Text="Edad empleado" TextColor="DimGray" FontSize="Micro"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="2" Grid.Row="2" Orientation="Vertical"  HorizontalOptions="CenterAndExpand">
+                        <Label Text="validacion" TextColor="DimGray" FontSize="Micro"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="0" Grid.Row="3" Orientation="Vertical"  HorizontalOptions="CenterAndExpand">
+                        <Label Text="{Binding ValidaEvento.edadSucursal}" TextColor="DimGray" FontSize="Micro"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" Grid.Row="3" Orientation="Vertical"  HorizontalOptions="CenterAndExpand">
+                        <Label Text="{Binding ValidaEvento.edadUsuario}" TextColor="DimGray" FontSize="Micro"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="2" Grid.Row="3" Orientation="Horizontal"  HorizontalOptions="CenterAndExpand">
+                        <Image   Source="ic_okvalidacion" WidthRequest="25" />
+                        <Image  IsVisible="{Binding ValidaEvento.validaEdad}" Source="ic_errorvalidacion" WidthRequest="25" />
+                    </StackLayout>
+
+
+
+                    <StackLayout Grid.Column="0" Grid.Row="4" Orientation="Vertical"  HorizontalOptions="CenterAndExpand">
+                        <Label Text="Imss sucursal" TextColor="DimGray" FontSize="Micro"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" Grid.Row="4" Orientation="Vertical"  HorizontalOptions="CenterAndExpand">
+                        <Label Text="Imss empleado" TextColor="DimGray" FontSize="Micro"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="2" Grid.Row="4" Orientation="Vertical"  HorizontalOptions="CenterAndExpand">
+                        <Label Text="validacion" TextColor="DimGray" FontSize="Micro"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="0" Grid.Row="5" Orientation="Vertical"  HorizontalOptions="CenterAndExpand">
+                        <Label Text="{Binding ValidaEvento.imssSucursal}" TextColor="DimGray" FontSize="Micro"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" Grid.Row="5" Orientation="Vertical"  HorizontalOptions="CenterAndExpand">
+                        <Label Text="{Binding ValidaEvento.imssUsuario}" TextColor="DimGray" FontSize="Micro"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="2" Grid.Row="5" Orientation="Horizontal"  HorizontalOptions="CenterAndExpand">
+                        <Image  IsVisible="{Binding ValidaEvento.imssValidado}" Source="ic_okvalidacion" WidthRequest="25" />
+                        <Image   Source="ic_errorvalidacion" WidthRequest="25" />
+                    </StackLayout>
+                </Grid>
+            </Frame>
+
+            <StackLayout  Grid.ColumnSpan="2" Grid.Row="3"  >
+                <ScrollView>
+                    <Grid VerticalOptions="FillAndExpand">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+
+                        <StackLayout Grid.ColumnSpan="2" Grid.Row="0" Orientation="Horizontal">
+
+                            <ListView
+                                 ItemsSource="{Binding ValidaEvento.requisitosRangos}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+
+                                        <ViewCell>
+                                            <Grid>
+
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+
+                                                </Grid.RowDefinitions>
+
+                                                <Label Grid.Column="0" Text="{Binding nombreRequisito}" />
+                                                <Label Grid.Column="1" Text="{Binding menor}" />
+                                                <Label Grid.Column="2" Text="{Binding mayor}" />
+                                                <Label Grid.Column="3" Text="{Binding valor}" />
+                                                <Image Grid.Column="5"  IsVisible="{Binding validado}" Source="ic_okvalidacion" />
+                                                <Image Grid.Column="5"  IsVisible="{Binding errorvaidado}" Source="ic_errorvalidacion" />
+                                            </Grid>
+
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+
+
+                            </ListView>
+
+
+
+                        </StackLayout>
+
+                        <StackLayout Grid.ColumnSpan="2" Grid.Row="1" Orientation="Horizontal">
+
+                            <ListView
+                                 ItemsSource="{Binding ValidaEvento.requisitoCursos}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+
+                                        <ViewCell>
+                                            <Grid>
+
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+
+                                                </Grid.RowDefinitions>
+
+                                                <Label Grid.Column="0" Text="{Binding nombreCurso}" />
+                                                <Label Grid.Column="2" Text="{Binding menor}" />
+                                                <Label Grid.Column="3" Text="{Binding mayor}" />
+                                                <Label Grid.Column="1" Text="{Binding valor}" />
+                                                <Image Grid.Column="5"  IsVisible="{Binding validado}" Source="ic_okvalidacion" />
+                                                <Image Grid.Column="5"  IsVisible="{Binding errorvaidado}" Source="ic_errorvalidacion" />
+                                            </Grid>
+
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+
+
+                            </ListView>
+
+
+
+                        </StackLayout>
+
+
+
+
+
+                    </Grid>
+
+
+
+
+                </ScrollView>
+            </StackLayout>
+
+
+            <StackLayout  Grid.ColumnSpan="2" Grid.Row="4" Orientation="Vertical" VerticalOptions="End"  >
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Button Text="CONCEDER ACCESO" BackgroundColor="BlueViolet" TextColor="White" HorizontalOptions="FillAndExpand" Command="{Binding ConcederCommand}"   />
+                    <Button Text="RECHAZAR ACCESO" BackgroundColor="Red" TextColor="White"  HorizontalOptions="FillAndExpand" Command="{Binding RechazarCommand}"  />
+                </StackLayout>
+
+            </StackLayout>
+
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

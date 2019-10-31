@@ -3,7 +3,6 @@ using Antad.Services;
 using Antad.Views;
 using Antad.Views.Regis;
 using AntadComun.Models;
-using GalaSoft.MvvmLight.Command;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using System;
@@ -470,7 +469,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new RelayCommand(CargarImagen);
+                return new GalaSoft.MvvmLight.Command.RelayCommand(CargarImagen);
             }
         }
 
@@ -520,7 +519,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new RelayCommand(CargarIdentificacion);
+                return new GalaSoft.MvvmLight.Command.RelayCommand(CargarIdentificacion);
             }
         }
 
@@ -571,7 +570,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new RelayCommand(CargarComprobante);
+                return new GalaSoft.MvvmLight.Command.RelayCommand(CargarComprobante);
             }
         }
 
@@ -621,7 +620,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new RelayCommand(CancelReg);
+                return new GalaSoft.MvvmLight.Command.RelayCommand(CancelReg);
             }
         }
 
@@ -667,7 +666,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new RelayCommand(IrDos);
+                return new GalaSoft.MvvmLight.Command.RelayCommand(IrDos);
             }
         }
 
@@ -777,7 +776,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new RelayCommand(IrTres);
+                return new GalaSoft.MvvmLight.Command.RelayCommand(IrTres);
             }
         }
 
@@ -848,7 +847,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new RelayCommand(IrCuatro);
+                return new GalaSoft.MvvmLight.Command.RelayCommand(IrCuatro);
             }
         }
 
@@ -940,7 +939,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new RelayCommand(IrCinco);
+                return new GalaSoft.MvvmLight.Command.RelayCommand(IrCinco);
             }
         }
 
@@ -1012,7 +1011,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new RelayCommand(IrSeis);
+                return new GalaSoft.MvvmLight.Command.RelayCommand(IrSeis);
             }
         }
 
@@ -1056,7 +1055,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new RelayCommand(IrSiete);
+                return new GalaSoft.MvvmLight.Command.RelayCommand(IrSiete);
             }
         }
 
@@ -1083,7 +1082,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new RelayCommand(IrOcho);
+                return new GalaSoft.MvvmLight.Command.RelayCommand(IrOcho);
             }
         }
 
@@ -1112,7 +1111,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new RelayCommand(IrNueve);
+                return new GalaSoft.MvvmLight.Command.RelayCommand(IrNueve);
             }
         }
 
@@ -1140,7 +1139,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new RelayCommand(GuardarRegistroUsuario);
+                return new GalaSoft.MvvmLight.Command.RelayCommand(GuardarRegistroUsuario);
             }
         }
 
