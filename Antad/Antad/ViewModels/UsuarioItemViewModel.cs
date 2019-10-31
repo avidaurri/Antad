@@ -5,7 +5,7 @@ namespace Antad.ViewModels
     using Antad.Helpers;
     using Antad.Services;
     using Antad.Views;
-    using AntadComun.Models;
+    using ModelsNet.Models;
     using System;
     using System.Linq;
     using System.Windows.Input;

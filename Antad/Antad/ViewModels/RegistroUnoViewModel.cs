@@ -2,7 +2,7 @@
 using Antad.Services;
 using Antad.Views;
 using Antad.Views.Regis;
-using AntadComun.Models;
+using ModelsNet.Models;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using System;

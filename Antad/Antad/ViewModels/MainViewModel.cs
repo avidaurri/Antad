@@ -4,7 +4,7 @@ namespace Antad.ViewModels
 {
     using Antad.Helpers;
     using Antad.Views;
-    using AntadComun.Models;
+    using ModelsNet.Models;
     using Newtonsoft.Json;
     using Rg.Plugins.Popup.Services;
     using System.Collections.Generic;

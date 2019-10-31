@@ -1,6 +1,6 @@
 ﻿using Antad.Helpers;
 using Antad.Services;
-using AntadComun.Models;
+using ModelsNet.Models;
 using Newtonsoft.Json;
 using Plugin.Geolocator;
 using System;

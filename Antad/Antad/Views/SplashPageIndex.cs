@@ -1,6 +1,6 @@
 ﻿using Antad.Helpers;
 using Antad.ViewModels;
-using AntadComun.Models;
+using ModelsNet.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

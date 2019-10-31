@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\AntadComun\AntadComun.csproj" />
+    <ProjectReference Include="..\..\ModelsNet\ModelsNet.csproj" />
   </ItemGroup>
 
   <ItemGroup>

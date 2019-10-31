@@ -1,7 +1,7 @@
 ﻿using Antad.Helpers;
 using Antad.ViewModels;
 using Antad.Views;
-using AntadComun.Models;
+using ModelsNet.Models;
 using Newtonsoft.Json;
 using System;
 using Xamarin.Forms;

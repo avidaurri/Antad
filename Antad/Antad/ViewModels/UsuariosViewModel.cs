@@ -1,5 +1,5 @@
 ﻿using Antad.Services;
-using AntadComun.Models;
+using ModelsNet.Models;
 namespace Antad.ViewModels
 {
     using Antad.Helpers;

@@ -1,6 +1,6 @@
 ﻿using Antad.Helpers;
 using Antad.Services;
-using AntadComun.Models;
+using ModelsNet.Models;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
