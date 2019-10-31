@@ -28,10 +28,8 @@ namespace AntadComun.Models
         public bool checkIn { get; set; }
         public bool seeUpdate { get; set; }
 
-        public string folioProyecto { get; set; }
-        public string agencia { get; set; }
-        public string puesto { get; set; }
-        public int clvPuesto { get; set; }
+
+
         public string textoDetalle { get; set; }
         public bool botonDetalle { get; set; }
         public bool verBotonDetalle { get; set; }
@@ -39,6 +37,8 @@ namespace AntadComun.Models
         public string contratante { get; set; }
         public int clvContratante { get; set; }
         public string objetivoEvento { get; set; }
+        public string puesto { get; set; }
+        public int clvPuesto { get; set; }
         public string fechaInicioGeneral { get; set; }
         public string fechaFinalGeneral { get; set; }
         public string dinamica { get; set; }

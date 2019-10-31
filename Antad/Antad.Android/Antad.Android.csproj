@@ -304,7 +304,7 @@
     <AndroidResource Include="Resources\drawable\ic_pagostab.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\qrpngexample.png" />
+    <AndroidResource Include="Resources\drawable\qrtrans.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -7,16 +7,16 @@
              x:Class="Antad.Views.PromotorPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              BackgroundImageSource="fondosplash"
-             Title="Mis Eventos">
+             Title="Promotor">
     <ContentPage.Content>
        
             <Grid VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
-                <!--<RowDefinition Height="Auto" /> -->
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <!--<Frame  HasShadow="True" BackgroundColor="Purple"  Margin="0" Padding="0" HeightRequest="80" VerticalOptions="Start">
+            <Frame  HasShadow="True" BackgroundColor="Purple"  Margin="0" Padding="0" HeightRequest="80" VerticalOptions="Start">
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -28,14 +28,13 @@
                     </StackLayout>
 
                 </Grid>
-            </Frame>-->
+            </Frame>
 
-            <StackLayout Grid.Row="0" 
+            <StackLayout Grid.Row="1" 
                     BindingContext="{Binding Promotor}"
                     Padding="5">
                 <ScrollView>
-
-                   <ListView
+                    <ListView
                          HasUnevenRows="True"
                         ItemsSource="{Binding Eventos}"
                         IsRefreshing="{Binding IsRefreshing}"
@@ -45,62 +44,54 @@
                         <DataTemplate>
 
                             <ViewCell >
-                                <Frame HasShadow="True" CornerRadius="10" Margin="0,5,0,5">
+                                    <Frame HasShadow="True" CornerRadius="10" Margin="0,5,0,5">
+                                        
+                                                                     <!--<ViewCell.ContextActions>
+                                    <MenuItem Text="Editar" Command="{Binding EditarUsuarioCommand}"/>
+                                    <MenuItem Text="Eliminar" Command="{Binding EliminarUsuarioCommand}" IsDestructive="True"/>
+                                </ViewCell.ContextActions>-->
+                                <Grid >
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding DetalleEventoCommand}"/>
+                                    </Grid.GestureRecognizers>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                        <Label Text="{Binding nombreCentroTrabajo}" Grid.ColumnSpan="3" HorizontalTextAlignment="Center"/>
+                                    <Image Grid.Column="0" Grid.Row="1"
+                                       WidthRequest="100"
+                                       Source="{Binding fotoCadenaCentroTrabajo}">
 
-                                        <Grid >
-                                            <Grid.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding DetalleEventoCommand}"/>
-                                            </Grid.GestureRecognizers>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="2*"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
+                                    </Image>
+                                    <StackLayout Grid.Column="1" Grid.Row="1"
+                                             VerticalOptions="Center" >
+                                        <Label                                     
+                                        Text="{Binding fechaInicio}" >
+                                        </Label>
+                                        <Label                                     
+                                        Text="{Binding fechaFinal}" >
+                                        </Label>
+                                    </StackLayout>
+                                    <StackLayout Grid.Column="2" Grid.Row="1"
+                                             VerticalOptions="Center">
+                                        <Image Source="ic_action_chevron_right.png"/>
+                                    </StackLayout>
 
-                                            <Label Text="tp1019-113" Grid.Column="0" HorizontalTextAlignment="Center"/>
-                                            <Label Text="Player group" Grid.Column="1" Grid.ColumnSpan="3" HorizontalTextAlignment="Start"/>
-                                            <StackLayout Grid.Column="0" Grid.RowSpan="4" Orientation="Vertical" VerticalOptions="CenterAndExpand">
-                                                <Image       WidthRequest="80"                                    
-                                           Source="logoantad" VerticalOptions="Center">
-                                                </Image>
-                                            </StackLayout>
-
-
-
-                                            <Label Grid.Row="1" Grid.Column="1" Text="Donde"  />
-                                            <Label Grid.Row="1" Grid.Column="2" Text="Agricola oriental"  />
-
-                                            <Label Grid.Row="2" Grid.Column="1" Text="Funcion"  />
-                                            <Label Grid.Row="2" Grid.Column="2" Text="Promotor"  />
-
-                                            <Label Grid.Row="3" Grid.Column="1" Text="Inicia"  />
-                                            <Label Grid.Row="3" Grid.Column="2" Text="2019-08-10"  />
-
-                                            <Label Grid.Row="4" Grid.Column="1" Text="termina"  />
-                                            <Label Grid.Row="4" Grid.Column="2" Text="2019-08-10"  />
-
-                                            <StackLayout Grid.Column="3" Grid.RowSpan="4" Orientation="Vertical" VerticalOptions="CenterAndExpand">
-                                                <Label Text="Agendado" VerticalOptions="Center"/>
-                                            </StackLayout>
-
-
-                                        </Grid>
-
+                                </Grid>   
+                                        
                                     </Frame>
 
 
                             </ViewCell>
                         </DataTemplate>
                         </ListView.ItemTemplate>
-                    </ListView> 
+                    </ListView>
                 </ScrollView>
             </StackLayout>
            
