@@ -5,6 +5,7 @@ namespace Antad.ViewModels
     using Antad.Helpers;
     using Antad.Views;
     using ModelsNet.Models;
+    using GalaSoft.MvvmLight.Command;
     using Newtonsoft.Json;
     using Rg.Plugins.Popup.Services;
     using System.Collections.Generic;
@@ -197,7 +198,7 @@ namespace Antad.ViewModels
             get
             {
 
-                return new GalaSoft.MvvmLight.Command.RelayCommand(IrAgregarUsuario);
+                return new RelayCommand(IrAgregarUsuario);
 
             }
         } 
@@ -218,7 +219,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(SeeQR);
+                return new RelayCommand(SeeQR);
             }
         }
 

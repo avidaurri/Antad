@@ -1,5 +1,6 @@
 ﻿using Antad.Views;
 using ModelsNet.Models;
+using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -68,7 +69,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(Enterado);
+                return new RelayCommand(Enterado);
             }
         }
 

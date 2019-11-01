@@ -1,6 +1,7 @@
 ﻿using Antad.Helpers;
 using Antad.Services;
 using ModelsNet.Models;
+using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -72,7 +73,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(CargarEventos);
+                return new RelayCommand(CargarEventos);
             }
         }
         #endregion

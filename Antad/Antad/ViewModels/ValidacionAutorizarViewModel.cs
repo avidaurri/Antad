@@ -1,6 +1,7 @@
 ﻿using Antad.Helpers;
 using Antad.Services;
 using ModelsNet.Models;
+using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -113,7 +114,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(Conceder);
+                return new RelayCommand(Conceder);
             }
         }
 
@@ -160,7 +161,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(Rechazar);
+                return new RelayCommand(Rechazar);
             }
         }
 

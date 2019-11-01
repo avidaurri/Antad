@@ -6,6 +6,7 @@ namespace Antad.ViewModels
     using Antad.Services;
     using Antad.Views;
     using ModelsNet.Models;
+    using GalaSoft.MvvmLight.Command;
     using System;
     using System.Linq;
     using System.Windows.Input;
@@ -30,7 +31,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(EditarUsuario);
+                return new RelayCommand(EditarUsuario);
             }
         }
 
@@ -48,7 +49,7 @@ namespace Antad.ViewModels
         public ICommand EliminarUsuarioCommand {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(EliminarUsuario);
+                return new RelayCommand(EliminarUsuario);
             }
         }
 

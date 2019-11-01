@@ -6,6 +6,7 @@ namespace Antad.ViewModels
     using Antad.Services;
     using Antad.Views;
     using ModelsNet.Models;
+    using GalaSoft.MvvmLight.Command;
     using Newtonsoft.Json;
     using System;
     using System.Windows.Input;
@@ -62,7 +63,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(Register);
+                return new RelayCommand(Register);
             }
 
         }
@@ -78,7 +79,7 @@ namespace Antad.ViewModels
         public ICommand LoginCommand {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(Login);
+                return new RelayCommand(Login);
             }
    
         }

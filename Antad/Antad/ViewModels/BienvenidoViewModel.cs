@@ -1,6 +1,7 @@
 ﻿using Antad.Helpers;
 using Antad.Views;
 using ModelsNet.Models;
+using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -154,7 +155,7 @@ namespace Antad.ViewModels
             get
             {
 
-                return new GalaSoft.MvvmLight.Command.RelayCommand(Direccionar);
+                return new RelayCommand(Direccionar);
 
             }
         }

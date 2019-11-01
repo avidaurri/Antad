@@ -4,18 +4,40 @@
              xmlns:i18n="clr-namespace:Antad.Helpers"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-
+              xmlns:xamanimation="clr-namespace:Xamanimation;assembly=Xamanimation"
              mc:Ignorable="d"
              x:Class="Antad.Views.LoginPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              BackgroundImageSource="fondosplash"
              Title="BIENVENIDO">
 
+    <Page.Resources>
+        <ResourceDictionary>
+            <!-- FlipAnimation-->
+            <xamanimation:StoryBoard x:Key="FloatingButtonEnter" 
+                                     Target="{x:Reference framelogin}">
+                <xamanimation:TranslateToAnimation Duration="100" TranslateY="800" />
+                <xamanimation:TranslateToAnimation TranslateY="0" Easing="SpringOut"/>
+            </xamanimation:StoryBoard>
+
+            <xamanimation:BounceInAnimation Duration="50"
+                x:Key="HeartAnimation"
+                Target="{x:Reference Heart}"/>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Page.Triggers>
+        <EventTrigger Event="Appearing">
+            <xamanimation:BeginAnimation 
+                Animation="{StaticResource FloatingButtonEnter}"/>
+        </EventTrigger>
+    </Page.Triggers>
+    
     <ContentPage.Content>
         <ScrollView
             BindingContext="{Binding Login}">
             <StackLayout x:Name="framelogin"
-                Padding="5">
+                Padding="5" >
                 <Image  
                     HeightRequest="200"
                     Source="logoantad">
@@ -68,20 +90,26 @@
                     </Switch>
                 </StackLayout>
 
-                <StackLayout
+                <StackLayout x:Name="btnlog"
                     Margin="40,0"
                     Orientation="Horizontal"
                     VerticalOptions="CenterAndExpand">
-                    <Button
+                    <Button x:Name="Heart"
                         BackgroundColor="BlueViolet"
-                        BorderRadius="23"
+                        BorderRadius="20"
                         Command="{Binding LoginCommand}"
                         HeightRequest="46"
                          FontFamily="{StaticResource MontserratRegular}"
                         HorizontalOptions="FillAndExpand"
                         IsEnabled="{Binding IsEnabled}"
-                        Text="Autenticar"
+                        Text="Iniciar Sesión"
                         TextColor="White">
+                        <Button.Triggers>
+                            <EventTrigger Event="Clicked">
+                                <xamanimation:BeginAnimation
+                                                Animation="{StaticResource HeartAnimation}" />
+                            </EventTrigger>
+                        </Button.Triggers>
                     </Button>
 
                 </StackLayout>
@@ -111,7 +139,8 @@
                         <TapGestureRecognizer Command="{Binding RegisterCommand}"/>
                     </Label.GestureRecognizers>
                 </Label>
-                
+  
+
                 <!--<StackLayout
                     Margin="40,0"
                     Orientation="Horizontal"

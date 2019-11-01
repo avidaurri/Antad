@@ -3,14 +3,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                         xmlns:xamanimation="clr-namespace:Xamanimation;assembly=Xamanimation"
              mc:Ignorable="d"
              x:Class="Antad.Views.PreregistroPage"
               BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             BackgroundImageSource="fondosplash"
+             BackgroundImageSource="fondoaltt"
              Title="REGISTRO"
              >
+    <Page.Resources>
+        <ResourceDictionary>
+            <!-- FlipAnimation-->
+            <xamanimation:StoryBoard x:Key="FloatingButtonEnter" 
+                                     Target="{x:Reference framepre}">
+                <xamanimation:FlipAnimation Duration="200" />
+             
+            </xamanimation:StoryBoard>
+
+            <xamanimation:BounceInAnimation Duration="50"
+                x:Key="HeartAnimation"
+                Target="{x:Reference Heart}"/>
+            <xamanimation:BounceInAnimation Duration="50"
+                x:Key="HeartAnimationd"
+                Target="{x:Reference Heartd}"/>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Page.Triggers>
+        <EventTrigger Event="Appearing">
+            <xamanimation:BeginAnimation 
+                Animation="{StaticResource FloatingButtonEnter}"/>
+        </EventTrigger>
+    </Page.Triggers>
     <ContentPage.Content>
-        <Frame Margin="30" Padding="20" HasShadow="True" BindingContext="{Binding Preregistro}">
+        <Frame Margin="30" BackgroundColor="White" Padding="20" HasShadow="True" BindingContext="{Binding Preregistro}" x:Name="framepre" Opacity=".6">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -97,11 +122,25 @@
                 <StackLayout  Grid.Row="3" Orientation="Vertical" VerticalOptions="End"  >
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                        <Button Text="CANCELAR" BackgroundColor="Red" TextColor="White"  CornerRadius="3"
-                                HorizontalOptions="FillAndExpand" Clicked="Button_Clicked"  />
+                        <Button Text="CANCELAR" BackgroundColor="Red" TextColor="White"  CornerRadius="3" x:Name="Heartd"
+                                HorizontalOptions="FillAndExpand" Clicked="Button_Clicked"  >
+                            <Button.Triggers>
+                                <EventTrigger Event="Clicked">
+                                    <xamanimation:BeginAnimation
+                                                Animation="{StaticResource HeartAnimationd}" />
+                                </EventTrigger>
+                            </Button.Triggers>
+                        </Button>
                         <!--Command="{Binding RechazarRegistroCommand}" -->
-                        <Button Text="INICIAR" BackgroundColor="Purple" TextColor="White" CornerRadius="3"
-                                HorizontalOptions="FillAndExpand" Command="{Binding AceptarRegistroCommand}"   />
+                        <Button Text="INICIAR" BackgroundColor="Purple" TextColor="White" CornerRadius="3" x:Name="Heart"
+                                HorizontalOptions="FillAndExpand" Command="{Binding AceptarRegistroCommand}"   >
+                            <Button.Triggers>
+                                <EventTrigger Event="Clicked">
+                                    <xamanimation:BeginAnimation
+                                                Animation="{StaticResource HeartAnimation}" />
+                                </EventTrigger>
+                            </Button.Triggers>
+                        </Button>
                     </StackLayout>
 
                 </StackLayout>

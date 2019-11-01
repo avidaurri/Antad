@@ -42,7 +42,7 @@ namespace Antad.Views
 
             await splashImage.ScaleTo(1, 500);
             await splashImage.ScaleTo(0.9, 500, Easing.Linear);
-            await splashImage.ScaleTo(150, 1000, Easing.Linear);
+            await splashImage.ScaleTo(150, 500, Easing.Linear);
 
 
             // await Navigation.PushAsync(new MainPage());

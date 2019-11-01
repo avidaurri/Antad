@@ -3,6 +3,7 @@ using Antad.Services;
 using Antad.Views;
 using Antad.Views.Regis;
 using ModelsNet.Models;
+using GalaSoft.MvvmLight.Command;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using System;
@@ -442,6 +443,8 @@ namespace Antad.ViewModels
                 /*this.IsRunning = false;
                 this.IsEnabled = true;*/
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
+                /*MainViewModel.GetInstance().Login = new LoginViewModel();
+                Application.Current.MainPage = new NavigationPage(new LoginPage());*/
                 return;
             }
             CatalogoRegistro cat = new CatalogoRegistro();
@@ -469,7 +472,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(CargarImagen);
+                return new RelayCommand(CargarImagen);
             }
         }
 
@@ -519,7 +522,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(CargarIdentificacion);
+                return new RelayCommand(CargarIdentificacion);
             }
         }
 
@@ -570,7 +573,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(CargarComprobante);
+                return new RelayCommand(CargarComprobante);
             }
         }
 
@@ -620,7 +623,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(CancelReg);
+                return new RelayCommand(CancelReg);
             }
         }
 
@@ -666,7 +669,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(IrDos);
+                return new RelayCommand(IrDos);
             }
         }
 
@@ -776,7 +779,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(IrTres);
+                return new RelayCommand(IrTres);
             }
         }
 
@@ -847,7 +850,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(IrCuatro);
+                return new RelayCommand(IrCuatro);
             }
         }
 
@@ -880,14 +883,18 @@ namespace Antad.ViewModels
             //NumeroInterior
             if (string.IsNullOrEmpty(this.NumeroInterior) )
             {
-                await Application.Current.MainPage.DisplayAlert("Aviso de registro", "Escribe tu número interior", Languages.Accept);
-                return;
+                this.NumeroInterior = "N/A";
+
             }
-            if (this.NumeroInterior.Length > 10)
+            else
             {
-                await Application.Current.MainPage.DisplayAlert("Aviso de registro", "Tu número interior no debe exceder los 10 caracteres", Languages.Accept);
-                return;
+                if (this.NumeroInterior.Length > 10)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Aviso de registro", "Tu número interior no debe exceder los 10 caracteres", Languages.Accept);
+                    return;
+                }
             }
+
             //Colonia
             if (string.IsNullOrEmpty(this.Colonia))
             {
@@ -939,7 +946,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(IrCinco);
+                return new RelayCommand(IrCinco);
             }
         }
 
@@ -971,14 +978,17 @@ namespace Antad.ViewModels
             //NumeroCuenta
             if (string.IsNullOrEmpty(this.NumeroCuenta))
             {
-                await Application.Current.MainPage.DisplayAlert("Aviso de registro", "Escribe tu número de cuenta", Languages.Accept);
-                return;
+                this.NumeroCuenta = "0";
             }
-            if (!RegexHelper.IsValidCP(this.NumeroCuenta) || this.NumeroCuenta.Length > 20)
+            else
             {
-                await Application.Current.MainPage.DisplayAlert("Aviso de registro", "Escribe un número de cuenta no mayor a 20 números", Languages.Accept);
-                return;
+                if (!RegexHelper.IsValidCP(this.NumeroCuenta) || this.NumeroCuenta.Length > 20)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Aviso de registro", "Escribe un número de cuenta no mayor a 20 números", Languages.Accept);
+                    return;
+                }
             }
+
             //NumeroTarjeta
             if (string.IsNullOrEmpty(this.NumeroTarjeta))
             {
@@ -1011,7 +1021,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(IrSeis);
+                return new RelayCommand(IrSeis);
             }
         }
 
@@ -1055,7 +1065,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(IrSiete);
+                return new RelayCommand(IrSiete);
             }
         }
 
@@ -1082,7 +1092,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(IrOcho);
+                return new RelayCommand(IrOcho);
             }
         }
 
@@ -1111,7 +1121,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(IrNueve);
+                return new RelayCommand(IrNueve);
             }
         }
 
@@ -1139,7 +1149,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(GuardarRegistroUsuario);
+                return new RelayCommand(GuardarRegistroUsuario);
             }
         }
 

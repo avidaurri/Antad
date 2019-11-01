@@ -3,6 +3,7 @@ using ModelsNet.Models;
 namespace Antad.ViewModels
 {
     using Antad.Helpers;
+    using GalaSoft.MvvmLight.Command;
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
@@ -140,14 +141,14 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(RefreshList);
+                return new RelayCommand(RefreshList);
             }
         }
         public ICommand RefreshCommand
         {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(LoadUsuarios);
+                return new RelayCommand(LoadUsuarios);
             }
         }
         #endregion

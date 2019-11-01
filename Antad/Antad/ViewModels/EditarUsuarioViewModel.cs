@@ -2,6 +2,7 @@
 using Antad.Helpers;
 using Antad.Services;
 using ModelsNet.Models;
+using GalaSoft.MvvmLight.Command;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using System;
@@ -80,7 +81,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(Delete);
+                return new RelayCommand(Delete);
             }
         }
 
@@ -134,7 +135,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(ChangeImage);
+                return new RelayCommand(ChangeImage);
             }
         }
 
@@ -185,7 +186,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(Save);
+                return new RelayCommand(Save);
             }
         }
 

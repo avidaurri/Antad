@@ -15,6 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntadComun", "AntadComun\An
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntadApi", "AntadApi\AntadApi.csproj", "{38E5CDD9-51DF-4CD8-8566-3A6FFA6B3AC1}"
 EndProject
+<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppAntad.Android", "AppAntad\AppAntad.Android\AppAntad.Android.csproj", "{104FD77B-89CC-4F35-9D04-46E3508C8E9A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppAntad.iOS", "AppAntad\AppAntad.iOS\AppAntad.iOS.csproj", "{E76988F6-70DE-4382-B16F-AB1ECBD33E41}"
@@ -23,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppAntad", "AppAntad\AppAnt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelsNet", "ModelsNet\ModelsNet.csproj", "{A638F0EF-9B20-4C3F-A30E-DA857F141C93}"
 EndProject
+=======
+>>>>>>> parent of 445a4b7... jeje
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +126,7 @@ Global
 		{38E5CDD9-51DF-4CD8-8566-3A6FFA6B3AC1}.Release|iPhone.Build.0 = Release|Any CPU
 		{38E5CDD9-51DF-4CD8-8566-3A6FFA6B3AC1}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{38E5CDD9-51DF-4CD8-8566-3A6FFA6B3AC1}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+<<<<<<< HEAD
 		{104FD77B-89CC-4F35-9D04-46E3508C8E9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{104FD77B-89CC-4F35-9D04-46E3508C8E9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{104FD77B-89CC-4F35-9D04-46E3508C8E9A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
@@ -175,6 +179,8 @@ Global
 		{A638F0EF-9B20-4C3F-A30E-DA857F141C93}.Release|iPhone.Build.0 = Release|Any CPU
 		{A638F0EF-9B20-4C3F-A30E-DA857F141C93}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{A638F0EF-9B20-4C3F-A30E-DA857F141C93}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+=======
+>>>>>>> parent of 445a4b7... jeje
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

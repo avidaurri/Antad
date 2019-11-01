@@ -288,9 +288,9 @@
       <Project>{2fdb3678-a70e-4cd3-97ce-06cbe74f6790}</Project>
       <Name>AntadBiblioteca</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AntadComun\AntadComun.csproj">
-      <Project>{2cbe5ac4-15c5-4864-b392-42cda9559f7f}</Project>
-      <Name>AntadComun</Name>
+    <ProjectReference Include="..\ModelsNet\ModelsNet.csproj">
+      <Project>{a638f0ef-9b20-4c3f-a30e-da857f141c93}</Project>
+      <Name>ModelsNet</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

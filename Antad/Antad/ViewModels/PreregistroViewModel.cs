@@ -1,4 +1,5 @@
 ﻿using Antad.Views;
+using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -32,7 +33,7 @@ namespace Antad.ViewModels
         {
             get
             {
-                return new GalaSoft.MvvmLight.Command.RelayCommand(AceptarRegistro);
+                return new RelayCommand(AceptarRegistro);
             }
 
         }

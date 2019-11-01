@@ -1,5 +1,5 @@
 ﻿using AntadBiblioteca.Util;
-using AntadComun.Models;
+using ModelsNet.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -29,7 +29,7 @@ namespace AntadBiblioteca.DAO
                 "edo_evento ee on ee.clv_edo_evento = ec.clv_edo_evento left join centro_trabajo ct on ct.folio_centro_trabajo = ec.folio_centro_trabajo " +
                 "left join cadena_centro_trabajo cct on cct.clv_cadena = ct.clv_cadena where l.login =@usuario ";*/
 
-            string select = "select ec.folio_evento as folioEvento, ec.fecha_inicial as fechaInicio, " +
+            /*string select = "select ec.folio_evento as folioEvento, ec.fecha_inicial as fechaInicio, " +
                 "ec.fecha_final as fechaFinal, ec.clv_edo_evento as clvEdoEvento, ee.descripcion as estadoEvento, " +
                 "ec.clv_tip_evento as clvTipoEvento, cte.descripcion as tipoEvento, ep.clv_emp as clvEmp, ct.logo_url as fotoCentroTrabajo, " +
                 "ct.folio_centro_trabajo as folioCentroTrabajo, ct.nombre_comercial as nombreCentroTrabajo, cct.clv_cadena " +
@@ -37,7 +37,17 @@ namespace AntadBiblioteca.DAO
                 "left join evento_personal ep on ep.folio_evento = ec.folio_evento left join centro_trabajo ct on " +
                 "ct.folio_centro_trabajo = ec.folio_centro_trabajo left join cadena_centro_trabajo cct on cct.clv_cadena = ct.clv_cadena left " +
                 "join cat_tip_evento cte on cte.clv_tip_evento = ec.clv_tip_evento left join edo_evento ee on ee.clv_edo_evento = ec.clv_edo_evento " +
-                "where ep.clv_emp = @usuario order by ec.fecha_inicial asc"; 
+                "where ep.clv_emp = @usuario order by ec.fecha_inicial asc";*/
+
+            string select = "select ec.folio_evento as folioEvento, ec.fecha_inicial as fechaInicio, ec.fecha_final as fechaFinal, ec.clv_edo_evento as clvEdoEvento, ee.descripcion as estadoEvento," +
+                " ec.clv_tip_evento as clvTipoEvento, cte.descripcion as tipoEvento, ep.clv_emp as clvEmp, ct.logo_url as fotoCentroTrabajo,  ct.folio_centro_trabajo as folioCentroTrabajo, " +
+                "ct.nombre_comercial as nombreCentroTrabajo, cct.clv_cadena as clvCadenaCentroTrabajo, cct.nombre as cadenaCentroTrabajo, cct.url_logo as fotoCadenaCentroTrabajo,	" +
+                "(select nombre from adscripcion where adscripcion = (SUBSTRING(bpa.adscripcion, 0, 3) + '000')) as agencia, ec.folio_proyecto as folioProyecto, cp.puesto as puesto, " +
+                "cp.clv_puesto as clvPuesto from evento_cara ec left join evento_personal ep on ep.folio_evento = ec.folio_evento left join centro_trabajo ct on " +
+                "ct.folio_centro_trabajo = ec.folio_centro_trabajo left join cadena_centro_trabajo cct on cct.clv_cadena = ct.clv_cadena left join cat_tip_evento cte " +
+                "on cte.clv_tip_evento = ec.clv_tip_evento left join edo_evento ee on ee.clv_edo_evento = ec.clv_edo_evento left join bitacora_proyecto_adscripcion bpa " +
+                "on bpa.folio_proyecto = ec.folio_proyecto left join empleado e on e.clv_emp = ep.clv_emp left join cat_puesto cp on cp.clv_puesto = e.clv_puesto " +
+                "where ep.clv_emp = @usuario order by ec.fecha_inicial asc";
 
             List<Parametro> parametros = new List<Parametro>();
 
@@ -67,6 +77,15 @@ namespace AntadBiblioteca.DAO
                 evento.clvCadenaCentroTrabajo = Convert.ToInt32(readerSuc["clvCadenaCentroTrabajo"].ToString());
                 evento.cadenaCentroTrabajo = readerSuc["cadenaCentroTrabajo"].ToString();
                 evento.fotoCadenaCentroTrabajo = readerSuc["fotoCadenaCentroTrabajo"].ToString();
+
+                evento.clvPuesto = Convert.ToInt32(readerSuc["clvPuesto"].ToString());
+                evento.agencia = readerSuc["agencia"].ToString();
+                evento.folioProyecto = readerSuc["folioProyecto"].ToString();
+                evento.puesto = readerSuc["puesto"].ToString();
+                
+
+
+
 
                 eventos.Add(evento);
 

@@ -15,6 +15,8 @@ namespace Antad.Views
         public MenuPage()
         {
             InitializeComponent();
+            this.BackgroundImageSource = ImageSource.FromFile("fondosplash");
+           // this.BackgroundImageSource = FileImageSource.FromFile("drawable/patternwide");
         }
     }
 }

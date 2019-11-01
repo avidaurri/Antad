@@ -28,6 +28,11 @@ namespace ModelsNet.Models
 
 
 
+        public string agencia { get; set; }
+        public string folioProyecto { get; set; }
+
+
+
         public string textoDetalle { get; set; }
         public bool botonDetalle { get; set; }
         public bool verBotonDetalle { get; set; }
