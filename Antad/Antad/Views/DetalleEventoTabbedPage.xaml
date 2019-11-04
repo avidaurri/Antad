@@ -13,7 +13,7 @@
         <tabs:EventoDetallePage/>
         <tabs:EventoDesarrolloPage/>
         <tabs:EventoBitacoraPage/>
-        <tabs:EventoValoracionPage/>
+        <!-- <tabs:EventoValoracionPage/>-->
         <tabs:EventoPagosPage/>
     </TabbedPage.Children>
 </TabbedPage>
