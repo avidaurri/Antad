@@ -7,12 +7,13 @@
              mc:Ignorable="d"
              x:Class="Antad.Views.MenuPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Menu">
+             Title="Menu"
+        BackgroundColor="Yellow">
 
 
   <ContentPage.Content>
 
-          <StackLayout BindingContext="{Binding Bienvenido}" Margin="5" BackgroundColor="White" Opacity="1" >
+          <StackLayout BindingContext="{Binding Bienvenido}" BackgroundColor="Transparent" Margin="5"  Opacity=".9" >
             <controls:CircleImage
                 Source="{Binding ImageUser}"
                 Aspect="AspectFill"
@@ -39,25 +40,30 @@
                       <Grid.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding GotoCommand}"/>
                       </Grid.GestureRecognizers>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="10" />
+                                </Grid.RowDefinitions>
                       <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                       </Grid.ColumnDefinitions>
-                      <Image Margin="0,15,0,15"
+                      <Image Margin="2,0,2,0"
                           Grid.Column="0"
-                          Source="{Binding Icon}"
-                          WidthRequest="30"
-                          HeightRequest="30">
+                          Source="vinetalogoa"
+                          WidthRequest="25"
+                          HeightRequest="25">
                       </Image>
+                                <!-- Source="{Binding Icon}" -->
                       <Label  FontFamily="{StaticResource MontserratRegular}"
                           Grid.Column="1"
                           VerticalOptions="Center"
-                          TextColor="DimGray"
+                          TextColor="Purple"
                           FontSize="16"
                           Text="{Binding Title}">
                       </Label>
-
-                    </Grid>
+                                <Image Source="separat" Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="10"/>
+                            </Grid>
                   </ViewCell>
                 </DataTemplate>
               </ListView.ItemTemplate>

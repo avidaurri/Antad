@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="Antad.Views.Bienvenido"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             BackgroundImageSource="fondosplash"
+             BackgroundImageSource="fondoaltt"
              Title="ANTAD"
               IconImageSource="logoantad">
     
@@ -25,7 +25,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
+
                 </Grid.RowDefinitions>
 
                 <StackLayout Orientation="Vertical" VerticalOptions="Center"  >
@@ -40,40 +40,11 @@
                     </Image>
                 </StackLayout>
 
-                <StackLayout Grid.Row="2"
-                       Orientation="Horizontal" HorizontalOptions="Center" >
-                    <Image Source="indicador_morado" WidthRequest="40"/>
-                    <Image Source="indicador_gris" WidthRequest="25"/>
-                    <Image Source="indicador_gris" WidthRequest="25"/>
-                    <Image Source="indicador_gris" WidthRequest="25"/>
-                    <Image Source="indicador_gris" WidthRequest="25"/>
-                    <Image Source="indicador_gris" WidthRequest="25"/>
+                <StackLayout Grid.Row="2">
+                    <Button Text="VER GUIA" BackgroundColor="Purple" TextColor="White"/>
 
                 </StackLayout>
-                <StackLayout 
-                         Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="3">
-                    <Label 
-                            HorizontalOptions="Center"
-                            Text="1"
-                            FontSize="35"
-                            TextColor="Purple"
-                            FontFamily="{StaticResource MontserratBold}"
-                            HorizontalTextAlignment="Center"/>
-                    <Label 
-                            HorizontalOptions="Center"
-                            Text="DE"
-                            FontSize="25"
-                            TextColor="DimGray"
-                            FontFamily="{StaticResource MontserratBold}"
-                            HorizontalTextAlignment="Center"/>
-                    <Label 
-                            HorizontalOptions="Center"
-                            Text="6"
-                            FontSize="35"
-                            TextColor="Purple"
-                            FontFamily="{StaticResource MontserratBold}"
-                            HorizontalTextAlignment="Center"/>
-                </StackLayout>
+
             </Grid>
         </Frame>
     </ContentPage.Content>

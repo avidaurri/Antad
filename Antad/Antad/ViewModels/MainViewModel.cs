@@ -135,7 +135,7 @@ namespace Antad.ViewModels
                 {
                     Icon = "ic_misucursal",
                     PageName = "misucursal",
-                    Title = "Mi Sucursal",
+                    Title = "Mi Centro de Trabajo",
                 });
                 this.Menu.Add(new MenuItemViewModel
                 {

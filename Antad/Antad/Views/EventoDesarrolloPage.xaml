@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="Antad.Views.EventoDesarrolloPage"
               BindingContext="{Binding Main, Source={StaticResource Locator}}"
-               BackgroundImageSource="fondosplash"
+               BackgroundImageSource="fondoaltt"
              Title="Desarrollo"
              IconImageSource="ic_desarrollotab">
     <!--   Title="Desarrollo"-->
@@ -24,7 +24,7 @@
                 <!--<Frame BackgroundColor="#2196F3"  Grid.Row="0" HasShadow="True" Padding="0"  VerticalOptions="Center">
                     <Label Text="Incidencias" TextColor="White" FontSize="20" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" />
                 </Frame>-->
-                <Frame Grid.Row="0" >
+                <Frame Grid.Row="0" Opacity=".9">
                     <Grid>
                         <Grid.RowDefinitions >
                             <RowDefinition Height="Auto"/>
@@ -37,7 +37,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <StackLayout  Grid.Row="1" Grid.Column="0" Orientation="Vertical" >
-                            <Image Source="qrpngexample" WidthRequest="100">
+                            <Image Source="vistaqr" WidthRequest="100">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding ViewQrCommand}"/>
                                 </Image.GestureRecognizers>
@@ -73,10 +73,12 @@
 
                 </Frame>
 
-                <StackLayout  Grid.Row="1" Orientation="Vertical" >
-                    <Label Text="Desarrollo" TextColor="DimGray" FontSize="20" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" />
+                <Frame Grid.Row="1" Opacity="1" >
+                    <StackLayout  Orientation="Vertical" >
+                        <Label Text="Desarrollo" TextColor="DimGray" FontSize="20" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" />
 
-                </StackLayout>
+                    </StackLayout>
+                </Frame>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

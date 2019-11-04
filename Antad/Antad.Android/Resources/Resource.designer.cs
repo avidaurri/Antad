@@ -5231,16 +5231,31 @@ namespace Antad.Droid
 			public const int scan_code = 2131165534;
 			
 			// aapt resource value: 0x7F07015F
-			public const int tooltip_frame_dark = 2131165535;
+			public const int sepa = 2131165535;
 			
 			// aapt resource value: 0x7F070160
-			public const int tooltip_frame_light = 2131165536;
+			public const int separat = 2131165536;
 			
 			// aapt resource value: 0x7F070161
-			public const int triste = 2131165537;
+			public const int tooltip_frame_dark = 2131165537;
 			
 			// aapt resource value: 0x7F070162
-			public const int user_large = 2131165538;
+			public const int tooltip_frame_light = 2131165538;
+			
+			// aapt resource value: 0x7F070163
+			public const int triste = 2131165539;
+			
+			// aapt resource value: 0x7F070164
+			public const int user_large = 2131165540;
+			
+			// aapt resource value: 0x7F070165
+			public const int vinetalogo = 2131165541;
+			
+			// aapt resource value: 0x7F070166
+			public const int vinetalogoa = 2131165542;
+			
+			// aapt resource value: 0x7F070167
+			public const int vistaqr = 2131165543;
 			
 			static Drawable()
 			{

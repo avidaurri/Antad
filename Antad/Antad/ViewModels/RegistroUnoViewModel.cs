@@ -262,12 +262,14 @@ namespace Antad.ViewModels
         }
         private async void cargaMun(string val)
         {
+            this.IsEnabled = false;
             //this.MunicipiosList.Clear();
             var connection = await this.apiService.CheckConnection();
 
             if (!connection.IsSuccess)
             {
-                await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
+                //await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, "Hubo un problema al cargar tu municipio, por favor selecciona tu estado nuevamente", Languages.Accept);
                 return;
             }
 
@@ -278,10 +280,12 @@ namespace Antad.ViewModels
             var response = await this.apiService.Post(url, prefix, controller, Convert.ToInt32(val));
             if (!response.IsSuccess)
             {
-  
-                await Application.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
+
+                //await Application.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, "Hubo un problema al cargar tu municipio, por favor selecciona tu estado nuevamente", Languages.Accept);
                 return;
             }
+            this.IsEnabled = true;
             CatalogoRegistro cat = new CatalogoRegistro();
             cat = (CatalogoRegistro)response.Result;
 
@@ -412,7 +416,7 @@ namespace Antad.ViewModels
 
         #region Constructors
 
-        public RegistroUnoViewModel()
+        public RegistroUnoViewModel(CatalogoRegistro Catt)
         {
             this.IsEnabled = true;
             this.apiService = new ApiService();
@@ -420,12 +424,12 @@ namespace Antad.ViewModels
             this.ImageSourceComprobante = "ic_camara";
             this.ImageSourceIdentificacion = "ic_camara";
             // bancoList = new List<CatalogoRegistro.Banco>();
-            CargarCatalogos();
+            CargarCatalogos(Catt);
         }
 
-        private async void CargarCatalogos()
+        private void CargarCatalogos(CatalogoRegistro catt)
         {
-            var connection = await this.apiService.CheckConnection();
+            /*var connection = await this.apiService.CheckConnection();
 
             if (!connection.IsSuccess)
             {
@@ -440,30 +444,30 @@ namespace Antad.ViewModels
             var response = await this.apiService.GetCatalogos(url, prefix, controller);
             if (!response.IsSuccess)
             {
-                /*this.IsRunning = false;
-                this.IsEnabled = true;*/
+                //this.IsRunning = false;
+                //this.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
-                /*MainViewModel.GetInstance().Login = new LoginViewModel();
-                Application.Current.MainPage = new NavigationPage(new LoginPage());*/
+                //MainViewModel.GetInstance().Login = new LoginViewModel();
+                //Application.Current.MainPage = new NavigationPage(new LoginPage());
                 return;
             }
             CatalogoRegistro cat = new CatalogoRegistro();
-            cat = (CatalogoRegistro)response.Result;
+            cat = (CatalogoRegistro)response.Result;*/
 
             // bancos
-            this.BancoList = cat.listaBancos;
+            this.BancoList = catt.listaBancos;
             // estados civil
-            this.EstadoCivilList = cat.listaEdoCivil;
+            this.EstadoCivilList = catt.listaEdoCivil;
             // grados de estudios
-            this.GradoEstudiosList = cat.listaGradoEstudios;
+            this.GradoEstudiosList = catt.listaGradoEstudios;
             //estados
-            this.EstadosList = cat.listaEstados;
+            this.EstadosList = catt.listaEstados;
             //municipios
             //this.MunicipiosList = cat.listaMunicipios;
             //regiones
-            this.RegionList = cat.listaRegiones;
+            this.RegionList = catt.listaRegiones;
             //puesto
-            this.PuestoList = cat.listaPuestos;
+            this.PuestoList = catt.listaPuestos;
         }
         #endregion
 

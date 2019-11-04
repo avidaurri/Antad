@@ -7,32 +7,19 @@
              x:Class="Antad.Views.IntramuroPage"
               BindingContext="{Binding Main, Source={StaticResource Locator}}"
              BackgroundImageSource="fondosplash"
-             Title="Intramuro">
+             Title="Mi Centro de Trabajo">
     <ContentPage.Content>
         <StackLayout BindingContext="{Binding Intramuro}" >
             <Grid VerticalOptions="FillAndExpand"  >
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-                <Frame  HasShadow="True" BackgroundColor="Purple"  Margin="0" Padding="0" HeightRequest="65" VerticalOptions="Start">
-                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
-                            <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
-                                <Label  Text="MI SUCURSAL" TextColor="White" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center"/>
-                            </StackLayout>
-                        </StackLayout>
 
-                    </Grid>
-                </Frame>
 
-                <Frame Grid.Row="1" IsVisible="{Binding Sucursal.existeSucursal}" Padding="2,2,2,9"  HasShadow="True" CornerRadius="10" Margin="20,15,20,0" 
+                <Frame Grid.Row="0" IsVisible="{Binding Sucursal.existeSucursal}" Padding="2,2,2,9"  HasShadow="True" CornerRadius="10" Margin="20,15,20,0" 
                        VerticalOptions="Start">
                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                         <Grid.ColumnDefinitions>
@@ -52,7 +39,7 @@
                 </Frame>
 
                 <StackLayout 
-                Grid.Row="2" >
+                Grid.Row="1" >
                 <Grid >
 
                     <Grid.RowDefinitions>
@@ -89,7 +76,7 @@
 
             </StackLayout>
 
-            <StackLayout Grid.Row="3" IsVisible="{Binding Sucursal.errorOperacion}" Orientation="Vertical" VerticalOptions="EndAndExpand" >
+            <StackLayout Grid.Row="2" IsVisible="{Binding Sucursal.errorOperacion}" Orientation="Vertical" VerticalOptions="EndAndExpand" >
                 <ActivityIndicator
                 IsRunning="{Binding Sucursal.IsRunning}"
                 VerticalOptions="CenterAndExpand">

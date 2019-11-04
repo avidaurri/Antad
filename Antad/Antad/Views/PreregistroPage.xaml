@@ -133,7 +133,8 @@
                         </Button>
                         <!--Command="{Binding RechazarRegistroCommand}" -->
                         <Button Text="INICIAR" BackgroundColor="Purple" TextColor="White" CornerRadius="3" x:Name="Heart"
-                                HorizontalOptions="FillAndExpand" Command="{Binding AceptarRegistroCommand}"   >
+                                HorizontalOptions="FillAndExpand" Command="{Binding AceptarRegistroCommand}"
+                                  IsEnabled="{Binding IsEnabled}">
                             <Button.Triggers>
                                 <EventTrigger Event="Clicked">
                                     <xamanimation:BeginAnimation

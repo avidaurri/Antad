@@ -96,6 +96,7 @@
                                Margin="0,-10,0,0"/>
                         <Picker  TextColor="DimGray"  FontSize="13"
                             Title="Estado" 
+                                    IsEnabled="{Binding IsEnabled}"
                             ItemsSource="{Binding EstadosList}"
                             ItemDisplayBinding="{Binding value}"
                             SelectedItem="{Binding SelectedEstado}"   

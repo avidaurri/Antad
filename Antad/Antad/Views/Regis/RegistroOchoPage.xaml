@@ -17,6 +17,14 @@
                 <xamanimation:FlipAnimation Duration="200" />
 
             </xamanimation:StoryBoard>
+            <xamanimation:StoryBoard x:Key="rep" 
+                                     Target="{x:Reference imagerep}">
+                <xamanimation:RelRotateToAnimation                 Easing="Linear"
+                Duration="10000"
+                Rotation="360"
+               />
+
+            </xamanimation:StoryBoard>
             <xamanimation:BounceInAnimation Duration="50"
                 x:Key="HeartAnimation"
                 Target="{x:Reference Heart}"/>
@@ -31,6 +39,10 @@
         <EventTrigger Event="Appearing">
             <xamanimation:BeginAnimation 
                 Animation="{StaticResource FloatingButtonEnter}"/>
+        </EventTrigger>
+        <EventTrigger Event="Appearing">
+            <xamanimation:BeginAnimation
+                Animation="{StaticResource rep}"/>
         </EventTrigger>
     </Page.Triggers>
     <ContentPage.Content>
@@ -58,7 +70,7 @@
   
 
                         <Image
-                            HeightRequest="350"
+                            HeightRequest="350" x:Name="imagerep"
                             Source="{Binding ImageSourceComprobante}">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding CargarComprobanteCommand}"/>

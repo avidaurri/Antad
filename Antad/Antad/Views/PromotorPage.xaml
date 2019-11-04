@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="Antad.Views.PromotorPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             BackgroundImageSource="fondosplash"
+             BackgroundImageSource="fondoaltt"
              Title="Mis Eventos">
     <ContentPage.Content>
 
@@ -45,7 +45,7 @@
                             <DataTemplate>
 
                                 <ViewCell >
-                                    <Frame HasShadow="True" CornerRadius="10" Margin="0,5,0,5">
+                                    <Frame HasShadow="True" CornerRadius="10" Margin="0,5,0,5" Opacity=".9">
 
                                         <Grid >
                                             <Grid.GestureRecognizers>
@@ -65,8 +65,8 @@
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
 
-                                            <Label Text="tp1019-113" Grid.Column="0" HorizontalTextAlignment="Center"/>
-                                            <Label Text="Player group" Grid.Column="1" Grid.ColumnSpan="3" HorizontalTextAlignment="Start"/>
+                                            <Label Text="{Binding folioProyecto}" Grid.Column="0" FontSize="Micro" HorizontalTextAlignment="Center" FontAttributes="Bold"   FontFamily="{StaticResource MontserratBold}"/>
+                                            <Label Text="{Binding agencia}"  Grid.Column="1" FontSize="Micro" Grid.ColumnSpan="3" HorizontalTextAlignment="Start"   FontFamily="{StaticResource MontserratRegular}"/>
                                             <StackLayout Grid.Column="0" Grid.RowSpan="4" Orientation="Vertical" VerticalOptions="CenterAndExpand">
                                                 <Image       WidthRequest="80"                                    
                                            Source="logoantad" VerticalOptions="Center">
@@ -75,20 +75,20 @@
 
 
 
-                                            <Label Grid.Row="1" Grid.Column="1" Text="Donde"  />
-                                            <Label Grid.Row="1" Grid.Column="2" Text="Agricola oriental"  />
+                                            <Label Grid.Row="1" Grid.Column="1" Text="Donde" FontSize="Micro"  FontFamily="{StaticResource MontserratRegular}" />
+                                            <Label Grid.Row="1" Grid.Column="2" Text="{Binding nombreCentroTrabajo}" FontSize="Micro" FontFamily="{StaticResource MontserratLight}" />
 
-                                            <Label Grid.Row="2" Grid.Column="1" Text="Funcion"  />
-                                            <Label Grid.Row="2" Grid.Column="2" Text="Promotor"  />
+                                            <Label Grid.Row="2" Grid.Column="1" Text="Funcion" FontSize="Micro"  FontFamily="{StaticResource MontserratRegular}" />
+                                            <Label Grid.Row="2" Grid.Column="2" Text="{Binding puesto}" FontSize="Micro" FontFamily="{StaticResource MontserratLight}" />
 
-                                            <Label Grid.Row="3" Grid.Column="1" Text="Inicia"  />
-                                            <Label Grid.Row="3" Grid.Column="2" Text="2019-08-10"  />
+                                            <Label Grid.Row="3" Grid.Column="1" Text="Inicia" FontSize="Micro"  FontFamily="{StaticResource MontserratRegular}" />
+                                            <Label Grid.Row="3" Grid.Column="2" Text="{Binding fechaInicio}" FontSize="Micro" FontFamily="{StaticResource MontserratLight}" />
 
-                                            <Label Grid.Row="4" Grid.Column="1" Text="termina"  />
-                                            <Label Grid.Row="4" Grid.Column="2" Text="2019-08-10"  />
+                                            <Label Grid.Row="4" Grid.Column="1" Text="termina" FontSize="Micro" FontFamily="{StaticResource MontserratRegular}" />
+                                            <Label Grid.Row="4" Grid.Column="2" Text="{Binding fechaFinal}" FontSize="Micro" FontFamily="{StaticResource MontserratLight}" />
 
                                             <StackLayout Grid.Column="3" Grid.RowSpan="4" Orientation="Vertical" VerticalOptions="CenterAndExpand">
-                                                <Label Text="Agendado" VerticalOptions="Center"/>
+                                                <Label Text="{Binding estadoEvento}" VerticalOptions="Center" FontSize="Micro"  FontFamily="{StaticResource MontserratRegular}"/>
                                             </StackLayout>
 
 

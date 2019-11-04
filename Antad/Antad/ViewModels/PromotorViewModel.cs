@@ -132,6 +132,10 @@ namespace Antad.ViewModels
                 clvEdoEvento = p.clvEdoEvento,
                 fotoCadenaCentroTrabajo = p.fotoCadenaCentroTrabajo,
 
+                agencia = p.agencia,
+                folioProyecto = p.folioProyecto,
+                puesto = p.puesto,
+
             });
 
             this.Eventos = new ObservableCollection<EventoItemViewModel>(myList);
