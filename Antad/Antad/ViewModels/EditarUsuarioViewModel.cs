@@ -1,8 +1,9 @@
 ﻿
 using Antad.Helpers;
 using Antad.Services;
-using ModelsNet.Models;
 using GalaSoft.MvvmLight.Command;
+using ModelsNet.Models;
+
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using System;
